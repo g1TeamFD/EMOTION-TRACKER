@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usernames Display with Comments</title>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-database.js"></script>
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+  apiKey: "AIzaSyDfJVnrDPlc090D_SmG9f2tn55oyJHy4Y8",
+  authDomain: "emotion-tracker-a0d7c.firebaseapp.com",
+  databaseURL: "https://emotion-tracker-a0d7c-default-rtdb.firebaseio.com",
+  projectId: "emotion-tracker-a0d7c",
+  storageBucket: "emotion-tracker-a0d7c.appspot.com",
+  messagingSenderId: "232259525894",
+  appId: "1:232259525894:web:5cfba5c25d3967eb625287"
+};
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // Function to add a new user
+        function addUser(username) {
+            // Create a new user in the database with initial data
+            database.ref('users/' + username).set({ points: 0, comments: [] });
+            // Display the new user
+            displayUser(username, 0, [], false);
+        }
+
+        // Function to display a user on the page
+        function displayUser(username, points, comments, isLocked) {
+            const usernamesContainer = document.getElementById('usernames');
+            const usernameContainer = document.createElement('div');
+            usernameContainer.className = 'username-container';
+
+            const usernameElement = document.createElement('p');
+            usernameElement.textContent = username;
+            usernameElement.className = 'username';
+
+            const pointsContainer = document.createElement('div');
+            pointsContainer.className = 'points-bar-container';
+
+            const pointsBar = document.createElement('div');
+            pointsBar.className = 'points-bar';
+            pointsBar.style.width = (Math.max(points, 0) * 10) + 'px';
+            pointsBar.style.backgroundColor = getRandomColor();
+
+            const pointsElement = document.createElement('span');
+            pointsElement.textContent = 'Points: ' + points;
+            pointsElement.className = 'points';
+
+            // Input for comments
+            const commentInput = document.createElement('input');
+            commentInput.type = 'text';
+            commentInput.placeholder = 'Add a comment';
+            commentInput.className = 'comment-input';
+
+            // Submit button to add points and comments
+            const submitButton = document.createElement('button');
+            submitButton.textContent = 'Submit';
+            submitButton.className = 'submit-button';
+            submitButton.onclick = function () {
+                submitToDatabase(username, parseInt(pointsElement.textContent.split(' ')[1], 10), commentInput.value);
+                commentInput.value = ''; // Clear the comment field after submission
+            };
+            submitButton.disabled = isLocked;
+
+            // Plus and Minus buttons for updating points locally
+            const plusButton = document.createElement('button');
+            plusButton.textContent = '+';
+            plusButton.className = 'plus-button';
+            plusButton.onclick = function () {
+                points += 1;
+                pointsElement.textContent = 'Points: ' + points;
+                pointsBar.style.width = (points * 10) + 'px';
+            };
+            plusButton.disabled = isLocked;
+
+            const minusButton = document.createElement('button');
+            minusButton.textContent = '-';
+            minusButton.className = 'minus-button';
+            minusButton.onclick = function () {
+                points = Math.max(points - 1, 0);
+                pointsElement.textContent = 'Points: ' + points;
+                pointsBar.style.width = (points * 10) + 'px';
+            };
+            minusButton.disabled = isLocked;
+
+            pointsContainer.appendChild(plusButton);
+            pointsContainer.appendChild(minusButton);
+            pointsContainer.appendChild(pointsBar);
+            pointsContainer.appendChild(pointsElement);
+
+            usernameContainer.appendChild(usernameElement);
+            usernameContainer.appendChild(pointsContainer);
+            usernameContainer.appendChild(commentInput);
+            usernameContainer.appendChild(submitButton);
+
+            usernamesContainer.appendChild(usernameContainer);
+        }
+
+        function submitToDatabase(username, points, newComment) {
+    const userRef = database.ref('users/' + username);
+
+    // Read the current user data from the database
+    userRef.once('value').then(snapshot => {
+        const userData = snapshot.val();
+        
+        // Update the score: add the new points to the existing points
+        const updatedPoints = (userData.points || 0) + points;
+
+        // Update the comments: append the new comment to the existing array
+        const updatedComments = [...(userData.comments || []), newComment];
+
+        // Update the database with the new score and comments
+        userRef.update({
+            points: updatedPoints,
+            comments: updatedComments
+        });
+        alert(`Data submitted for ${username}: ${updatedPoints} points, comment added.`);
+    });
+}
+
+
+        // Function to generate a random color for the points bar
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Event listener for adding new users
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('addUserForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const username = document.getElementById('usernameInput').value.trim();
+                if (username) {
+                    addUser(username);
+                    document.getElementById('usernameInput').value = ''; // Clear input
+                }
+            });
+        });
+    </script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .username-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 500px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .points-bar-container {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+        }
+
+        .points-bar {
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        input, button {
+            padding: 5px 10px;
+            margin-left: 5px;
+            font-size: 14px;
+        }
+
+        #addUserForm {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Form to add new users -->
+    <form id="addUserForm">
+        <input type="text" id="usernameInput" placeholder="Enter username" required>
+        <button type="submit">Add User</button>
+    </form>
+
+    <!-- Container to display the users -->
+    <div id="usernames" class="usernames"></div>
+</body>
+</html>
