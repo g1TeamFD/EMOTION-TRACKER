@@ -10,16 +10,19 @@
     <script>
         // Initialize Firebase
         const firebaseConfig = {
-  apiKey: "AIzaSyDfJVnrDPlc090D_SmG9f2tn55oyJHy4Y8",
-  authDomain: "emotion-tracker-a0d7c.firebaseapp.com",
-  databaseURL: "https://emotion-tracker-a0d7c-default-rtdb.firebaseio.com",
-  projectId: "emotion-tracker-a0d7c",
-  storageBucket: "emotion-tracker-a0d7c.appspot.com",
-  messagingSenderId: "232259525894",
-  appId: "1:232259525894:web:5cfba5c25d3967eb625287"
-};
+            apiKey: "AIzaSyDfJVnrDPlc090D_SmG9f2tn55oyJHy4Y8",
+            authDomain: "emotion-tracker-a0d7c.firebaseapp.com",
+            databaseURL: "https://emotion-tracker-a0d7c-default-rtdb.firebaseio.com",
+            projectId: "emotion-tracker-a0d7c",
+            storageBucket: "emotion-tracker-a0d7c.appspot.com",
+            messagingSenderId: "232259525894",
+            appId: "1:232259525894:web:5cfba5c25d3967eb625287"
+        };
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
+
+        let formFillerName = '';
+        let programName = '';
 
         // Function to add a new user
         function addUser(username) {
@@ -62,8 +65,12 @@
             submitButton.textContent = 'Submit';
             submitButton.className = 'submit-button';
             submitButton.onclick = function () {
-                submitToDatabase(username, parseInt(pointsElement.textContent.split(' ')[1], 10), commentInput.value);
-                commentInput.value = ''; // Clear the comment field after submission
+                if (formFillerName && programName) {
+                    submitToDatabase(username, parseInt(pointsElement.textContent.split(' ')[1], 10), commentInput.value, formFillerName, programName);
+                    commentInput.value = ''; // Clear the comment field after submission
+                } else {
+                    alert('Please enter your name and program name above.');
+                }
             };
             submitButton.disabled = isLocked;
 
@@ -82,9 +89,9 @@
             minusButton.textContent = '-';
             minusButton.className = 'minus-button';
             minusButton.onclick = function () {
-                points = Math.max(points - 1, 0);
+                points -= 1; // Allows decrementing below 0
                 pointsElement.textContent = 'Points: ' + points;
-                pointsBar.style.width = (points * 10) + 'px';
+                pointsBar.style.width = (Math.max(points, 0) * 10) + 'px';
             };
             minusButton.disabled = isLocked;
 
@@ -101,28 +108,32 @@
             usernamesContainer.appendChild(usernameContainer);
         }
 
-        function submitToDatabase(username, points, newComment) {
-    const userRef = database.ref('users/' + username);
+        function submitToDatabase(username, points, newComment, fillerName, programName) {
+            const userRef = database.ref('users/' + username);
 
-    // Read the current user data from the database
-    userRef.once('value').then(snapshot => {
-        const userData = snapshot.val();
-        
-        // Update the score: add the new points to the existing points
-        const updatedPoints = (userData.points || 0) + points;
+            // Read the current user data from the database
+            userRef.once('value').then(snapshot => {
+                const userData = snapshot.val();
+                
+                // No auto-add for score; update points with current local value
+                const updatedPoints = points;
 
-        // Update the comments: append the new comment to the existing array
-        const updatedComments = [...(userData.comments || []), newComment];
+                // Update the comments: append the new comment to the existing array with timestamp
+                const updatedComments = [...(userData.comments || []), { 
+                    comment: newComment, 
+                    fillerName: fillerName, 
+                    programName: programName, 
+                    timestamp: new Date().toISOString() 
+                }];
 
-        // Update the database with the new score and comments
-        userRef.update({
-            points: updatedPoints,
-            comments: updatedComments
-        });
-        alert(`Data submitted for ${username}: ${updatedPoints} points, comment added.`);
-    });
-}
-
+                // Update the database with the new score and comments
+                userRef.update({
+                    points: updatedPoints,
+                    comments: updatedComments
+                });
+                alert(`Data submitted for ${username}: ${updatedPoints} points, comment added.`);
+            });
+        }
 
         // Function to generate a random color for the points bar
         function getRandomColor() {
@@ -134,7 +145,7 @@
             return color;
         }
 
-        // Event listener for adding new users
+        // Event listener for adding new users and capturing form filler details
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('addUserForm').addEventListener('submit', (e) => {
                 e.preventDefault();
@@ -143,6 +154,14 @@
                     addUser(username);
                     document.getElementById('usernameInput').value = ''; // Clear input
                 }
+            });
+
+            // Capture form filler name and program name
+            document.getElementById('fillerForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                formFillerName = document.getElementById('formFillerNameInput').value.trim();
+                programName = document.getElementById('programNameInput').value.trim();
+                alert('Details saved: ' + formFillerName + ' - ' + programName);
             });
         });
     </script>
@@ -157,8 +176,23 @@
             align-items: center;
         }
 
+        h1 {
+            color: #333;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            max-width: 500px;
+            width: 100%;
+        }
+
         .username-container {
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
             width: 100%;
@@ -179,12 +213,26 @@
         .points-bar {
             height: 20px;
             margin-right: 10px;
+            background-color: #f2f2f2;
+            border-radius: 4px;
         }
 
         input, button {
-            padding: 5px 10px;
-            margin-left: 5px;
+            padding: 8px 12px;
+            margin: 5px 0;
             font-size: 14px;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .submit-button {
+            background-color: #008cba;
         }
 
         #addUserForm {
@@ -193,8 +241,17 @@
     </style>
 </head>
 <body>
+    <h1>User Point Tracker</h1>
+
+    <!-- Form to add filler and program details -->
+    <form id="fillerForm" class="form-container">
+        <input type="text" id="formFillerNameInput" placeholder="Your name" required>
+        <input type="text" id="programNameInput" placeholder="Program name" required>
+        <button type="submit">Save Details</button>
+    </form>
+
     <!-- Form to add new users -->
-    <form id="addUserForm">
+    <form id="addUserForm" class="form-container">
         <input type="text" id="usernameInput" placeholder="Enter username" required>
         <button type="submit">Add User</button>
     </form>
