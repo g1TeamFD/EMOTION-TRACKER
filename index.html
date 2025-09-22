@@ -1,63 +1,70 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bootcamp Evaluator v2</title>
-  <!-- Firebase v8 SDKs (match your v1) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bootcamp Evaluator</title>
+
+  <!-- Firebase (for autosave + locking only) -->
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-  
+
   <style>
-    body { font-family: system-ui, Arial, sans-serif; background:#f5f7fb; margin:0; padding:20px; }
+    :root {
+      --bg:#f5f7fb; --card:#fff; --muted:#6b7280; --border:#d7dbe7;
+      --primary:#1f6feb; --secondary:#6b7280; --warning:#f59e0b;
+    }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, Arial, sans-serif; background:var(--bg); margin:0; padding:20px; }
     header { max-width:1100px; margin:0 auto 16px; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
     h1 { font-size:22px; margin:0 16px 0 0; }
-    .card { background:#fff; border-radius:12px; padding:16px; box-shadow:0 1px 4px rgba(0,0,0,.06); max-width:1100px; margin:10px auto; }
+    .card { background:var(--card); border-radius:12px; padding:16px; box-shadow:0 1px 4px rgba(0,0,0,.06); max-width:1100px; margin:10px auto; }
     .row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
-    select, input, button { padding:10px 12px; border-radius:8px; border:1px solid #d7dbe7; font-size:14px; }
-    button { background:#1f6feb; color:#fff; border:none; cursor:pointer; }
-    button.secondary { background:#6b7280; }
-    button.warning { background:#f59e0b; }
+    select, input, button { padding:10px 12px; border-radius:8px; border:1px solid var(--border); font-size:14px; }
+    button { background:var(--primary); color:#fff; border:none; cursor:pointer; }
+    button.secondary { background:var(--secondary); }
+    button.warning { background:var(--warning); }
     button.ghost { background:#fff; color:#111827; border:1px solid #cfd6e4; }
+    .muted { color:var(--muted); font-size:12px; }
+    .pill { background:#eef2ff; color:#3730a3; padding:4px 8px; border-radius:999px; font-size:12px; }
+
     .kid { display:grid; grid-template-columns: 1fr 110px 110px 140px 1fr 120px; gap:8px; align-items:center; padding:10px; border-bottom:1px dashed #e5e7eb; }
     .kid:last-child { border-bottom:none; }
     .kid input[type="number"]{ width:100%; }
-    .muted { color:#6b7280; font-size:12px; }
-    .pill { background:#eef2ff; color:#3730a3; padding:4px 8px; border-radius:999px; font-size:12px; }
     table { width:100%; border-collapse:collapse; }
     th, td { padding:10px; border-bottom:1px solid #edf0f7; text-align:left; font-size:14px; }
     th { background:#f8fafc; font-weight:600; }
-    .lock { color:#ef4444; font-weight:600; }
   </style>
 </head>
 <body>
   <header class="row">
     <h1>Bootcamp Evaluator</h1>
-    <span class="pill" id="autostatus">Auto‑save ready</span>
+    <span class="pill" id="autostatus">Auto-save ready</span>
   </header>
 
+  <!-- Top controls -->
   <div class="card">
     <div class="row">
-      <select id="eventSelect"><option value="">Select event…</option></select>
-      <select id="teacherSelect"><option value="">Select teacher…</option></select>
+      <select id="eventSelect"><option value="">Select event (City)…</option></select>
+      <select id="teacherSelect"><option value="">Select teacher (Supervisor)…</option></select>
       <button id="refreshTeams" class="ghost">↻ Sync teams from Sheet</button>
-      <span class="muted">Teams source: Google Sheet</span>
+      <span class="muted">Source: 1. Yogja Teams</span>
     </div>
   </div>
 
+  <!-- Team/Kids -->
   <div class="card" id="teamCard" style="display:none">
     <div class="row" style="justify-content:space-between">
       <div>
         <strong>Team for <span id="teacherNameText"></span></strong>
-        <div class="muted">Add kid names (no duplicates). Range for Points & Performance: −10 … 10. Auto‑saves.</div>
+        <div class="muted">Add kid names (no duplicates). Range for Points & Performance: −10 … 10. Auto-saves.</div>
       </div>
       <div class="row">
-        <input id="newKidInput" placeholder="New kid name" />
+        <input id="newKidInput" placeholder="New kid name"/>
         <button id="addKidBtn" class="secondary">Add Kid</button>
       </div>
     </div>
+
     <div class="kid" style="font-weight:600;">
       <div>Kid</div>
       <div>Plus</div>
@@ -77,12 +84,13 @@
     </div>
   </div>
 
+  <!-- Log -->
   <div class="card" id="logCard" style="display:none">
     <div class="row" style="justify-content:space-between">
       <strong>Submission Log</strong>
       <button id="closeLog" class="secondary">Close</button>
     </div>
-    <div class="muted">Live roll‑up from Google Sheet (teacher → counts per submission + quality).</div>
+    <div class="muted">Live roll-up from Submissions tab (teacher → counts per activity + quality).</div>
     <div style="overflow:auto;">
       <table id="logTable">
         <thead>
@@ -103,7 +111,8 @@
   </div>
 
   <script>
-    // ====== Firebase (keep your existing project config) ======
+    /**************  CONFIG  **************/
+    // 1) Firebase (for autosave + locking; keep your existing project config)
     const firebaseConfig = {
       apiKey: "AIzaSyDfJVnrDPlc090D_SmG9f2tn55oyJHy4Y8",
       authDomain: "emotion-tracker-a0d7c.firebaseapp.com",
@@ -116,34 +125,49 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    // ====== Config (adjust to your sheet) ======
-    const TEAM_SHEET_ID = "1QncE84XVI0vjQIamEYzNCZGIzw5rmC0ZXTCP5Owdhs0"; // provided link
+    // 2) Google Apps Script Web App
+    //    Replace with your deployed Web App URL and the same TOKEN you used in Apps Script
+    const GAS_BASE = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE"; // e.g. https://script.google.com/macros/s/xxx/exec
+    const TOKEN   = "super-secret-token-choose-your-own";
 
-    // These HTTPS Callable endpoints are implemented in Cloud Functions below
     const ENDPOINTS = {
-      teams: "/fetchTeams",
-      pushSubmission: "/pushSubmission",
-      fetchLog: "/fetchLog"
+      teams: `${GAS_BASE}?action=teams`,
+      pushSubmission: `${GAS_BASE}`,      // POST with token
+      fetchLog: `${GAS_BASE}?action=log`
     };
 
-    // We’ll call them via the Realtime Database REST-like Function routes at /__//
-    // But here, for simplicity, we’ll assume you deploy as functions.https.onRequest and host them at /api/* via rewrites.
-
-    // Helper to call Cloud Function via relative path (set up hosting rewrites to functions)
+    /**************  HELPERS  **************/
     async function api(path, opts={}){
-      const res = await fetch(path, { headers: {"Content-Type":"application/json"}, ...opts });
-      if(!res.ok){ throw new Error(await res.text()); }
+      const method = (opts.method||'GET').toUpperCase();
+      const headers = { "Content-Type":"application/json" };
+      let body;
+      if(method === 'POST'){
+        const extra = opts.body ? JSON.parse(opts.body) : {};
+        body = JSON.stringify({ token: TOKEN, ...extra });
+      }
+      const res = await fetch(path, { method, headers, body });
+      if(!res.ok){
+        let msg = await res.text();
+        throw new Error(msg || `HTTP ${res.status}`);
+      }
       return res.json();
     }
 
-    // ====== State ======
+    function ensureRange(v){
+      if(v===''||v===null||v===undefined) return '';
+      v = Number(v);
+      if(Number.isNaN(v)) return '';
+      return Math.max(-10, Math.min(10, v));
+    }
+    function encodeKey(s){ return encodeURIComponent(String(s).replace(/\//g,'_')); }
+
+    /**************  STATE + ELEMENTS  **************/
     let currentEvent = "";
     let currentTeacher = "";
-    let kidModel = {}; // {kidName: {plus, minus, performance, comment}}
-    let submitLocked = false; // locked after Submit per activity index
-    let activityIndex = 1; // teacher chooses which activity number he/she is submitting for; keep 1..N
+    let kidModel = {};            // { kidName: { plus, minus, performance, comment } }
+    let submitLocked = false;     // locked after submit for current activity
+    let activityIndex = 1;        // 1..N per activity
 
-    // ====== UI Elements ======
     const eventSelect = document.getElementById('eventSelect');
     const teacherSelect = document.getElementById('teacherSelect');
     const teamCard = document.getElementById('teamCard');
@@ -161,16 +185,18 @@
     eventSelect.addEventListener('change', onSelectChanged);
     teacherSelect.addEventListener('change', onSelectChanged);
 
+    /**************  BOOTSTRAP  **************/
     async function bootstrap(){
       try{
         const data = await api(ENDPOINTS.teams);
         // data = { events:[city...], teachersByEvent:{city:[teacher...]}, byEventTeacher:{city:{teacher:[kid...]}} }
-        eventSelect.innerHTML = '<option value="">Select event…</option>' + (data.events||[]).map(e=>`<option>${e}</option>`).join('');
-        // stash maps for later
+        eventSelect.innerHTML = '<option value="">Select event (City)…</option>' + (data.events||[]).map(e=>`<option>${e}</option>`).join('');
         eventSelect.dataset.teachersByEvent = JSON.stringify(data.teachersByEvent||{});
-        eventSelect.dataset.byEventTeacher = JSON.stringify(data.byEventTeacher||{});
-        teacherSelect.innerHTML = '<option value="">Select teacher…</option>';
-      }catch(e){ alert('Failed to sync teams: '+e.message); }
+        eventSelect.dataset.byEventTeacher  = JSON.stringify(data.byEventTeacher||{});
+        teacherSelect.innerHTML = '<option value="">Select teacher (Supervisor)…</option>';
+      }catch(e){
+        alert('Failed to sync teams: ' + e.message);
+      }
     }
 
     function onSelectChanged(){
@@ -178,9 +204,10 @@
       const tByEvent = JSON.parse(eventSelect.dataset.teachersByEvent||'{}');
       if(currentEvent){
         const tlist = tByEvent[currentEvent]||[];
-        teacherSelect.innerHTML = '<option value="">Select teacher…</option>' + tlist.map(t=>`<option>${t}</option>`).join('');
+        teacherSelect.innerHTML = '<option value="">Select teacher (Supervisor)…</option>' + tlist.map(t=>`<option>${t}</option>`).join('');
       }
       currentTeacher = teacherSelect.value;
+
       if(!currentEvent || !currentTeacher){ teamCard.style.display='none'; return; }
       teacherNameText.textContent = `${currentTeacher} · ${currentEvent}`;
       teamCard.style.display='block';
@@ -188,29 +215,39 @@
       loadTeamFromSheetThenAttachAutosave();
     }
 
-    function onSelectChanged(){
-      currentEvent = eventSelect.value;
-      currentTeacher = teacherSelect.value;
-      if(!currentEvent || !currentTeacher){ teamCard.style.display='none'; return; }
-      teacherNameText.textContent = `${currentTeacher} · ${currentEvent}`;
-      teamCard.style.display='block';
-      activityIndex = 1; // reset on change
-      loadTeamFromSheetThenAttachAutosave();
+    async function loadTeamFromSheetThenAttachAutosave(){
+      const byEventTeacher = JSON.parse(eventSelect.dataset.byEventTeacher||'{}');
+      const baseKids = (((byEventTeacher[currentEvent]||{})[currentTeacher])||[]);
+      kidModel = {};
+      baseKids.forEach(k => kidModel[k] = { plus:'', minus:'', performance:'', comment:'' });
+
+      // merge any previously saved working copy
+      const workingSnap = await db.ref(`working/${encodeKey(currentEvent)}/${encodeKey(currentTeacher)}`).once('value');
+      if(workingSnap.exists()){
+        const { kids, locked, activity } = workingSnap.val();
+        if(kids) kidModel = { ...kidModel, ...kids };
+        submitLocked = !!locked;
+        activityIndex = activity || 1;
+      } else {
+        submitLocked = false;
+        activityIndex = 1;
+      }
+      submitStatus.textContent = submitLocked
+        ? `Locked after Submit (Activity ${activityIndex})`
+        : `Editing enabled (Activity ${activityIndex})`;
+
+      renderKids();
+      bindKidEvents();
+      scheduleAutosave();
     }
 
-    function ensureRange(v){
-      if(v===''||v===null||v===undefined) return '';
-      v = Number(v);
-      if(Number.isNaN(v)) return '';
-      return Math.max(-10, Math.min(10, v));
-    }
-
+    /**************  RENDERING  **************/
     function renderKids(){
       kidList.innerHTML = '';
       Object.keys(kidModel).sort((a,b)=>a.localeCompare(b)).forEach(name=>{
+        const rec = kidModel[name];
         const row = document.createElement('div');
         row.className = 'kid';
-        const rec = kidModel[name];
         row.innerHTML = `
           <div><strong>${name}</strong></div>
           <div><input type="number" step="1" min="-10" max="10" value="${rec.plus??''}" data-name="${name}" data-field="plus" ${submitLocked?'disabled':''}></div>
@@ -225,7 +262,7 @@
     }
 
     function bindKidEvents(){
-      kidList.addEventListener('input', (e)=>{
+      kidList.oninput = (e)=>{
         const t = e.target; if(!t.dataset || !t.dataset.name) return;
         const name = t.dataset.name; const field = t.dataset.field;
         let val = t.type==='number' ? ensureRange(t.value) : t.value;
@@ -233,8 +270,8 @@
         kidModel[name] = kidModel[name] || { plus:'', minus:'', performance:'', comment:'' };
         kidModel[name][field] = val;
         scheduleAutosave();
-      });
-      kidList.addEventListener('click', (e)=>{
+      };
+      kidList.onclick = (e)=>{
         const b = e.target; if(b.tagName!=='BUTTON') return;
         if(b.dataset.action==='remove'){
           const name = b.dataset.name;
@@ -242,51 +279,75 @@
           renderKids();
           scheduleAutosave();
         }
-      });
+      };
     }
 
-    async function loadTeamFromSheetThenAttachAutosave(){
-      const byEventTeacher = JSON.parse(eventSelect.dataset.byEventTeacher||'{}');
-      const baseKids = (((byEventTeacher[currentEvent]||{})[currentTeacher])||[]);
-      kidModel = {};
-      baseKids.forEach(k=>kidModel[k] = { plus:'', minus:'', performance:'', comment:'' });
-
-      const workingSnap = await db.ref(`working/${encode(currentEvent)}/${encode(currentTeacher)}`).once('value');
-      if(workingSnap.exists()){
-        const { kids, locked, activity } = workingSnap.val();
-        if(kids) kidModel = { ...kidModel, ...kids };
-        submitLocked = !!locked;
-        activityIndex = activity || 1;
-      } else {
-        submitLocked = false;
-        activityIndex = 1;
-      }
-      submitStatus.textContent = submitLocked? `Locked after Submit (Activity ${activityIndex})` : `Editing enabled (Activity ${activityIndex})`;
-
+    function onAddKid(){
+      const input = document.getElementById('newKidInput');
+      const name = input.value.trim();
+      if(!name) return;
+      if(kidModel[name]){ alert('Duplicate kid name.'); return; }
+      kidModel[name] = { plus:'', minus:'', performance:'', comment:'' };
+      input.value = '';
       renderKids();
-      bindKidEvents();
       scheduleAutosave();
     }
 
+    /**************  AUTOSAVE  **************/
+    let autosaveTimer = null;
+    function scheduleAutosave(){
+      autostatus.textContent = 'Saving…';
+      clearTimeout(autosaveTimer);
+      autosaveTimer = setTimeout(async ()=>{
+        const payload = {
+          kids: kidModel,
+          locked: submitLocked,
+          activity: activityIndex,
+          updatedAt: firebase.database.ServerValue.TIMESTAMP
+        };
+        await db.ref(`working/${encodeKey(currentEvent)}/${encodeKey(currentTeacher)}`).set(payload);
+        autostatus.textContent = 'All changes saved';
+      }, 350);
+    }
+
+    /**************  SUBMIT  **************/
+    async function onSubmit(){
+      if(submitLocked){ alert('Already submitted for this activity.'); return; }
+      const kidRecords = Object.entries(kidModel).map(([kid, rec])=>({
+        kid,
+        plus: Number(rec.plus||0),
+        minus: Number(rec.minus||0),
+        performance: Number(rec.performance||0),
+        comment: (rec.comment||'').trim()
+      }));
+
+      for(const r of kidRecords){
+        if(r.plus < -10 || r.plus > 10 || r.minus < -10 || r.minus > 10 || r.performance < -10 || r.performance > 10){
+          alert('Values must be between −10 and 10.');
+          return;
+        }
+      }
+
       try{
-        // Push to Google Sheet via Cloud Function, and also archive to Realtime DB
-        await api(ENDPOINTS.pushSubmission, { method:'POST', body: JSON.stringify({
-          event: currentEvent,
-          teacher: currentTeacher,
-          activityIndex,
-          kidRecords
-        })});
-        // Mark locked and persist
+        await api(ENDPOINTS.pushSubmission, {
+          method:'POST',
+          body: JSON.stringify({
+            event: currentEvent,
+            teacher: currentTeacher,
+            activityIndex,
+            kidRecords
+          })
+        });
         submitLocked = true;
         submitStatus.textContent = `Locked after Submit (Activity ${activityIndex})`;
         scheduleAutosave();
         alert('Submitted! You cannot edit this activity anymore.');
       }catch(e){
-        alert('Submit failed: '+e.message);
+        alert('Submit failed: ' + e.message);
       }
     }
 
-    // ====== Log view (point 6) ======
+    /**************  LOG  **************/
     async function openLog(){
       document.getElementById('logCard').style.display='block';
       try{
@@ -307,237 +368,12 @@
           tbody.appendChild(tr);
         });
       }catch(e){
-        alert('Failed to load log: '+e.message);
+        alert('Failed to load log: ' + e.message);
       }
     }
 
-    // Kickoff
+    // Start!
     bootstrap();
   </script>
 </body>
 </html>
-
-<!-- ================= CLOUD FUNCTIONS (Node.js) ================= -->
-// functions/package.json
-{
-  "name": "bootcamp-evaluator-functions",
-  "engines": { "node": "18" },
-  "dependencies": {
-    "firebase-admin": "^11.11.1",
-    "firebase-functions": "^4.6.0",
-    "googleapis": "^130.0.0",
-    "cors": "^2.8.5"
-  }
-}
-
-// functions/index.js
-const functions = require("firebase-functions");
-const admin = require("firebase-admin");
-const cors = require("cors")({ origin: true });
-const { google } = require("googleapis");
-
-admin.initializeApp();
-const db = admin.database();
-
-// ---- CONFIG ----
-const TEAM_SHEET_ID = "1QncE84XVI0vjQIamEYzNCZGIzw5rmC0ZXTCP5Owdhs0"; // your sheet id
-const TEAMS_RANGE = "1. Yogja Teams!A:F"; // City | Team number | Name | Role | School | Grade
-const SUBMISSIONS_SHEET = "Submissions"; // columns defined below
-const LOG_SHEET = "Log"; // optional aggregated view (we’ll also compute on fetch)
-
-// Service account auth for Sheets API
-function sheetsClient(){
-  const auth = new google.auth.GoogleAuth({ scopes: ["https://www.googleapis.com/auth/spreadsheets"] });
-  return google.sheets({ version: "v4", auth });
-}
-
-// Utility: normalize names
-const norm = s => (s||"").trim();
-
-// 1) Fetch Teams → using your screenshot schema
-//    Input sheet columns: City | Team number | Name | Role | School | Grade
-//    We treat City as the Event, Teacher = rows where Role == 'Supervisor',
-//    Kids = rows with same City & Team number where Role != 'Supervisor'.
-exports.fetchTeams = functions.https.onRequest((req, res) => cors(req, res, async () => {
-  try{
-    const sheets = sheetsClient();
-    const { data } = await sheets.spreadsheets.values.get({ spreadsheetId: TEAM_SHEET_ID, range: TEAMS_RANGE });
-    const rows = data.values || [];
-    // Expect header in row 1 matching your screenshot
-    const start = 1;
-    const events = new Set();
-    const teachersByEvent = {}; // {city:[teacher,...]}
-    const byEventTeacher = {};  // {city:{teacher:[kid...]}}
-
-    // Group by (City, Team number)
-    const groups = new Map(); // key: city|team → {city, team, supervisor, kids[]}
-
-    for(let i=start;i<rows.length;i++){
-      const [city, team, name, role] = rows[i];
-      const City = norm(city);
-      const Team = norm(team);
-      const Name = norm(name);
-      const Role = norm(role);
-      if(!City || !Team || !Name) continue;
-      const key = `${City}|${Team}`;
-      if(!groups.has(key)) groups.set(key, { city:City, team:Team, supervisor:null, kids:[] });
-      const g = groups.get(key);
-      if(Role.toLowerCase()==='supervisor') g.supervisor = Name; else g.kids.push(Name);
-    }
-
-    // Build maps
-    for(const {city, supervisor, kids} of groups.values()){
-      if(!supervisor) continue; // skip teams without a supervisor row
-      events.add(city);
-      teachersByEvent[city] = teachersByEvent[city] || [];
-      if(!teachersByEvent[city].includes(supervisor)) teachersByEvent[city].push(supervisor);
-      byEventTeacher[city] = byEventTeacher[city] || {};
-      byEventTeacher[city][supervisor] = (byEventTeacher[city][supervisor] || []).concat(kids);
-    }
-
-    // Sort teacher lists for UX
-    Object.keys(teachersByEvent).forEach(c=>teachersByEvent[c].sort((a,b)=>a.localeCompare(b)));
-
-    res.json({ events:[...events], teachersByEvent, byEventTeacher });
-  }catch(err){
-    console.error(err); res.status(500).send(String(err));
-  }
-}));
-
-// 2) Push Submission → append rows to Submissions sheet and archive in RTDB
-//    Body: {event, teacher, activityIndex, kidRecords:[{kid, plus, minus, performance, comment}]}
-exports.pushSubmission = functions.https.onRequest((req, res) => cors(req, res, async () => {
-  try{
-    if(req.method !== 'POST') return res.status(405).send('POST only');
-    const { event, teacher, activityIndex, kidRecords } = req.body || {};
-    if(!event || !teacher || !activityIndex || !Array.isArray(kidRecords)){
-      return res.status(400).send('Missing fields');
-    }
-
-    const when = new Date();
-    const iso = when.toISOString();
-
-    // Append to Google Sheet (one row per kid)
-    const sheets = sheetsClient();
-    const header = ["Timestamp","Event","Teacher","Activity","Kid","Plus","Minus","Performance","Comment","Quality"]; // Quality to be filled by evaluator later
-    // Ensure header exists once
-    await ensureHeader(sheets, TEAM_SHEET_ID, SUBMISSIONS_SHEET, header);
-
-    const values = kidRecords.map(r => [iso, norm(event), norm(teacher), activityIndex, norm(r.kid), r.plus, r.minus, r.performance, norm(r.comment), ""]);
-    await sheets.spreadsheets.values.append({
-      spreadsheetId: TEAM_SHEET_ID,
-      range: `${SUBMISSIONS_SHEET}!A:J`,
-      valueInputOption: 'USER_ENTERED',
-      requestBody: { values }
-    });
-
-    // Archive snapshot in RTDB submissions
-    const key = db.ref(`submissions`).push().key;
-    await db.ref(`submissions/${key}`).set({ event, teacher, activityIndex, kidRecords, iso });
-
-    // Lock working copy
-    // Note: we do not overwrite kids; we only set locked=true for that event+teacher
-    const path = `working/${encodeURIComponent(event.replace(/\//g,'_'))}/${encodeURIComponent(teacher.replace(/\//g,'_'))}`;
-    await db.ref(path).update({ locked: true, activity: activityIndex, submittedAt: admin.database.ServerValue.TIMESTAMP });
-
-    res.json({ ok:true });
-  }catch(err){ console.error(err); res.status(500).send(String(err)); }
-}));
-
-async function ensureHeader(sheets, spreadsheetId, sheetName, header){
-  try{
-    const { data } = await sheets.spreadsheets.values.get({ spreadsheetId, range: `${sheetName}!A1:Z1` });
-    const firstRow = (data.values && data.values[0]) || [];
-    if(firstRow.join('|') === header.join('|')) return;
-    // write header
-    await sheets.spreadsheets.values.update({
-      spreadsheetId,
-      range: `${sheetName}!A1:${String.fromCharCode(64+header.length)}1`,
-      valueInputOption: 'RAW',
-      requestBody: { values: [header] }
-    });
-  }catch(e){
-    // Sheet might not exist yet → create it
-    await createSheetTab(sheets, spreadsheetId, sheetName);
-    await sheets.spreadsheets.values.update({
-      spreadsheetId,
-      range: `${sheetName}!A1:${String.fromCharCode(64+header.length)}1`,
-      valueInputOption: 'RAW',
-      requestBody: { values: [header] }
-    });
-  }
-}
-
-async function createSheetTab(sheets, spreadsheetId, sheetName){
-  await sheets.spreadsheets.batchUpdate({
-    spreadsheetId,
-    requestBody: { requests: [{ addSheet: { properties: { title: sheetName } } }] }
-  });
-}
-
-// 3) Fetch Log → aggregate Submissions sheet by teacher+date
-//    Output rows: [{teacher, date, quality, sub1, sub2, sub3, sub4, kidsCount}]
-exports.fetchLog = functions.https.onRequest((req, res) => cors(req, res, async () => {
-  try{
-    const sheets = sheetsClient();
-    const { data } = await sheets.spreadsheets.values.get({ spreadsheetId: TEAM_SHEET_ID, range: `${SUBMISSIONS_SHEET}!A:J` });
-    const rows = data.values || [];
-    if(rows.length <= 1) return res.json([]);
-    const header = rows[0];
-    const idx = Object.fromEntries(header.map((h,i)=>[h.toLowerCase(), i]));
-
-    // Group by (teacher, date ISO date-only)
-    const groups = new Map();
-
-    for(let i=1;i<rows.length;i++){
-      const r = rows[i];
-      const teacher = norm(r[idx["teacher"]]);
-      const date = (norm(r[idx["timestamp"]])||'').slice(0,10); // yyyy-mm-dd
-      const act = Number(r[idx["activity"]]||0);
-      const quality = norm(r[idx["quality"]]||'');
-      const key = `${teacher}|${date}`;
-      if(!groups.has(key)) groups.set(key, { teacher, date, quality: quality||'' , sub1:0, sub2:0, sub3:0, sub4:0, kids:new Set() });
-      const g = groups.get(key);
-      if(act===1) g.sub1++;
-      else if(act===2) g.sub2++;
-      else if(act===3) g.sub3++;
-      else if(act===4) g.sub4++;
-      const kid = norm(r[idx["kid"]]);
-      if(kid) g.kids.add(kid);
-      // take latest non-empty quality on that date
-      if(quality) g.quality = quality;
-    }
-
-    const out = [...groups.values()].map(g=>({ teacher:g.teacher, date:g.date, quality:g.quality, sub1:g.sub1, sub2:g.sub2, sub3:g.sub3, sub4:g.sub4, kidsCount:g.kids.size }));
-    // Sort by date desc then teacher
-    out.sort((a,b)=> (a.date<b.date?1:-1) || a.teacher.localeCompare(b.teacher));
-    res.json(out);
-  }catch(err){ console.error(err); res.status(500).send(String(err)); }
-}));
-
-// ================= FIREBASE HOSTING CONFIG =================
-// firebase.json
-{
-  "hosting": {
-    "public": ".",
-    "ignore": ["firebase.json","**/.*","**/node_modules/**","functions/**"],
-    "rewrites": [
-      { "source": "/fetchTeams", "function": "fetchTeams" },
-      { "source": "/pushSubmission", "function": "pushSubmission" },
-      { "source": "/fetchLog", "function": "fetchLog" }
-    ]
-  },
-  "functions": { "runtime": "nodejs18" }
-}
-
-// ================= SECURITY RULES (Realtime Database) =================
-// database.rules.json
-{
-  "rules": {
-    ".read": true, // optionally restrict to authenticated users
-    "working": {
-      "$event": { "$teacher": { ".write": true, ".read": true } }
-    },
-    "submissions": { ".read": true, ".write": true }
-  }
-}
