@@ -1,379 +1,280 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bootcamp Evaluator</title>
-
-  <!-- Firebase (for autosave + locking only) -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Emotion Tracker – Check-in</title>
   <style>
-    :root {
-      --bg:#f5f7fb; --card:#fff; --muted:#6b7280; --border:#d7dbe7;
-      --primary:#1f6feb; --secondary:#6b7280; --warning:#f59e0b;
-    }
-    * { box-sizing: border-box; }
-    body { font-family: system-ui, Arial, sans-serif; background:var(--bg); margin:0; padding:20px; }
-    header { max-width:1100px; margin:0 auto 16px; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
-    h1 { font-size:22px; margin:0 16px 0 0; }
-    .card { background:var(--card); border-radius:12px; padding:16px; box-shadow:0 1px 4px rgba(0,0,0,.06); max-width:1100px; margin:10px auto; }
-    .row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
-    select, input, button { padding:10px 12px; border-radius:8px; border:1px solid var(--border); font-size:14px; }
-    button { background:var(--primary); color:#fff; border:none; cursor:pointer; }
-    button.secondary { background:var(--secondary); }
-    button.warning { background:var(--warning); }
-    button.ghost { background:#fff; color:#111827; border:1px solid #cfd6e4; }
-    .muted { color:var(--muted); font-size:12px; }
-    .pill { background:#eef2ff; color:#3730a3; padding:4px 8px; border-radius:999px; font-size:12px; }
-
-    .kid { display:grid; grid-template-columns: 1fr 110px 110px 140px 1fr 120px; gap:8px; align-items:center; padding:10px; border-bottom:1px dashed #e5e7eb; }
-    .kid:last-child { border-bottom:none; }
-    .kid input[type="number"]{ width:100%; }
-    table { width:100%; border-collapse:collapse; }
-    th, td { padding:10px; border-bottom:1px solid #edf0f7; text-align:left; font-size:14px; }
-    th { background:#f8fafc; font-weight:600; }
+    :root { --bg:#edf6ef; --card:#ffffff; --text:#0b1f14; --muted:#5a6b5f; --border:#cfe2d5; --primary:#14532d; --primary-ink:#ffffff; --accent:#1a7f46; --ring:#9ae6b4; }
+    *{ box-sizing: border-box; }
+    body{ margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background:linear-gradient(160deg, #f0f7f2, #e7f2ea); color:var(--text); }
+    .container{ max-width:960px; margin:0 auto; padding:24px; }
+    
+    .nav{ position:sticky; top:0; z-index:10; backdrop-filter: blur(6px); background:rgba(255,255,255,0.6); border-bottom:1px solid var(--border); }
+    .nav-inner{ max-width:1100px; margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; }
+    .brand{ font-weight:700; color:var(--primary); letter-spacing:0.2px; }
+    .nav-link{ padding:8px 12px; border-radius:10px; text-decoration:none; color:var(--text); font-weight:600; }
+    .nav-link:hover{ background:#e6f3ea; }
+    .nav-link.active{ background:var(--primary); color:var(--primary-ink); }
+    
+    .card{ background:var(--card); border:1px solid var(--border); border-radius:18px; padding:22px; box-shadow: 0 6px 20px rgba(20,83,45,0.06); }
+    h1{ font-size:24px; margin:0 0 6px; }
+    p.desc{ margin:0; color:var(--muted); }
+    .grid{ display:grid; gap:16px; }
+    .grid-3{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    label{ font-size:13px; font-weight:700; display:block; margin-bottom:6px; color:#0f2917; }
+    input[type="text"], select, textarea{ width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); outline:none; background:#fbfefc; } input[type="text"]:focus, select:focus, textarea:focus{ box-shadow: 0 0 0 3px rgba(46,125,75,0.18); border-color: var(--accent);}
+    input[disabled], select[disabled]{ background:#f3f3f7; color:#aaa; }
+    .row{ display:flex; gap:12px; align-items:center; flex-wrap: wrap; }
+    .chips{ display:flex; gap:8px; flex-wrap:wrap; }
+    .chip{ border:1px solid var(--border); border-radius:12px; padding:8px 12px; cursor:pointer; background:#fff; transition: transform .05s ease; }
+    .chip.active{ outline:2px solid var(--primary); background: #e8f5ec; }
+    .btn{ background:var(--primary); color:var(--primary-ink); padding:10px 14px; border:none; border-radius:12px; cursor:pointer; box-shadow:0 1px 0 rgba(0,0,0,0.06);} .btn:hover{ filter:brightness(1.05);} .btn:active{ transform: translateY(1px);}
+    .btn[disabled]{ background:#bbb; cursor:not-allowed; }
+    .footer{ color:var(--muted); font-size:12px; }
+    .inline-hint{ color:var(--muted); font-size:12px; margin-top:4px; }
+    .two{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+    @media (max-width: 800px){ .grid-3{ grid-template-columns:1fr; } .two{ grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
-  <header class="row">
-    <h1>Bootcamp Evaluator</h1>
-    <span class="pill" id="autostatus">Auto-save ready</span>
-  </header>
 
-  <!-- Top controls -->
-  <div class="card">
-    <div class="row">
-      <select id="eventSelect"><option value="">Select event (City)…</option></select>
-      <select id="teacherSelect"><option value="">Select teacher (Supervisor)…</option></select>
-      <button id="refreshTeams" class="ghost">↻ Sync teams from Sheet</button>
-      <span class="muted">Source: 1. Yogja Teams</span>
-    </div>
-  </div>
-
-  <!-- Team/Kids -->
-  <div class="card" id="teamCard" style="display:none">
-    <div class="row" style="justify-content:space-between">
-      <div>
-        <strong>Team for <span id="teacherNameText"></span></strong>
-        <div class="muted">Add kid names (no duplicates). Range for Points & Performance: −10 … 10. Auto-saves.</div>
-      </div>
-      <div class="row">
-        <input id="newKidInput" placeholder="New kid name"/>
-        <button id="addKidBtn" class="secondary">Add Kid</button>
-      </div>
-    </div>
-
-    <div class="kid" style="font-weight:600;">
-      <div>Kid</div>
-      <div>Plus</div>
-      <div>Minus</div>
-      <div>Performance</div>
-      <div>Comment</div>
-      <div>Actions</div>
-    </div>
-    <div id="kidList"></div>
-
-    <div class="row" style="justify-content:space-between; margin-top:8px;">
-      <div class="muted">Status: <span id="submitStatus">Editing enabled</span></div>
-      <div class="row">
-        <button id="submitActivity" class="warning">Submit Activity</button>
-        <button id="openLog" class="ghost">View Log</button>
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">🌿 Pulse</div>
+      <div class="links">
+        <a href="index.html" class="nav-link active">Check‑in</a>
+        <a href="dashboard.html" class="nav-link ">Dashboard</a>
       </div>
     </div>
   </div>
 
-  <!-- Log -->
-  <div class="card" id="logCard" style="display:none">
-    <div class="row" style="justify-content:space-between">
-      <strong>Submission Log</strong>
-      <button id="closeLog" class="secondary">Close</button>
+  <div class="container">
+    <div class="card" style="margin-bottom:16px">
+      <h1>Team Emotion Check‑in</h1>
+      <p class="desc">Pick a teammate, celebrate 3 strengths, note 3 growth edges, choose an emotion, and submit.</p>
     </div>
-    <div class="muted">Live roll-up from Submissions tab (teacher → counts per activity + quality).</div>
-    <div style="overflow:auto;">
-      <table id="logTable">
-        <thead>
-          <tr>
-            <th>Teacher's Name</th>
-            <th>Date</th>
-            <th>Quality of Teacher's Feedback</th>
-            <th>Submission 1</th>
-            <th>Submission 2</th>
-            <th>Submission 3</th>
-            <th>Submission 4</th>
-            <th># Kids Evaluated</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+
+    <div class="card">
+      <div class="grid">
+        <div>
+          <label>Evaluator name</label>
+          <input type="text" id="evaluatorName" placeholder="Your name" />
+        </div>
+
+        <div class="two">
+          <div>
+            <label>City</label>
+            <select id="city"></select>
+          </div>
+          <div>
+            <label>Team</label>
+            <select id="team" disabled></select>
+          </div>
+        </div>
+
+        <div>
+          <label>Teammate</label>
+          <select id="teammate" disabled></select>
+          <div class="inline-hint" id="teammateHint"></div>
+        </div>
+
+        <div>
+          <label>3 pluses</label>
+          <div class="grid grid-3">
+            <input type="text" id="p1" placeholder="Strength 1" />
+            <input type="text" id="p2" placeholder="Strength 2" />
+            <input type="text" id="p3" placeholder="Strength 3" />
+          </div>
+          <div class="inline-hint">Exactly 3 items.</div>
+        </div>
+
+        <div>
+          <label>3 minuses</label>
+          <div class="grid grid-3">
+            <input type="text" id="m1" placeholder="Growth edge 1" />
+            <input type="text" id="m2" placeholder="Growth edge 2" />
+            <input type="text" id="m3" placeholder="Growth edge 3" />
+          </div>
+          <div class="inline-hint">Exactly 3 items.</div>
+        </div>
+
+        <div>
+          <label>Emotion</label>
+          <div class="chips" id="emotions"></div>
+        </div>
+
+        <div class="row">
+          <button class="btn" id="submitBtn" disabled>Submit</button>
+          <span class="footer" id="status"></span>
+        </div>
+      </div>
     </div>
+
+    <div class="footer" style="margin-top:12px">Data saved to Firebase Realtime Database.</div>
   </div>
+
+  <!-- Firebase SDKs (Compat) -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database-compat.js"></script>
 
   <script>
-    /**************  CONFIG  **************/
-    // 1) Firebase (for autosave + locking; keep your existing project config)
-    const firebaseConfig = {
-      apiKey: "AIzaSyDfJVnrDPlc090D_SmG9f2tn55oyJHy4Y8",
-      authDomain: "emotion-tracker-a0d7c.firebaseapp.com",
-      databaseURL: "https://emotion-tracker-a0d7c-default-rtdb.firebaseio.com",
-      projectId: "emotion-tracker-a0d7c",
-      storageBucket: "emotion-tracker-a0d7c.appspot.com",
-      messagingSenderId: "232259525894",
-      appId: "1:232259525894:web:5cfba5c25d3967eb625287"
-    };
+    // ======= Configure me =======
+    // Replace with your Firebase web config
+   const firebaseConfig = {
+  apiKey: "AIzaSyBog7q44JN9wVjfk2wy7FqS80NLJC5348g",
+  authDomain: "emotion-tracker-7f11c.firebaseapp.com",
+  databaseURL: "https://emotion-tracker-7f11c-default-rtdb.firebaseio.com",
+  projectId: "emotion-tracker-7f11c",
+  storageBucket: "emotion-tracker-7f11c.firebasestorage.app",
+  messagingSenderId: "232586277659",
+  appId: "1:232586277659:web:1fcff097243c8fa1ef99be"
+};
+    // ============================
+
+    const EMOTIONS = ["😊","😐","😞","😡","😎","🤝","🚀","🧩"];
+    let selectedEmotion = "";
+    let directory = null;
+    let authUid = null;
+
+    // Init Firebase
     firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
     const db = firebase.database();
 
-    // 2) Google Apps Script Web App
-    //    Replace with your deployed Web App URL and the same TOKEN you used in Apps Script
-    const GAS_BASE = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE"; // e.g. https://script.google.com/macros/s/xxx/exec
-    const TOKEN   = "super-secret-token-choose-your-own";
+    // Anonymous auth for write permissions
+    auth.onAuthStateChanged(user => {
+      authUid = user ? user.uid : null;
+      updateSubmitState();
+    });
+    auth.signInAnonymously().catch(err => {
+      console.error(err);
+      const status = document.getElementById('status');
+      status.textContent = 'Auth failed: ' + (err && err.code ? err.code : 'see console');
+      // You can still fill the form, but writes require Auth per your rules.
+      updateSubmitState();
+    });
 
-    const ENDPOINTS = {
-      teams: `${GAS_BASE}?action=teams`,
-      pushSubmission: `${GAS_BASE}`,      // POST with token
-      fetchLog: `${GAS_BASE}?action=log`
-    };
+    // Load directory.json
+    fetch('directory.json')
+      .then(r => r.json())
+      .then(data => { directory = data.cities || {}; initForm(); })
+      .catch(err => { console.error(err); document.getElementById('status').textContent = "Failed to load directory.json"; });
 
-    /**************  HELPERS  **************/
-    async function api(path, opts={}){
-      const method = (opts.method||'GET').toUpperCase();
-      const headers = { "Content-Type":"application/json" };
-      let body;
-      if(method === 'POST'){
-        const extra = opts.body ? JSON.parse(opts.body) : {};
-        body = JSON.stringify({ token: TOKEN, ...extra });
-      }
-      const res = await fetch(path, { method, headers, body });
-      if(!res.ok){
-        let msg = await res.text();
-        throw new Error(msg || `HTTP ${res.status}`);
-      }
-      return res.json();
+    function initForm(){
+      const citySel = document.getElementById('city');
+      const teamSel = document.getElementById('team');
+      const mateSel = document.getElementById('teammate');
+      const mateHint = document.getElementById('teammateHint');
+
+      // Populate city
+      citySel.innerHTML = '<option value="">Select city</option>' + Object.keys(directory).map(c => `<option value="${c}">${c}</option>`).join('');
+
+      citySel.addEventListener('change', () => {
+        teamSel.disabled = !citySel.value;
+        mateSel.disabled = true;
+        mateSel.innerHTML = '<option value="">Select teammate</option>';
+        mateHint.textContent = '';
+        if (!citySel.value) { teamSel.innerHTML = '<option value="">Select team</option>'; return; }
+        const teams = directory[citySel.value]?.teams || {};
+        teamSel.innerHTML = '<option value="">Select team</option>' +
+          Object.entries(teams).map(([id, t]) => `<option value="${id}">${t.name || ('Team ' + id)}</option>`).join('');
+        updateSubmitState();
+      });
+
+      teamSel.addEventListener('change', () => {
+        mateSel.disabled = !teamSel.value;
+        mateSel.innerHTML = '<option value="">Select teammate</option>';
+        mateHint.textContent = '';
+        if (!teamSel.value) { updateSubmitState(); return; }
+        const mates = directory[citySel.value]?.teams?.[teamSel.value]?.teammates || {};
+        mateSel.innerHTML += Object.keys(mates).map(n => `<option value="${n}">${n}</option>`).join('');
+        mateSel.addEventListener('input', () => {
+          const meta = mates[mateSel.value] || {};
+          mateHint.textContent = mateSel.value ? `${meta.role || ''} ${meta.school ? '• ' + meta.school : ''}`.trim() : '';
+        }, { once: true });
+        updateSubmitState();
+      });
+
+      mateSel.addEventListener('change', updateSubmitState);
+
+      // Emotion chips
+      const emoWrap = document.getElementById('emotions');
+      EMOTIONS.forEach(e => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'chip';
+        btn.textContent = e;
+        btn.addEventListener('click', () => {
+          selectedEmotion = e;
+          [...emoWrap.children].forEach(c => c.classList.remove('active'));
+          btn.classList.add('active');
+          updateSubmitState();
+        });
+        emoWrap.appendChild(btn);
+      });
+
+      // Inputs
+      ['evaluatorName','p1','p2','p3','m1','m2','m3'].forEach(id => {
+        document.getElementById(id).addEventListener('input', updateSubmitState);
+      });
+
+      document.getElementById('submitBtn').addEventListener('click', submit);
     }
 
-    function ensureRange(v){
-      if(v===''||v===null||v===undefined) return '';
-      v = Number(v);
-      if(Number.isNaN(v)) return '';
-      return Math.max(-10, Math.min(10, v));
-    }
-    function encodeKey(s){ return encodeURIComponent(String(s).replace(/\//g,'_')); }
+    function canSubmit(){
+      const status = document.getElementById('status');
 
-    /**************  STATE + ELEMENTS  **************/
-    let currentEvent = "";
-    let currentTeacher = "";
-    let kidModel = {};            // { kidName: { plus, minus, performance, comment } }
-    let submitLocked = false;     // locked after submit for current activity
-    let activityIndex = 1;        // 1..N per activity
-
-    const eventSelect = document.getElementById('eventSelect');
-    const teacherSelect = document.getElementById('teacherSelect');
-    const teamCard = document.getElementById('teamCard');
-    const kidList = document.getElementById('kidList');
-    const teacherNameText = document.getElementById('teacherNameText');
-    const autostatus = document.getElementById('autostatus');
-    const submitStatus = document.getElementById('submitStatus');
-
-    document.getElementById('refreshTeams').addEventListener('click', bootstrap);
-    document.getElementById('addKidBtn').addEventListener('click', onAddKid);
-    document.getElementById('submitActivity').addEventListener('click', onSubmit);
-    document.getElementById('openLog').addEventListener('click', openLog);
-    document.getElementById('closeLog').addEventListener('click', () => document.getElementById('logCard').style.display='none');
-
-    eventSelect.addEventListener('change', onSelectChanged);
-    teacherSelect.addEventListener('change', onSelectChanged);
-
-    /**************  BOOTSTRAP  **************/
-    async function bootstrap(){
-      try{
-        const data = await api(ENDPOINTS.teams);
-        // data = { events:[city...], teachersByEvent:{city:[teacher...]}, byEventTeacher:{city:{teacher:[kid...]}} }
-        eventSelect.innerHTML = '<option value="">Select event (City)…</option>' + (data.events||[]).map(e=>`<option>${e}</option>`).join('');
-        eventSelect.dataset.teachersByEvent = JSON.stringify(data.teachersByEvent||{});
-        eventSelect.dataset.byEventTeacher  = JSON.stringify(data.byEventTeacher||{});
-        teacherSelect.innerHTML = '<option value="">Select teacher (Supervisor)…</option>';
-      }catch(e){
-        alert('Failed to sync teams: ' + e.message);
-      }
+      const name = document.getElementById('evaluatorName').value.trim();
+      const city = document.getElementById('city').value;
+      const team = document.getElementById('team').value;
+      const teammate = document.getElementById('teammate').value;
+      const pluses = [p1.value.trim(), p2.value.trim(), p3.value.trim()];
+      const minuses = [m1.value.trim(), m2.value.trim(), m3.value.trim()];
+      const ok = !!(name && city && team && teammate && selectedEmotion && pluses.every(Boolean) && minuses.every(Boolean));
+      if (!authUid) { status.textContent = 'Waiting for Firebase Auth (enable Anonymous sign-in).'; }
+      else if (ok) { status.textContent = ''; }
+      return ok && !!authUid;
     }
 
-    function onSelectChanged(){
-      currentEvent = eventSelect.value;
-      const tByEvent = JSON.parse(eventSelect.dataset.teachersByEvent||'{}');
-      if(currentEvent){
-        const tlist = tByEvent[currentEvent]||[];
-        teacherSelect.innerHTML = '<option value="">Select teacher (Supervisor)…</option>' + tlist.map(t=>`<option>${t}</option>`).join('');
-      }
-      currentTeacher = teacherSelect.value;
-
-      if(!currentEvent || !currentTeacher){ teamCard.style.display='none'; return; }
-      teacherNameText.textContent = `${currentTeacher} · ${currentEvent}`;
-      teamCard.style.display='block';
-      activityIndex = 1;
-      loadTeamFromSheetThenAttachAutosave();
+    function updateSubmitState(){
+      document.getElementById('submitBtn').disabled = !canSubmit();
     }
 
-    async function loadTeamFromSheetThenAttachAutosave(){
-      const byEventTeacher = JSON.parse(eventSelect.dataset.byEventTeacher||'{}');
-      const baseKids = (((byEventTeacher[currentEvent]||{})[currentTeacher])||[]);
-      kidModel = {};
-      baseKids.forEach(k => kidModel[k] = { plus:'', minus:'', performance:'', comment:'' });
+    function submit(){
+      if (!canSubmit()) return;
+      const status = document.getElementById('status');
+      status.textContent = 'Submitting…';
 
-      // merge any previously saved working copy
-      const workingSnap = await db.ref(`working/${encodeKey(currentEvent)}/${encodeKey(currentTeacher)}`).once('value');
-      if(workingSnap.exists()){
-        const { kids, locked, activity } = workingSnap.val();
-        if(kids) kidModel = { ...kidModel, ...kids };
-        submitLocked = !!locked;
-        activityIndex = activity || 1;
-      } else {
-        submitLocked = false;
-        activityIndex = 1;
-      }
-      submitStatus.textContent = submitLocked
-        ? `Locked after Submit (Activity ${activityIndex})`
-        : `Editing enabled (Activity ${activityIndex})`;
+      const entry = {
+        evaluatorName: document.getElementById('evaluatorName').value.trim(),
+        evaluatorId: authUid,
+        city: document.getElementById('city').value,
+        team: document.getElementById('team').value,
+        teammate: document.getElementById('teammate').value,
+        pluses: [p1.value.trim(), p2.value.trim(), p3.value.trim()],
+        minuses: [m1.value.trim(), m2.value.trim(), m3.value.trim()],
+        emotion: selectedEmotion,
+        createdAt: Date.now()
+      };
 
-      renderKids();
-      bindKidEvents();
-      scheduleAutosave();
-    }
-
-    /**************  RENDERING  **************/
-    function renderKids(){
-      kidList.innerHTML = '';
-      Object.keys(kidModel).sort((a,b)=>a.localeCompare(b)).forEach(name=>{
-        const rec = kidModel[name];
-        const row = document.createElement('div');
-        row.className = 'kid';
-        row.innerHTML = `
-          <div><strong>${name}</strong></div>
-          <div><input type="number" step="1" min="-10" max="10" value="${rec.plus??''}" data-name="${name}" data-field="plus" ${submitLocked?'disabled':''}></div>
-          <div><input type="number" step="1" min="-10" max="10" value="${rec.minus??''}" data-name="${name}" data-field="minus" ${submitLocked?'disabled':''}></div>
-          <div><input type="number" step="1" min="-10" max="10" value="${rec.performance??''}" data-name="${name}" data-field="performance" ${submitLocked?'disabled':''}></div>
-          <div><input type="text" value="${rec.comment??''}" placeholder="Comment" data-name="${name}" data-field="comment" ${submitLocked?'disabled':''}></div>
-          <div>
-            <button class="ghost" data-name="${name}" data-action="remove" ${submitLocked?'disabled':''}>Remove</button>
-          </div>`;
-        kidList.appendChild(row);
+      firebase.database().ref('entries').push(entry).then(() => {
+        status.textContent = 'Submitted! ✅';
+        // reset selection (keep evaluator name, city, team for batch entry if you prefer reset all)
+        document.getElementById('teammate').value = '';
+        [p1,p2,p3,m1,m2,m3].forEach(i => i.value = '');
+        selectedEmotion = '';
+        [...document.getElementById('emotions').children].forEach(c => c.classList.remove('active'));
+        updateSubmitState();
+      }).catch(err => {
+        console.error(err);
+        status.textContent = 'Failed to submit. Check console.';
       });
     }
-
-    function bindKidEvents(){
-      kidList.oninput = (e)=>{
-        const t = e.target; if(!t.dataset || !t.dataset.name) return;
-        const name = t.dataset.name; const field = t.dataset.field;
-        let val = t.type==='number' ? ensureRange(t.value) : t.value;
-        if(t.type==='number'){ t.value = val; }
-        kidModel[name] = kidModel[name] || { plus:'', minus:'', performance:'', comment:'' };
-        kidModel[name][field] = val;
-        scheduleAutosave();
-      };
-      kidList.onclick = (e)=>{
-        const b = e.target; if(b.tagName!=='BUTTON') return;
-        if(b.dataset.action==='remove'){
-          const name = b.dataset.name;
-          delete kidModel[name];
-          renderKids();
-          scheduleAutosave();
-        }
-      };
-    }
-
-    function onAddKid(){
-      const input = document.getElementById('newKidInput');
-      const name = input.value.trim();
-      if(!name) return;
-      if(kidModel[name]){ alert('Duplicate kid name.'); return; }
-      kidModel[name] = { plus:'', minus:'', performance:'', comment:'' };
-      input.value = '';
-      renderKids();
-      scheduleAutosave();
-    }
-
-    /**************  AUTOSAVE  **************/
-    let autosaveTimer = null;
-    function scheduleAutosave(){
-      autostatus.textContent = 'Saving…';
-      clearTimeout(autosaveTimer);
-      autosaveTimer = setTimeout(async ()=>{
-        const payload = {
-          kids: kidModel,
-          locked: submitLocked,
-          activity: activityIndex,
-          updatedAt: firebase.database.ServerValue.TIMESTAMP
-        };
-        await db.ref(`working/${encodeKey(currentEvent)}/${encodeKey(currentTeacher)}`).set(payload);
-        autostatus.textContent = 'All changes saved';
-      }, 350);
-    }
-
-    /**************  SUBMIT  **************/
-    async function onSubmit(){
-      if(submitLocked){ alert('Already submitted for this activity.'); return; }
-      const kidRecords = Object.entries(kidModel).map(([kid, rec])=>({
-        kid,
-        plus: Number(rec.plus||0),
-        minus: Number(rec.minus||0),
-        performance: Number(rec.performance||0),
-        comment: (rec.comment||'').trim()
-      }));
-
-      for(const r of kidRecords){
-        if(r.plus < -10 || r.plus > 10 || r.minus < -10 || r.minus > 10 || r.performance < -10 || r.performance > 10){
-          alert('Values must be between −10 and 10.');
-          return;
-        }
-      }
-
-      try{
-        await api(ENDPOINTS.pushSubmission, {
-          method:'POST',
-          body: JSON.stringify({
-            event: currentEvent,
-            teacher: currentTeacher,
-            activityIndex,
-            kidRecords
-          })
-        });
-        submitLocked = true;
-        submitStatus.textContent = `Locked after Submit (Activity ${activityIndex})`;
-        scheduleAutosave();
-        alert('Submitted! You cannot edit this activity anymore.');
-      }catch(e){
-        alert('Submit failed: ' + e.message);
-      }
-    }
-
-    /**************  LOG  **************/
-    async function openLog(){
-      document.getElementById('logCard').style.display='block';
-      try{
-        const rows = await api(ENDPOINTS.fetchLog);
-        const tbody = document.querySelector('#logTable tbody');
-        tbody.innerHTML = '';
-        rows.forEach(r=>{
-          const tr = document.createElement('tr');
-          tr.innerHTML = `
-            <td>${r.teacher}</td>
-            <td>${r.date}</td>
-            <td>${r.quality ?? ''}</td>
-            <td>${r.sub1 ?? 0}</td>
-            <td>${r.sub2 ?? 0}</td>
-            <td>${r.sub3 ?? 0}</td>
-            <td>${r.sub4 ?? 0}</td>
-            <td>${r.kidsCount ?? 0}</td>`;
-          tbody.appendChild(tr);
-        });
-      }catch(e){
-        alert('Failed to load log: ' + e.message);
-      }
-    }
-
-    // Start!
-    bootstrap();
   </script>
 </body>
 </html>
