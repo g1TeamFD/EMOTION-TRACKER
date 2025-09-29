@@ -11,30 +11,30 @@
     :root { --bg:#edf6ef; --card:#ffffff; --text:#0b1f14; --muted:#5a6b5f; --border:#cfe2d5; --primary:#14532d; --primary-ink:#ffffff; --accent:#1a7f46; --ring:#9ae6b4; }
     body{ margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background:linear-gradient(160deg, #f0f7f2, #e7f2ea); color:var(--text); }
     .container{ max-width:1100px; margin:0 auto; padding:24px; }
-    
     .nav{ position:sticky; top:0; z-index:10; backdrop-filter: blur(6px); background:rgba(255,255,255,0.6); border-bottom:1px solid var(--border); }
     .nav-inner{ max-width:1100px; margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; }
     .brand{ font-weight:700; color:var(--primary); letter-spacing:0.2px; }
     .nav-link{ padding:8px 12px; border-radius:10px; text-decoration:none; color:var(--text); font-weight:600; }
     .nav-link:hover{ background:#e6f3ea; }
     .nav-link.active{ background:var(--primary); color:var(--primary-ink); }
-    
     .card{ background:var(--card); border:1px solid var(--border); border-radius:18px; padding:22px; box-shadow: 0 6px 20px rgba(20,83,45,0.06); }
     h1{ font-size:24px; margin:0 0 6px; }
     .muted{ color:var(--muted); }
     .grid{ display:grid; gap:12px; }
     .row{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
-    
+    .pill{ border:1px solid var(--border); padding:6px 10px; border-radius:999px; }
+    .item{ display:flex; justify-content:space-between; align-items:center; border:1px solid var(--border); border-radius:12px; padding:12px; }
+    .btn{ background:var(--primary); color:var(--primary-ink); padding:10px 14px; border:none; border-radius:12px; cursor:pointer; box-shadow:0 1px 0 rgba(0,0,0,0.06);} 
+    .btn:hover{ filter:brightness(1.05);} 
+    .btn:active{ transform: translateY(1px);} 
+    select{ padding:8px 10px; border-radius:10px; border:1px solid var(--border); }
     .details{ margin-top:10px; border-top:1px dashed var(--border); padding-top:10px; }
     .note{ background:#f4fbf6; border:1px solid var(--border); border-radius:10px; padding:10px; }
     .note h4{ margin:0 0 6px; font-size:13px; color:#0f2917; }
     .note-list{ display:grid; gap:6px; grid-template-columns: 1fr 1fr; }
     .badge{ background:#e6f3ea; color:#0b3d24; border:1px solid var(--border); border-radius:999px; padding:4px 8px; font-size:12px; }
-
-    .pill{ border:1px solid var(--border); padding:6px 10px; border-radius:999px; }
-    .item{ display:flex; justify-content:space-between; align-items:center; border:1px solid var(--border); border-radius:12px; padding:12px; }
-    .btn{ background:var(--primary); color:var(--primary-ink); padding:10px 14px; border:none; border-radius:12px; cursor:pointer; box-shadow:0 1px 0 rgba(0,0,0,0.06);} .btn:hover{ filter:brightness(1.05);} .btn:active{ transform: translateY(1px);}
-    select{ padding:8px 10px; border-radius:10px; border:1px solid var(--border); }
+    .roster{ display:flex; gap:6px; flex-wrap:wrap; margin-top:6px; }
+    .roster-tag{ display:inline-block; padding:4px 8px; border-radius:999px; border:1px solid var(--border); background:#fff; font-size:12px; }
   </style>
 </head>
 <body>
@@ -53,6 +53,10 @@
     <div class="card" style="margin-bottom:16px">
       <h1 style="display:flex; align-items:center; justify-content:space-between;">Leaderboard <span style="display:flex; gap:8px;"><button class="btn" id="exportBtn" title="Download CSV">⬇️ Export CSV</button></span></h1>
       <div class="row">
+        <div>
+          <label class="muted" style="font-size:12px; display:block;">Event</label>
+          <select id="eventFilter"></select>
+        </div>
         <div>
           <label class="muted" style="font-size:12px; display:block;">City</label>
           <select id="cityFilter"></select>
@@ -87,15 +91,23 @@
   <script>
     // ======= Configure me (same as index.html) =======
     const firebaseConfig = {
-  apiKey: "AIzaSyBog7q44JN9wVjfk2wy7FqS80NLJC5348g",
-  authDomain: "emotion-tracker-7f11c.firebaseapp.com",
-  databaseURL: "https://emotion-tracker-7f11c-default-rtdb.firebaseio.com",
-  projectId: "emotion-tracker-7f11c",
-  storageBucket: "emotion-tracker-7f11c.firebasestorage.app",
-  messagingSenderId: "232586277659",
-  appId: "1:232586277659:web:1fcff097243c8fa1ef99be"
-};
+      apiKey: "AIzaSyBog7q44JN9wVjfk2wy7FqS80NLJC5348g",
+      authDomain: "emotion-tracker-7f11c.firebaseapp.com",
+      databaseURL: "https://emotion-tracker-7f11c-default-rtdb.firebaseio.com",
+      projectId: "emotion-tracker-7f11c",
+      storageBucket: "emotion-tracker-7f11c.firebasestorage.app",
+      messagingSenderId: "232586277659",
+      appId: "1:232586277659:web:1fcff097243c8fa1ef99be"
+    };
     // ================================================
+
+    const EVENTS = [
+      { id: '', label: 'All events' },
+      { id: 'learning_space', label: 'Learning Space' },
+      { id: 'story_a_night', label: 'Story a Night' },
+      { id: 'young_ambassadors_training', label: 'Young Ambassadors Training' }
+    ];
+    const EVENT_LABEL = Object.fromEntries(EVENTS.map(e=>[e.id,e.label]));
 
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
@@ -104,18 +116,31 @@
     let allEntries = [];
 
     // Anonymous sign in to read entries if rules require auth
-    auth.onAuthStateChanged(()=>{}); auth.signInAnonymously().catch(e=>console.warn('Auth not required for read if rules allow:', e && e.code));
+    auth.onAuthStateChanged(()=>{}); 
+    auth.signInAnonymously().catch(e=>console.warn('Auth not required for read if rules allow:', e && e.code));
 
     // Load directory for filters
     fetch('directory.json').then(r => r.json()).then(data => {
       directory = data.cities || {};
       initFilters();
       attach();
+    }).catch(e=>{
+      console.warn('Failed to load directory.json', e);
+      directory = {};
+      initFilters();
+      attach();
     });
 
     function initFilters(){
+      const eventSel = document.getElementById('eventFilter');
       const citySel = document.getElementById('cityFilter');
       const teamSel = document.getElementById('teamFilter');
+
+      // Event filter
+      eventSel.innerHTML = EVENTS.map(e => `<option value="${e.id}">${e.label}</option>`).join('');
+      eventSel.addEventListener('change', render);
+
+      // City filter
       citySel.innerHTML = '<option value="">All cities</option>' +
         Object.keys(directory).map(c => `<option value="${c}">${c}</option>`).join('');
       citySel.addEventListener('change', () => {
@@ -125,6 +150,7 @@
           Object.entries(teams).map(([id,t]) => `<option value="${id}">${t.name || ('Team ' + id)}</option>`).join('');
         render();
       });
+
       teamSel.addEventListener('change', render);
       document.getElementById('timeFilter').addEventListener('change', render);
     }
@@ -145,8 +171,7 @@
     }
 
     function render(){
-      // Prepare list of filtered entries for both aggregation and details/export
-
+      const eventId = document.getElementById('eventFilter').value;
       const city = document.getElementById('cityFilter').value;
       const team = document.getElementById('teamFilter').value;
       const windowDays = document.getElementById('timeFilter').value;
@@ -154,16 +179,17 @@
       const meta = document.getElementById('meta');
 
       const filtered = allEntries.filter(e =>
+        (!eventId || e.event === eventId) &&
         (!city || e.city === city) &&
         (!team || e.team === team) &&
         withinWindow(e.createdAt || 0, windowDays)
       );
 
-      // Aggregate: city -> team -> teammate -> emotion counts
+      // Aggregate: city -> team -> event -> emotion counts
       const agg = {};
       for (const e of filtered){
-        const key = `${e.city}|${e.team}|${e.teammate}`;
-        if (!agg[key]) agg[key] = { city:e.city, team:e.team, teammate:e.teammate, emotions:{} };
+        const key = `${e.city}|${e.team}|${e.event||''}`;
+        if (!agg[key]) agg[key] = { city:e.city, team:e.team, event:e.event||'', emotions:{} };
         agg[key].emotions[e.emotion] = (agg[key].emotions[e.emotion] || 0) + 1;
       }
       const rows = Object.values(agg).sort((a,b)=>{
@@ -172,19 +198,21 @@
         return bsum - asum;
       });
 
-      meta.textContent = `${filtered.length} check-ins`; // fixedgth} check-ins`;
+      meta.textContent = `${filtered.length} check-ins`;
 
-      // map teammate key to their recent entries
+      // map group key to their recent entries
       const byKey = {};
       for (const e of filtered){
-        const key = `${e.city}|${e.team}|${e.teammate}`;
+        const key = `${e.city}|${e.team}|${e.event||''}`;
         (byKey[key] ||= []).push(e);
       }
+
       list.innerHTML = rows.map(row => {
         const pills = Object.entries(row.emotions)
           .sort((a,b)=>b[1]-a[1])
           .map(([emo,count]) => `<span class="pill">${emo} ${count}</span>`).join(' ');
-        const notes = (byKey[`${row.city}|${row.team}|${row.teammate}`] || []).sort((a,b)=>b.createdAt-a.createdAt).slice(0,3);
+        const key = `${row.city}|${row.team}|${row.event||''}`;
+        const notes = (byKey[key] || []).sort((a,b)=>b.createdAt-a.createdAt).slice(0,3);
         const noteHtml = notes.map((n,i)=>{
           const plus = (n.pluses||[]).map(x=>`<li>+ ${escapeHtml(x)}</li>`).join('');
           const minus = (n.minuses||[]).map(x=>`<li>− ${escapeHtml(x)}</li>`).join('');
@@ -197,11 +225,17 @@
             </div>
           </div>`;
         }).join('');
+
+        const teamName = directory[row.city]?.teams?.[row.team]?.name || `Team ${row.team}`;
+        const roster = directory[row.city]?.teams?.[row.team]?.teammates || {};
+        const rosterHtml = Object.keys(roster).map(n=>`<span class="roster-tag">${escapeHtml(n)}</span>`).join(' ');
+
         return `<div class="item" style="flex-direction:column; align-items:stretch;">
           <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
             <div>
-              <div style="font-weight:700; font-size:16px">${row.teammate}</div>
-              <div class="muted" style="font-size:12px">${row.city} • Team ${row.team}</div>
+              <div style="font-weight:700; font-size:16px">${escapeHtml(teamName)}</div>
+              <div class="muted" style="font-size:12px">${escapeHtml(row.city)} • ${escapeHtml(EVENT_LABEL[row.event]||'Unspecified Event')}</div>
+              <div class="roster">${rosterHtml || '<span class="muted">Roster unknown</span>'}</div>
             </div>
             <div class="row">${pills}</div>
           </div>
@@ -211,22 +245,31 @@
     }
 
     function escapeHtml(s){
-      const map = {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'};
-      return String(s ?? '').replace(/[&<>"']/g, ch => map[ch]);
+      return String(s ?? '')
+        .replace(/&/g,'&amp;')
+        .replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;')
+        .replace(/\"/g,'&quot;')
+        .replace(/'/g,'&#39;');
     }
-    // Export CSV of current filtered entries
+
+    // CSV of current filtered entries
     function toCSV(rows){
-      const header = ['createdAt','city','team','teammate','emotion','evaluatorName','plus1','plus2','plus3','minus1','minus2','minus3'];
+      const header = ['createdAt','event','city','team','teamName','emotion','evaluatorName','rosterNames','plus1','plus2','plus3','minus1','minus2','minus3'];
       const lines = [header.join(',')];
       for (const r of rows){
         const plus = (r.pluses||[]); const minus = (r.minuses||[]);
+        const teamName = directory[r.city]?.teams?.[r.team]?.name || `Team ${r.team||''}`;
+        const roster = Array.isArray(r.rosterNames) ? r.rosterNames : Object.keys(directory[r.city]?.teams?.[r.team]?.teammates || {});
         const vals = [
           r.createdAt || '',
+          r.event || '',
           r.city || '',
           r.team || '',
-          r.teammate || '',
+          teamName,
           r.emotion || '',
           r.evaluatorName || '',
+          (roster||[]).join('; '),
           plus[0]||'', plus[1]||'', plus[2]||'',
           minus[0]||'', minus[1]||'', minus[2]||''
         ].map(v => '"' + String(v).replace(/"/g,'""') + '"');
@@ -237,10 +280,12 @@
 
     // Hook up export button
     document.getElementById('exportBtn').addEventListener('click', () => {
+      const eventId = document.getElementById('eventFilter').value;
       const city = document.getElementById('cityFilter').value;
       const team = document.getElementById('teamFilter').value;
       const windowDays = document.getElementById('timeFilter').value;
       const filtered = allEntries.filter(e =>
+        (!eventId || e.event === eventId) &&
         (!city || e.city === city) &&
         (!team || e.team === team) &&
         withinWindow(e.createdAt || 0, windowDays)
