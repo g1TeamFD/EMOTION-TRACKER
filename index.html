@@ -6,42 +6,43 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Emotion Tracker – Check-in</title>
+  <title>Emotion Tracker – Check-in (Group)</title>
   <style>
     :root { --bg:#edf6ef; --card:#ffffff; --text:#0b1f14; --muted:#5a6b5f; --border:#cfe2d5; --primary:#14532d; --primary-ink:#ffffff; --accent:#1a7f46; --ring:#9ae6b4; }
     *{ box-sizing: border-box; }
     body{ margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background:linear-gradient(160deg, #f0f7f2, #e7f2ea); color:var(--text); }
     .container{ max-width:960px; margin:0 auto; padding:24px; }
-    
     .nav{ position:sticky; top:0; z-index:10; backdrop-filter: blur(6px); background:rgba(255,255,255,0.6); border-bottom:1px solid var(--border); }
     .nav-inner{ max-width:1100px; margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; }
     .brand{ font-weight:700; color:var(--primary); letter-spacing:0.2px; }
     .nav-link{ padding:8px 12px; border-radius:10px; text-decoration:none; color:var(--text); font-weight:600; }
     .nav-link:hover{ background:#e6f3ea; }
     .nav-link.active{ background:var(--primary); color:var(--primary-ink); }
-    
     .card{ background:var(--card); border:1px solid var(--border); border-radius:18px; padding:22px; box-shadow: 0 6px 20px rgba(20,83,45,0.06); }
     h1{ font-size:24px; margin:0 0 6px; }
     p.desc{ margin:0; color:var(--muted); }
     .grid{ display:grid; gap:16px; }
     .grid-3{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
     label{ font-size:13px; font-weight:700; display:block; margin-bottom:6px; color:#0f2917; }
-    input[type="text"], select, textarea{ width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); outline:none; background:#fbfefc; } input[type="text"]:focus, select:focus, textarea:focus{ box-shadow: 0 0 0 3px rgba(46,125,75,0.18); border-color: var(--accent);}
+    input[type="text"], select, textarea{ width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); outline:none; background:#fbfefc; }
+    input[type="text"]:focus, select:focus, textarea:focus{ box-shadow: 0 0 0 3px rgba(46,125,75,0.18); border-color: var(--accent);}  
     input[disabled], select[disabled]{ background:#f3f3f7; color:#aaa; }
     .row{ display:flex; gap:12px; align-items:center; flex-wrap: wrap; }
     .chips{ display:flex; gap:8px; flex-wrap:wrap; }
     .chip{ border:1px solid var(--border); border-radius:12px; padding:8px 12px; cursor:pointer; background:#fff; transition: transform .05s ease; }
     .chip.active{ outline:2px solid var(--primary); background: #e8f5ec; }
-    .btn{ background:var(--primary); color:var(--primary-ink); padding:10px 14px; border:none; border-radius:12px; cursor:pointer; box-shadow:0 1px 0 rgba(0,0,0,0.06);} .btn:hover{ filter:brightness(1.05);} .btn:active{ transform: translateY(1px);}
+    .btn{ background:var(--primary); color:var(--primary-ink); padding:10px 14px; border:none; border-radius:12px; cursor:pointer; box-shadow:0 1px 0 rgba(0,0,0,0.06);} 
+    .btn:hover{ filter:brightness(1.05);} 
+    .btn:active{ transform: translateY(1px);} 
     .btn[disabled]{ background:#bbb; cursor:not-allowed; }
     .footer{ color:var(--muted); font-size:12px; }
     .inline-hint{ color:var(--muted); font-size:12px; margin-top:4px; }
     .two{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+    .roster-tag{ display:inline-block; padding:6px 10px; border-radius:999px; border:1px solid var(--border); margin:2px; background:#fff; font-size:12px; }
     @media (max-width: 800px){ .grid-3{ grid-template-columns:1fr; } .two{ grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
-
   <div class="nav">
     <div class="nav-inner">
       <div class="brand">🌿 Pulse</div>
@@ -54,8 +55,8 @@
 
   <div class="container">
     <div class="card" style="margin-bottom:16px">
-      <h1>Team Emotion Check‑in</h1>
-      <p class="desc">Pick a teammate, celebrate 3 strengths, note 3 growth edges, choose an emotion, and submit.</p>
+      <h1>Team Emotion Check‑in (Group)</h1>
+      <p class="desc">Pick the event and group, celebrate 3 strengths, note 3 growth edges, choose an emotion, and submit.</p>
     </div>
 
     <div class="card">
@@ -67,19 +68,24 @@
 
         <div class="two">
           <div>
+            <label>Event</label>
+            <select id="event"></select>
+          </div>
+          <div>
             <label>City</label>
             <select id="city"></select>
           </div>
-          <div>
-            <label>Team</label>
-            <select id="team" disabled></select>
-          </div>
         </div>
 
-        <div>
-          <label>Teammate</label>
-          <select id="teammate" disabled></select>
-          <div class="inline-hint" id="teammateHint"></div>
+        <div class="two">
+          <div>
+            <label>Team / Group</label>
+            <select id="team" disabled></select>
+          </div>
+          <div>
+            <label>Team roster</label>
+            <div id="teamRoster" class="inline-hint">Select a team to view member names.</div>
+          </div>
         </div>
 
         <div>
@@ -125,18 +131,24 @@
   <script>
     // ======= Configure me =======
     // Replace with your Firebase web config
-   const firebaseConfig = {
-  apiKey: "AIzaSyBog7q44JN9wVjfk2wy7FqS80NLJC5348g",
-  authDomain: "emotion-tracker-7f11c.firebaseapp.com",
-  databaseURL: "https://emotion-tracker-7f11c-default-rtdb.firebaseio.com",
-  projectId: "emotion-tracker-7f11c",
-  storageBucket: "emotion-tracker-7f11c.firebasestorage.app",
-  messagingSenderId: "232586277659",
-  appId: "1:232586277659:web:1fcff097243c8fa1ef99be"
-};
+    const firebaseConfig = {
+      apiKey: "AIzaSyBog7q44JN9wVjfk2wy7FqS80NLJC5348g",
+      authDomain: "emotion-tracker-7f11c.firebaseapp.com",
+      databaseURL: "https://emotion-tracker-7f11c-default-rtdb.firebaseio.com",
+      projectId: "emotion-tracker-7f11c",
+      storageBucket: "emotion-tracker-7f11c.firebasestorage.app",
+      messagingSenderId: "232586277659",
+      appId: "1:232586277659:web:1fcff097243c8fa1ef99be"
+    };
     // ============================
 
     const EMOTIONS = ["😊","😐","😞","😡","😎","🤝","🚀","🧩"];
+    const EVENTS = [
+      { id: 'learning_space', label: 'Learning Space' },
+      { id: 'story_a_night', label: 'Story a Night' },
+      { id: 'young_ambassadors_training', label: 'Young Ambassadors Training' }
+    ];
+
     let selectedEmotion = "";
     let directory = null;
     let authUid = null;
@@ -155,7 +167,6 @@
       console.error(err);
       const status = document.getElementById('status');
       status.textContent = 'Auth failed: ' + (err && err.code ? err.code : 'see console');
-      // You can still fill the form, but writes require Auth per your rules.
       updateSubmitState();
     });
 
@@ -166,20 +177,22 @@
       .catch(err => { console.error(err); document.getElementById('status').textContent = "Failed to load directory.json"; });
 
     function initForm(){
+      const eventSel = document.getElementById('event');
       const citySel = document.getElementById('city');
       const teamSel = document.getElementById('team');
-      const mateSel = document.getElementById('teammate');
-      const mateHint = document.getElementById('teammateHint');
+      const rosterBox = document.getElementById('teamRoster');
+
+      // Populate events
+      eventSel.innerHTML = '<option value="">Select event</option>' + EVENTS.map(e => `<option value="${e.id}">${e.label}</option>`).join('');
 
       // Populate city
       citySel.innerHTML = '<option value="">Select city</option>' + Object.keys(directory).map(c => `<option value="${c}">${c}</option>`).join('');
 
       citySel.addEventListener('change', () => {
         teamSel.disabled = !citySel.value;
-        mateSel.disabled = true;
-        mateSel.innerHTML = '<option value="">Select teammate</option>';
-        mateHint.textContent = '';
-        if (!citySel.value) { teamSel.innerHTML = '<option value="">Select team</option>'; return; }
+        rosterBox.innerHTML = 'Select a team to view member names.';
+        teamSel.innerHTML = '<option value="">Select team</option>';
+        if (!citySel.value) { return updateSubmitState(); }
         const teams = directory[citySel.value]?.teams || {};
         teamSel.innerHTML = '<option value="">Select team</option>' +
           Object.entries(teams).map(([id, t]) => `<option value="${id}">${t.name || ('Team ' + id)}</option>`).join('');
@@ -187,20 +200,17 @@
       });
 
       teamSel.addEventListener('change', () => {
-        mateSel.disabled = !teamSel.value;
-        mateSel.innerHTML = '<option value="">Select teammate</option>';
-        mateHint.textContent = '';
+        rosterBox.innerHTML = '';
         if (!teamSel.value) { updateSubmitState(); return; }
         const mates = directory[citySel.value]?.teams?.[teamSel.value]?.teammates || {};
-        mateSel.innerHTML += Object.keys(mates).map(n => `<option value="${n}">${n}</option>`).join('');
-        mateSel.addEventListener('input', () => {
-          const meta = mates[mateSel.value] || {};
-          mateHint.textContent = mateSel.value ? `${meta.role || ''} ${meta.school ? '• ' + meta.school : ''}`.trim() : '';
-        }, { once: true });
+        const names = Object.keys(mates);
+        if (names.length === 0) {
+          rosterBox.textContent = 'No teammate names found for this team.';
+        } else {
+          rosterBox.innerHTML = names.map(n => `<span class="roster-tag">${n}</span>`).join(' ');
+        }
         updateSubmitState();
       });
-
-      mateSel.addEventListener('change', updateSubmitState);
 
       // Emotion chips
       const emoWrap = document.getElementById('emotions');
@@ -219,8 +229,9 @@
       });
 
       // Inputs
-      ['evaluatorName','p1','p2','p3','m1','m2','m3'].forEach(id => {
+      ['evaluatorName','p1','p2','p3','m1','m2','m3','event'].forEach(id => {
         document.getElementById(id).addEventListener('input', updateSubmitState);
+        document.getElementById(id).addEventListener('change', updateSubmitState);
       });
 
       document.getElementById('submitBtn').addEventListener('click', submit);
@@ -230,12 +241,13 @@
       const status = document.getElementById('status');
 
       const name = document.getElementById('evaluatorName').value.trim();
+      const eventId = document.getElementById('event').value;
       const city = document.getElementById('city').value;
       const team = document.getElementById('team').value;
-      const teammate = document.getElementById('teammate').value;
       const pluses = [p1.value.trim(), p2.value.trim(), p3.value.trim()];
       const minuses = [m1.value.trim(), m2.value.trim(), m3.value.trim()];
-      const ok = !!(name && city && team && teammate && selectedEmotion && pluses.every(Boolean) && minuses.every(Boolean));
+
+      const ok = !!(name && eventId && city && team && selectedEmotion && pluses.every(Boolean) && minuses.every(Boolean));
       if (!authUid) { status.textContent = 'Waiting for Firebase Auth (enable Anonymous sign-in).'; }
       else if (ok) { status.textContent = ''; }
       return ok && !!authUid;
@@ -250,12 +262,18 @@
       const status = document.getElementById('status');
       status.textContent = 'Submitting…';
 
+      const city = document.getElementById('city').value;
+      const team = document.getElementById('team').value;
+      const mates = directory[city]?.teams?.[team]?.teammates || {};
+      const rosterNames = Object.keys(mates);
+
       const entry = {
         evaluatorName: document.getElementById('evaluatorName').value.trim(),
         evaluatorId: authUid,
-        city: document.getElementById('city').value,
-        team: document.getElementById('team').value,
-        teammate: document.getElementById('teammate').value,
+        event: document.getElementById('event').value,
+        city,
+        team,
+        rosterNames, // captured for convenience; remove if you prefer to look it up in the dashboard
         pluses: [p1.value.trim(), p2.value.trim(), p3.value.trim()],
         minuses: [m1.value.trim(), m2.value.trim(), m3.value.trim()],
         emotion: selectedEmotion,
@@ -264,8 +282,7 @@
 
       firebase.database().ref('entries').push(entry).then(() => {
         status.textContent = 'Submitted! ✅';
-        // reset selection (keep evaluator name, city, team for batch entry if you prefer reset all)
-        document.getElementById('teammate').value = '';
+        // reset selection (keep evaluator name, city, team, event for batch entry if you prefer reset all)
         [p1,p2,p3,m1,m2,m3].forEach(i => i.value = '');
         selectedEmotion = '';
         [...document.getElementById('emotions').children].forEach(c => c.classList.remove('active'));
