@@ -1,321 +1,66 @@
 {
   "cities": {
-    "Yogjakarta": {
+    "Jogjakarta": {
       "teams": {
         "1": {
           "name": "Team 1",
           "teammates": {
-            "Ms. Novi": {
+            "Ms. Ndaru": {
               "role": "Supervisor",
-              "school": "SD Model Sleman",
+              "school": "SDN Koroulon 1",
               "grade": null
             },
-            "Aufar Abdul Jabbar 4A": {
+            "DHIRA": {
+              "role": "Ambassador",
+              "school": "SDN Kalimulya 1 Depok",
+              "grade": null
+            },
+            "Akmal": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "AL": {
-              "role": "Ambassador",
-              "school": "SD Karangmloko 1",
-              "grade": null
-            },
-            "Jayden Jati Y": {
+            "Welas Asih Era 5B": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "DERAS": {
-              "role": "Ambassador",
-              "school": "MI Sunan Pandanaran",
-              "grade": null
-            },
-            "M. Raqilla": {
+            "Keysha": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Alana Maureen Carizsa": {
-              "role": "Participant",
-              "school": "SD Model",
+            "Humaira Ghaisani Putri Arifianto": {
+              "role": "Ambassador",
+              "school": "SD Teladan",
               "grade": null
             },
-            "Indah Tri Agustin": {
-              "role": "Participant",
-              "school": "SDN Malangrejo",
-              "grade": null
-            },
-            "Diajeng Prameswari Putri Jatmikk": {
-              "role": "Participant",
-              "school": "SDN Adisucipto 2",
-              "grade": null
-            },
-            "Mika": {
-              "role": "Participant",
-              "school": "SDN Krawitan",
-              "grade": "3.0"
-            },
-            "Kayla Zhafira": {
-              "role": "Participant",
-              "school": "SDN Sorogenen 2",
-              "grade": null
-            },
-            "Ellaine Tyanda Puteri": {
+            "Hussein Hawwari": {
               "role": "Participant",
               "school": "SMP Teladan",
               "grade": null
             },
-            "Arjuna Putra Wayah": {
-              "role": "Participant",
-              "school": "SDN Malangrejo",
-              "grade": null
-            },
-            "Ricky Adi Nugraha": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "Raffasya Zhafran Naufal Ghani": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "Abiyyu Mahasatria": {
-              "role": "Participant",
-              "school": "SMPN 4 Pakem",
-              "grade": "8.0"
-            }
-          }
-        },
-        "2": {
-          "name": "Team 2",
-          "teammates": {
-            "Mom. Fatonah": {
-              "role": "Supervisor",
-              "school": "MI Sunan Pandanaran",
-              "grade": null
-            },
-            "Al Herbert Sam": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
-              "grade": null
-            },
-            "AIRA": {
-              "role": "Ambassador",
-              "school": "MI Sunan Pandanaran",
-              "grade": null
-            },
-            "Ken Cariola Widiamoko": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
-              "grade": null
-            },
-            "Symphony Aimee Setiady 4B": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
-              "grade": null
-            },
-            "Ale": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
-              "grade": null
-            },
-            "Taletha Aqila Fathinah Uzma": {
-              "role": "Participant",
-              "school": "SD N Taraman",
-              "grade": null
-            },
-            "Muhammad Qaesaar Y.P.": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "Fatima Namiya Anggita Srikandi": {
-              "role": "Participant",
-              "school": "SMPN 4 Pakem",
-              "grade": "8.0"
-            },
-            "Rinjani Dahayu Maheswari": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "RAFFA AL FATIQ SAPUTRA": {
-              "role": "Participant",
-              "school": "SDN Malangrejo",
-              "grade": null
-            },
-            "Hasna Dzakira Pribadi": {
-              "role": "Participant",
-              "school": "SMP Teladan",
-              "grade": null
-            },
-            "Novita Maharani Setiawan": {
+            "Fairuz zahzy Makaila Hadiansyah": {
               "role": "Participant",
               "school": "SDN Adisucipto 2",
               "grade": null
             },
-            "Harum": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "Aksaraya Vidya Subrata": {
-              "role": "Participant",
-              "school": "SD Muhammadiyah 1 Ngaglik",
-              "grade": null
-            },
-            "Muhammad Ichigo": {
-              "role": "Participant",
-              "school": "SDN Adisucipto 2",
-              "grade": null
-            }
-          }
-        },
-        "3": {
-          "name": "Team 3",
-          "teammates": {
-            "Ms. Yasa": {
-              "role": "Supervisor",
-              "school": "SMPN 4 Pakem",
-              "grade": null
-            },
-            "Satria Mustafa Rainjune Belani": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
-              "grade": null
-            },
-            "Shakeela Nafeeza Syafarana": {
-              "role": "Ambassador",
-              "school": "SMP Teladan",
-              "grade": null
-            },
-            "KUNNY": {
-              "role": "Ambassador",
-              "school": "MI Sunan Pandanaran",
-              "grade": null
-            },
-            "Arrasya Ghanim Ladunni 4A": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
-              "grade": null
-            },
-            "Rayyan": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
-              "grade": null
-            },
-            "Arundaya Nismara Adibrata": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "Agustina cahyani mariana": {
-              "role": "Participant",
-              "school": "SDN Krawitan",
-              "grade": "5.0"
-            },
-            "AISYAH KENIA WIJAYA": {
-              "role": "Participant",
-              "school": "SDN Malangrejo",
-              "grade": null
-            },
-            "Carisa Hanif Azzahra": {
-              "role": "Participant",
-              "school": "SD Karangmloko 1",
-              "grade": "4.0"
-            },
-            "Lentera Dipantara": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "Rafi ivander putra handika": {
-              "role": "Participant",
-              "school": "SMPN 15 Yogyakarta",
-              "grade": null
-            },
-            "Azkanya Navisha Chloe Tanaya": {
-              "role": "Participant",
-              "school": "SDN Adisucipto 2",
-              "grade": null
-            },
-            "Kirana Honesty Emmanuelle Tuyu": {
-              "role": "Participant",
-              "school": "SDN Malangrejo",
-              "grade": null
-            },
-            "Bellvania Karsten Alcandria": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "Riko Mifzal Ramadhan": {
+            "Rais Afkar Nafian": {
               "role": "Participant",
               "school": "SDN Koroulon 1",
-              "grade": "3.0"
-            }
-          }
-        },
-        "4": {
-          "name": "Team 4",
-          "teammates": {
-            "Mom. Vita": {
-              "role": "Supervisor",
-              "school": "SD Muhammadiyah 1 Ngaglik",
-              "grade": null
+              "grade": 3
             },
-            "Cahaya Mata": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
-              "grade": null
-            },
-            "Muammar Dimitri Baihaqi": {
-              "role": "Ambassador",
-              "school": "SMP Teladan",
-              "grade": null
-            },
-            "Solana Freesia Rudhiani": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
-              "grade": null
-            },
-            "FATIMA": {
-              "role": "Ambassador",
-              "school": "SMP 4 Pakem",
-              "grade": null
-            },
-            "Ken Cariola Widiamoko 5B": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
-              "grade": null
-            },
-            "Rully Bramantyo Herlambang": {
-              "role": "Participant",
-              "school": "SDN Koroulon 1",
-              "grade": "6.0"
-            },
-            "tama kelana yudistira": {
+            "Ilham Ahza Ganesha": {
               "role": "Participant",
               "school": "SD Model",
               "grade": null
             },
-            "Adnan Khaizuran Susanto": {
+            "Kanz Aufar Agriza Ghany": {
               "role": "Participant",
-              "school": "SDN Krawitan",
-              "grade": "4.0"
+              "school": "SMPN 4 Pakem",
+              "grade": 8
             },
-            "Yusuf Army Alfarizi": {
-              "role": "Participant",
-              "school": "SDN Adisucipto 2",
-              "grade": null
-            },
-            "Wahendri": {
-              "role": "Participant",
-              "school": "SDN Malangrejo",
-              "grade": null
-            },
-            "Alisha Della Safeea Zant": {
+            "Aufaa": {
               "role": "Participant",
               "school": "SD Model",
               "grade": null
@@ -325,94 +70,69 @@
               "school": "SMP Teladan",
               "grade": null
             },
-            "Fariz Davin Maulana": {
+            "ANNISAA WULAN": {
               "role": "Participant",
               "school": "SDN Malangrejo",
               "grade": null
             },
-            "Dzaky Ibrahim Nur Fadhillah": {
+            "Della": {
               "role": "Participant",
-              "school": "SD Karangmloko 1",
-              "grade": "5.0"
+              "school": "SD Model",
+              "grade": null
             },
-            "Khalifah rizqy Wijaya Kurniawan": {
+            "Taletha Aqila Fathinah Uzma": {
               "role": "Participant",
-              "school": "SDN Adisucipto 2",
+              "school": "SD N Taraman",
+              "grade": null
+            },
+            "AISYAH KENIA WIJAYA": {
+              "role": "Participant",
+              "school": "SDN Malangrejo",
               "grade": null
             }
           }
         },
-        "5": {
-          "name": "Team 5",
+        "2": {
+          "name": "Team 2",
           "teammates": {
             "Mom. Anggun": {
               "role": "Supervisor",
               "school": "MI Sunan Pandanaran",
               "grade": null
             },
-            "Nada": {
+            "ABIYYU": {
+              "role": "Ambassador",
+              "school": "SMP 4 Pakem",
+              "grade": null
+            },
+            "Titan Athalla": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "KHALEA": {
-              "role": "Ambassador",
-              "school": "SDN Koroulon 1",
-              "grade": null
-            },
-            "KINO": {
-              "role": "Ambassador",
-              "school": "MI Sunan Pandanaran",
-              "grade": null
-            },
-            "Lathisya": {
+            "Ni Putu Finsa Naraya Alyaguna": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Keano": {
+            "Danendra Danadyaksa Nalaherta": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "EZRA ABHIANKA AFTAR": {
-              "role": "Participant",
-              "school": "SDN Petinggen",
+            "Ken Cariola Widiamoko 5B": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
               "grade": null
             },
-            "Nabila Aurelia Hawan": {
+            "Nabila Amalia Ayu Ramadhani": {
               "role": "Participant",
-              "school": "SD Model",
+              "school": "SDN Sorogenen 2",
               "grade": null
             },
-            "Azra Nur Alfaridzi": {
+            "Maulana Al-Hafiz": {
               "role": "Participant",
-              "school": "SMP Teladan",
-              "grade": null
-            },
-            "Denaya Adreena El-Rahman": {
-              "role": "Participant",
-              "school": "SDN Adisucipto 2",
-              "grade": null
-            },
-            "Dzikra Talitha Tarnianingrum": {
-              "role": "Participant",
-              "school": "SDN Malangrejo",
-              "grade": null
-            },
-            "Khansa Nara Krishna": {
-              "role": "Participant",
-              "school": "SD Karangmloko 1",
-              "grade": "6.0"
-            },
-            "Nanda": {
-              "role": "Participant",
-              "school": "SDN Krawitan",
-              "grade": "3.0"
-            },
-            "James": {
-              "role": "Participant",
-              "school": "SD Model",
+              "school": "SMPN 1 Sawahan",
               "grade": null
             },
             "Kikan Maryam Rustnady": {
@@ -420,109 +140,64 @@
               "school": "SDN Malangrejo",
               "grade": null
             },
-            "Zea": {
+            "Afiqah Althafunnisa Taftazani": {
               "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            }
-          }
-        },
-        "6": {
-          "name": "Team 6",
-          "teammates": {
-            "Mr. Rayhan": {
-              "role": "Supervisor",
-              "school": "SD Karangmloko 1",
+              "school": "SD Teladan",
               "grade": null
             },
-            "ARAUFAN": {
-              "role": "Ambassador",
-              "school": "SDN Sorogenen 2",
-              "grade": null
-            },
-            "Raisa Sharliz Zafira": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
-              "grade": null
-            },
-            "Olive Adhifa Gunadi": {
-              "role": "Ambassador",
+            "Alvin Aditya Karim": {
+              "role": "Participant",
               "school": "SMP Teladan",
               "grade": null
             },
-            "Qisya Nada Azzahra 4A": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
+            "Raffa Azkarians": {
+              "role": "Participant",
+              "school": "SD Model",
               "grade": null
             },
-            "Nabila Yasmin Rizkia": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
-              "grade": null
-            },
-            "Khoirun Qothrun Nada": {
+            "Ainayya Khalea Pratista": {
               "role": "Participant",
               "school": "SDN Koroulon 1",
-              "grade": "5.0"
+              "grade": 6
             },
-            "Grazio Fabyan": {
-              "role": "Participant",
-              "school": "SDN Malangrejo",
-              "grade": null
-            },
-            "Delisha Hayu M": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "Jusuf Omar": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "Kiyasa Qotrunada": {
-              "role": "Participant",
-              "school": "SMPN 4 Pakem",
-              "grade": "8.0"
-            },
-            "Osias Adhit P.": {
-              "role": "Participant",
-              "school": "SDN Krawitan",
-              "grade": "4.0"
-            },
-            "Cinta Zevita Azka Kurniawan": {
+            "Halima Salsabila Putri Defana": {
               "role": "Participant",
               "school": "SDN Adisucipto 2",
               "grade": null
             },
-            "Raissanira Alvita Vadiyansa": {
-              "role": "Participant",
-              "school": "SMP Teladan",
-              "grade": null
-            },
-            "Sri Devi Alindra Kartini": {
+            "Alisha Della Safeea Zant": {
               "role": "Participant",
               "school": "SD Model",
               "grade": null
             },
-            "Savana Paradiksi Kayalafala": {
+            "Juliani Fitria Wulan Rahma dani": {
+              "role": "Participant",
+              "school": "SDN Malangrejo",
+              "grade": null
+            },
+            "Mikail Qiannu": {
               "role": "Participant",
               "school": "SD Model",
               "grade": null
             }
           }
         },
-        "7": {
-          "name": "Team 7",
+        "3": {
+          "name": "Team 3",
           "teammates": {
-            "Mom. Ranti": {
+            "Mr. Taufik": {
               "role": "Supervisor",
-              "school": "MI Sunan Pandanaran",
+              "school": "SDN Adisucipto 2",
               "grade": null
             },
-            "Muhammad Athalla Bahiruddin": {
+            "Shem Laudzai Kenzie Purnomo 4C": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
+              "grade": null
+            },
+            "RAKA": {
+              "role": "Ambassador",
+              "school": "SDN Adisucipto 2",
               "grade": null
             },
             "Tavisha": {
@@ -530,59 +205,239 @@
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Ganesh Pehaganta Sinuraya": {
-              "role": "Ambassador",
-              "school": "SMP Teladan",
-              "grade": null
-            },
-            "Welas Asih Era 5B": {
+            "Shavira": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "ANNISAA WULAN": {
+            "Satria Mustafa Rainjune Belani": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
+              "grade": null
+            },
+            "Izra Nur Aisyah": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "Osias Adhit P.": {
+              "role": "Participant",
+              "school": "SDN Krawitan",
+              "grade": 4
+            },
+            "Mila Anggita Puspitaningrum": {
               "role": "Participant",
               "school": "SDN Malangrejo",
               "grade": null
             },
-            "Muhammad Alfahreza Munandar": {
+            "Damara Rizky Putri Andiya": {
               "role": "Participant",
+              "school": "SD Teladan",
+              "grade": null
+            },
+            "Adji Hartanto Subekti": {
+              "role": "Participant",
+              "school": "SD N Kalimulya 1",
+              "grade": null
+            },
+            "Qonita Syifa Arizky": {
+              "role": "Participant",
+              "school": "SMP Teladan",
+              "grade": null
+            },
+            "Raditya Wisnu Pratama": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "MUHAMMAD ZAHDAM MAULID": {
+              "role": "Participant",
+              "school": "SDN 1 Petir",
+              "grade": null
+            },
+            "Hafiz Ahmad Nafi'an": {
+              "role": "Participant",
+              "school": "SDN Koroulon 1",
+              "grade": 5
+            },
+            "Abdilla Farah Nurul Haq": {
+              "role": "Participant",
+              "school": "SMPN 4 Pakem",
+              "grade": 8
+            },
+            "AQILA FAIZAH MAHASIN": {
+              "role": "Participant",
+              "school": "SDN Malangrejo",
+              "grade": null
+            }
+          }
+        },
+        "4": {
+          "name": "Team 4",
+          "teammates": {
+            "Mom. Ranti": {
+              "role": "Supervisor",
+              "school": "MI Sunan Pandanaran",
+              "grade": null
+            },
+            "Solana Freesia Rudhiani": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
+              "grade": null
+            },
+            "Saqina Rhaisa Nayu": {
+              "role": "Ambassador",
+              "school": "SMP Teladan",
+              "grade": null
+            },
+            "Larene Zava Hakim": {
+              "role": "Ambassador",
+              "school": "SD Teladan",
+              "grade": null
+            },
+            "Rayyan": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
+              "grade": null
+            },
+            "Cahaya Mata": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
+              "grade": null
+            },
+            "Gibran Kalandra Manggala": {
+              "role": "Participant",
+              "school": "SMPN 4 Pakem",
+              "grade": 8
+            },
+            "Azkanya Navisha Chloe Tanaya": {
+              "role": "Participant",
+              "school": "SDN Adisucipto 2",
+              "grade": null
+            },
+            "Raras Alya Firzanah": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "CANTIKA AULIYA TAMARA": {
+              "role": "Participant",
+              "school": "SDN Malangrejo",
+              "grade": null
+            },
+            "Khoirun Qothrun Nada": {
+              "role": "Participant",
+              "school": "SDN Koroulon 1",
+              "grade": 5
+            },
+            "Den Bagus Tirto Widiamoko": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "Hasna Dzakira Pribadi": {
+              "role": "Participant",
+              "school": "SMP Teladan",
+              "grade": null
+            },
+            "Nanda": {
+              "role": "Participant",
+              "school": "SDN Krawitan",
+              "grade": 3
+            },
+            "⁠mahesa duta mahendra": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "Khalisa shanum azzalea": {
+              "role": "Participant",
+              "school": "Afkaaruna Islamic School",
+              "grade": null
+            },
+            "Sheikha Daniswara Uzma": {
+              "role": "Participant",
+              "school": "SD N Taraman",
+              "grade": null
+            }
+          }
+        },
+        "5": {
+          "name": "Team 5",
+          "teammates": {
+            "Mom. Fatonah": {
+              "role": "Supervisor",
+              "school": "MI Sunan Pandanaran",
+              "grade": null
+            },
+            "Banyu Bening": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
+              "grade": null
+            },
+            "ARAUFAN": {
+              "role": "Ambassador",
               "school": "SDN Sorogenen 2",
               "grade": null
             },
-            "Praditya Aryaputra Athallah Pangestu": {
-              "role": "Participant",
-              "school": "SD Model",
+            "Malikha": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
               "grade": null
             },
-            "Zahwa Priscilia Zainal": {
-              "role": "Participant",
-              "school": "SMPN 4 Pakem",
-              "grade": "8.0"
-            },
-            "Rafael haganta boy sembiring": {
-              "role": "Participant",
-              "school": "SD Model",
+            "Qianna Aufaa Khairinniswa 4C": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
               "grade": null
             },
-            "Husein Z.A.": {
-              "role": "Participant",
-              "school": "SDN Krawitan",
-              "grade": "3.0"
-            },
-            "Revan Zain Saputra": {
-              "role": "Participant",
-              "school": "SDN Koroulon 1",
-              "grade": "4.0"
-            },
-            "Wilma Derasanda Hanifa": {
-              "role": "Participant",
+            "AIRA": {
+              "role": "Ambassador",
               "school": "MI Sunan Pandanaran",
-              "grade": "5.0"
+              "grade": null
             },
-            "Khayata Haryalaquita Putranta": {
+            "Cattaleya Alesha": {
+              "role": "Participant",
+              "school": "SD Teladan",
+              "grade": null
+            },
+            "James": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "Indira Aulia Sahwahita": {
+              "role": "Participant",
+              "school": "SD Karangmloko 1",
+              "grade": 4
+            },
+            "CAMILLO CALIEF KALANDRA": {
               "role": "Participant",
               "school": "SDN Adisucipto 2",
+              "grade": null
+            },
+            "Laras Pramudita Ningtyas": {
+              "role": "Participant",
+              "school": "SDN Malangrejo",
+              "grade": null
+            },
+            "AQEELA AINA TALITA Z.": {
+              "role": "Participant",
+              "school": "SDN Koroulon 1",
+              "grade": 6
+            },
+            "Raissanira Alvita Vadiyansa": {
+              "role": "Participant",
+              "school": "SMP Teladan",
+              "grade": null
+            },
+            "Nashwa mezzaluna": {
+              "role": "Participant",
+              "school": "SDN Krawitan",
+              "grade": 3
+            },
+            "Diksi": {
+              "role": "Participant",
+              "school": "SD Model",
               "grade": null
             },
             "FABIAN DECASTIO": {
@@ -590,27 +445,27 @@
               "school": "SDN Malangrejo",
               "grade": null
             },
-            "Gibran Kalandra Manggala": {
+            "Varisha Almira": {
               "role": "Participant",
-              "school": "SMPN 4 Pakem",
-              "grade": "8.0"
+              "school": "SDN Adisucipto 2",
+              "grade": null
             }
           }
         },
-        "8": {
-          "name": "Team 8",
+        "6": {
+          "name": "Team 6",
           "teammates": {
-            "Mr. Yoga": {
+            "Ms. Novi": {
               "role": "Supervisor",
-              "school": "SDN Krawitan",
-              "grade": null
-            },
-            "Keysha Almira Maheswari 4B": {
-              "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Keenan": {
+            "KAL": {
+              "role": "Ambassador",
+              "school": "SD Muhammadiyah 1 Ngaglik",
+              "grade": null
+            },
+            "Muhammad Langit Biru Ramadhan": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
@@ -620,37 +475,22 @@
               "school": "SMP 4 Pakem",
               "grade": null
             },
-            "Aufar": {
+            "Qisya Nada Azzahra 4A": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Nazhifa Aisya Hareta": {
-              "role": "Participant",
-              "school": "SMPN 4 Pakem",
-              "grade": "8.0"
-            },
-            "Raffa Nanda  S.": {
-              "role": "Participant",
-              "school": "SDN Krawitan",
-              "grade": "3.0"
-            },
-            "ALIF UMAR PRASETYA": {
-              "role": "Participant",
-              "school": "SDN Malangrejo",
+            "Aufar Abdul Jabbar 4A": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
               "grade": null
             },
-            "Luthfia Zahra Talita": {
+            "Natasya Putri Rahmatulazza": {
               "role": "Participant",
-              "school": "SMP Teladan",
-              "grade": null
+              "school": "SD Karangmloko 1",
+              "grade": 4
             },
-            "Ilham Ahza Ganesha": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "Akhtar Dirgantara Gumay": {
+            "ATHALIA VALERIE JANEETA": {
               "role": "Participant",
               "school": "SDN Adisucipto 2",
               "grade": null
@@ -660,25 +500,225 @@
               "school": "SD Model",
               "grade": null
             },
-            "Sheikha Daniswara Uzma": {
+            "Annabil": {
               "role": "Participant",
-              "school": "SD N Taraman",
+              "school": "SMP Teladan",
               "grade": null
             },
-            "Hafiz Ahmad Nafi'an": {
+            "Inara Astagina": {
+              "role": "Participant",
+              "school": "SD Teladan",
+              "grade": null
+            },
+            "RHEA AQILA FARANISA": {
               "role": "Participant",
               "school": "SDN Koroulon 1",
-              "grade": "5.0"
+              "grade": 5
             },
-            "Raras Alya Firzanah": {
+            "Azra Nur Alfaridzi": {
+              "role": "Participant",
+              "school": "SMP Teladan",
+              "grade": null
+            },
+            "Kenza Astalita Sahira": {
+              "role": "Participant",
+              "school": "SDN Malangrejo",
+              "grade": null
+            },
+            "Azka Dhia": {
+              "role": "Participant",
+              "school": "SDN Krawitan",
+              "grade": 3
+            },
+            "Bellvania Karsten Alcandria": {
               "role": "Participant",
               "school": "SD Model",
               "grade": null
             },
-            "Venta Mulia Putri Anggraeni": {
+            "Harum": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            }
+          }
+        },
+        "7": {
+          "name": "Team 7",
+          "teammates": {
+            "Mom. Vita": {
+              "role": "Supervisor",
+              "school": "SD Muhammadiyah 1 Ngaglik",
+              "grade": null
+            },
+            "Muhammad Athalla Bahiruddin": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
+              "grade": null
+            },
+            "Muammar Dimitri Baihaqi": {
+              "role": "Ambassador",
+              "school": "SMP Teladan",
+              "grade": null
+            },
+            "Arrasya Ghanim Ladunni 4A": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
+              "grade": null
+            },
+            "Lathisya": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
+              "grade": null
+            },
+            "Aufar": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
+              "grade": null
+            },
+            "Grazio Fabyan": {
+              "role": "Participant",
+              "school": "SDN Malangrejo",
+              "grade": null
+            },
+            "Rully Bramantyo Herlambang": {
+              "role": "Participant",
+              "school": "SDN Koroulon 1",
+              "grade": 6
+            },
+            "tama kelana yudistira": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "Khalifah rizqy Wijaya Kurniawan": {
+              "role": "Participant",
+              "school": "SDN Adisucipto 2",
+              "grade": null
+            },
+            "Luqman Arzu Attaraputra": {
+              "role": "Participant",
+              "school": "SD Teladan",
+              "grade": null
+            },
+            "Raden Abhirama Danendra Wijoseno": {
+              "role": "Participant",
+              "school": "SMP Teladan",
+              "grade": null
+            },
+            "Dzaky Ibrahim Nur Fadhillah": {
               "role": "Participant",
               "school": "SD Karangmloko 1",
-              "grade": "4.0"
+              "grade": 5
+            },
+            "Ken Cariola Widiamoko": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "Nazhifa Aisya Hareta": {
+              "role": "Participant",
+              "school": "SMPN 4 Pakem",
+              "grade": 8
+            },
+            "Fathan fakhrul nashrullah": {
+              "role": "Participant",
+              "school": "SDN Krawitan",
+              "grade": 4
+            },
+            "Hakan": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            }
+          }
+        },
+        "8": {
+          "name": "Team 8",
+          "teammates": {
+            "Mr. Rayhan": {
+              "role": "Supervisor",
+              "school": "SD Karangmloko 1",
+              "grade": null
+            },
+            "ALKHALIFI ALBY RAFFIANSYAH": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
+              "grade": null
+            },
+            "RULLY": {
+              "role": "Ambassador",
+              "school": "SDN Koroulon 1",
+              "grade": null
+            },
+            "Shakeela Nafeeza Syafarana": {
+              "role": "Ambassador",
+              "school": "SMP Teladan",
+              "grade": null
+            },
+            "Muhammad Izzan Aristo": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
+              "grade": null
+            },
+            "Al Herbert Sam": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
+              "grade": null
+            },
+            "Albiyan Maulana": {
+              "role": "Participant",
+              "school": "SDN Krawitan",
+              "grade": 5
+            },
+            "Parma Sadewa Handoko": {
+              "role": "Participant",
+              "school": "SDN Malangrejo",
+              "grade": null
+            },
+            "Dzakira Annaila Putri": {
+              "role": "Participant",
+              "school": "SDN Sorogenen 2",
+              "grade": null
+            },
+            "Nabila Raisa Maheswari": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "Aira putri Gunawan": {
+              "role": "Participant",
+              "school": "SDN Adisucipto 2",
+              "grade": null
+            },
+            "Khansa Nara Krishna": {
+              "role": "Participant",
+              "school": "SD Karangmloko 1",
+              "grade": 6
+            },
+            "Kiyasa Qotrunada": {
+              "role": "Participant",
+              "school": "SMPN 4 Pakem",
+              "grade": 8
+            },
+            "Bellvanie": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "Dzia Abyan Zidane": {
+              "role": "Participant",
+              "school": "SD Teladan",
+              "grade": null
+            },
+            "Arziki Rasendria Alenoka": {
+              "role": "Participant",
+              "school": "SD Teladan",
+              "grade": null
+            },
+            "Ricky Adi Nugraha": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
             }
           }
         },
@@ -690,75 +730,85 @@
               "school": null,
               "grade": null
             },
-            "Aiko Danesha": {
+            "Jasmine": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "KAL": {
+            "Ganesh Pehaganta Sinuraya": {
               "role": "Ambassador",
-              "school": "SD Muhammadiyah 1 Ngaglik",
-              "grade": null
-            },
-            "Rivelto Farhan": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
-              "grade": null
-            },
-            "Ghanim": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
-              "grade": null
-            },
-            "Belva Atha Putri Hidayat": {
-              "role": "Participant",
               "school": "SMP Teladan",
               "grade": null
             },
-            "Muhammad khairul anam": {
-              "role": "Participant",
-              "school": "SDN Krawitan",
-              "grade": "4.0"
-            },
-            "Nadhira Yasmin Raudha": {
-              "role": "Participant",
-              "school": "SMPN 4 Pakem",
-              "grade": "8.0"
-            },
-            "Izra Nur Aisyah": {
-              "role": "Participant",
-              "school": "SD Model",
+            "Raisa Sharliz Zafira": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
               "grade": null
             },
-            "Muhammad Arsyad Al-syari Hidayat": {
-              "role": "Participant",
-              "school": "SDN Adisucipto 2",
+            "Nada": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
               "grade": null
             },
-            "Mikail Qiannu": {
-              "role": "Participant",
-              "school": "SD Model",
+            "DERAS": {
+              "role": "Ambassador",
+              "school": "MI Sunan Pandanaran",
               "grade": null
             },
-            "Dzakira Annaila Putri": {
-              "role": "Participant",
-              "school": "SDN Sorogenen 2",
-              "grade": null
-            },
-            "Kenza Astalita Sahira": {
+            "Muhamad Ramdan Hesaputra": {
               "role": "Participant",
               "school": "SDN Malangrejo",
               "grade": null
             },
-            "Della": {
+            "Arjuna Haidar Al Khalifi": {
+              "role": "Participant",
+              "school": "SD Karangmloko 1",
+              "grade": 6
+            },
+            "Keenan Adhyasta Pramudya": {
+              "role": "Participant",
+              "school": "SD Teladan",
+              "grade": null
+            },
+            "Savana Paradiksi Kayalafala": {
               "role": "Participant",
               "school": "SD Model",
               "grade": null
             },
-            "Nadhifa Aqila Az Zahra": {
+            "Desi Endah lestari": {
               "role": "Participant",
-              "school": "SD Karangmloko 1",
-              "grade": "5.0"
+              "school": "SDN Krawitan",
+              "grade": 5
+            },
+            "Muhammad Rafan Abrisam": {
+              "role": "Participant",
+              "school": "SDN Adisucipto 2",
+              "grade": null
+            },
+            "M akhtar farqadain": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "Muhamad Akbar Adinsa": {
+              "role": "Participant",
+              "school": "SDN Malangrejo",
+              "grade": null
+            },
+            "Chayra Atha Maritza Samodra": {
+              "role": "Participant",
+              "school": "SMP Teladan",
+              "grade": null
+            },
+            "Armell": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "Raras Abqaria Belvana": {
+              "role": "Participant",
+              "school": "SDN Koroulon 1",
+              "grade": 5
             }
           }
         },
@@ -770,154 +820,174 @@
               "school": null,
               "grade": null
             },
-            "DHIRA": {
-              "role": "Ambassador",
-              "school": "SDN Kalimulya 1 Depok",
-              "grade": null
-            },
-            "Qianna Aufaa Khairinniswa 4C": {
+            "Fauzan Agha": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Rafandra": {
+            "Dzaki Adinata": {
+              "role": "Ambassador",
+              "school": "SMP Teladan",
+              "grade": null
+            },
+            "Rivelto Farhan": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Shavira": {
+            "Dominikus Agustian Ernest Setyawan": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Ainayya Khalea Pratista": {
+            "Hamizan Fawwaz Ar Ruzain": {
+              "role": "Ambassador",
+              "school": "SD Teladan",
+              "grade": null
+            },
+            "Dzikra Talitha Tarnianingrum": {
+              "role": "Participant",
+              "school": "SDN Malangrejo",
+              "grade": null
+            },
+            "Gending Mahisi Kahiyang": {
+              "role": "Participant",
+              "school": "SD Pangudi Luhur I & II Surakarta",
+              "grade": null
+            },
+            "Muhammad Ichigo": {
+              "role": "Participant",
+              "school": "SDN Adisucipto 2",
+              "grade": null
+            },
+            "Alana Maureen Carizsa": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "Fathan Aqsha W": {
+              "role": "Participant",
+              "school": "SDN Krawitan",
+              "grade": 5
+            },
+            "Rafandra Dzakif Alfariza": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "Kayla Zhafira": {
+              "role": "Participant",
+              "school": "SDN Sorogenen 2",
+              "grade": null
+            },
+            "Ahmad Tegar Prabawa": {
               "role": "Participant",
               "school": "SDN Koroulon 1",
-              "grade": "6.0"
+              "grade": 3
             },
             "Ervito Sudrajat": {
               "role": "Participant",
               "school": "SMP Teladan",
               "grade": null
             },
-            "Asyadila": {
-              "role": "Participant",
-              "school": "SDN Krawitan",
-              "grade": "3.0"
-            },
-            "Raffa Azkarians": {
+            "Locita": {
               "role": "Participant",
               "school": "SD Model",
               "grade": null
             },
-            "Qinara": {
-              "role": "Participant",
-              "school": "SDN Malangrejo",
-              "grade": null
-            },
-            "Raditya Wisnu Pratama": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "ATHALIA VALERIE JANEETA": {
+            "Denaya Adreena El-Rahman": {
               "role": "Participant",
               "school": "SDN Adisucipto 2",
               "grade": null
-            },
-            "RIZQY AKBAR KURNIAWAN": {
-              "role": "Participant",
-              "school": "SDN Malangrejo",
-              "grade": null
-            },
-            "M akhtar farqadain": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "Abdilla Farah Nurul Haq": {
-              "role": "Participant",
-              "school": "SMPN 4 Pakem",
-              "grade": "8.0"
             }
           }
         },
         "11": {
           "name": "Team 11",
           "teammates": {
-            "Ms. Wida": {
+            "Ms. Yasa": {
               "role": "Supervisor",
-              "school": "SDN Sorogenen 2",
+              "school": "SMPN 4 Pakem",
               "grade": null
             },
-            "RAKA": {
-              "role": "Ambassador",
-              "school": "SDN Adisucipto 2",
-              "grade": null
-            },
-            "Muhammad Izzan Aristo": {
+            "Symphony Aimee Setiady 4B": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Aimee": {
+            "M. Raqilla": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Welas": {
+            "GWEN": {
+              "role": "Ambassador",
+              "school": "SMP Islam Al Azhar 26YK",
+              "grade": null
+            },
+            "Keysha Almira Maheswari 4B": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Rr. Aisyah Alshamyzea Inara Putri": {
+            "Ale": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
+              "grade": null
+            },
+            "Nadiva Queensylla Almahyra": {
               "role": "Participant",
-              "school": "SD Model",
+              "school": "SMP Teladan",
               "grade": null
             },
-            "AQILA FAIZAH MAHASIN": {
+            "RAFFA AL FATIQ SAPUTRA": {
               "role": "Participant",
               "school": "SDN Malangrejo",
               "grade": null
             },
-            "Indira Aulia Sahwahita": {
+            "Al Hafiz Althaniaz": {
               "role": "Participant",
-              "school": "SD Karangmloko 1",
-              "grade": "4.0"
-            },
-            "Agam": {
-              "role": "Participant",
-              "school": "SDN Krawitan",
-              "grade": "3.0"
-            },
-            "Chayra Atha Maritza Samodra": {
-              "role": "Participant",
-              "school": "SMP Teladan",
+              "school": "SDN Adisucipto 2",
               "grade": null
             },
-            "SHABRIA FATHINA A.": {
-              "role": "Participant",
-              "school": "SDN Koroulon 1",
-              "grade": "5.0"
-            },
-            "Falasifa Kayla Ameliani": {
-              "role": "Participant",
-              "school": "SMPN 4 Pakem",
-              "grade": "8.0"
-            },
-            "Adhyastha Arsha A": {
+            "Zea": {
               "role": "Participant",
               "school": "SD Model",
               "grade": null
             },
-            "Alvin Aditya Karim": {
+            "Najwa Muthiah Ramadhan": {
               "role": "Participant",
-              "school": "SMP Teladan",
+              "school": "SDN Koroulon 1",
+              "grade": 4
+            },
+            "Milana el sharaawy": {
+              "role": "Participant",
+              "school": "SD Model",
               "grade": null
             },
-            "Araufan Toefleandra Permana": {
+            "Agustina cahyani mariana": {
               "role": "Participant",
-              "school": "SDN Sorogenen 2",
+              "school": "SDN Krawitan",
+              "grade": 5
+            },
+            "Rafi ivander putra handika": {
+              "role": "Participant",
+              "school": "SMPN 15 Yogyakarta",
+              "grade": null
+            },
+            "Renjani Fitra Hartono": {
+              "role": "Participant",
+              "school": "SMPN 4 Pakem",
+              "grade": 8
+            },
+            "Farahdea Shakila Rahadian": {
+              "role": "Participant",
+              "school": "SD Teladan",
+              "grade": null
+            },
+            "Qanita Amira Asyhar": {
+              "role": "Participant",
+              "school": "SD Model",
               "grade": null
             }
           }
@@ -930,37 +1000,137 @@
               "school": null,
               "grade": null
             },
-            "Banyu Bening": {
+            "Brian Alvaro Zafran": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Shem Laudzai Kenzie Purnomo 4C": {
+            "Keano": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "ABIYYU": {
-              "role": "Ambassador",
-              "school": "SMP 4 Pakem",
-              "grade": null
-            },
-            "Saqina Rhaisa Nayu": {
+            "Olive Adhifa Gunadi": {
               "role": "Ambassador",
               "school": "SMP Teladan",
               "grade": null
             },
-            "Muhamad Akbar Adinsa": {
+            "Aimee": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
+              "grade": null
+            },
+            "Riko Mifzal Ramadhan": {
+              "role": "Participant",
+              "school": "SDN Koroulon 1",
+              "grade": 3
+            },
+            "Samara Raya": {
+              "role": "Participant",
+              "school": "SD Teladan",
+              "grade": null
+            },
+            "Diajeng Prameswari Putri Jatmikk": {
+              "role": "Participant",
+              "school": "SDN Adisucipto 2",
+              "grade": null
+            },
+            "Fariz Davin Maulana": {
               "role": "Participant",
               "school": "SDN Malangrejo",
               "grade": null
             },
-            "Den Bagus Tirto Widiamoko": {
+            "Muhammad Lintang Ardiansyahds": {
+              "role": "Participant",
+              "school": "SMPN 3 Depok",
+              "grade": null
+            },
+            "Rr. Aisyah Alshamyzea Inara Putri": {
               "role": "Participant",
               "school": "SD Model",
               "grade": null
             },
-            "Aira putri Gunawan": {
+            "Al Fadh": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "Aisyah Cettanalini Alula Zea": {
+              "role": "Participant",
+              "school": "SMPN 4 Pakem",
+              "grade": 8
+            },
+            "Allina Sekar Arumingrat": {
+              "role": "Participant",
+              "school": "SD Karangmloko 1",
+              "grade": 5
+            },
+            "Kirana Honesty Emmanuelle Tuyu": {
+              "role": "Participant",
+              "school": "SDN Malangrejo",
+              "grade": null
+            },
+            "Delisha Hayu M": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            }
+          }
+        },
+        "13": {
+          "name": "Team 13",
+          "teammates": {
+            "Mr. Yoga": {
+              "role": "Supervisor",
+              "school": "SDN Krawitan",
+              "grade": null
+            },
+            "NENDRA": {
+              "role": "Ambassador",
+              "school": "SD Karangmloko 1",
+              "grade": null
+            },
+            "Elvira Aura Azzahra": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
+              "grade": null
+            },
+            "Ken Cariola Widiamoko": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
+              "grade": null
+            },
+            "Levano Arsakha Valin 4B": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
+              "grade": null
+            },
+            "Sri Devi Alindra Kartini": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "Farzan Herdhi Abqori": {
+              "role": "Participant",
+              "school": "SD Teladan",
+              "grade": null
+            },
+            "Aysha Devanie Gunadi": {
+              "role": "Participant",
+              "school": "SMP Teladan",
+              "grade": null
+            },
+            "Arjuna Putra Wayah": {
+              "role": "Participant",
+              "school": "SDN Malangrejo",
+              "grade": null
+            },
+            "Abiyyu Mahasatria": {
+              "role": "Participant",
+              "school": "SMPN 4 Pakem",
+              "grade": 8
+            },
+            "Aqilla Khayra Azzahra": {
               "role": "Participant",
               "school": "SDN Adisucipto 2",
               "grade": null
@@ -970,115 +1140,25 @@
               "school": "SDN Sorogenen 2",
               "grade": null
             },
-            "Calief Aydan Er Atharizz": {
+            "Arundaya Nismara Adibrata": {
               "role": "Participant",
               "school": "SD Model",
               "grade": null
             },
-            "Najwa Muthiah Ramadhan": {
-              "role": "Participant",
-              "school": "SDN Koroulon 1",
-              "grade": "4.0"
-            },
-            "Albiyan Maulana": {
+            "Muhammad khairul anam": {
               "role": "Participant",
               "school": "SDN Krawitan",
-              "grade": "5.0"
+              "grade": 4
             },
-            "Hafy Nendra Abirisam Widyanantha": {
-              "role": "Participant",
-              "school": "SD Karangmloko 1",
-              "grade": "6.0"
-            },
-            "Muhammad Rafan Abrisam": {
+            "Khayata Haryalaquita Putranta": {
               "role": "Participant",
               "school": "SDN Adisucipto 2",
               "grade": null
             },
-            "Aysha Devanie Gunadi": {
-              "role": "Participant",
-              "school": "SMP Teladan",
-              "grade": null
-            }
-          }
-        },
-        "13": {
-          "name": "Team 13",
-          "teammates": {
-            "Mr. Taufik": {
-              "role": "Supervisor",
-              "school": "SDN Adisucipto 2",
-              "grade": null
-            },
-            "Fauzan Agha": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
-              "grade": null
-            },
-            "JIHAN": {
-              "role": "Ambassador",
-              "school": "SD N Sokowaten Baru",
-              "grade": null
-            },
-            "Agan": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
-              "grade": null
-            },
-            "Izzar": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
-              "grade": null
-            },
-            "Azka Dian Zaki Haqq": {
-              "role": "Participant",
-              "school": "SDN Malangrejo",
-              "grade": null
-            },
-            "Hakan": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "CAMILLO CALIEF KALANDRA": {
-              "role": "Participant",
-              "school": "SDN Adisucipto 2",
-              "grade": null
-            },
-            "Renjani Fitra Hartono": {
-              "role": "Participant",
-              "school": "SMPN 4 Pakem",
-              "grade": "8.0"
-            },
-            "Zaskia Tazkiyyatul Jacinda": {
-              "role": "Participant",
-              "school": "SMP Teladan",
-              "grade": null
-            },
-            "RHEA AQILA FARANISA": {
+            "Levania Azzahra K.": {
               "role": "Participant",
               "school": "SDN Koroulon 1",
-              "grade": "5.0"
-            },
-            "Azka Dhia": {
-              "role": "Participant",
-              "school": "SDN Krawitan",
-              "grade": "3.0"
-            },
-            "Akram Nur Faiz": {
-              "role": "Participant",
-              "school": "SMP Teladan",
-              "grade": null
-            },
-            "Qanita Amira Asyhar": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "Fairuz zahzy Makaila Hadiansyah": {
-              "role": "Participant",
-              "school": "SDN Adisucipto 2",
-              "grade": null
+              "grade": 6
             }
           }
         },
@@ -1090,75 +1170,75 @@
               "school": null,
               "grade": null
             },
-            "Giani": {
+            "JIHAN": {
+              "role": "Ambassador",
+              "school": "SD N Sokowaten Baru",
+              "grade": null
+            },
+            "Rivano Mirza arwi": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Danendra Danadyaksa Nalaherta": {
+            "Aiko Danesha": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "GWEN": {
+            "Rafandra": {
               "role": "Ambassador",
-              "school": "SMP Islam Al Azhar 26YK",
+              "school": "SD Model Sleman",
               "grade": null
             },
-            "AKHTAR": {
-              "role": "Ambassador",
-              "school": "SDN Adisucipto 2",
+            "Araufan Toefleandra Permana": {
+              "role": "Participant",
+              "school": "SDN Sorogenen 2",
               "grade": null
             },
-            "Keisha Naufalyn Aliani Zahra": {
-              "role": "Participant",
-              "school": "SD Karangmloko 1",
-              "grade": "5.0"
-            },
-            "Tatiana Elizabeth Aelredita Kiara": {
-              "role": "Participant",
-              "school": "SMPN 4 Pakem",
-              "grade": "8.0"
-            },
-            "Rafandra Dzakif Alfariza": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "Hussein Hawwari": {
+            "Ellaine Tyanda Puteri": {
               "role": "Participant",
               "school": "SMP Teladan",
               "grade": null
             },
-            "Adji Hartanto Subekti": {
+            "Eshal Khanza Wirapraja": {
               "role": "Participant",
-              "school": "SD N Kalimulya 1",
+              "school": "SD Teladan",
               "grade": null
             },
-            "Locita": {
+            "Aksaraya Vidya Subrata": {
               "role": "Participant",
-              "school": "SD Model",
+              "school": "SD Muhammadiyah 1 Ngaglik",
               "grade": null
             },
-            "HAFFZZA OCTA DWI SHAPUTRI": {
+            "KANIA TIFFANY SHAQUEENA": {
               "role": "Participant",
               "school": "SDN Malangrejo",
               "grade": null
             },
-            "Muhammad Heztamma Alfatih": {
+            "Falasifa Kayla Ameliani": {
+              "role": "Participant",
+              "school": "SMPN 4 Pakem",
+              "grade": 8
+            },
+            "Akhtar Dirgantara Gumay": {
+              "role": "Participant",
+              "school": "SDN Adisucipto 2",
+              "grade": null
+            },
+            "Jusuf Omar": {
               "role": "Participant",
               "school": "SD Model",
               "grade": null
             },
-            "Annabil": {
+            "Nadhifa Aqila Az Zahra": {
               "role": "Participant",
-              "school": "SMP Teladan",
-              "grade": null
+              "school": "SD Karangmloko 1",
+              "grade": 5
             },
-            "Afrizal Sovan Duwiyanto": {
+            "Indah Tri Agustin": {
               "role": "Participant",
-              "school": "SDN Koroulon 1",
-              "grade": "6.0"
+              "school": "SDN Malangrejo",
+              "grade": null
             }
           }
         },
@@ -1170,12 +1250,12 @@
               "school": null,
               "grade": null
             },
-            "muhammad arkharega": {
+            "Welas": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Jasmine": {
+            "Rayya": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
@@ -1185,59 +1265,64 @@
               "school": "SMP 4 Pakem",
               "grade": null
             },
-            "Keysha": {
+            "KUNNY": {
               "role": "Ambassador",
-              "school": "SD Model Sleman",
+              "school": "MI Sunan Pandanaran",
               "grade": null
             },
-            "CANTIKA AULIYA TAMARA": {
+            "Wahendri": {
               "role": "Participant",
               "school": "SDN Malangrejo",
               "grade": null
             },
-            "Al Hafiz Althaniaz": {
+            "Muhammad Qaesaar Y.P.": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "Ibrahim Rasyid Abqari": {
+              "role": "Participant",
+              "school": "SD Teladan",
+              "grade": null
+            },
+            "Zaskia Tazkiyyatul Jacinda": {
+              "role": "Participant",
+              "school": "SMP Teladan",
+              "grade": null
+            },
+            "Asyadila": {
+              "role": "Participant",
+              "school": "SDN Krawitan",
+              "grade": 3
+            },
+            "Zahwa Priscilia Zainal": {
+              "role": "Participant",
+              "school": "SMPN 4 Pakem",
+              "grade": 8
+            },
+            "ELSA AISHA ELTARIKA": {
               "role": "Participant",
               "school": "SDN Adisucipto 2",
               "grade": null
             },
-            "Diksi": {
+            "Adhyastha Arsha A": {
               "role": "Participant",
               "school": "SD Model",
               "grade": null
             },
-            "Kanz Aufar Agriza Ghany": {
-              "role": "Participant",
-              "school": "SMPN 4 Pakem",
-              "grade": "8.0"
-            },
-            "Ken Cariola Widiamoko": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "Juan Dio Aribowo": {
+            "Akram Nur Faiz": {
               "role": "Participant",
               "school": "SMP Teladan",
               "grade": null
             },
-            "AQEELA AINA TALITA Z.": {
-              "role": "Participant",
-              "school": "SDN Koroulon 1",
-              "grade": "6.0"
-            },
-            "Rafiq Redian Putra Bintoro": {
+            "Venta Mulia Putri Anggraeni": {
               "role": "Participant",
               "school": "SD Karangmloko 1",
-              "grade": "4.0"
+              "grade": 4
             },
-            "Nashwa mezzaluna": {
+            "Ghaisan Rabbani Walfredo": {
               "role": "Participant",
-              "school": "SDN Krawitan",
-              "grade": "3.0"
-            },
-            "Akila Putri Wiyudanti": {
-              "role": "Participant",
-              "school": "SMP Teladan",
+              "school": "SD Teladan",
               "grade": null
             }
           }
@@ -1245,9 +1330,24 @@
         "16": {
           "name": "Team 16",
           "teammates": {
-            "Ms. Ndaru": {
+            "Ms. Wida": {
               "role": "Supervisor",
-              "school": "SDN Koroulon 1",
+              "school": "SDN Sorogenen 2",
+              "grade": null
+            },
+            "FATIMA": {
+              "role": "Ambassador",
+              "school": "SMP 4 Pakem",
+              "grade": null
+            },
+            "Agan": {
+              "role": "Ambassador",
+              "school": "SD Model Sleman",
+              "grade": null
+            },
+            "AL": {
+              "role": "Ambassador",
+              "school": "SD Karangmloko 1",
               "grade": null
             },
             "Sakha": {
@@ -1255,70 +1355,60 @@
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Titan Athalla": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
-              "grade": null
-            },
-            "Elvira Aura Azzahra": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
-              "grade": null
-            },
-            "Dzaki Adinata": {
-              "role": "Ambassador",
-              "school": "SMP Teladan",
-              "grade": null
-            },
-            "Maulana Al-Hafiz": {
+            "Nadhira Yasmin Raudha": {
               "role": "Participant",
-              "school": "SMPN 1 Sawahan",
-              "grade": null
+              "school": "SMPN 4 Pakem",
+              "grade": 8
             },
-            "Muhamad Ramdan Hesaputra": {
+            "Azka Dian Zaki Haqq": {
               "role": "Participant",
               "school": "SDN Malangrejo",
               "grade": null
             },
-            "Raisa Najma Cordelia": {
+            "Akila Putri Wiyudanti": {
               "role": "Participant",
-              "school": "SD Muhammadiyah 1 Ngaglik",
-              "grade": "2.0"
+              "school": "SMP Teladan",
+              "grade": null
             },
-            "Zhevana Putri Azzahra": {
+            "Ica": {
               "role": "Participant",
               "school": "SD Model",
               "grade": null
             },
-            "Taraka Silby Putra Pratama": {
+            "Yusuf Army Alfarizi": {
               "role": "Participant",
               "school": "SDN Adisucipto 2",
               "grade": null
             },
-            "Nabila Raisa Maheswari": {
+            "Fatih Viradharma Jaya": {
               "role": "Participant",
               "school": "SD Model",
               "grade": null
             },
-            "Allina Sekar Arumingrat": {
+            "Raffa Nanda  S.": {
               "role": "Participant",
-              "school": "SD Karangmloko 1",
-              "grade": "5.0"
+              "school": "SDN Krawitan",
+              "grade": 3
             },
-            "Khalisa shanum azzalea": {
+            "Belva Atha Putri Hidayat": {
               "role": "Participant",
-              "school": "Afkaaruna Islamic School",
+              "school": "SMP Teladan",
               "grade": null
             },
-            "Rais Afkar Nafian": {
+            "Muhammad Alfahreza Munandar": {
               "role": "Participant",
-              "school": "SDN Koroulon 1",
-              "grade": "3.0"
-            },
-            "Aufaa": {
-              "role": "Participant",
-              "school": "SD Model",
+              "school": "SDN Sorogenen 2",
               "grade": null
+            },
+            "Ainayya Jardine Humaira": {
+              "role": "Participant",
+              "school": "SD Teladan",
+              "grade": null
+            },
+            "Wilma Derasanda Hanifa": {
+              "role": "Participant",
+              "school": "MI Sunan Pandanaran",
+              "grade": 5
             }
           }
         },
@@ -1330,75 +1420,80 @@
               "school": null,
               "grade": null
             },
-            "NENDRA": {
+            "KHALEA": {
               "role": "Ambassador",
-              "school": "SD Karangmloko 1",
+              "school": "SDN Koroulon 1",
               "grade": null
             },
-            "Akmal": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
-              "grade": null
-            },
-            "Rafifatu Rifda Br Ginting": {
+            "Cahaya Mata 5B": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Brian Alvaro Zafran": {
+            "Ghanim": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Gending Mahisi Kahiyang": {
-              "role": "Participant",
-              "school": "SD Pangudi Luhur I & II Surakarta",
+            "ZAHWA": {
+              "role": "Ambassador",
+              "school": "SMP 4 Pakem",
               "grade": null
             },
-            "⁠mahesa duta mahendra": {
+            "Zaki Surya Prasandra": {
               "role": "Participant",
               "school": "SD Model",
               "grade": null
             },
-            "Mila Anggita Puspitaningrum": {
+            "HAFFZZA OCTA DWI SHAPUTRI": {
               "role": "Participant",
               "school": "SDN Malangrejo",
               "grade": null
             },
-            "ELSA AISHA ELTARIKA": {
+            "Agam": {
+              "role": "Participant",
+              "school": "SDN Krawitan",
+              "grade": 3
+            },
+            "Aqeela Zafira": {
+              "role": "Participant",
+              "school": "SMP Teladan",
+              "grade": null
+            },
+            "Carisa Hanif Azzahra": {
+              "role": "Participant",
+              "school": "SD Karangmloko 1",
+              "grade": 4
+            },
+            "Lentera Dipantara": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "Keona Shazia Kata": {
+              "role": "Participant",
+              "school": "SD Teladan",
+              "grade": null
+            },
+            "Novita Maharani Setiawan": {
               "role": "Participant",
               "school": "SDN Adisucipto 2",
               "grade": null
             },
-            "Al Fadh": {
+            "Fatima Namiya Anggita Srikandi": {
+              "role": "Participant",
+              "school": "SMPN 4 Pakem",
+              "grade": 8
+            },
+            "Raffasya Zhafran Naufal Ghani": {
               "role": "Participant",
               "school": "SD Model",
               "grade": null
             },
-            "Ahmad Arkan Raditya": {
+            "Cinta Zevita Azka Kurniawan": {
               "role": "Participant",
-              "school": "SMP Teladan",
+              "school": "SDN Adisucipto 2",
               "grade": null
-            },
-            "Levania Azzahra K.": {
-              "role": "Participant",
-              "school": "SDN Koroulon 1",
-              "grade": "6.0"
-            },
-            "Qonita Syifa Arizky": {
-              "role": "Participant",
-              "school": "SMP Teladan",
-              "grade": null
-            },
-            "Parma Sadewa Handoko": {
-              "role": "Participant",
-              "school": "SDN Malangrejo",
-              "grade": null
-            },
-            "Desi Endah lestari": {
-              "role": "Participant",
-              "school": "SDN Krawitan",
-              "grade": "5.0"
             }
           }
         },
@@ -1410,75 +1505,80 @@
               "school": "SMPN 4 Pakem",
               "grade": null
             },
-            "Rivano Mirza arwi": {
+            "AKHTAR": {
+              "role": "Ambassador",
+              "school": "SDN Adisucipto 2",
+              "grade": null
+            },
+            "Nabila Yasmin Rizkia": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Rayya": {
+            "Izzar": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Muhammad Langit Biru Ramadhan": {
+            "Raline Shaqila Vidianandhara": {
               "role": "Ambassador",
-              "school": "SD Model Sleman",
+              "school": "SD Teladan",
               "grade": null
             },
-            "Btari Nesia Khalifa Belani": {
-              "role": "Ambassador",
-              "school": "SD Model Sleman",
-              "grade": null
-            },
-            "Natasya Putri Rahmatulazza": {
-              "role": "Participant",
-              "school": "SD Karangmloko 1",
-              "grade": "4.0"
-            },
-            "Ica": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "Juliani Fitria Wulan Rahma dani": {
+            "RIZQY AKBAR KURNIAWAN": {
               "role": "Participant",
               "school": "SDN Malangrejo",
               "grade": null
             },
-            "Aisyah Cettanalini Alula Zea": {
+            "Afrizal Sovan Duwiyanto": {
               "role": "Participant",
-              "school": "SMPN 4 Pakem",
-              "grade": "8.0"
+              "school": "SDN Koroulon 1",
+              "grade": 6
             },
-            "Raden Abhirama Danendra Wijoseno": {
-              "role": "Participant",
-              "school": "SMP Teladan",
-              "grade": null
-            },
-            "Halima Salsabila Putri Defana": {
-              "role": "Participant",
-              "school": "SDN Adisucipto 2",
-              "grade": null
-            },
-            "Milana el sharaawy": {
+            "Zhevana Putri Azzahra": {
               "role": "Participant",
               "school": "SD Model",
               "grade": null
             },
-            "MUHAMMAD ZAHDAM MAULID": {
-              "role": "Participant",
-              "school": "SDN 1 Petir",
-              "grade": null
-            },
-            "Nirvana K.": {
+            "Juan Dio Aribowo": {
               "role": "Participant",
               "school": "SMP Teladan",
               "grade": null
             },
-            "Raras Abqaria Belvana": {
+            "Raisa Najma Cordelia": {
               "role": "Participant",
-              "school": "SDN Koroulon 1",
-              "grade": "5.0"
+              "school": "SD Muhammadiyah 1 Ngaglik",
+              "grade": 2
+            },
+            "Adnan Khaizuran Susanto": {
+              "role": "Participant",
+              "school": "SDN Krawitan",
+              "grade": 4
+            },
+            "Ibrahim Rasyid M": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "Muhammad Rasyid Hananto": {
+              "role": "Participant",
+              "school": "SMP Teladan",
+              "grade": null
+            },
+            "Rafael haganta boy sembiring": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "Keisha Naufalyn Aliani Zahra": {
+              "role": "Participant",
+              "school": "SD Karangmloko 1",
+              "grade": 5
+            },
+            "Rio Athari Rafacello Lukitaningrat": {
+              "role": "Participant",
+              "school": "SD Teladan",
+              "grade": null
             }
           }
         },
@@ -1490,75 +1590,80 @@
               "school": null,
               "grade": null
             },
-            "ZAHWA": {
-              "role": "Ambassador",
-              "school": "SMP 4 Pakem",
-              "grade": null
-            },
-            "Cahaya Mata 5B": {
+            "Giani": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Dominikus Agustian Ernest Setyawan": {
+            "muhammad arkharega": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "ALKHALIFI ALBY RAFFIANSYAH": {
+            "KINO": {
+              "role": "Ambassador",
+              "school": "MI Sunan Pandanaran",
+              "grade": null
+            },
+            "Btari Nesia Khalifa Belani": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Ahmad Tegar Prabawa": {
+            "Revan Zain Saputra": {
               "role": "Participant",
               "school": "SDN Koroulon 1",
-              "grade": "3.0"
+              "grade": 4
             },
-            "Aqeela Zafira": {
-              "role": "Participant",
-              "school": "SMP Teladan",
-              "grade": null
-            },
-            "FAKHIRAH SHAKILA": {
-              "role": "Participant",
-              "school": "SDN Malangrejo",
-              "grade": null
-            },
-            "Ibrahim Rasyid M": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "Nabila Amalia Ayu Ramadhani": {
-              "role": "Participant",
-              "school": "SDN Sorogenen 2",
-              "grade": null
-            },
-            "Zaki Surya Prasandra": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "Aqilla Khayra Azzahra": {
+            "Muhammad Arsyad Al-syari Hidayat": {
               "role": "Participant",
               "school": "SDN Adisucipto 2",
               "grade": null
             },
-            "Fatih Viradharma Jaya": {
+            "Qinara": {
+              "role": "Participant",
+              "school": "SDN Malangrejo",
+              "grade": null
+            },
+            "Ahmad Arkan Raditya": {
+              "role": "Participant",
+              "school": "SMP Teladan",
+              "grade": null
+            },
+            "Praditya Aryaputra Athallah Pangestu": {
               "role": "Participant",
               "school": "SD Model",
               "grade": null
             },
-            "Fathan fakhrul nashrullah": {
+            "Rinjani Dahayu Maheswari": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "Sammi Sakadharma Rif 'at": {
+              "role": "Participant",
+              "school": "SD Teladan",
+              "grade": null
+            },
+            "Mika": {
               "role": "Participant",
               "school": "SDN Krawitan",
-              "grade": "4.0"
+              "grade": 3
             },
-            "Muhammad Rasyid Hananto": {
+            "Luthfia Zahra Talita": {
               "role": "Participant",
               "school": "SMP Teladan",
               "grade": null
+            },
+            "Tatiana Elizabeth Aelredita Kiara": {
+              "role": "Participant",
+              "school": "SMPN 4 Pakem",
+              "grade": 8
+            },
+            "Hafy Nendra Abirisam Widyanantha": {
+              "role": "Participant",
+              "school": "SD Karangmloko 1",
+              "grade": 6
             }
           }
         },
@@ -1570,85 +1675,1586 @@
               "school": null,
               "grade": null
             },
-            "Malikha": {
+            "Keenan": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Levano Arsakha Valin 4B": {
+            "Muhammad Kautsar Nur Arkan": {
+              "role": "Ambassador",
+              "school": "SD Teladan",
+              "grade": null
+            },
+            "Rafifatu Rifda Br Ginting": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "RULLY": {
-              "role": "Ambassador",
-              "school": "SDN Koroulon 1",
-              "grade": null
-            },
-            "Ni Putu Finsa Naraya Alyaguna": {
+            "Jayden Jati Y": {
               "role": "Ambassador",
               "school": "SD Model Sleman",
               "grade": null
             },
-            "Laras Pramudita Ningtyas": {
-              "role": "Participant",
-              "school": "SDN Malangrejo",
-              "grade": null
-            },
-            "Varisha Almira": {
+            "Taraka Silby Putra Pratama": {
               "role": "Participant",
               "school": "SDN Adisucipto 2",
               "grade": null
             },
-            "Nadiva Queensylla Almahyra": {
+            "EZRA ABHIANKA AFTAR": {
+              "role": "Participant",
+              "school": "SDN Petinggen",
+              "grade": null
+            },
+            "SHABRIA FATHINA A.": {
+              "role": "Participant",
+              "school": "SDN Koroulon 1",
+              "grade": 5
+            },
+            "Nirvana K.": {
               "role": "Participant",
               "school": "SMP Teladan",
               "grade": null
             },
-            "Arjuna Haidar Al Khalifi": {
-              "role": "Participant",
-              "school": "SD Karangmloko 1",
-              "grade": "6.0"
-            },
-            "Armell": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "Bellvanie": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "Muhammad Lintang Ardiansyahds": {
-              "role": "Participant",
-              "school": "SMPN 3 Depok",
-              "grade": null
-            },
-            "Araufan Toefleandra Permana": {
-              "role": "Participant",
-              "school": "SD Model",
-              "grade": null
-            },
-            "KANIA TIFFANY SHAQUEENA": {
+            "FAKHIRAH SHAKILA": {
               "role": "Participant",
               "school": "SDN Malangrejo",
               "grade": null
             },
-            "Fathan Aqsha W": {
+            "Muhammad Heztamma Alfatih": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "Husein Z.A.": {
               "role": "Participant",
               "school": "SDN Krawitan",
-              "grade": "5.0"
+              "grade": 3
+            },
+            "Calief Aydan Er Atharizz": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "ALIF UMAR PRASETYA": {
+              "role": "Participant",
+              "school": "SDN Malangrejo",
+              "grade": null
+            },
+            "Nabila Aurelia Hawan": {
+              "role": "Participant",
+              "school": "SD Model",
+              "grade": null
+            },
+            "Rafiq Redian Putra Bintoro": {
+              "role": "Participant",
+              "school": "SD Karangmloko 1",
+              "grade": 4
             }
           }
         }
       }
     },
-    "Unknown": {
+    "Bali": {
       "teams": {
-        "nan": {
-          "name": "Team nan",
-          "teammates": {}
+        "1": {
+          "name": "Team 1",
+          "teammates": {
+            "Nyoman Dedi Erawan,S.Pd": {
+              "role": "Teacher",
+              "school": null,
+              "grade": null
+            },
+            "Yuli Clara BR Karo": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Putu Alita Kristina Putri. S.": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Kadek Kayobi": {
+              "role": "Ambassador",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Prya Wiguna": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Gusti Ayu Dewi Arcani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Putu Riston Arya Wedanta": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Luh Putu Sinta Anggreni": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "I Kadek Budayasa Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Dwi Andika Pranata Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Ni Luh Putu Noviani Sri Widyantini": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ketut Ayu Sukmadewi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Kadek Cantika Dwi Anjani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Rena Widiani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Kadek Bagus Bima Arta": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Komang Adi Saputra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Putu Budi Artawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Gede Agus Pratama": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Gede Ari Suartama": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Komang Indra Adi Wiguna": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "I Putu Arya Suta Wiguna": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Gede Sastra Pujangga": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Gede Elly Sanjaya": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Kadek Nanda Adi Wibawa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            }
+          }
+        },
+        "2": {
+          "name": "Team 2",
+          "teammates": {
+            "Desak Putu Ages Wintari, S.pd": {
+              "role": "Teacher",
+              "school": null,
+              "grade": null
+            },
+            "Ida Ayu Kade Wulan Budi Astiti": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Maylaffaiza Bilqis Imtihatz": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Ni Komang Leonita Putri Cahyani": {
+              "role": "Ambassador",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "I Gede Permana Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Komang Rita Pitriani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ni Kadek Widya Resmiani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Komang Ani Yasini": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Komang Budarsana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "I Komang Briananta Wijaya": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Divayana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Putu Widia Putri": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Kadek Alit Agus Wibawa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Gede Denis Soviana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Komang Fefi Fira Payanti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Komang Ade Meta Triawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Made Rediasih": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Nova Dwipayana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Komang Pebri Mikayanti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ni Kadek Rediastuti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Kadek Puspadi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "I Putu Andika Arya Dinata": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Kadek Susila Dwi Guna": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ketut Agus Redistiawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            }
+          }
+        },
+        "3": {
+          "name": "Team 3",
+          "teammates": {
+            "Nyoman Samiana, S.Pd": {
+              "role": "Teacher",
+              "school": null,
+              "grade": null
+            },
+            "Putu Meiyanti Setya Pratiwi": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Kadek Leony Agustini": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Ni Putu Ary Suwandewi": {
+              "role": "Ambassador",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ketut Yuliastini": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Luh Putu Sri Susanti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Luh Tu Widiastuti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Kadek Eka Purnama Sari": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Diantari": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Gede Aditya Pratama": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Putu Aryatiningsih": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Luh Nadya Novyanti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ketut Masia Apriliya": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Putu Aby Sunanta": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Made Apri Semadiyasa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Gede Arya Kusuma Wijaya": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "I Gusti Ngurah Kadek Sugiantara": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Gede Yuda Widi Pradana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Putu Restari": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Indriani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "I Gede Agus Supriadi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ketut Riski Susila Adnyana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Gede Satria Wiguna": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Gede Sumerta Dana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            }
+          }
+        },
+        "4": {
+          "name": "Team 4",
+          "teammates": {
+            "Luh Wedawati Ariani, S.Pd": {
+              "role": "Teacher",
+              "school": null,
+              "grade": null
+            },
+            "I Gede Abiyudha Widyadhana": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Billy Brema Perangin-angin": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Kadek Wiati": {
+              "role": "Ambassador",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "I Ketut Rendy Wedhayana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Komang Gede Wiyadnyana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Gede Angga Wirayasa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Luh Purnawati": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Sintana Utama": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "I Kadek Suganda Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ni Luh Apriliya Suriyantini": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "GD Yuda Raditiya": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Komang Tri Santiani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Luh Suhita Sanisca": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Gede Riyan Dika Pratama": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Kadek Budi Renitasari": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "I Ketut Suarsana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Luh Putu Aghin Prima Mayuni": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Komang De Budayasa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ketut Nik Januarta": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Bayu Indra Arta Wiwaha": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Gede Nova Saputra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Ni Komang Fanny Adinda Putri": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Putu Intan Maharani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            }
+          }
+        },
+        "5": {
+          "name": "Team 5",
+          "teammates": {
+            "Ketut Bandem Elyadi, S.Pd": {
+              "role": "Teacher",
+              "school": null,
+              "grade": null
+            },
+            "Ngurah Ketut Raharya Sidiaji": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Devina Christianti Br Ginting": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Luh Mas Ratna Galih": {
+              "role": "Ambassador",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Wisnu Dharmayoga": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Ketut Nova Budiarta": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Adi Saputra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Putu Ela Pramudya": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Luh Anguma Santya Devi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Luh Sacca Paramita": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ni Ketut Fynna Adinda Putri": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Komang Trizia Praniti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Darma Yoga Purnama": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ketut Danu Juni Hananta": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Yan D Budiarta": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Luh Putu Sri Sandiartini": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Komang Wahyu Hendra Gunawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Kadek Dwi Putra Merta Dana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "I Kadek Rangga Dwipayanaa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "I Kadek Wiliartawan Kurnia P": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Kadek Kevin Syandana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Gusti Putu Warsika": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Kayobi Wirdi Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Putu Linda Anggarini": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            }
+          }
+        },
+        "6": {
+          "name": "Team 6",
+          "teammates": {
+            "Drs. Nyoman Sumantra": {
+              "role": "Teacher",
+              "school": null,
+              "grade": null
+            },
+            "M. Zakky Habibi Suher": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Ni Putu Sthira Candrika": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Kadek Puspadi": {
+              "role": "Ambassador",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Gede Agus Pratama": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Luh Ayu Restiani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Putu Agus Widi Kusuma": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Kadek Cahtika Putri": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Komang Putriani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ketut Weni Meliyani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ketut Agus Apriyasa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ni Luh Putu Winda Kristiana Dewi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Made Adi Budiasa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ni Komang Leonita Putri Cahyani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Kadek Ayu Sekar Wahyuningsih": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Luh Risa Marliani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Putu Aryawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Komang Seli Anggarini": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Gede Agus Buda Sastrawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Wiati": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "I Gede Sudi Artayasa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Komang Andika Krisna Koriawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Luh Putu Pande Mitha Agustina": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Putu Ferly Pratiwi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            }
+          }
+        },
+        "7": {
+          "name": "Team 7",
+          "teammates": {
+            "Made Hela Irawadi, S.Pd": {
+              "role": "Teacher",
+              "school": null,
+              "grade": null
+            },
+            "Gusti Lanang Dananjaya": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Ni Putu Puspa Diantini": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Nengah Jesika Lingga Dewi": {
+              "role": "Ambassador",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "I Komang Sila Widi Sumerta": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Gede Satria Dharma Adi Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ketut Listarini": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Ni Luh Selvi Yantini": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "I Ketut Arya Pebri Saputra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Komang Trisna Candra Dewi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "I Ketut Andi Mahendra Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Ristiana Dewi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Putu Mayka Kaka Aditya": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Ni Luh Ayu Septiari": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Ni Putu Tiara Dinatha Putri": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Gede Candra Putra Wahyudi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ni Putu Ary Suwandewi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Komang Trisa Utami": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Kadek Agus Saputra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Luh Putu Widiasih": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Komang Indah Budi Asrini": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "I Komang Surya Harta Wiguna": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Komang Ika Andini Windayani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Dwi Ardiani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            }
+          }
+        },
+        "8": {
+          "name": "Team 8",
+          "teammates": {
+            "Made Suciani, S.Pd": {
+              "role": "Teacher",
+              "school": null,
+              "grade": null
+            },
+            "Gayuh Estu Laksono": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Putri Ana Sabilillah": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Luh Anguma Santya Devi": {
+              "role": "Ambassador",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "I Gusti Komang Agus Arta Dinarta": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ketut Sukreni": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Aulia Junitayani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Suartayasa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Luh Putu Rista Okta Prianjani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Yan Tap Paro": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Putu Keysha Indah Pratiwi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Putu Purnama Ayhodya Yasa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Putu Roy Zaky Bima Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Eka Rismayani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Kadek Putri Juliantari": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Renhard Prasetya": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Komang Ayu Nita Wulandari": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "I Putu Sinar Pratiwi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Dyari Sukma Yani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Sita Sekar Anjani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Kadek Yoga Sugiantara": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Gede Andika Pratama": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "I Kadek Jhony Setiawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Ni Komang Marta Marta Wati": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            }
+          }
+        },
+        "9": {
+          "name": "Team 9",
+          "teammates": {
+            "Sang ayu Putu Ekawati, S.Pd.": {
+              "role": "Teacher",
+              "school": null,
+              "grade": null
+            },
+            "Made Bayu Ariada": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Komang Yulia Purnama Yanti": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Luh Aliya Putri Noviani": {
+              "role": "Ambassador",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Purna Hari Sanjaya": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Gusti Ayu WIndy Paramita": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ni Komang Suarsani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Putu Mira Cahayani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Ayu Cahya Kimorin": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Putu Reva Adi Pratama": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Kadek Agustina Pastika Dewi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Gusti Ayu Putu Wrestika Dinayanti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Gede Randy Asta Wiguna": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Gede Sedana Arta": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Kadek Satya Wiguna": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Gede Agus Ari Sukrawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Putu Adelia Flora Amadis": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Komang Riski Asta Gunawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "I Gusti Ayu Kadek Puspawati": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Komang Mas Novi Damayanti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Komang Jordan Riski Adriana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Putu Erik Purnama Yasa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Ni Luh Adnyani Putri": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Perdi Nata": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            }
+          }
+        },
+        "10": {
+          "name": "Team 10",
+          "teammates": {
+            "Salsa Ursula Ogos, S.Pd.Gr": {
+              "role": "Teacher",
+              "school": null,
+              "grade": null
+            },
+            "Luh Putu Vika Yuniantini": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Sagita Imtias Rahmani": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Putu Intan Maharani": {
+              "role": "Ambassador",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "I Gede Ariada": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Putu Fendy Harjendra Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "I Kadek Alit Sudiartawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Kadek Arta Gunawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Gede Indra Wirawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Nengah Jesika Lingga Dewi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Luh Widya Indah Lestari": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Luh Eka Sukriyani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ni Putu Indra Bella Prasetia Ningsih": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Gede Lanang Mahardinata": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Windya Pertiwi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Komang Putri Namira Yanti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Kadek Juni Ariastini": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Kadek Andre Gunawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Gusti Ngurah Dipayana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Putu Damayanti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "I Gede Agus Putrawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "I Komang Arjun Yudi Pandawa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Putu Artika Satya Wiguna": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Kadek Juliastika": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            }
+          }
+        },
+        "11": {
+          "name": "Team 11",
+          "teammates": {
+            "Nyoman Subana, S.Pd": {
+              "role": "Teacher",
+              "school": null,
+              "grade": null
+            },
+            "Ni Luh Feby Diantari": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Ni Kadek Dwik Surya Pradnyani": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Putu Ella Pramudya": {
+              "role": "Ambassador",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Yuda Wira Utama": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "I Gede Meica Candra Winata": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Putu Agus Wiratama": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Gusti Ngurah Eka Ginanta": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Putu Puspitarini": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Putu Agus Diastana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Luh Aliya Putri Novianti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Putu Nita Damayanti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Komang Deva Sastrawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Riyanta Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Mas Ristayati": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "I Gusti Ayu Kadek Anita Yani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Ni Komang Widi Sukasari": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Komang Tristan Arta Wiguna": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "I Ketut Aditya Wirawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Luh Putu Juni SIntia Wati": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Putu Anandini Citra Prameswari": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Gede Yuda Restiawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ni Luh Putu Puspa Juliantari": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Amelia": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            }
+          }
+        },
+        "12": {
+          "name": "Team 12",
+          "teammates": {
+            "Putu Ardika, S.Pd": {
+              "role": "Teacher",
+              "school": null,
+              "grade": null
+            },
+            "Komang Gede Samudra Artajaya. W": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Putu Anggi Yumika Shanti": {
+              "role": "Intern",
+              "school": null,
+              "grade": null
+            },
+            "Ketut Masia Apriliya": {
+              "role": "Ambassador",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Putu Ayu Melinda Putri": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Nova Adi Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Putu Angga Ariawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Gede Anggara Yasa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Komang Yuli Restana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Komang Winda Noviadnyani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ketut Novi Diana Widia Sari": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "I Kadek Satria Wiguna": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Komang Tegar Ariesta Satya Darma": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "I Gede Yoga Ariawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "I Gede Arya Suriadnyana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "I Komang Yogi Satriawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Luh Mas Ratna Galih": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Arya Sujana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Kadek Deva Junarta Rama Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Luh Ayu Puspa Dewi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Gede Windu Erawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Gusti Putu Arya Dharma Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Komang Ulan Meisa Wati": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Kadek Agus Prasetya": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            }
+          }
         }
       }
     }
