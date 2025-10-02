@@ -6,7 +6,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Emotion Tracker – Check-in (Group)</title>
+  <title>Emotion Tracker – Check-in (Individual Members)</title>
   <style>
     :root { --bg:#edf6ef; --card:#ffffff; --text:#0b1f14; --muted:#5a6b5f; --border:#cfe2d5; --primary:#14532d; --primary-ink:#ffffff; --accent:#1a7f46; --ring:#9ae6b4; }
     *{ box-sizing: border-box; }
@@ -24,22 +24,29 @@
     .grid{ display:grid; gap:16px; }
     .grid-3{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
     label{ font-size:13px; font-weight:700; display:block; margin-bottom:6px; color:#0f2917; }
-    input[type="text"], select, textarea{ width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); outline:none; background:#fbfefc; }
-    input[type="text"]:focus, select:focus, textarea:focus{ box-shadow: 0 0 0 3px rgba(46,125,75,0.18); border-color: var(--accent);}  
+    input[type="text"], input[type="number"], select, textarea{ width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); outline:none; background:#fbfefc; }
+    input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:focus{ box-shadow: 0 0 0 3px rgba(46,125,75,0.18); border-color: var(--accent);}  
     input[disabled], select[disabled]{ background:#f3f3f7; color:#aaa; }
     .row{ display:flex; gap:12px; align-items:center; flex-wrap: wrap; }
-    .chips{ display:flex; gap:8px; flex-wrap:wrap; }
-    .chip{ border:1px solid var(--border); border-radius:12px; padding:8px 12px; cursor:pointer; background:#fff; transition: transform .05s ease; }
-    .chip.active{ outline:2px solid var(--primary); background: #e8f5ec; }
-    .btn{ background:var(--primary); color:var(--primary-ink); padding:10px 14px; border:none; border-radius:12px; cursor:pointer; box-shadow:0 1px 0 rgba(0,0,0,0.06);} 
+    .btn{ background:var(--primary); color:var(--primary-ink); padding:10px 14px; border:none; border-radius:12px; cursor:pointer; box-shadow:0 1px 0 rgba(0,0,0,0.06); font-weight:600; font-size:14px;} 
     .btn:hover{ filter:brightness(1.05);} 
     .btn:active{ transform: translateY(1px);} 
     .btn[disabled]{ background:#bbb; cursor:not-allowed; }
     .footer{ color:var(--muted); font-size:12px; }
     .inline-hint{ color:var(--muted); font-size:12px; margin-top:4px; }
     .two{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
-    .roster-tag{ display:inline-block; padding:6px 10px; border-radius:999px; border:1px solid var(--border); margin:2px; background:#fff; font-size:12px; }
-    @media (max-width: 800px){ .grid-3{ grid-template-columns:1fr; } .two{ grid-template-columns:1fr; } }
+    .member-eval{ background:#f9fcfa; border:1px solid var(--border); border-radius:12px; padding:16px; margin-bottom:16px; }
+    .member-eval h3{ margin:0 0 12px; font-size:16px; color:var(--primary); }
+    .eval-grid{ display:grid; grid-template-columns: 1fr 1fr 100px; gap:12px; align-items:start; }
+    .eval-group{ display:flex; flex-direction:column; gap:6px; }
+    .eval-group input{ padding:8px 10px; font-size:13px; }
+    .score-input{ display:flex; flex-direction:column; }
+    .score-input label{ margin-bottom:6px; }
+    .score-input input{ width:100%; text-align:center; font-size:16px; font-weight:700; }
+    .add-member-section{ margin-top:24px; padding-top:24px; border-top:2px solid var(--border); }
+    .add-member-header{ display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+    .add-member-header label{ margin:0; }
+    @media (max-width: 800px){ .grid-3{ grid-template-columns:1fr; } .two{ grid-template-columns:1fr; } .eval-grid{ grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
@@ -55,11 +62,12 @@
 
   <div class="container">
     <div class="card" style="margin-bottom:16px">
-      <h1>Team Emotion Check‑in (Group)</h1>
-      <p class="desc">Pick the event and group, celebrate 3 strengths, note 3 growth edges, choose an emotion, and submit.</p>
+      <h1>Team Member Evaluation</h1>
+      <p class="desc">Pick the event and team, then evaluate each member individually with 3 pluses, 3 minuses, and a score out of 10.</p>
     </div>
 
-    <div class="card">
+    <!-- Step 1: Basic Info -->
+    <div class="card" id="step1">
       <div class="grid">
         <div>
           <label>Evaluator name</label>
@@ -77,46 +85,39 @@
           </div>
         </div>
 
-        <div class="two">
-          <div>
-            <label>Team / Group</label>
-            <select id="team" disabled></select>
-          </div>
-          <div>
-            <label>Team roster</label>
-            <div id="teamRoster" class="inline-hint">Select a team to view member names.</div>
-          </div>
-        </div>
-
         <div>
-          <label>3 pluses</label>
-          <div class="grid grid-3">
-            <input type="text" id="p1" placeholder="Strength 1" />
-            <input type="text" id="p2" placeholder="Strength 2" />
-            <input type="text" id="p3" placeholder="Strength 3" />
-          </div>
-          <div class="inline-hint">Exactly 3 items.</div>
-        </div>
-
-        <div>
-          <label>3 minuses</label>
-          <div class="grid grid-3">
-            <input type="text" id="m1" placeholder="Growth edge 1" />
-            <input type="text" id="m2" placeholder="Growth edge 2" />
-            <input type="text" id="m3" placeholder="Growth edge 3" />
-          </div>
-          <div class="inline-hint">Exactly 3 items.</div>
-        </div>
-
-        <div>
-          <label>Emotion</label>
-          <div class="chips" id="emotions"></div>
+          <label>Team / Group</label>
+          <select id="team" disabled></select>
         </div>
 
         <div class="row">
-          <button class="btn" id="submitBtn" disabled>Submit</button>
-          <span class="footer" id="status"></span>
+          <button class="btn" id="nextBtn" disabled>Next: Evaluate Members</button>
+          <span class="footer" id="statusStep1"></span>
         </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Member Evaluations -->
+    <div class="card" id="step2" style="display:none;">
+      <div style="margin-bottom:20px;">
+        <button class="btn" id="backBtn" style="background:var(--muted);">← Back</button>
+      </div>
+
+      <div id="membersList"></div>
+
+      <!-- Add New Member Section -->
+      <div class="add-member-section">
+        <div class="add-member-header">
+          <label>Add temporary member (not saved to directory.json)</label>
+          <button class="btn" id="addMemberBtn" style="padding:6px 12px; font-size:20px; line-height:1;">+</button>
+        </div>
+        <input type="text" id="newMemberName" placeholder="Enter new member name" style="max-width:300px;" />
+        <div class="inline-hint">This member will only be saved to the database for this evaluation.</div>
+      </div>
+
+      <div class="row" style="margin-top:24px;">
+        <button class="btn" id="submitBtn" disabled>Submit All Evaluations</button>
+        <span class="footer" id="status"></span>
       </div>
     </div>
 
@@ -142,16 +143,15 @@
     };
     // ============================
 
-    const EMOTIONS = ["😊","😐","😞","😡","😎","🤝","🚀","🧩"];
     const EVENTS = [
       { id: 'learning_space', label: 'Learning Space' },
       { id: 'story_a_night', label: 'Story a Night' },
       { id: 'young_ambassadors_training', label: 'Young Ambassadors Training' }
     ];
 
-    let selectedEmotion = "";
     let directory = null;
     let authUid = null;
+    let currentMembers = []; // Will hold member names for evaluation
 
     // Init Firebase
     firebase.initializeApp(firebaseConfig);
@@ -161,132 +161,231 @@
     // Anonymous auth for write permissions
     auth.onAuthStateChanged(user => {
       authUid = user ? user.uid : null;
-      updateSubmitState();
+      updateNextBtnState();
     });
     auth.signInAnonymously().catch(err => {
       console.error(err);
-      const status = document.getElementById('status');
+      const status = document.getElementById('statusStep1');
       status.textContent = 'Auth failed: ' + (err && err.code ? err.code : 'see console');
-      updateSubmitState();
     });
 
     // Load directory.json
     fetch('directory.json')
       .then(r => r.json())
       .then(data => { directory = data.cities || {}; initForm(); })
-      .catch(err => { console.error(err); document.getElementById('status').textContent = "Failed to load directory.json"; });
+      .catch(err => { 
+        console.error(err); 
+        document.getElementById('statusStep1').textContent = "Failed to load directory.json"; 
+      });
 
     function initForm(){
       const eventSel = document.getElementById('event');
       const citySel = document.getElementById('city');
       const teamSel = document.getElementById('team');
-      const rosterBox = document.getElementById('teamRoster');
 
       // Populate events
-      eventSel.innerHTML = '<option value="">Select event</option>' + EVENTS.map(e => `<option value="${e.id}">${e.label}</option>`).join('');
+      eventSel.innerHTML = '<option value="">Select event</option>' + 
+        EVENTS.map(e => `<option value="${e.id}">${e.label}</option>`).join('');
 
       // Populate city
-      citySel.innerHTML = '<option value="">Select city</option>' + Object.keys(directory).map(c => `<option value="${c}">${c}</option>`).join('');
+      citySel.innerHTML = '<option value="">Select city</option>' + 
+        Object.keys(directory).map(c => `<option value="${c}">${c}</option>`).join('');
 
       citySel.addEventListener('change', () => {
         teamSel.disabled = !citySel.value;
-        rosterBox.innerHTML = 'Select a team to view member names.';
         teamSel.innerHTML = '<option value="">Select team</option>';
-        if (!citySel.value) { return updateSubmitState(); }
+        if (!citySel.value) { return updateNextBtnState(); }
         const teams = directory[citySel.value]?.teams || {};
         teamSel.innerHTML = '<option value="">Select team</option>' +
           Object.entries(teams).map(([id, t]) => `<option value="${id}">${t.name || ('Team ' + id)}</option>`).join('');
-        updateSubmitState();
+        updateNextBtnState();
       });
 
-      teamSel.addEventListener('change', () => {
-        rosterBox.innerHTML = '';
-        if (!teamSel.value) { updateSubmitState(); return; }
-        const mates = directory[citySel.value]?.teams?.[teamSel.value]?.teammates || {};
-        const names = Object.keys(mates);
-        if (names.length === 0) {
-          rosterBox.textContent = 'No teammate names found for this team.';
-        } else {
-          rosterBox.innerHTML = names.map(n => `<span class="roster-tag">${n}</span>`).join(' ');
-        }
-        updateSubmitState();
-      });
+      teamSel.addEventListener('change', updateNextBtnState);
+      eventSel.addEventListener('change', updateNextBtnState);
+      document.getElementById('evaluatorName').addEventListener('input', updateNextBtnState);
 
-      // Emotion chips
-      const emoWrap = document.getElementById('emotions');
-      EMOTIONS.forEach(e => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'chip';
-        btn.textContent = e;
-        btn.addEventListener('click', () => {
-          selectedEmotion = e;
-          [...emoWrap.children].forEach(c => c.classList.remove('active'));
-          btn.classList.add('active');
-          updateSubmitState();
-        });
-        emoWrap.appendChild(btn);
-      });
-
-      // Inputs
-      ['evaluatorName','p1','p2','p3','m1','m2','m3','event'].forEach(id => {
-        document.getElementById(id).addEventListener('input', updateSubmitState);
-        document.getElementById(id).addEventListener('change', updateSubmitState);
-      });
-
-      document.getElementById('submitBtn').addEventListener('click', submit);
+      document.getElementById('nextBtn').addEventListener('click', goToStep2);
+      document.getElementById('backBtn').addEventListener('click', goToStep1);
+      document.getElementById('addMemberBtn').addEventListener('click', addNewMember);
+      document.getElementById('submitBtn').addEventListener('click', submitAll);
     }
 
-    function canSubmit(){
-      const status = document.getElementById('status');
-
+    function updateNextBtnState(){
       const name = document.getElementById('evaluatorName').value.trim();
       const eventId = document.getElementById('event').value;
       const city = document.getElementById('city').value;
       const team = document.getElementById('team').value;
-      const pluses = [p1.value.trim(), p2.value.trim(), p3.value.trim()];
-      const minuses = [m1.value.trim(), m2.value.trim(), m3.value.trim()];
-
-      const ok = !!(name && eventId && city && team && selectedEmotion && pluses.every(Boolean) && minuses.every(Boolean));
-      if (!authUid) { status.textContent = 'Waiting for Firebase Auth (enable Anonymous sign-in).'; }
-      else if (ok) { status.textContent = ''; }
-      return ok && !!authUid;
+      const ok = !!(name && eventId && city && team && authUid);
+      document.getElementById('nextBtn').disabled = !ok;
+      
+      if (!authUid) {
+        document.getElementById('statusStep1').textContent = 'Waiting for Firebase Auth...';
+      } else if (ok) {
+        document.getElementById('statusStep1').textContent = '';
+      }
     }
 
-    function updateSubmitState(){
-      document.getElementById('submitBtn').disabled = !canSubmit();
-    }
-
-    function submit(){
-      if (!canSubmit()) return;
-      const status = document.getElementById('status');
-      status.textContent = 'Submitting…';
-
+    function goToStep2(){
       const city = document.getElementById('city').value;
       const team = document.getElementById('team').value;
       const mates = directory[city]?.teams?.[team]?.teammates || {};
-      const rosterNames = Object.keys(mates);
+      currentMembers = Object.keys(mates);
+
+      if (currentMembers.length === 0) {
+        alert('No members found in this team. You can add members manually in the next step.');
+      }
+
+      document.getElementById('step1').style.display = 'none';
+      document.getElementById('step2').style.display = 'block';
+      
+      renderMemberEvaluations();
+    }
+
+    function goToStep1(){
+      document.getElementById('step2').style.display = 'none';
+      document.getElementById('step1').style.display = 'block';
+    }
+
+    function renderMemberEvaluations(){
+      const container = document.getElementById('membersList');
+      container.innerHTML = '';
+
+      if (currentMembers.length === 0) {
+        container.innerHTML = '<div class="inline-hint" style="text-align:center; padding:20px;">No members yet. Add members using the button below.</div>';
+      }
+
+      currentMembers.forEach((memberName, idx) => {
+        const div = document.createElement('div');
+        div.className = 'member-eval';
+        div.innerHTML = `
+          <h3>${memberName}</h3>
+          <div class="eval-grid">
+            <div class="eval-group">
+              <label>3 Pluses</label>
+              <input type="text" data-member="${idx}" data-field="p1" placeholder="Strength 1" />
+              <input type="text" data-member="${idx}" data-field="p2" placeholder="Strength 2" />
+              <input type="text" data-member="${idx}" data-field="p3" placeholder="Strength 3" />
+            </div>
+            <div class="eval-group">
+              <label>3 Minuses</label>
+              <input type="text" data-member="${idx}" data-field="m1" placeholder="Growth edge 1" />
+              <input type="text" data-member="${idx}" data-field="m2" placeholder="Growth edge 2" />
+              <input type="text" data-member="${idx}" data-field="m3" placeholder="Growth edge 3" />
+            </div>
+            <div class="score-input">
+              <label>Score /10</label>
+              <input type="number" data-member="${idx}" data-field="score" min="0" max="10" placeholder="0-10" />
+            </div>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+
+      // Add event listeners to all inputs
+      container.querySelectorAll('input').forEach(input => {
+        input.addEventListener('input', updateSubmitBtnState);
+      });
+
+      updateSubmitBtnState();
+    }
+
+    function addNewMember(){
+      const nameInput = document.getElementById('newMemberName');
+      const newName = nameInput.value.trim();
+      
+      if (!newName) {
+        alert('Please enter a member name');
+        return;
+      }
+
+      if (currentMembers.includes(newName)) {
+        alert('This member already exists in the list');
+        return;
+      }
+
+      currentMembers.push(newName);
+      nameInput.value = '';
+      renderMemberEvaluations();
+    }
+
+    function updateSubmitBtnState(){
+      const allInputs = document.querySelectorAll('#membersList input');
+      let allFilled = true;
+
+      if (currentMembers.length === 0) {
+        document.getElementById('submitBtn').disabled = true;
+        return;
+      }
+
+      currentMembers.forEach((_, idx) => {
+        const memberInputs = document.querySelectorAll(`input[data-member="${idx}"]`);
+        memberInputs.forEach(input => {
+          if (!input.value.trim()) {
+            allFilled = false;
+          }
+        });
+      });
+
+      document.getElementById('submitBtn').disabled = !allFilled;
+    }
+
+    function submitAll(){
+      const status = document.getElementById('status');
+      status.textContent = 'Submitting…';
+
+      const evaluatorName = document.getElementById('evaluatorName').value.trim();
+      const event = document.getElementById('event').value;
+      const city = document.getElementById('city').value;
+      const team = document.getElementById('team').value;
+
+      const memberEvaluations = [];
+
+      currentMembers.forEach((memberName, idx) => {
+        const inputs = document.querySelectorAll(`input[data-member="${idx}"]`);
+        const evalData = {
+          memberName,
+          pluses: [],
+          minuses: [],
+          score: 0
+        };
+
+        inputs.forEach(input => {
+          const field = input.dataset.field;
+          const value = input.value.trim();
+
+          if (field.startsWith('p')) {
+            evalData.pluses.push(value);
+          } else if (field.startsWith('m')) {
+            evalData.minuses.push(value);
+          } else if (field === 'score') {
+            evalData.score = parseInt(value) || 0;
+          }
+        });
+
+        memberEvaluations.push(evalData);
+      });
 
       const entry = {
-        evaluatorName: document.getElementById('evaluatorName').value.trim(),
+        evaluatorName,
         evaluatorId: authUid,
-        event: document.getElementById('event').value,
+        event,
         city,
         team,
-        rosterNames, // captured for convenience; remove if you prefer to look it up in the dashboard
-        pluses: [p1.value.trim(), p2.value.trim(), p3.value.trim()],
-        minuses: [m1.value.trim(), m2.value.trim(), m3.value.trim()],
-        emotion: selectedEmotion,
+        memberEvaluations,
         createdAt: Date.now()
       };
 
       firebase.database().ref('entries').push(entry).then(() => {
-        status.textContent = 'Submitted! ✅';
-        // reset selection (keep evaluator name, city, team, event for batch entry if you prefer reset all)
-        [p1,p2,p3,m1,m2,m3].forEach(i => i.value = '');
-        selectedEmotion = '';
-        [...document.getElementById('emotions').children].forEach(c => c.classList.remove('active'));
-        updateSubmitState();
+        status.textContent = 'Submitted! ✅ All member evaluations saved.';
+        setTimeout(() => {
+          // Reset and go back to step 1
+          goToStep1();
+          document.querySelectorAll('#membersList input').forEach(i => i.value = '');
+          document.getElementById('newMemberName').value = '';
+          currentMembers = [];
+          status.textContent = '';
+        }, 2000);
       }).catch(err => {
         console.error(err);
         status.textContent = 'Failed to submit. Check console.';
