@@ -6,44 +6,46 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Emotion Tracker – Dashboard</title>
+  <title>Team Member Evaluation – Dashboard</title>
   <style>
     :root { --bg:#edf6ef; --card:#ffffff; --text:#0b1f14; --muted:#5a6b5f; --border:#cfe2d5; --primary:#14532d; --primary-ink:#ffffff; --accent:#1a7f46; --ring:#9ae6b4; }
     body{ margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background:linear-gradient(160deg, #f0f7f2, #e7f2ea); color:var(--text); }
-    .container{ max-width:1100px; margin:0 auto; padding:24px; }
+    .container{ max-width:1200px; margin:0 auto; padding:24px; }
     .nav{ position:sticky; top:0; z-index:10; backdrop-filter: blur(6px); background:rgba(255,255,255,0.6); border-bottom:1px solid var(--border); }
-    .nav-inner{ max-width:1100px; margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; }
+    .nav-inner{ max-width:1200px; margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; }
     .brand{ font-weight:700; color:var(--primary); letter-spacing:0.2px; }
     .nav-link{ padding:8px 12px; border-radius:10px; text-decoration:none; color:var(--text); font-weight:600; }
     .nav-link:hover{ background:#e6f3ea; }
     .nav-link.active{ background:var(--primary); color:var(--primary-ink); }
     .card{ background:var(--card); border:1px solid var(--border); border-radius:18px; padding:22px; box-shadow: 0 6px 20px rgba(20,83,45,0.06); }
     h1{ font-size:24px; margin:0 0 6px; }
+    h2{ font-size:18px; margin:0 0 12px; color:var(--primary); }
     .muted{ color:var(--muted); }
-    .grid{ display:grid; gap:12px; }
     .row{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
-    .pill{ border:1px solid var(--border); padding:6px 10px; border-radius:999px; }
-    .item{ display:flex; justify-content:space-between; align-items:center; border:1px solid var(--border); border-radius:12px; padding:12px; }
-    .btn{ background:var(--primary); color:var(--primary-ink); padding:10px 14px; border:none; border-radius:12px; cursor:pointer; box-shadow:0 1px 0 rgba(0,0,0,0.06);} 
+    .btn{ background:var(--primary); color:var(--primary-ink); padding:10px 14px; border:none; border-radius:12px; cursor:pointer; box-shadow:0 1px 0 rgba(0,0,0,0.06); font-weight:600;} 
     .btn:hover{ filter:brightness(1.05);} 
     .btn:active{ transform: translateY(1px);} 
     select{ padding:8px 10px; border-radius:10px; border:1px solid var(--border); }
-    .details{ margin-top:10px; border-top:1px dashed var(--border); padding-top:10px; }
-    .note{ background:#f4fbf6; border:1px solid var(--border); border-radius:10px; padding:10px; }
-    .note h4{ margin:0 0 6px; font-size:13px; color:#0f2917; }
-    .note-list{ display:grid; gap:6px; grid-template-columns: 1fr 1fr; }
-    .badge{ background:#e6f3ea; color:#0b3d24; border:1px solid var(--border); border-radius:999px; padding:4px 8px; font-size:12px; }
-    .roster{ display:flex; gap:6px; flex-wrap:wrap; margin-top:6px; }
-    .roster-tag{ display:inline-block; padding:4px 8px; border-radius:999px; border:1px solid var(--border); background:#fff; font-size:12px; }
+    .team-section{ border:1px solid var(--border); border-radius:12px; padding:16px; margin-bottom:16px; background:#f9fcfa; }
+    .member-card{ background:#fff; border:1px solid var(--border); border-radius:10px; padding:14px; margin-bottom:12px; }
+    .member-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+    .member-name{ font-weight:700; font-size:15px; }
+    .score-badge{ background:var(--primary); color:var(--primary-ink); padding:4px 12px; border-radius:999px; font-weight:700; font-size:14px; }
+    .eval-details{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:10px; padding-top:10px; border-top:1px dashed var(--border); }
+    .eval-column h4{ margin:0 0 6px; font-size:12px; font-weight:700; text-transform:uppercase; color:var(--muted); }
+    .eval-column ul{ margin:0; padding-left:18px; font-size:13px; }
+    .eval-column li{ margin-bottom:4px; }
+    .evaluator-info{ font-size:12px; color:var(--muted); margin-top:8px; }
+    .avg-score{ display:inline-block; background:#e6f3ea; color:#0b3d24; padding:6px 12px; border-radius:999px; font-weight:700; font-size:14px; margin-left:8px; }
+    @media (max-width: 768px){ .eval-details{ grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
-
   <div class="nav">
     <div class="nav-inner">
       <div class="brand">🌿 Pulse</div>
       <div class="links">
-        <a href="index.html" class="nav-link ">Check‑in</a>
+        <a href="index.html" class="nav-link">Check‑in</a>
         <a href="dashboard.html" class="nav-link active">Dashboard</a>
       </div>
     </div>
@@ -51,7 +53,12 @@
 
   <div class="container">
     <div class="card" style="margin-bottom:16px">
-      <h1 style="display:flex; align-items:center; justify-content:space-between;">Leaderboard <span style="display:flex; gap:8px;"><button class="btn" id="exportBtn" title="Download CSV">⬇️ Export CSV</button></span></h1>
+      <h1 style="display:flex; align-items:center; justify-content:space-between;">
+        Team Member Evaluations 
+        <span style="display:flex; gap:8px;">
+          <button class="btn" id="exportBtn" title="Download CSV">⬇️ Export CSV</button>
+        </span>
+      </h1>
       <div class="row">
         <div>
           <label class="muted" style="font-size:12px; display:block;">Event</label>
@@ -79,17 +86,15 @@
     </div>
 
     <div class="card">
-      <div id="list" class="grid"></div>
+      <div id="list"></div>
     </div>
   </div>
 
-  <!-- Firebase SDKs (Compat) -->
   <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database-compat.js"></script>
 
   <script>
-    // ======= Configure me (same as index.html) =======
     const firebaseConfig = {
       apiKey: "AIzaSyBog7q44JN9wVjfk2wy7FqS80NLJC5348g",
       authDomain: "emotion-tracker-7f11c.firebaseapp.com",
@@ -99,7 +104,6 @@
       messagingSenderId: "232586277659",
       appId: "1:232586277659:web:1fcff097243c8fa1ef99be"
     };
-    // ================================================
 
     const EVENTS = [
       { id: '', label: 'All events' },
@@ -115,11 +119,9 @@
     let directory = null;
     let allEntries = [];
 
-    // Anonymous sign in to read entries if rules require auth
     auth.onAuthStateChanged(()=>{}); 
-    auth.signInAnonymously().catch(e=>console.warn('Auth not required for read if rules allow:', e && e.code));
+    auth.signInAnonymously().catch(e=>console.warn('Auth:', e && e.code));
 
-    // Load directory for filters
     fetch('directory.json').then(r => r.json()).then(data => {
       directory = data.cities || {};
       initFilters();
@@ -136,11 +138,9 @@
       const citySel = document.getElementById('cityFilter');
       const teamSel = document.getElementById('teamFilter');
 
-      // Event filter
       eventSel.innerHTML = EVENTS.map(e => `<option value="${e.id}">${e.label}</option>`).join('');
       eventSel.addEventListener('change', render);
 
-      // City filter
       citySel.innerHTML = '<option value="">All cities</option>' +
         Object.keys(directory).map(c => `<option value="${c}">${c}</option>`).join('');
       citySel.addEventListener('change', () => {
@@ -185,118 +185,155 @@
         withinWindow(e.createdAt || 0, windowDays)
       );
 
-      // Aggregate: city -> team -> event -> emotion counts
-      const agg = {};
-      for (const e of filtered){
-        const key = `${e.city}|${e.team}|${e.event||''}`;
-        if (!agg[key]) agg[key] = { city:e.city, team:e.team, event:e.event||'', emotions:{} };
-        agg[key].emotions[e.emotion] = (agg[key].emotions[e.emotion] || 0) + 1;
-      }
-      const rows = Object.values(agg).sort((a,b)=>{
-        const asum = Object.values(a.emotions).reduce((p,c)=>p+c,0);
-        const bsum = Object.values(b.emotions).reduce((p,c)=>p+c,0);
-        return bsum - asum;
-      });
+      meta.textContent = `${filtered.length} evaluations`;
 
-      meta.textContent = `${filtered.length} check-ins`;
-
-      // map group key to their recent entries
-      const byKey = {};
-      for (const e of filtered){
-        const key = `${e.city}|${e.team}|${e.event||''}`;
-        (byKey[key] ||= []).push(e);
+      if (filtered.length === 0) {
+        list.innerHTML = '<div class="muted">No evaluations yet.</div>';
+        return;
       }
 
-      list.innerHTML = rows.map(row => {
-        const pills = Object.entries(row.emotions)
-          .sort((a,b)=>b[1]-a[1])
-          .map(([emo,count]) => `<span class="pill">${emo} ${count}</span>`).join(' ');
-        const key = `${row.city}|${row.team}|${row.event||''}`;
-        const notes = (byKey[key] || []).sort((a,b)=>b.createdAt-a.createdAt).slice(0,3);
-        const noteHtml = notes.map((n,i)=>{
-          const plus = (n.pluses||[]).map(x=>`<li>+ ${escapeHtml(x)}</li>`).join('');
-          const minus = (n.minuses||[]).map(x=>`<li>− ${escapeHtml(x)}</li>`).join('');
-          const when = n.createdAt ? new Date(n.createdAt).toLocaleString() : '';
-          return `<div class="note">
-            <h4>Entry ${i+1} • ${when}</h4>
-            <div class="note-list">
-              <ul style="margin:0; padding-left:18px">${plus}</ul>
-              <ul style="margin:0; padding-left:18px">${minus}</ul>
+      const groups = {};
+      for (const entry of filtered) {
+        const key = `${entry.city}|${entry.team}|${entry.event || ''}`;
+        if (!groups[key]) {
+          groups[key] = { city: entry.city, team: entry.team, event: entry.event || '', entries: [] };
+        }
+        groups[key].entries.push(entry);
+      }
+
+      const sortedGroups = Object.values(groups).sort((a, b) => b.entries.length - a.entries.length);
+
+      list.innerHTML = sortedGroups.map(group => {
+        const teamName = directory[group.city]?.teams?.[group.team]?.name || `Team ${group.team}`;
+        const eventLabel = EVENT_LABEL[group.event] || 'Unspecified Event';
+
+        const memberData = {};
+        
+        for (const entry of group.entries) {
+          const evaluations = entry.memberEvaluations || [];
+          
+          for (const memberEval of evaluations) {
+            const name = memberEval.memberName;
+            if (!memberData[name]) {
+              memberData[name] = { scores: [], pluses: [], minuses: [], evaluators: [] };
+            }
+            
+            memberData[name].scores.push(memberEval.score || 0);
+            memberData[name].pluses.push(...(memberEval.pluses || []));
+            memberData[name].minuses.push(...(memberEval.minuses || []));
+            memberData[name].evaluators.push({ name: entry.evaluatorName, date: entry.createdAt });
+          }
+        }
+
+        const membersWithAvg = Object.entries(memberData).map(([name, data]) => {
+          const avgScore = data.scores.length > 0 
+            ? (data.scores.reduce((a, b) => a + b, 0) / data.scores.length).toFixed(1)
+            : 0;
+          return { name, data, avgScore: parseFloat(avgScore) };
+        }).sort((a, b) => b.avgScore - a.avgScore);
+
+        const teamAvgScore = membersWithAvg.length > 0
+          ? (membersWithAvg.reduce((sum, m) => sum + m.avgScore, 0) / membersWithAvg.length).toFixed(1)
+          : 0;
+
+        const membersHtml = membersWithAvg.map(({ name, data, avgScore }) => {
+          const recentEvals = data.evaluators.sort((a, b) => b.date - a.date).slice(0, 3);
+          const recentPluses = data.pluses.slice(0, 6);
+          const recentMinuses = data.minuses.slice(0, 6);
+
+          const plusesHtml = recentPluses.map(p => `<li>+ ${escapeHtml(p)}</li>`).join('');
+          const minusesHtml = recentMinuses.map(m => `<li>− ${escapeHtml(m)}</li>`).join('');
+
+          const evaluatorsHtml = recentEvals.map(e => 
+            `${escapeHtml(e.name)} (${new Date(e.date).toLocaleDateString()})`
+          ).join(', ');
+
+          return `
+            <div class="member-card">
+              <div class="member-header">
+                <span class="member-name">${escapeHtml(name)}</span>
+                <span class="score-badge">${avgScore}/10</span>
+              </div>
+              <div class="evaluator-info">
+                Evaluated by: ${evaluatorsHtml} • ${data.scores.length} evaluation${data.scores.length !== 1 ? 's' : ''}
+              </div>
+              <div class="eval-details">
+                <div class="eval-column">
+                  <h4>Strengths</h4>
+                  <ul>${plusesHtml || '<li class="muted">No strengths recorded</li>'}</ul>
+                </div>
+                <div class="eval-column">
+                  <h4>Growth Areas</h4>
+                  <ul>${minusesHtml || '<li class="muted">No growth areas recorded</li>'}</ul>
+                </div>
+              </div>
             </div>
-          </div>`;
+          `;
         }).join('');
 
-        const teamName = directory[row.city]?.teams?.[row.team]?.name || `Team ${row.team}`;
-        const roster = directory[row.city]?.teams?.[row.team]?.teammates || {};
-        const rosterHtml = Object.keys(roster).map(n=>`<span class="roster-tag">${escapeHtml(n)}</span>`).join(' ');
-
-        return `<div class="item" style="flex-direction:column; align-items:stretch;">
-          <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
-            <div>
-              <div style="font-weight:700; font-size:16px">${escapeHtml(teamName)}</div>
-              <div class="muted" style="font-size:12px">${escapeHtml(row.city)} • ${escapeHtml(EVENT_LABEL[row.event]||'Unspecified Event')}</div>
-              <div class="roster">${rosterHtml || '<span class="muted">Roster unknown</span>'}</div>
+        return `
+          <div class="team-section">
+            <h2>
+              ${escapeHtml(teamName)}
+              <span class="avg-score">Team Avg: ${teamAvgScore}/10</span>
+            </h2>
+            <div class="muted" style="font-size:13px; margin-bottom:16px;">
+              ${escapeHtml(group.city)} • ${escapeHtml(eventLabel)} • ${group.entries.length} evaluation${group.entries.length !== 1 ? 's' : ''}
             </div>
-            <div class="row">${pills}</div>
+            ${membersHtml}
           </div>
-          <div class="details">${noteHtml || '<div class="muted">No notes yet.</div>'}</div>
-        </div>`;
-      }).join('') || '<div class="muted">No data yet.</div>';
+        `;
+      }).join('');
     }
 
     function escapeHtml(s){
-      return String(s ?? '')
-        .replace(/&/g,'&amp;')
-        .replace(/</g,'&lt;')
-        .replace(/>/g,'&gt;')
-        .replace(/\"/g,'&quot;')
-        .replace(/'/g,'&#39;');
+      return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\"/g,'&quot;').replace(/'/g,'&#39;');
     }
 
-    // CSV of current filtered entries
-    function toCSV(rows){
-      const header = ['createdAt','event','city','team','teamName','emotion','evaluatorName','rosterNames','plus1','plus2','plus3','minus1','minus2','minus3'];
+    function toCSV(entries){
+      const header = ['createdAt','event','city','team','teamName','evaluatorName','memberName','score','plus1','plus2','plus3','minus1','minus2','minus3'];
       const lines = [header.join(',')];
-      for (const r of rows){
-        const plus = (r.pluses||[]); const minus = (r.minuses||[]);
-        const teamName = directory[r.city]?.teams?.[r.team]?.name || `Team ${r.team||''}`;
-        const roster = Array.isArray(r.rosterNames) ? r.rosterNames : Object.keys(directory[r.city]?.teams?.[r.team]?.teammates || {});
-        const vals = [
-          r.createdAt || '',
-          r.event || '',
-          r.city || '',
-          r.team || '',
-          teamName,
-          r.emotion || '',
-          r.evaluatorName || '',
-          (roster||[]).join('; '),
-          plus[0]||'', plus[1]||'', plus[2]||'',
-          minus[0]||'', minus[1]||'', minus[2]||''
-        ].map(v => '"' + String(v).replace(/"/g,'""') + '"');
-        lines.push(vals.join(','));
+      
+      for (const entry of entries){
+        const teamName = directory[entry.city]?.teams?.[entry.team]?.name || `Team ${entry.team||''}`;
+        const memberEvals = entry.memberEvaluations || [];
+        
+        for (const memberEval of memberEvals) {
+          const plus = memberEval.pluses || [];
+          const minus = memberEval.minuses || [];
+          
+          const vals = [
+            entry.createdAt || '', entry.event || '', entry.city || '', entry.team || '', teamName,
+            entry.evaluatorName || '', memberEval.memberName || '', memberEval.score || '',
+            plus[0]||'', plus[1]||'', plus[2]||'', minus[0]||'', minus[1]||'', minus[2]||''
+          ].map(v => '"' + String(v).replace(/"/g,'""') + '"');
+          
+          lines.push(vals.join(','));
+        }
       }
       return lines.join('\n');
     }
 
-    // Hook up export button
     document.getElementById('exportBtn').addEventListener('click', () => {
       const eventId = document.getElementById('eventFilter').value;
       const city = document.getElementById('cityFilter').value;
       const team = document.getElementById('teamFilter').value;
       const windowDays = document.getElementById('timeFilter').value;
+      
       const filtered = allEntries.filter(e =>
         (!eventId || e.event === eventId) &&
         (!city || e.city === city) &&
         (!team || e.team === team) &&
         withinWindow(e.createdAt || 0, windowDays)
       );
+      
       const csv = toCSV(filtered);
       const blob = new Blob([csv], {type: 'text/csv;charset=utf-8;'});
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
       const stamp = new Date().toISOString().slice(0,19).replace(/[:T]/g,'-');
-      a.download = `emotion-entries-${stamp}.csv`;
+      a.download = `member-evaluations-${stamp}.csv`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
