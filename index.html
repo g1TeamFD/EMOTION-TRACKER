@@ -24,9 +24,10 @@
     .grid{ display:grid; gap:16px; }
     .grid-3{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
     label{ font-size:13px; font-weight:700; display:block; margin-bottom:6px; color:#0f2917; }
-    input[type="text"], input[type="number"], select, textarea{ width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); outline:none; background:#fbfefc; }
+    input[type="text"], input[type="number"], select, textarea{ width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); outline:none; background:#fbfefc; font-family: inherit; }
     input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:focus{ box-shadow: 0 0 0 3px rgba(46,125,75,0.18); border-color: var(--accent);}  
     input[disabled], select[disabled]{ background:#f3f3f7; color:#aaa; }
+    textarea{ min-height:80px; resize:vertical; }
     .row{ display:flex; gap:12px; align-items:center; flex-wrap: wrap; }
     .btn{ background:var(--primary); color:var(--primary-ink); padding:10px 14px; border:none; border-radius:12px; cursor:pointer; box-shadow:0 1px 0 rgba(0,0,0,0.06); font-weight:600; font-size:14px;} 
     .btn:hover{ filter:brightness(1.05);} 
@@ -37,15 +38,16 @@
     .two{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
     .member-eval{ background:#f9fcfa; border:1px solid var(--border); border-radius:12px; padding:16px; margin-bottom:16px; }
     .member-eval h3{ margin:0 0 12px; font-size:16px; color:var(--primary); }
-    .eval-grid{ display:grid; grid-template-columns: 1fr 1fr 100px; gap:12px; align-items:start; }
+    .eval-grid{ display:grid; grid-template-columns: 1fr 1fr 120px; gap:12px; align-items:start; }
     .eval-group{ display:flex; flex-direction:column; gap:6px; }
-    .eval-group input{ padding:8px 10px; font-size:13px; }
     .score-input{ display:flex; flex-direction:column; }
     .score-input label{ margin-bottom:6px; }
     .score-input input{ width:100%; text-align:center; font-size:16px; font-weight:700; }
     .add-member-section{ margin-top:24px; padding-top:24px; border-top:2px solid var(--border); }
     .add-member-header{ display:flex; align-items:center; gap:12px; margin-bottom:12px; }
     .add-member-header label{ margin:0; }
+    .auto-save-indicator{ display:inline-flex; align-items:center; gap:6px; font-size:12px; color:var(--accent); opacity:0; transition: opacity 0.3s; }
+    .auto-save-indicator.visible{ opacity:1; }
     @media (max-width: 800px){ .grid-3{ grid-template-columns:1fr; } .two{ grid-template-columns:1fr; } .eval-grid{ grid-template-columns:1fr; } }
   </style>
 </head>
@@ -64,6 +66,10 @@
     <div class="card" style="margin-bottom:16px">
       <h1>Team Member Evaluation</h1>
       <p class="desc">Pick the event and team, then evaluate each member individually with 3 pluses, 3 minuses, and a score out of 10.</p>
+      <div class="auto-save-indicator" id="autoSaveIndicator">
+        <span>💾</span>
+        <span>Auto-saved</span>
+      </div>
     </div>
 
     <!-- Step 1: Basic Info -->
@@ -100,7 +106,7 @@
     <!-- Step 2: Member Evaluations -->
     <div class="card" id="step2" style="display:none;">
       <div style="margin-bottom:20px;">
-        <button class="btn" id="backBtn" style="background:var(--muted);">← Back</button>
+        <button class="btn" id="backBtn" style="background:var(--muted);">← Back to Details</button>
       </div>
 
       <div id="membersList"></div>
@@ -121,7 +127,7 @@
       </div>
     </div>
 
-    <div class="footer" style="margin-top:12px">Data saved to Firebase Realtime Database.</div>
+    <div class="footer" style="margin-top:12px">Data saved to Firebase Realtime Database. Form auto-saves to prevent data loss.</div>
   </div>
 
   <!-- Firebase SDKs (Compat) -->
@@ -131,7 +137,6 @@
 
   <script>
     // ======= Configure me =======
-    // Replace with your Firebase web config
     const firebaseConfig = {
       apiKey: "AIzaSyBog7q44JN9wVjfk2wy7FqS80NLJC5348g",
       authDomain: "emotion-tracker-7f11c.firebaseapp.com",
@@ -149,9 +154,11 @@
       { id: 'young_ambassadors_training', label: 'Young Ambassadors Training' }
     ];
 
+    const STORAGE_KEY = 'emotion_tracker_draft';
     let directory = null;
     let authUid = null;
-    let currentMembers = []; // Will hold member names for evaluation
+    let currentMembers = [];
+    let autoSaveTimer = null;
 
     // Init Firebase
     firebase.initializeApp(firebaseConfig);
@@ -172,7 +179,7 @@
     // Load directory.json
     fetch('directory.json')
       .then(r => r.json())
-      .then(data => { directory = data.cities || {}; initForm(); })
+      .then(data => { directory = data.cities || {}; initForm(); loadSavedData(); })
       .catch(err => { 
         console.error(err); 
         document.getElementById('statusStep1').textContent = "Failed to load directory.json"; 
@@ -199,11 +206,12 @@
         teamSel.innerHTML = '<option value="">Select team</option>' +
           Object.entries(teams).map(([id, t]) => `<option value="${id}">${t.name || ('Team ' + id)}</option>`).join('');
         updateNextBtnState();
+        autoSave();
       });
 
-      teamSel.addEventListener('change', updateNextBtnState);
-      eventSel.addEventListener('change', updateNextBtnState);
-      document.getElementById('evaluatorName').addEventListener('input', updateNextBtnState);
+      teamSel.addEventListener('change', () => { updateNextBtnState(); autoSave(); });
+      eventSel.addEventListener('change', () => { updateNextBtnState(); autoSave(); });
+      document.getElementById('evaluatorName').addEventListener('input', () => { updateNextBtnState(); autoSave(); });
 
       document.getElementById('nextBtn').addEventListener('click', goToStep2);
       document.getElementById('backBtn').addEventListener('click', goToStep1);
@@ -229,8 +237,15 @@
     function goToStep2(){
       const city = document.getElementById('city').value;
       const team = document.getElementById('team').value;
-      const mates = directory[city]?.teams?.[team]?.teammates || {};
-      currentMembers = Object.keys(mates);
+      const savedData = getSavedData();
+      
+      // Check if we have saved members for this session
+      if (savedData && savedData.currentMembers && savedData.currentMembers.length > 0) {
+        currentMembers = savedData.currentMembers;
+      } else {
+        const mates = directory[city]?.teams?.[team]?.teammates || {};
+        currentMembers = Object.keys(mates);
+      }
 
       if (currentMembers.length === 0) {
         alert('No members found in this team. You can add members manually in the next step.');
@@ -250,41 +265,54 @@
     function renderMemberEvaluations(){
       const container = document.getElementById('membersList');
       container.innerHTML = '';
+      const savedData = getSavedData();
 
       if (currentMembers.length === 0) {
         container.innerHTML = '<div class="inline-hint" style="text-align:center; padding:20px;">No members yet. Add members using the button below.</div>';
+        updateSubmitBtnState();
+        return;
       }
 
       currentMembers.forEach((memberName, idx) => {
+        const memberData = savedData?.evaluations?.[memberName] || {};
+        
         const div = document.createElement('div');
         div.className = 'member-eval';
         div.innerHTML = `
           <h3>${memberName}</h3>
           <div class="eval-grid">
             <div class="eval-group">
-              <label>3 Pluses</label>
-              <input type="text" data-member="${idx}" data-field="p1" placeholder="Strength 1" />
-              <input type="text" data-member="${idx}" data-field="p2" placeholder="Strength 2" />
-              <input type="text" data-member="${idx}" data-field="p3" placeholder="Strength 3" />
+              <label>3 Pluses (one per line)</label>
+              <textarea data-member="${memberName}" data-field="pluses" placeholder="Strength 1&#10;Strength 2&#10;Strength 3"></textarea>
             </div>
             <div class="eval-group">
-              <label>3 Minuses</label>
-              <input type="text" data-member="${idx}" data-field="m1" placeholder="Growth edge 1" />
-              <input type="text" data-member="${idx}" data-field="m2" placeholder="Growth edge 2" />
-              <input type="text" data-member="${idx}" data-field="m3" placeholder="Growth edge 3" />
+              <label>3 Minuses (one per line)</label>
+              <textarea data-member="${memberName}" data-field="minuses" placeholder="Growth edge 1&#10;Growth edge 2&#10;Growth edge 3"></textarea>
             </div>
             <div class="score-input">
               <label>Score /10</label>
-              <input type="number" data-member="${idx}" data-field="score" min="0" max="10" placeholder="0-10" />
+              <input type="number" data-member="${memberName}" data-field="score" min="0" max="10" placeholder="0-10" />
             </div>
           </div>
         `;
         container.appendChild(div);
+        
+        // Set values after appending to DOM to avoid HTML escaping issues
+        const plusesInput = div.querySelector(`textarea[data-field="pluses"]`);
+        const minusesInput = div.querySelector(`textarea[data-field="minuses"]`);
+        const scoreInput = div.querySelector(`input[data-field="score"]`);
+        
+        if (memberData.pluses) plusesInput.value = memberData.pluses;
+        if (memberData.minuses) minusesInput.value = memberData.minuses;
+        if (memberData.score) scoreInput.value = memberData.score;
       });
 
       // Add event listeners to all inputs
-      container.querySelectorAll('input').forEach(input => {
-        input.addEventListener('input', updateSubmitBtnState);
+      container.querySelectorAll('input, textarea').forEach(input => {
+        input.addEventListener('input', () => {
+          updateSubmitBtnState();
+          autoSave();
+        });
       });
 
       updateSubmitBtnState();
@@ -307,27 +335,112 @@
       currentMembers.push(newName);
       nameInput.value = '';
       renderMemberEvaluations();
+      autoSave();
     }
 
     function updateSubmitBtnState(){
-      const allInputs = document.querySelectorAll('#membersList input');
-      let allFilled = true;
-
       if (currentMembers.length === 0) {
         document.getElementById('submitBtn').disabled = true;
         return;
       }
 
-      currentMembers.forEach((_, idx) => {
-        const memberInputs = document.querySelectorAll(`input[data-member="${idx}"]`);
-        memberInputs.forEach(input => {
-          if (!input.value.trim()) {
-            allFilled = false;
-          }
-        });
+      let allFilled = true;
+      currentMembers.forEach(memberName => {
+        const plusesInput = document.querySelector(`textarea[data-member="${memberName}"][data-field="pluses"]`);
+        const minusesInput = document.querySelector(`textarea[data-member="${memberName}"][data-field="minuses"]`);
+        const scoreInput = document.querySelector(`input[data-member="${memberName}"][data-field="score"]`);
+        
+        if (!plusesInput?.value.trim() || !minusesInput?.value.trim() || !scoreInput?.value.trim()) {
+          allFilled = false;
+        }
       });
 
       document.getElementById('submitBtn').disabled = !allFilled;
+    }
+
+    // Auto-save functionality
+    function autoSave(){
+      clearTimeout(autoSaveTimer);
+      autoSaveTimer = setTimeout(() => {
+        const data = {
+          evaluatorName: document.getElementById('evaluatorName').value,
+          event: document.getElementById('event').value,
+          city: document.getElementById('city').value,
+          team: document.getElementById('team').value,
+          currentMembers: currentMembers,
+          evaluations: {},
+          timestamp: Date.now()
+        };
+
+        currentMembers.forEach(memberName => {
+          const plusesInput = document.querySelector(`textarea[data-member="${memberName}"][data-field="pluses"]`);
+          const minusesInput = document.querySelector(`textarea[data-member="${memberName}"][data-field="minuses"]`);
+          const scoreInput = document.querySelector(`input[data-member="${memberName}"][data-field="score"]`);
+          
+          if (plusesInput || minusesInput || scoreInput) {
+            data.evaluations[memberName] = {
+              pluses: plusesInput?.value || '',
+              minuses: minusesInput?.value || '',
+              score: scoreInput?.value || ''
+            };
+          }
+        });
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        showAutoSaveIndicator();
+      }, 500);
+    }
+
+    function getSavedData(){
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        return saved ? JSON.parse(saved) : null;
+      } catch (e) {
+        console.error('Error loading saved data:', e);
+        return null;
+      }
+    }
+
+    function loadSavedData(){
+      const saved = getSavedData();
+      if (!saved) return;
+
+      // Restore step 1 fields
+      if (saved.evaluatorName) document.getElementById('evaluatorName').value = saved.evaluatorName;
+      if (saved.event) document.getElementById('event').value = saved.event;
+      if (saved.city) {
+        document.getElementById('city').value = saved.city;
+        document.getElementById('city').dispatchEvent(new Event('change'));
+        
+        setTimeout(() => {
+          if (saved.team) {
+            document.getElementById('team').value = saved.team;
+            updateNextBtnState();
+            
+            // If we have saved evaluation data, auto-restore to step 2
+            if (saved.currentMembers && saved.currentMembers.length > 0 && 
+                Object.keys(saved.evaluations || {}).length > 0) {
+              setTimeout(() => {
+                if (authUid) { // Only auto-navigate if authenticated
+                  goToStep2();
+                }
+              }, 200);
+            }
+          }
+        }, 100);
+      }
+    }
+
+    function showAutoSaveIndicator(){
+      const indicator = document.getElementById('autoSaveIndicator');
+      indicator.classList.add('visible');
+      setTimeout(() => {
+        indicator.classList.remove('visible');
+      }, 2000);
+    }
+
+    function clearSavedData(){
+      localStorage.removeItem(STORAGE_KEY);
     }
 
     function submitAll(){
@@ -341,27 +454,24 @@
 
       const memberEvaluations = [];
 
-      currentMembers.forEach((memberName, idx) => {
-        const inputs = document.querySelectorAll(`input[data-member="${idx}"]`);
+      currentMembers.forEach(memberName => {
+        const plusesInput = document.querySelector(`textarea[data-member="${memberName}"][data-field="pluses"]`);
+        const minusesInput = document.querySelector(`textarea[data-member="${memberName}"][data-field="minuses"]`);
+        const scoreInput = document.querySelector(`input[data-member="${memberName}"][data-field="score"]`);
+
+        const plusesText = plusesInput.value.trim();
+        const minusesText = minusesInput.value.trim();
+        
+        // Split by newlines and filter out empty lines
+        const pluses = plusesText.split('\n').map(s => s.trim()).filter(s => s);
+        const minuses = minusesText.split('\n').map(s => s.trim()).filter(s => s);
+
         const evalData = {
           memberName,
-          pluses: [],
-          minuses: [],
-          score: 0
+          pluses,
+          minuses,
+          score: parseInt(scoreInput.value) || 0
         };
-
-        inputs.forEach(input => {
-          const field = input.dataset.field;
-          const value = input.value.trim();
-
-          if (field.startsWith('p')) {
-            evalData.pluses.push(value);
-          } else if (field.startsWith('m')) {
-            evalData.minuses.push(value);
-          } else if (field === 'score') {
-            evalData.score = parseInt(value) || 0;
-          }
-        });
 
         memberEvaluations.push(evalData);
       });
@@ -378,13 +488,19 @@
 
       firebase.database().ref('entries').push(entry).then(() => {
         status.textContent = 'Submitted! ✅ All member evaluations saved.';
+        clearSavedData(); // Clear saved data after successful submission
         setTimeout(() => {
-          // Reset and go back to step 1
           goToStep1();
-          document.querySelectorAll('#membersList input').forEach(i => i.value = '');
+          document.querySelectorAll('#membersList input, #membersList textarea').forEach(i => i.value = '');
           document.getElementById('newMemberName').value = '';
+          document.getElementById('evaluatorName').value = '';
+          document.getElementById('event').value = '';
+          document.getElementById('city').value = '';
+          document.getElementById('team').value = '';
+          document.getElementById('team').disabled = true;
           currentMembers = [];
           status.textContent = '';
+          updateNextBtnState();
         }, 2000);
       }).catch(err => {
         console.error(err);
