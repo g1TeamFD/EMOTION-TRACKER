@@ -345,18 +345,18 @@
         return;
       }
 
-      let allFilled = true;
+      let atLeastOneFilled = false;
       currentMembers.forEach(memberName => {
         const plusesInput = document.querySelector(`textarea[data-member="${memberName}"][data-field="pluses"]`);
         const minusesInput = document.querySelector(`textarea[data-member="${memberName}"][data-field="minuses"]`);
         const scoreInput = document.querySelector(`input[data-member="${memberName}"][data-field="score"]`);
         
-        if (!plusesInput?.value.trim() || !minusesInput?.value.trim() || !scoreInput?.value.trim()) {
-          allFilled = false;
+        if (plusesInput?.value.trim() || minusesInput?.value.trim() || scoreInput?.value.trim()) {
+          atLeastOneFilled = true;
         }
       });
 
-      document.getElementById('submitBtn').disabled = !allFilled;
+      document.getElementById('submitBtn').disabled = !atLeastOneFilled;
     }
 
     // Auto-save functionality
@@ -462,6 +462,12 @@
 
         const plusesText = plusesInput.value.trim();
         const minusesText = minusesInput.value.trim();
+        const scoreText = scoreInput.value.trim();
+        
+        // Only include members who have at least some feedback
+        if (!plusesText && !minusesText && !scoreText) {
+          return; // Skip this member
+        }
         
         // Split by newlines and filter out empty lines
         const pluses = plusesText.split('\n').map(s => s.trim()).filter(s => s);
@@ -471,7 +477,7 @@
           memberName,
           pluses,
           minuses,
-          score: parseInt(scoreInput.value) || 0
+          score: parseInt(scoreText) || 0
         };
 
         memberEvaluations.push(evalData);
