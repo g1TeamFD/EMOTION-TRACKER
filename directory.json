@@ -1759,247 +1759,267 @@
         "1": {
           "name": "Team 1",
           "teammates": {
-            "Nyoman Dedi Erawan,S.Pd": {
+            "Teacher Made Suciani, S.Pd": {
               "role": "Teacher",
               "school": null,
               "grade": null
             },
-            "Yuli Clara BR Karo": {
+            "Int.|Ni Putu Puspa Diantini": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Putu Alita Kristina Putri. S.": {
+            "Int.|Putu Anggi Yumika Shanti": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Kadek Kayobi": {
+            "Ella | Putu Ella Pramudya": {
               "role": "Ambassador",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Kadek Prya Wiguna": {
+            "Agus Buda | Gede Agus Buda Sastrawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Agus Budayasa | Putu Agus Budayasa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "Budayasa Putra | I Kadek Budayasa Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Dwi | Kadek Dwi Ardiani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Eka | Kadek Eka Rismayani": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIB"
             },
-            "Gusti Ayu Dewi Arcani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Putu Riston Arya Wedanta": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Luh Putu Sinta Anggreni": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "I Kadek Budayasa Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kadek Dwi Andika Pranata Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Ni Luh Putu Noviani Sri Widyantini": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ketut Ayu Sukmadewi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Kadek Cantika Dwi Anjani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kadek Rena Widiani": {
+            "Eka Ginanta | Gusti Ngurah Eka Ginanta": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIC"
             },
-            "Kadek Bagus Bima Arta": {
+            "Kadek Sugiantara | I Gusti Ngurah Kadek Sugiantara": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Komang Adi Saputra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Putu Budi Artawan": {
+            "Kevin | Kadek Kevin Syandana": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Gede Agus Pratama": {
+            "Marta Wati | Ni Komang Marta Marta Wati": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Gede Ari Suartama": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Komang Indra Adi Wiguna": {
+            "Mas Ristayati | Kadek Mas Ristayati": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIB"
             },
-            "I Putu Arya Suta Wiguna": {
+            "Putu Satya | I Gusti Putu Satya Kusuma": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "Rediasih | Made Rediasih": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Gede Sastra Pujangga": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Gede Elly Sanjaya": {
+            "Reva Adi | Putu Reva Adi Pratama": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIE"
             },
-            "Kadek Nanda Adi Wibawa": {
+            "Rita Pitriani | Komang Rita Pitriani": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
+            },
+            "Satria Dharma | Gede Satria Dharma Adi Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Sintana Utama | Kadek Sintana Utama": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Suhita | Luh Suhita Sanisca": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Sukreni | Ketut Sukreni": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Tegar Ariesta | Komang Tegar Ariesta Satya Darma": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Trizia Praniti | Komang Trizia Praniti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Tu Widiastuti | Luh Tu Widiastuti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Windaniasih | Made Windaniasih": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
             }
           }
         },
         "2": {
           "name": "Team 2",
           "teammates": {
-            "Desak Putu Ages Wintari, S.pd": {
+            "Teacher Nyoman Subana, S.Pd": {
               "role": "Teacher",
               "school": null,
               "grade": null
             },
-            "Ida Ayu Kade Wulan Budi Astiti": {
+            "Int.|Putri Ana Sabilillah": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Maylaffaiza Bilqis Imtihatz": {
+            "Int.|Billy Brema Perangin-angin": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Ni Komang Leonita Putri Cahyani": {
+            "Intan | Putu Intan Maharani": {
               "role": "Ambassador",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "I Gede Permana Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Komang Rita Pitriani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ni Kadek Widya Resmiani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Komang Ani Yasini": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Komang Budarsana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "I Komang Briananta Wijaya": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kadek Divayana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Putu Widia Putri": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Kadek Alit Agus Wibawa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Gede Denis Soviana": {
+            "Adi Saputra | Komang Adi Saputra": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIC"
             },
-            "Komang Fefi Fira Payanti": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Komang Ade Meta Triawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Made Rediasih": {
+            "Adnyani Putri | Ni Luh Adnyani Putri": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Kadek Nova Dwipayana": {
+            "Agus Pratama | Gede Agus Pratama": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Komang Pebri Mikayanti": {
+            "Andika Saputra | Gede Andika Saputra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "Andre | Kadek Andre Gunawan": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Ni Kadek Rediastuti": {
+            "Budarsana | Komang Budarsana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "D Budiarta | Yan D Budiarta": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIB"
             },
-            "Kadek Puspadi": {
+            "Danu | Ketut Danu Juni Hananta": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
-              "grade": null
+              "grade": "VIIIE"
             },
-            "I Putu Andika Arya Dinata": {
+            "Denis  | Gede Denis Soviana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Dwi Andika | Kadek Dwi Andika Pranata Putra": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIA"
             },
-            "Kadek Susila Dwi Guna": {
+            "Indah Budi | Komang Indah Budi Asrini": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Indra | Ni Putu Indra Bella Prasetia Ningsih": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Ketut Agus Redistiawan": {
+            "Juni Ariastini | Kadek Juni Ariastini": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Listiarini | Ketut Listarini": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Mira Cahayani | Putu Mira Cahayani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Putri Juliantari | Kadek Putri Juliantari": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Rivana Tri | Kadek Rivana Tri Afika Pradnyani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "Roy Zaky | Putu Roy Zaky Bima Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Surya | I Komang Surya Harta Wiguna": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Susila Dwi | Kadek Susila Dwi Guna": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Warsika | Gusti Putu Warsika": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Weni | Ketut Weni Meliyani": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
@@ -2009,247 +2029,267 @@
         "3": {
           "name": "Team 3",
           "teammates": {
-            "Nyoman Samiana, S.Pd": {
+            "Teacher Desak Putu Ages Wintari, S.pd": {
               "role": "Teacher",
               "school": null,
               "grade": null
             },
-            "Putu Meiyanti Setya Pratiwi": {
+            "Int.|Gusti Lanang Dananjaya": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Kadek Leony Agustini": {
+            "Int.|I Gede Abiyudha Widyadhana": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Ni Putu Ary Suwandewi": {
+            "Anguma | Luh Anguma Santya Devi": {
               "role": "Ambassador",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Ketut Yuliastini": {
+            "Adi | Made Adi Budiasa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Agus Redistiawan | Ketut Agus Redistiawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Agustina | Kadek Agustina Pastika Dewi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Andi | I Ketut Andi Mahendra Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Arya | I Gede Arya Suriadnyana": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIC"
             },
-            "Luh Putu Sri Susanti": {
+            "Ayu Kadek Anita | I Gusti Ayu Kadek Anita Yani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Darma | Kadek Darma Yoga Purnama": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Luh Tu Widiastuti": {
+            "Ganda Aria | I Gusti Ngurah Ganda Aria Permana": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
+              "grade": "VIIID"
             },
-            "Kadek Eka Purnama Sari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kadek Diantari": {
+            "Ika | Komang Ika Andini Windayani": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Gede Aditya Pratama": {
+            "Jhon Nantha | Jhon Nantha Kusuma": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
+              "grade": "VIIID"
             },
-            "Putu Aryatiningsih": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Luh Nadya Novyanti": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ketut Masia Apriliya": {
+            "Ngurah | Gusti Ngurah Dipayana": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIE"
             },
-            "Putu Aby Sunanta": {
+            "Nova | Kadek Nova Dwipayana": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Made Apri Semadiyasa": {
+            "Noviani | Ni Luh Putu Noviani Sri Widyantini": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Perdi | Kadek Perdi Nata": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Risa | Luh Risa Marliani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Sumerta | Gede Sumerta Dana": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIE"
             },
-            "Gede Arya Kusuma Wijaya": {
+            "Tap Paro | Yan Tap Paro": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIA"
             },
-            "I Gusti Ngurah Kadek Sugiantara": {
+            "Tiara Dinatha | Ni Putu Tiara Dinatha Putri": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Gede Yuda Widi Pradana": {
+            "Tri Santiani | Komang Tri Santiani": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIB"
             },
-            "Putu Restari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kadek Indriani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "I Gede Agus Supriadi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ketut Riski Susila Adnyana": {
+            "Widia |  Putu Widia Putri": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIA"
             },
-            "Gede Satria Wiguna": {
+            "Yoga Wiradnyana | Kadek Yoga Wiradnyana Yasa": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
-              "grade": null
+              "grade": "VIIID"
             },
-            "Gede Sumerta Dana": {
+            "Yogi | I Komang Yogi Satriawan": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
+              "grade": "VIIIB"
             }
           }
         },
         "4": {
           "name": "Team 4",
           "teammates": {
-            "Luh Wedawati Ariani, S.Pd": {
+            "Teacher Drs. Nyoman Sumantra": {
               "role": "Teacher",
               "school": null,
               "grade": null
             },
-            "I Gede Abiyudha Widyadhana": {
+            "Int.|Komang Yulia Purnama Yanti": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Billy Brema Perangin-angin": {
+            "Int.|Luh Putu Vika Yuniantini": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Kadek Wiati": {
+            "Masia | Ketut Masia Apriliya": {
               "role": "Ambassador",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "I Ketut Rendy Wedhayana": {
+            "Agus Apriyasa | Ketut Agus Apriyasa": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Komang Gede Wiyadnyana": {
+            "Agus Arta | I Gusti Komang Agus Arta Dinarta": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Agus Diastana | Putu Agus Diastana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Agus Permana | Ketut Agus Permana Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "Agus Putrawan | I Gede Agus Putrawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Angga | Putu Angga Ariawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Arjun Yudi | I Komang Arjun Yudi Pandawa": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIC"
             },
-            "Gede Angga Wirayasa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Luh Purnawati": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kadek Sintana Utama": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "I Kadek Suganda Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ni Luh Apriliya Suriyantini": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "GD Yuda Raditiya": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Komang Tri Santiani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Luh Suhita Sanisca": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Gede Riyan Dika Pratama": {
+            "Ayu Kadek | I Gusti Ayu Kadek Puspawati": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIE"
             },
-            "Kadek Budi Renitasari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "I Ketut Suarsana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Luh Putu Aghin Prima Mayuni": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Komang De Budayasa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ketut Nik Januarta": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kadek Bayu Indra Arta Wiwaha": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Gede Nova Saputra": {
+            "Cahtika | Kadek Cahtika Putri": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIA"
             },
-            "Ni Komang Fanny Adinda Putri": {
+            "Candra | Gede Candra Putra Wahyudi": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Putu Intan Maharani": {
+            "Eka | Kadek Eka Purnama Sari": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Indriani | Kadek Indriani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Jordan Riski | Komang Jordan Riski Adriana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Meica Candra | I Gede Meica Candra Winata": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Oktaviani | Luh Putu Oktaviani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "Pebri Mikayanti | Komang Pebri Mikayanti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Permana | I Gede Permana Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Purnama | Putu Purnama Ayhodya Yasa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Puspa Juliantari | Ni Luh Putu Puspa Juliantari": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Riston Arya | Putu Riston Arya Wedanta": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Trisa Utami | Komang Trisa Utami": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Winda | Komang Winda Noviadnyani": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
@@ -2259,122 +2299,132 @@
         "5": {
           "name": "Team 5",
           "teammates": {
-            "Ketut Bandem Elyadi, S.Pd": {
+            "Teacher Ketut Bandem Elyadi, S.Pd": {
               "role": "Teacher",
               "school": null,
               "grade": null
             },
-            "Ngurah Ketut Raharya Sidiaji": {
+            "Int.|Ni Kadek Dwik Surya Pradnyani": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Devina Christianti Br Ginting": {
+            "Int.|Putu Meiyanti Setya Pratiwi": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Luh Mas Ratna Galih": {
+            "Ratna | Luh Mas Ratna Galih": {
               "role": "Ambassador",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Kadek Wisnu Dharmayoga": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Ketut Nova Budiarta": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kadek Adi Saputra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Putu Ela Pramudya": {
+            "Angga | Gede Angga Wirayasa": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIA"
             },
-            "Luh Anguma Santya Devi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Luh Sacca Paramita": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ni Ketut Fynna Adinda Putri": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Komang Trizia Praniti": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kadek Darma Yoga Purnama": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ketut Danu Juni Hananta": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Yan D Budiarta": {
+            "Anggara | Gede Anggara Yasa": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIB"
             },
-            "Luh Putu Sri Sandiartini": {
+            "Anjelita Putri | Ni Putu Anjelita Putri": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "Apriliya | Ni Luh Apriliya Suriyantini": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Komang Wahyu Hendra Gunawan": {
+            "Ariada | Gede Ariada": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Artika | Putu Artika Satya Wiguna": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Arya Suta | I Putu Arya Suta Wiguna": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Aulia | Kadek Aulia Junitayani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Bayu Ariadi | Putu Gede Bayu Ariadi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "Bim Bim | Kadek Putra Mahardika": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Briananta | I Komang Briananta Wijaya": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Budi Artawan | Putu Budi Artawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Elly | Gede Elly Sanjaya": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Nova Budiarta | Ketut Nova Budiarta": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Novi Diana | Ketut Novi Diana Widia Sari": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIA"
             },
-            "Kadek Dwi Putra Merta Dana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "I Kadek Rangga Dwipayanaa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "I Kadek Wiliartawan Kurnia P": {
+            "Rista Okta | Luh Putu Rista Okta Prianjani": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIC"
             },
-            "Kadek Kevin Syandana": {
+            "Riyanta | Kadek Riyanta Putra": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Gusti Putu Warsika": {
+            "Sita Sekar | Kadek Sita Sekar Anjani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Sri Susanti | Luh Putu Sri Susanti": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Kadek Kayobi Wirdi Putra": {
+            "Suarsani | Ni Komang Suarsani": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
-              "grade": null
+              "grade": "VIIIB"
             },
-            "Putu Linda Anggarini": {
+            "Trisna Candra | Komang Trisna Candra Dewi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Wahyu Hendra | Komang Wahyu Hendra Gunawan": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIA"
@@ -2384,247 +2434,267 @@
         "6": {
           "name": "Team 6",
           "teammates": {
-            "Drs. Nyoman Sumantra": {
+            "Teacher Nyoman Dedi Erawan,S.Pd": {
               "role": "Teacher",
               "school": null,
               "grade": null
             },
-            "M. Zakky Habibi Suher": {
+            "Int.|Ni Putu Sthira Candrika": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Ni Putu Sthira Candrika": {
+            "Int.|Ni Luh Feby Diantari": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Kadek Puspadi": {
+            "Puspadi | Kadek Puspadi": {
               "role": "Ambassador",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Gede Agus Pratama": {
+            "Adelia Flora | Putu Adelia Flora Amadis": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
+              "grade": "VIIIA"
             },
-            "Luh Ayu Restiani": {
+            "Aliya Putri | Luh Aliya Putri Novianti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Andika | Gede Andika Pratama": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Bayu Indra | Kadek Bayu Indra Arta Wiwaha": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Deva | Kadek Deva Junarta Rama Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Dicky Arya | I Kadek Dicky Arya Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "Erik | Putu Erik Purnama Yasa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Indra Wirawan | Gede Indra Wirawan": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIC"
             },
-            "Putu Agus Widi Kusuma": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Kadek Cahtika Putri": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Komang Putriani": {
+            "Juliastika | Kadek Juliastika": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Ketut Weni Meliyani": {
+            "Nadya | Luh Nadya Novyanti": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Ketut Agus Apriyasa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ni Luh Putu Winda Kristiana Dewi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Made Adi Budiasa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ni Komang Leonita Putri Cahyani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Kadek Ayu Sekar Wahyuningsih": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Luh Risa Marliani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Putu Aryawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Komang Seli Anggarini": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Gede Agus Buda Sastrawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kadek Wiati": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "I Gede Sudi Artayasa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Komang Andika Krisna Koriawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Luh Putu Pande Mitha Agustina": {
+            "Renhard | Renhard Prasetya": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIE"
             },
-            "Putu Ferly Pratiwi": {
+            "Riyan | Gede Riyan Dika Pratama": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Seli | Komang Seli Anggarini": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
+            },
+            "Senitra | Gede Senitra Widiadnyana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "Sinta | Luh Putu Sinta Anggreni": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Sudi Artyasa | I Gede Sudi Artayasa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Suganda | I Kadek Suganda Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ulan Meisa | Komang Ulan Meisa Wati": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Windu | Gede Windu Erawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Yoga Ariawan | I Gede Yoga Ariawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Yuda Raditiya | GD Yuda Raditiya": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Yuda Wira | Kadek Yuda Wira Utama": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
             }
           }
         },
         "7": {
           "name": "Team 7",
           "teammates": {
-            "Made Hela Irawadi, S.Pd": {
+            "Teacher Salsa Ursula Ogos, S.Pd.Gr": {
               "role": "Teacher",
               "school": null,
               "grade": null
             },
-            "Gusti Lanang Dananjaya": {
+            "Int.|Maylaffaiza Bilqis Imtihatz": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Ni Putu Puspa Diantini": {
+            "Int.|Devina Christianti Br Ginting": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Nengah Jesika Lingga Dewi": {
+            "Kayobi | Kadek Kayobi Wirdi Putra": {
               "role": "Ambassador",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "I Komang Sila Widi Sumerta": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Gede Satria Dharma Adi Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ketut Listarini": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Ni Luh Selvi Yantini": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "I Ketut Arya Pebri Saputra": {
+            "Adi Saputra | Kadek Adi Saputra": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIC"
             },
-            "Komang Trisna Candra Dewi": {
+            "Agus Wiratama | Putu Agus Wiratama": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIE"
             },
-            "I Ketut Andi Mahendra Putra": {
+            "Ani | Komang Ani Yasini": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Kadek Ristiana Dewi": {
+            "Apri | Made Apri Semadiyasa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Ari Suartama | Gede Ari Suartama": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Putu Mayka Kaka Aditya": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Ni Luh Ayu Septiari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Ni Putu Tiara Dinatha Putri": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Gede Candra Putra Wahyudi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ni Putu Ary Suwandewi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Komang Trisa Utami": {
+            "Ayu Restiani | Luh Ayu Restiani": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIC"
             },
-            "Kadek Agus Saputra": {
+            "Cantika | Kadek Cantika Dwi Anjani": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
+              "grade": null
             },
-            "Luh Putu Widiasih": {
+            "Diantari | Kadek Diantari": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Divayana | Kadek Divayana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Elfan Arya | Putu Gede Elfan Arya Dinata": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "Febri Kurniawan | Ketut Febri Kurniawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "Fendy Harjendra | Putu Fendy Harjendra Putra": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIB"
             },
-            "Komang Indah Budi Asrini": {
+            "Indra Adi | Komang Indra Adi Wiguna": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
+              "grade": "VIIIB"
             },
-            "I Komang Surya Harta Wiguna": {
+            "Linda | Putu Linda Anggarini": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Puspitarini | Putu Puspitarini": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Rediastuti  | Ni Kadek Rediastuti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Restari | Putu Restari": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Komang Ika Andini Windayani": {
+            "Riski Asta | Komang Riski Asta Gunawan": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Kadek Dwi Ardiani": {
+            "Ristiana | Kadek Ristiana Dewi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Sacca | Luh Sacca Paramita": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Sri Sandiartini | Luh Putu Sri Sandiartini": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Windya | Kadek Windya Pertiwi": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
@@ -2634,247 +2704,257 @@
         "8": {
           "name": "Team 8",
           "teammates": {
-            "Made Suciani, S.Pd": {
+            "Teacher Luh Wedawati Ariani, S.Pd": {
               "role": "Teacher",
               "school": null,
               "grade": null
             },
-            "Gayuh Estu Laksono": {
+            "Int.|Kadek Leony Agustini": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Putri Ana Sabilillah": {
+            "Int.|Yuli Clara BR Karo": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Luh Anguma Santya Devi": {
+            "Ary | Ni Putu Ary Suwandewi": {
               "role": "Ambassador",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "I Gusti Komang Agus Arta Dinarta": {
+            "Agus Suarcana | Gede Agus Suarcana": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
-              "grade": null
+              "grade": "VIIID"
             },
-            "Ketut Sukreni": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kadek Aulia Junitayani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kadek Suartayasa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Luh Putu Rista Okta Prianjani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Yan Tap Paro": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Putu Keysha Indah Pratiwi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Putu Purnama Ayhodya Yasa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Putu Roy Zaky Bima Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kadek Eka Rismayani": {
+            "Agus Widi | Putu Agus Widi Kusuma": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIB"
             },
-            "Kadek Putri Juliantari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Renhard Prasetya": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Komang Ayu Nita Wulandari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "I Putu Sinar Pratiwi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kadek Dyari Sukma Yani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kadek Sita Sekar Anjani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Kadek Yoga Sugiantara": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Gede Andika Pratama": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "I Kadek Jhony Setiawan": {
+            "Andika Arya | I Putu Andika Arya Dinata": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIA"
             },
-            "Ni Komang Marta Marta Wati": {
+            "Arta | Kadek Arta Gunawan": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
+            },
+            "Arya Dharma | Gusti Putu Arya Dharma Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Arya Kusuma | Gede Arya Kusuma Wijaya": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Arya Pebri | I Ketut Arya Pebri Saputra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Arya Sujana | Kadek Arya Sujana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Ayu Puspa | Luh Ayu Puspa Dewi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Ayu Septiari | Ni Luh Ayu Septiari": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Ayu Windy | Gusti Ayu WIndy Paramita": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Deva | Komang Deva Sastrawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Dwi Putra | Kadek Dwi Putra Merta Dana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ferly Pratiwi | Putu Ferly Pratiwi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Keysha | Putu Keysha Indah Pratiwi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Nik Januarta | Ketut Nik Januarta": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Sastra Pujangga | Gede Sastra Pujangga": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Selvi Yantini | Ni Luh Selvi Yantini": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Wahyu Wiguna | Kadek Wahyu Wiguna": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "Winda Kristiana | Ni Luh Putu Winda Kristiana Dewi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Yuliastini | Ketut Yuliastini": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
             }
           }
         },
         "9": {
           "name": "Team 9",
           "teammates": {
-            "Sang ayu Putu Ekawati, S.Pd.": {
+            "Teacher Made Hela Irawadi, S.Pd": {
               "role": "Teacher",
               "school": null,
               "grade": null
             },
-            "Made Bayu Ariada": {
+            "Int.|Ida Ayu Kade Wulan Budi Astiti": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Komang Yulia Purnama Yanti": {
+            "Int.|Komang Gede Samudra Artajaya. W": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Luh Aliya Putri Noviani": {
+            "Leonita | Ni Komang Leonita Putri Cahyani": {
               "role": "Ambassador",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Kadek Purna Hari Sanjaya": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Gusti Ayu WIndy Paramita": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ni Komang Suarsani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Putu Mira Cahayani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kadek Ayu Cahya Kimorin": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Putu Reva Adi Pratama": {
+            "Agus Prasetya | Kadek Agus Prasetya": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIE"
             },
-            "Kadek Agustina Pastika Dewi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Gusti Ayu Putu Wrestika Dinayanti": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Gede Randy Asta Wiguna": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Gede Sedana Arta": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Kadek Satya Wiguna": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Gede Agus Ari Sukrawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Putu Adelia Flora Amadis": {
+            "Alit | I Kadek Alit Sudiartawan": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIA"
             },
-            "Komang Riski Asta Gunawan": {
+            "Aryawan | Putu Aryawan": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
-              "grade": null
+              "grade": "VIIIA"
             },
-            "I Gusti Ayu Kadek Puspawati": {
+            "Ayu Dewi | Gusti Ayu Dewi Arcani": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIE"
             },
-            "Komang Mas Novi Damayanti": {
+            "Ayu Nita | Komang Ayu Nita Wulandari": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Komang Jordan Riski Adriana": {
+            "Ayu Putu | Gusti Ayu Putu Wrestika Dinayanti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Ayu Sariani | Niluh Ayu Sariani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "De Budayasa | Komang De Budayasa": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Putu Erik Purnama Yasa": {
+            "Lanang Mahardinata | Gede Lanang Mahardinata": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Nanda Adi | Kadek Nanda Adi Wibawa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Nova Saputra | Gede Nova Saputra": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIA"
             },
-            "Ni Luh Adnyani Putri": {
+            "Purnawati | Luh Purnawati": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Kadek Perdi Nata": {
+            "Putri Namira | Komang Putri Namira Yanti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Satya Wiguna | Kadek Satya Wiguna": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Suarsana | I Ketut Suarsana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Suartayasa | Kadek Suartayasa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Tristan Arta | Komang Tristan Arta Wiguna": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Vika | Kadek Vika Rahmawati": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "Widiasih | Luh Putu Widiasih": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Wulan Novi | Ni Putu Wulan Novi Triasih": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Yuda Restiawan |  Gede Yuda Restiawan": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
@@ -2884,122 +2964,127 @@
         "10": {
           "name": "Team 10",
           "teammates": {
-            "Salsa Ursula Ogos, S.Pd.Gr": {
+            "Teacher Nyoman Samiana, S.Pd": {
               "role": "Teacher",
               "school": null,
               "grade": null
             },
-            "Luh Putu Vika Yuniantini": {
+            "Int.|M. Zakky Habibi Suher": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Sagita Imtias Rahmani": {
+            "Int.|Sagita Imtias Rahmani": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Putu Intan Maharani": {
+            "Wiati | Kadek Wiati": {
               "role": "Ambassador",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "I Gede Ariada": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Putu Fendy Harjendra Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "I Kadek Alit Sudiartawan": {
+            "Aditya |  I Ketut Aditya Wirawan": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIA"
             },
-            "Kadek Arta Gunawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Gede Indra Wirawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Nengah Jesika Lingga Dewi": {
+            "Aghin | Luh Putu Aghin Prima Mayuni": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIE"
             },
-            "Luh Widya Indah Lestari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Luh Eka Sukriyani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ni Putu Indra Bella Prasetia Ningsih": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Gede Lanang Mahardinata": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kadek Windya Pertiwi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Komang Putri Namira Yanti": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Kadek Juni Ariastini": {
+            "Agus Saputra | Kadek Agus Saputra": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIA"
             },
-            "Kadek Andre Gunawan": {
+            "Andika Krisna | Komang Andika Krisna Koriawan": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Gusti Ngurah Dipayana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Putu Damayanti": {
+            "Bagus | Kadek Bagus Bima Arta": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "I Gede Agus Putrawan": {
+            "Budi Renitasari | Kadek Budi Renitasari": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "I Komang Arjun Yudi Pandawa": {
+            "Budi Septiani | Luh Budi Septiani Dewi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "Ebiana | Putu Ebiana Susanta": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIC"
             },
-            "Putu Artika Satya Wiguna": {
+            "Eva Selyani | Luh Putu Eva Selyani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "Fynna Adinda | Ni Ketut Fynna Adinda Putri": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Laksmi Sridevi | Ni Luh Putu Laksmi Sridevi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Mas Novi | Komang Mas Novi Damayanti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Mayka Kaka | Putu Mayka Kaka Aditya": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Nita Damayanti | Putu Nita Damayanti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Nova | Kadek Nova Adi Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Pande Mitha | Luh Putu Pande Mitha Agustina": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIE"
             },
-            "Kadek Juliastika": {
+            "Purna Hari | Kadek Purna Hari Sanjaya": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Sila | I Komang Sila Widi Sumerta": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Widi Sukasari | Ni Komang Widi Sukasari": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Yuda Widi | Gede Yuda Widi Pradana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Yuli | Komang Yuli Restana": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
@@ -3009,250 +3094,260 @@
         "11": {
           "name": "Team 11",
           "teammates": {
-            "Nyoman Subana, S.Pd": {
+            "Teacher Putu Ardika, S.Pd": {
               "role": "Teacher",
               "school": null,
               "grade": null
             },
-            "Ni Luh Feby Diantari": {
+            "Int.|Made Bayu Ariada": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Ni Kadek Dwik Surya Pradnyani": {
+            "Int.|Gayuh Estu Laksono": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Putu Ella Pramudya": {
+            "Sekar | Kadek Ayu Sekar Wahyuningsih": {
               "role": "Ambassador",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Kadek Yuda Wira Utama": {
+            "Aby Sunanta | Putu Aby Sunanta": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ade Meta | Komang Ade Meta Triawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Aditya | Gede Aditya Pratama": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIB"
             },
-            "I Gede Meica Candra Winata": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Putu Agus Wiratama": {
+            "Anandini Citra | Putu Anandini Citra Prameswari": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIE"
             },
-            "Gusti Ngurah Eka Ginanta": {
+            "Ayu Cahya | Kadek Ayu Cahya Kimorin": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ayu Melinda | Putu Ayu Melinda Putri": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Ayu Sukmadewi | Ketut Ayu Sukmadewi": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Baladika | Kadek Baladika Sastrawan": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "Budiasa | Kadek Budiasa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "Damayanti | Putu Damayanti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Eka Sukriyani | Luh Eka Sukriyani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Fanny Adinda | Ni Komang Fanny Adinda Putri": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Puri Baktini | Nyoman Puri Baktini": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIC"
             },
-            "Putu Puspitarini": {
+            "Rangga | I Kadek Rangga Dwipayanaa": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Rena | Kadek Rena Widiani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Rendy | I Ketut Rendy Wedhayana": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Revayani | Ketut Revayani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "Riski Susila | Ketut Riski Susila Adnyana": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIA"
             },
-            "Putu Agus Diastana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Luh Aliya Putri Novianti": {
+            "Satria Wiguna | I Kadek Satria Wiguna": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIA"
             },
-            "Putu Nita Damayanti": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Komang Deva Sastrawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kadek Riyanta Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kadek Mas Ristayati": {
+            "Sedana | Gede Sedana Arta": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIB"
             },
-            "I Gusti Ayu Kadek Anita Yani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Ni Komang Widi Sukasari": {
+            "Sinar Pratiwi | I Putu Sinar Pratiwi": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
-            },
-            "Komang Tristan Arta Wiguna": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "I Ketut Aditya Wirawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Luh Putu Juni SIntia Wati": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Putu Anandini Citra Prameswari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Gede Yuda Restiawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ni Luh Putu Puspa Juliantari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kadek Amelia": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
             }
           }
         },
         "12": {
           "name": "Team 12",
           "teammates": {
-            "Putu Ardika, S.Pd": {
+            "Teacher Sang ayu Putu Ekawati, S.Pd.": {
               "role": "Teacher",
               "school": null,
               "grade": null
             },
-            "Komang Gede Samudra Artajaya. W": {
+            "Int.|Ngurah Ketut Raharya Sidiaji": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Putu Anggi Yumika Shanti": {
+            "Int.|Putu Alita Kristina Putri. S.": {
               "role": "Intern",
               "school": null,
               "grade": null
             },
-            "Ketut Masia Apriliya": {
+            "Jesika | Nengah Jesika Lingga Dewi": {
               "role": "Ambassador",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Putu Ayu Melinda Putri": {
+            "Agus Ari | Gede Agus Ari Sukrawan": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Kadek Nova Adi Putra": {
+            "Agus Supriadi | I Gede Agus Supriadi": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Putu Angga Ariawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Gede Anggara Yasa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Komang Yuli Restana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Komang Winda Noviadnyani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ketut Novi Diana Widia Sari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "I Kadek Satria Wiguna": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Komang Tegar Ariesta Satya Darma": {
+            "Alit Agus | Kadek Alit Agus Wibawa": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIE"
             },
-            "I Gede Yoga Ariawan": {
+            "Amelia | Kadek Amelia": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIE"
+            },
+            "Aryatiningsih | Putu Aryatiningsih": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Dyari | Kadek Dyari Sukma Yani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Fefi Fira | Komang Fefi Fira Payanti": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIA"
+            },
+            "Gede Wiyadnyana | Komang Gede Wiyadnyana": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIC"
             },
-            "I Gede Arya Suriadnyana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "I Komang Yogi Satriawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Luh Mas Ratna Galih": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kadek Arya Sujana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Kadek Deva Junarta Rama Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Luh Ayu Puspa Dewi": {
+            "Jhony | I Kadek Jhony Setiawan": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": "VIIIA"
             },
-            "Gede Windu Erawan": {
+            "Juni | Luh Putu Juni SIntia Wati": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Gusti Putu Arya Dharma Putra": {
+            "Mita Ayu | Kadek Mita Ayu Dya": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "Pradita | I Gede Pradita Surya Putra": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIID"
+            },
+            "Prya | Kadek Prya Wiguna": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Putriani | Komang Putriani": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Komang Ulan Meisa Wati": {
+            "Randy Asta | Gede Randy Asta Wiguna": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
               "grade": null
             },
-            "Kadek Agus Prasetya": {
+            "Satria Wiguna | Gede Satria Wiguna": {
               "role": "Participant",
               "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
+              "grade": null
+            },
+            "Widya | Luh Widya Indah Lestari": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Widya | Ni Kadek Widya Resmiani": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
+            },
+            "Wiliartawan | I Kadek Wiliartawan Kurnia": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIC"
+            },
+            "Wisnu Dharmayoga | Kadek Wisnu Dharmayoga": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": "VIIIB"
+            },
+            "Yoga | Kadek Yoga Sugiantara": {
+              "role": "Participant",
+              "school": "SMP Negeri 7 Singaraja",
+              "grade": null
             }
           }
         }
