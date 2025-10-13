@@ -26,10 +26,10 @@
     label{ font-size:13px; font-weight:700; display:block; margin-bottom:6px; color:#0f2917; }
     input[type="text"], input[type="number"], select, textarea{ width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); outline:none; background:#fbfefc; font-family: inherit; }
     input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:focus{ box-shadow: 0 0 0 3px rgba(46,125,75,0.18); border-color: var(--accent);}  
-    input[disabled], select[disabled]{ background:#f3f3f7; color:#aaa; }
+    input[disabled], select[disabled]{ background:#f3f3f7; color:#aaa; cursor:not-allowed; }
     textarea{ min-height:80px; resize:vertical; }
     .row{ display:flex; gap:12px; align-items:center; flex-wrap: wrap; }
-    .btn{ background:var(--primary); color:var(--primary-ink); padding:10px 14px; border:none; border-radius:12px; cursor:pointer; box-shadow:0 1px 0 rgba(0,0,0,0.06); font-weight:600; font-size:14px;} 
+    .btn{ background:var(--primary); color:var(--primary-ink); padding:10px 14px; border:none; border-radius:12px; cursor:pointer; box-shadow:0 1px 0 rgba(0,0,0,0.06); font-weight:600; font-size:14px; font-family:inherit;} 
     .btn:hover{ filter:brightness(1.05);} 
     .btn:active{ transform: translateY(1px);} 
     .btn[disabled]{ background:#bbb; cursor:not-allowed; }
@@ -62,8 +62,9 @@
       <div class="brand">🌿 Pulse</div>
       <div class="links">
         <a href="index.html" class="nav-link active">Check‑in</a>
-        <a href="dashboard.html" class="nav-link ">Dashboard</a>
-        <a href="dashboard-v2.html" class="nav-link ">Dashboard v2</a>
+        <a href="dashboard.html" class="nav-link">Feedback</a>
+        <a href="dashboard-v2.html" class="nav-link">Scoreboard</a>
+        <a href="teachers.html" class="nav-link">Teachers</a>
       </div>
     </div>
   </div>
@@ -89,11 +90,15 @@
         <div class="two">
           <div>
             <label>Event</label>
-            <select id="event"></select>
+            <select id="event">
+              <option value="">Select event</option>
+            </select>
           </div>
           <div>
             <label>City</label>
-            <select id="city"></select>
+            <select id="city">
+              <option value="">Select city</option>
+            </select>
           </div>
         </div>
 
@@ -108,7 +113,9 @@
 
         <div id="teamSelectContainer" style="display:none;">
           <label>Team / Group</label>
-          <select id="team" disabled></select>
+          <select id="team" disabled>
+            <option value="">Select team</option>
+          </select>
         </div>
 
         <div class="row">
@@ -170,7 +177,6 @@
   <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database-compat.js"></script>
 
   <script>
-    // ======= Configure me =======
     const firebaseConfig = {
       apiKey: "AIzaSyBog7q44JN9wVjfk2wy7FqS80NLJC5348g",
       authDomain: "emotion-tracker-7f11c.firebaseapp.com",
@@ -180,7 +186,6 @@
       messagingSenderId: "232586277659",
       appId: "1:232586277659:web:1fcff097243c8fa1ef99be"
     };
-    // ============================
 
     const EVENTS = [
       { id: 'sustainability_bootcamp', label: 'Sustainability Bootcamp' },
@@ -191,33 +196,35 @@
     const STORAGE_KEY = 'emotion_tracker_draft';
     let directory = null;
     let authUid = null;
-    let currentMembers = []; // For team mode
-    let evaluations = []; // For individual mode
+    let currentMembers = [];
+    let evaluations = [];
     let evaluationCounter = 0;
     let autoSaveTimer = null;
     let isIndividualMode = false;
-    let teamMembers = []; // Available members for dropdown
+    let teamMembers = [];
 
-    // Init Firebase
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.database();
 
-    // Anonymous auth for write permissions
     auth.onAuthStateChanged(user => {
       authUid = user ? user.uid : null;
       updateNextBtnState();
     });
+    
     auth.signInAnonymously().catch(err => {
       console.error(err);
       const status = document.getElementById('statusStep1');
       status.textContent = 'Auth failed: ' + (err && err.code ? err.code : 'see console');
     });
 
-    // Load directory.json
     fetch('directory.json')
       .then(r => r.json())
-      .then(data => { directory = data.cities || {}; initForm(); loadSavedData(); })
+      .then(data => { 
+        directory = data.cities || {}; 
+        initForm(); 
+        loadSavedData(); 
+      })
       .catch(err => { 
         console.error(err); 
         document.getElementById('statusStep1').textContent = "Failed to load directory.json"; 
@@ -230,15 +237,12 @@
       const evalTypeSel = document.getElementById('evalType');
       const teamSelectContainer = document.getElementById('teamSelectContainer');
 
-      // Populate events
       eventSel.innerHTML = '<option value="">Select event</option>' + 
         EVENTS.map(e => `<option value="${e.id}">${e.label}</option>`).join('');
 
-      // Populate city
       citySel.innerHTML = '<option value="">Select city</option>' + 
         Object.keys(directory).map(c => `<option value="${c}">${c}</option>`).join('');
 
-      // Evaluation type change handler
       evalTypeSel.addEventListener('change', () => {
         const evalType = evalTypeSel.value;
         isIndividualMode = evalType === 'individual';
@@ -249,6 +253,10 @@
             teamSel.disabled = false;
             populateTeams();
           }
+        } else if (evalType === 'individual') {
+          teamSelectContainer.style.display = 'none';
+          teamSel.disabled = true;
+          teamSel.value = '';
         } else {
           teamSelectContainer.style.display = 'none';
           teamSel.disabled = true;
@@ -261,10 +269,11 @@
       citySel.addEventListener('change', () => {
         const evalType = evalTypeSel.value;
         if (evalType === 'team') {
-          teamSel.disabled = !citySel.value;
           if (citySel.value) {
+            teamSel.disabled = false;
             populateTeams();
           } else {
+            teamSel.disabled = true;
             teamSel.innerHTML = '<option value="">Select team</option>';
           }
         }
@@ -272,9 +281,20 @@
         autoSave();
       });
 
-      teamSel.addEventListener('change', () => { updateNextBtnState(); autoSave(); });
-      eventSel.addEventListener('change', () => { updateNextBtnState(); autoSave(); });
-      document.getElementById('evaluatorName').addEventListener('input', () => { updateNextBtnState(); autoSave(); });
+      teamSel.addEventListener('change', () => { 
+        updateNextBtnState(); 
+        autoSave(); 
+      });
+      
+      eventSel.addEventListener('change', () => { 
+        updateNextBtnState(); 
+        autoSave(); 
+      });
+      
+      document.getElementById('evaluatorName').addEventListener('input', () => { 
+        updateNextBtnState(); 
+        autoSave(); 
+      });
 
       document.getElementById('nextBtn').addEventListener('click', goToStep2);
       document.getElementById('backBtn').addEventListener('click', goToStep1);
@@ -286,7 +306,14 @@
     function populateTeams() {
       const citySel = document.getElementById('city');
       const teamSel = document.getElementById('team');
-      const teams = directory[citySel.value]?.teams || {};
+      const cityValue = citySel.value;
+      
+      if (!cityValue || !directory[cityValue]) {
+        teamSel.innerHTML = '<option value="">Select team</option>';
+        return;
+      }
+      
+      const teams = directory[cityValue].teams || {};
       teamSel.innerHTML = '<option value="">Select team</option>' +
         Object.entries(teams).map(([id, t]) => `<option value="${id}">${t.name || ('Team ' + id)}</option>`).join('');
     }
@@ -325,7 +352,6 @@
         document.getElementById('individualAddSection').style.display = 'block';
         document.getElementById('teamAddSection').style.display = 'none';
         
-        // Get all members from all teams in the city
         const allMembers = new Set();
         const teams = directory[city]?.teams || {};
         Object.values(teams).forEach(team => {
@@ -336,8 +362,7 @@
         teamMembers = Array.from(allMembers).sort();
         populateMemberDropdown();
         
-        // Check if we have saved evaluations
-        if (savedData && savedData.evaluations && savedData.evaluations.length > 0) {
+        if (savedData && savedData.evaluations && Array.isArray(savedData.evaluations) && savedData.evaluations.length > 0) {
           evaluations = savedData.evaluations;
           evaluationCounter = savedData.evaluationCounter || evaluations.length;
         } else {
@@ -347,7 +372,6 @@
         
         renderIndividualEvaluations();
       } else {
-        // Team mode
         isIndividualMode = false;
         document.getElementById('individualAddSection').style.display = 'none';
         document.getElementById('teamAddSection').style.display = 'block';
@@ -394,7 +418,6 @@
         return;
       }
 
-      // Add evaluation
       evaluations.push({
         id: ++evaluationCounter,
         memberName: memberName,
@@ -403,7 +426,6 @@
         score: ''
       });
 
-      // Clear inputs
       dropdown.value = '';
       newNameInput.value = '';
 
@@ -647,144 +669,144 @@
       if (saved.city) document.getElementById('city').value = saved.city;
       if (saved.evalType) {
         document.getElementById('evalType').value = saved.evalType;
-        document.getElementById('evalType').dispatchEvent(new Event('change'));
+        const changeEvent = new Event('change');
+        document.getElementById('evalType').dispatchEvent(changeEvent);
         
         setTimeout(() => {
-          if (saved.evalType === 'team' && saved.team) {
-            document.getElementById('team').value = saved.team;
+          if (saved.evalType=== 'team' && saved.team) {
+document.getElementById('team').value = saved.team;
+}
+updateNextBtnState();
+if (saved.evalType === 'individual' && saved.evaluations && Array.isArray(saved.evaluations) && saved.evaluations.length > 0) {
+        setTimeout(() => {
+          if (authUid) {
+            goToStep2();
           }
-          updateNextBtnState();
-          
-          // If we have saved evaluation data, auto-restore to step 2
-          if (saved.evalType === 'individual' && saved.evaluations && saved.evaluations.length > 0) {
-            setTimeout(() => {
-              if (authUid) {
-                goToStep2();
-              }
-            }, 200);
-          } else if (saved.evalType === 'team' && saved.currentMembers && saved.currentMembers.length > 0 && 
-              Object.keys(saved.evaluations || {}).length > 0) {
-            setTimeout(() => {
-              if (authUid) {
-                goToStep2();
-              }
-            }, 200);
+        }, 200);
+      } else if (saved.evalType === 'team' && saved.currentMembers && saved.currentMembers.length > 0 && 
+          Object.keys(saved.evaluations || {}).length > 0) {
+        setTimeout(() => {
+          if (authUid) {
+            goToStep2();
           }
-        }, 100);
+        }, 200);
       }
-    }
+    }, 100);
+  }
+}
 
-    function showAutoSaveIndicator(){
-      const indicator = document.getElementById('autoSaveIndicator');
-      indicator.classList.add('visible');
-      setTimeout(() => {
-        indicator.classList.remove('visible');
-      }, 2000);
-    }
+function showAutoSaveIndicator(){
+  const indicator = document.getElementById('autoSaveIndicator');
+  indicator.classList.add('visible');
+  setTimeout(() => {
+    indicator.classList.remove('visible');
+  }, 2000);
+}
 
-    function clearSavedData(){
-      localStorage.removeItem(STORAGE_KEY);
-    }
+function clearSavedData(){
+  localStorage.removeItem(STORAGE_KEY);
+}
 
-    function submitAll(){
-      const status = document.getElementById('status');
-      status.textContent = 'Submitting…';
+function submitAll(){
+  const status = document.getElementById('status');
+  status.textContent = 'Submitting…';
 
-      const evaluatorName = document.getElementById('evaluatorName').value.trim();
-      const event = document.getElementById('event').value;
-      const city = document.getElementById('city').value;
-      const evalType = document.getElementById('evalType').value;
-      const team = evalType === 'team' ? document.getElementById('team').value : null;
+  const evaluatorName = document.getElementById('evaluatorName').value.trim();
+  const event = document.getElementById('event').value;
+  const city = document.getElementById('city').value;
+  const evalType = document.getElementById('evalType').value;
+  const team = evalType === 'team' ? document.getElementById('team').value : null;
 
-      const memberEvaluations = [];
+  const memberEvaluations = [];
 
-      if (isIndividualMode) {
-        evaluations.forEach(evaluation => {
-          const plusesText = evaluation.pluses.trim();
-          const minusesText = evaluation.minuses.trim();
-          const scoreText = evaluation.score.toString().trim();
-          
-          if (!plusesText && !minusesText && !scoreText) {
-            return;
-          }
-          
-          const pluses = plusesText.split('\n').map(s => s.trim()).filter(s => s);
-          const minuses = minusesText.split('\n').map(s => s.trim()).filter(s => s);
-
-          const evalData = {
-            memberName: evaluation.memberName,
-            pluses,
-            minuses,
-            score: parseInt(scoreText) || 0
-          };
-
-          memberEvaluations.push(evalData);
-        });
-      } else {
-        currentMembers.forEach(memberName => {
-          const plusesInput = document.querySelector(`textarea[data-member="${memberName}"][data-field="pluses"]`);
-          const minusesInput = document.querySelector(`textarea[data-member="${memberName}"][data-field="minuses"]`);
-          const scoreInput = document.querySelector(`input[data-member="${memberName}"][data-field="score"]`);
-
-          const plusesText = plusesInput.value.trim();
-          const minusesText = minusesInput.value.trim();
-          const scoreText = scoreInput.value.trim();
-          
-          if (!plusesText && !minusesText && !scoreText) {
-            return;
-          }
-          
-          const pluses = plusesText.split('\n').map(s => s.trim()).filter(s => s);
-          const minuses = minusesText.split('\n').map(s => s.trim()).filter(s => s);
-
-          const evalData = {
-            memberName,
-            pluses,
-            minuses,
-            score: parseInt(scoreText) || 0
-          };
-
-          memberEvaluations.push(evalData);
-        });
+  if (isIndividualMode) {
+    evaluations.forEach(evaluation => {
+      const plusesText = evaluation.pluses.trim();
+      const minusesText = evaluation.minuses.trim();
+      const scoreText = evaluation.score.toString().trim();
+      
+      if (!plusesText && !minusesText && !scoreText) {
+        return;
       }
+      
+      const pluses = plusesText.split('\n').map(s => s.trim()).filter(s => s);
+      const minuses = minusesText.split('\n').map(s => s.trim()).filter(s => s);
 
-      const entry = {
-        evaluatorName,
-        evaluatorId: authUid,
-        event,
-        city,
-        evalType,
-        team: team || 'individual',
-        memberEvaluations,
-        createdAt: Date.now()
+      const evalData = {
+        memberName: evaluation.memberName,
+        pluses,
+        minuses,
+        score: parseInt(scoreText) || 0
       };
 
-      firebase.database().ref('entries').push(entry).then(() => {
-        status.textContent = 'Submitted! ✅ All member evaluations saved.';
-        clearSavedData();
-        setTimeout(() => {
-          goToStep1();
-          document.querySelectorAll('#membersList input, #membersList textarea').forEach(i => i.value = '');
-          document.getElementById('newMemberName').value = '';
-          document.getElementById('newMemberNameIndividual').value = '';
-          document.getElementById('memberDropdown').value = '';
-          document.getElementById('evaluatorName').value = '';
-          document.getElementById('event').value = '';
-          document.getElementById('city').value = '';
-          document.getElementById('evalType').value = '';
-          document.getElementById('team').value = '';
-          document.getElementById('team').disabled = true;
-          currentMembers = [];
-          evaluations = [];
-          evaluationCounter = 0;
-          status.textContent = '';
-          updateNextBtnState();
-        }, 2000);
-      }).catch(err => {
-        console.error(err);
-        status.textContent = 'Failed to submit. Check console.';
-      });
-    }
-  </script>
+      memberEvaluations.push(evalData);
+    });
+  } else {
+    currentMembers.forEach(memberName => {
+      const plusesInput = document.querySelector(`textarea[data-member="${memberName}"][data-field="pluses"]`);
+      const minusesInput = document.querySelector(`textarea[data-member="${memberName}"][data-field="minuses"]`);
+      const scoreInput = document.querySelector(`input[data-member="${memberName}"][data-field="score"]`);
+
+      const plusesText = plusesInput.value.trim();
+      const minusesText = minusesInput.value.trim();
+      const scoreText = scoreInput.value.trim();
+      
+      if (!plusesText && !minusesText && !scoreText) {
+        return;
+      }
+      
+      const pluses = plusesText.split('\n').map(s => s.trim()).filter(s => s);
+      const minuses = minusesText.split('\n').map(s => s.trim()).filter(s => s);
+
+      const evalData = {
+        memberName,
+        pluses,
+        minuses,
+        score: parseInt(scoreText) || 0
+      };
+
+      memberEvaluations.push(evalData);
+    });
+  }
+
+  const entry = {
+    evaluatorName,
+    evaluatorId: authUid,
+    event,
+    city,
+    evalType,
+    team: team || 'individual',
+    memberEvaluations,
+    createdAt: Date.now()
+  };
+
+  db.ref('entries').push(entry).then(() => {
+    status.textContent = 'Submitted! ✅ All member evaluations saved.';
+    clearSavedData();
+    setTimeout(() => {
+      goToStep1();
+      document.querySelectorAll('#membersList input, #membersList textarea').forEach(i => i.value = '');
+      document.getElementById('newMemberName').value = '';
+      document.getElementById('newMemberNameIndividual').value = '';
+      document.getElementById('memberDropdown').value = '';
+      document.getElementById('evaluatorName').value = '';
+      document.getElementById('event').value = '';
+      document.getElementById('city').value = '';
+      document.getElementById('evalType').value = '';
+      document.getElementById('team').value = '';
+      document.getElementById('team').disabled = true;
+      document.getElementById('teamSelectContainer').style.display = 'none';
+      currentMembers = [];
+      evaluations = [];
+      evaluationCounter = 0;
+      status.textContent = '';
+      updateNextBtnState();
+    }, 2000);
+  }).catch(err => {
+    console.error(err);
+    status.textContent = 'Failed to submit. Check console.';
+  });
+}
+</script>
 </body>
 </html>
