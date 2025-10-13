@@ -7,6 +7,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Scoreboard – Team Evaluations</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     :root { --bg:#edf6ef; --card:#ffffff; --text:#0b1f14; --muted:#5a6b5f; --border:#cfe2d5; --primary:#14532d; --primary-ink:#ffffff; --accent:#1a7f46; --ring:#9ae6b4; }
     *{ box-sizing: border-box; }
@@ -20,6 +21,7 @@
     .nav-link.active{ background:var(--primary); color:var(--primary-ink); }
     .card{ background:var(--card); border:1px solid var(--border); border-radius:18px; padding:22px; box-shadow: 0 6px 20px rgba(20,83,45,0.06); margin-bottom:20px; }
     h1{ font-size:24px; margin:0 0 6px; }
+    h2{ font-size:20px; margin:0 0 16px; color:var(--primary); }
     p.desc{ margin:0; color:var(--muted); font-size:14px; }
     label{ font-size:13px; font-weight:700; display:block; margin-bottom:6px; color:#0f2917; }
     select{ padding:10px 12px; border-radius:10px; border:1px solid var(--border); outline:none; background:#fbfefc; font-family: inherit; min-width:200px; }
@@ -30,6 +32,13 @@
     .btn-secondary{ background:var(--accent); }
     .filters{ display:flex; gap:16px; margin-bottom:20px; align-items:end; flex-wrap:wrap; }
     .filter-group{ display:flex; flex-direction:column; }
+    .stats-row{ display:flex; gap:16px; margin-bottom:20px; flex-wrap:wrap; }
+    .stat-card{ flex:1; min-width:200px; background:linear-gradient(135deg, #14532d, #1a7f46); color:white; padding:20px; border-radius:12px; box-shadow: 0 4px 12px rgba(20,83,45,0.15); }
+    .stat-label{ font-size:12px; opacity:0.9; margin-bottom:4px; }
+    .stat-value{ font-size:28px; font-weight:700; }
+    .charts-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap:20px; margin-bottom:20px; }
+    .chart-card{ background:var(--card); border:1px solid var(--border); border-radius:18px; padding:22px; box-shadow: 0 6px 20px rgba(20,83,45,0.06); }
+    .chart-container{ position:relative; height:300px; }
     .table-container{ overflow-x:auto; background:white; border-radius:12px; border:1px solid var(--border); }
     table{ width:100%; border-collapse: collapse; }
     th, td{ padding:14px 16px; text-align:left; border-bottom:1px solid var(--border); }
@@ -41,10 +50,12 @@
     .score-cell{ text-align:center; font-weight:700; color:var(--accent); font-size:18px; }
     .empty-state{ text-align:center; padding:60px 20px; color:var(--muted); }
     .empty-state h3{ margin:0 0 8px; color:var(--text); }
-    .action-bar{ display:flex; gap:12px; justify-content:flex-end; margin-bottom:16px; }
+    .action-bar{ display:flex; gap:12px; justify-content:space-between; margin-bottom:16px; align-items:center; }
     .team-separator{ background:#e8f5ec !important; }
     @media (max-width: 768px){ 
       .filters{ flex-direction:column; align-items:stretch; }
+      .charts-grid{ grid-template-columns:1fr; }
+      .stats-row{ flex-direction:column; }
     }
   </style>
 </head>
@@ -57,6 +68,7 @@
         <a href="dashboard.html" class="nav-link">Feedback</a>
         <a href="dashboard-v2.html" class="nav-link active">Scoreboard</a>
         <a href="teachers.html" class="nav-link">Teachers</a>
+        <a href="internal.html" class="nav-link">Internal</a>
       </div>
     </div>
   </div>
@@ -65,6 +77,26 @@
     <div class="card">
       <h1>Team Evaluation Dashboard</h1>
       <p class="desc">View team member scores sorted by team and performance</p>
+    </div>
+
+    <!-- Statistics -->
+    <div class="stats-row" id="statsRow">
+      <div class="stat-card">
+        <div class="stat-label">Total Evaluations</div>
+        <div class="stat-value" id="totalEvals">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Members</div>
+        <div class="stat-value" id="totalMembers">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Average Score</div>
+        <div class="stat-value" id="avgScore">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Highest Score</div>
+        <div class="stat-value" id="highScore">0</div>
+      </div>
     </div>
 
     <!-- Filters -->
@@ -85,13 +117,42 @@
         <button class="btn" id="applyFilters" style="align-self:flex-end;">Apply Filters</button>
         <button class="btn btn-secondary" id="resetFilters" style="align-self:flex-end;">Reset</button>
       </div>
-      <div class="action-bar">
-        <button class="btn btn-secondary" id="exportBtn">📊 Export to CSV</button>
+    </div>
+
+    <!-- Charts -->
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h2>Team Performance</h2>
+        <div class="chart-container">
+          <canvas id="teamChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h2>City Performance</h2>
+        <div class="chart-container">
+          <canvas id="cityChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h2>Score Distribution</h2>
+        <div class="chart-container">
+          <canvas id="distributionChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h2>Top 10 Performers</h2>
+        <div class="chart-container">
+          <canvas id="topPerformersChart"></canvas>
+        </div>
       </div>
     </div>
 
     <!-- Data Table -->
     <div class="card">
+      <div class="action-bar">
+        <h2 style="margin:0;">Individual Scores</h2>
+        <button class="btn btn-secondary" id="exportBtn">📊 Export to CSV</button>
+      </div>
       <div class="table-container">
         <table id="dataTable">
           <thead>
@@ -138,6 +199,12 @@
     let allEntries = [];
     let filteredEntries = [];
     let directory = null;
+    let charts = {
+      team: null,
+      city: null,
+      distribution: null,
+      topPerformers: null
+    };
 
     // Load directory.json for team lookup
     fetch('directory.json')
@@ -148,7 +215,7 @@
       })
       .catch(err => { 
         console.error('Failed to load directory.json', err); 
-        loadEntries(); // Continue even if directory fails to load
+        loadEntries();
       });
 
     // Load all entries from Firebase
@@ -173,11 +240,9 @@
       const cityData = directory[city];
       if (!cityData || !cityData.teams) return 'Unknown';
       
-      // Search through all teams to find the member
       for (const [teamId, teamData] of Object.entries(cityData.teams)) {
         const teammates = teamData.teammates || {};
         if (teammates[memberName]) {
-          // Extract team number from team name or ID
           const teamName = teamData.name || teamId;
           const match = teamName.match(/\d+/);
           return match ? `Team ${match[0]}` : teamName;
@@ -189,14 +254,11 @@
 
     // Get team assignment for entry
     function getTeamAssignment(entry, memberName) {
-      // If team is not "individual", use the team from entry
       if (entry.team && entry.team !== 'individual') {
-        // Extract team number from team string
         const match = entry.team.match(/\d+/);
         return match ? `Team ${match[0]}` : entry.team;
       }
       
-      // For individual evaluations, look up the team from directory
       return findTeamForMember(memberName, entry.city);
     }
 
@@ -241,6 +303,8 @@
         return true;
       });
 
+      updateStatistics();
+      renderCharts();
       renderTable();
     }
 
@@ -272,23 +336,8 @@
       return (sum / memberScores.length).toFixed(1);
     }
 
-    // Render data table
-    function renderTable() {
-      const tbody = document.getElementById('tableBody');
-      
-      if (filteredEntries.length === 0) {
-        tbody.innerHTML = `
-          <tr>
-            <td colspan="6" class="empty-state">
-              <h3>No evaluations found</h3>
-              <p>Try adjusting your filters or add new evaluations</p>
-            </td>
-          </tr>
-        `;
-        return;
-      }
-
-      // Create a map of unique members per team
+    // Get all member data
+    function getAllMembersData() {
       const teamMembers = new Map();
       
       filteredEntries.forEach(entry => {
@@ -308,32 +357,268 @@
         });
       });
 
-      // Convert to array and calculate average scores
       const membersList = Array.from(teamMembers.values()).map(member => ({
         ...member,
         avgScore: parseFloat(calculateMemberAverageScore(member.memberName, member.team))
       }));
 
-      // Sort by team number first, then by score (highest to lowest)
       membersList.sort((a, b) => {
         const teamA = getTeamNumber(a.team);
         const teamB = getTeamNumber(b.team);
         
         if (teamA !== teamB) {
-          return teamA - teamB; // Sort by team number ascending
+          return teamA - teamB;
         }
         
-        return b.avgScore - a.avgScore; // Sort by score descending within same team
+        return b.avgScore - a.avgScore;
       });
 
-      // Render table rows
+      return membersList;
+    }
+
+    // Update statistics
+    function updateStatistics() {
+      const membersList = getAllMembersData();
+      
+      const totalEvals = membersList.length;
+      const totalMembers = new Set(membersList.map(m => m.memberName)).size;
+      const scores = membersList.map(m => m.avgScore).filter(s => s > 0);
+      const avgScore = scores.length > 0 ? (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1) : 0;
+      const highScore = scores.length > 0 ? Math.max(...scores).toFixed(1) : 0;
+
+      document.getElementById('totalEvals').textContent = totalEvals;
+      document.getElementById('totalMembers').textContent = totalMembers;
+      document.getElementById('avgScore').textContent = avgScore;
+      document.getElementById('highScore').textContent = highScore;
+    }
+
+    // Render charts
+    function renderCharts() {
+      const membersList = getAllMembersData();
+      
+      // Team Performance Chart
+      renderTeamChart(membersList);
+      
+      // City Performance Chart
+      renderCityChart(membersList);
+      
+      // Score Distribution Chart
+      renderDistributionChart(membersList);
+      
+      // Top Performers Chart
+      renderTopPerformersChart(membersList);
+    }
+
+    function renderTeamChart(membersList) {
+      const teamScores = {};
+      
+      membersList.forEach(member => {
+        if (!teamScores[member.team]) {
+          teamScores[member.team] = [];
+        }
+        teamScores[member.team].push(member.avgScore);
+      });
+
+      const teams = Object.keys(teamScores).sort((a, b) => getTeamNumber(a) - getTeamNumber(b));
+      const avgScores = teams.map(team => {
+        const scores = teamScores[team];
+        return (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1);
+      });
+
+      if (charts.team) charts.team.destroy();
+      
+      const ctx = document.getElementById('teamChart').getContext('2d');
+      charts.team = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: teams,
+          datasets: [{
+            label: 'Average Score',
+            data: avgScores,
+            backgroundColor: 'rgba(26, 127, 70, 0.8)',
+            borderColor: 'rgba(26, 127, 70, 1)',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 10
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
+      });
+    }
+
+    function renderCityChart(membersList) {
+      const cityScores = {};
+      
+      membersList.forEach(member => {
+        if (!cityScores[member.city]) {
+          cityScores[member.city] = [];
+        }
+        cityScores[member.city].push(member.avgScore);
+      });
+
+      const cities = Object.keys(cityScores).sort();
+      const avgScores = cities.map(city => {
+        const scores = cityScores[city];
+        return (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1);
+      });
+
+      if (charts.city) charts.city.destroy();
+      
+      const ctx = document.getElementById('cityChart').getContext('2d');
+      charts.city = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: cities,
+          datasets: [{
+            label: 'Average Score',
+            data: avgScores,
+            backgroundColor: 'rgba(20, 83, 45, 0.8)',
+            borderColor: 'rgba(20, 83, 45, 1)',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 10
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
+      });
+    }
+
+    function renderDistributionChart(membersList) {
+      const distribution = {
+        '0-2': 0,
+        '2-4': 0,
+        '4-6': 0,
+        '6-8': 0,
+        '8-10': 0
+      };
+
+      membersList.forEach(member => {
+        const score = member.avgScore;
+        if (score < 2) distribution['0-2']++;
+        else if (score < 4) distribution['2-4']++;
+        else if (score < 6) distribution['4-6']++;
+        else if (score < 8) distribution['6-8']++;
+        else distribution['8-10']++;
+      });
+
+      if (charts.distribution) charts.distribution.destroy();
+      
+      const ctx = document.getElementById('distributionChart').getContext('2d');
+      charts.distribution = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: Object.keys(distribution),
+          datasets: [{
+            data: Object.values(distribution),
+            backgroundColor: [
+              'rgba(220, 38, 38, 0.8)',
+              'rgba(251, 146, 60, 0.8)',
+              'rgba(250, 204, 21, 0.8)',
+              'rgba(74, 222, 128, 0.8)',
+              'rgba(34, 197, 94, 0.8)'
+            ],
+            borderWidth: 2,
+            borderColor: '#fff'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }
+      });
+    }
+
+    function renderTopPerformersChart(membersList) {
+      const top10 = membersList
+        .filter(m => m.avgScore > 0)
+        .sort((a, b) => b.avgScore - a.avgScore)
+        .slice(0, 10);
+
+      if (charts.topPerformers) charts.topPerformers.destroy();
+      
+      const ctx = document.getElementById('topPerformersChart').getContext('2d');
+      charts.topPerformers = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: top10.map(m => m.memberName),
+          datasets: [{
+            label: 'Score',
+            data: top10.map(m => m.avgScore),
+            backgroundColor: 'rgba(26, 127, 70, 0.8)',
+            borderColor: 'rgba(26, 127, 70, 1)',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: {
+              beginAtZero: true,
+              max: 10
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
+      });
+    }
+
+    // Render data table
+    function renderTable() {
+      const tbody = document.getElementById('tableBody');
+      const membersList = getAllMembersData();
+      
+      if (membersList.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="empty-state">
+              <h3>No evaluations found</h3>
+              <p>Try adjusting your filters or add new evaluations</p>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
       let html = '';
       let lastTeam = null;
       
       membersList.forEach(member => {
         const date = new Date(member.date).toLocaleDateString();
-        
-        // Add visual separator between teams
         const rowClass = member.team !== lastTeam ? 'team-separator' : '';
         lastTeam = member.team;
         
@@ -354,44 +639,14 @@
 
     // Export to CSV
     function exportToCSV() {
-      if (filteredEntries.length === 0) {
+      const membersList = getAllMembersData();
+      
+      if (membersList.length === 0) {
         alert('No data to export');
         return;
       }
 
       let csv = 'Date,Event,City,Team,Name,Average Score\n';
-
-      // Recreate the same sorting logic for export
-      const teamMembers = new Map();
-      
-      filteredEntries.forEach(entry => {
-        const memberEvals = entry.memberEvaluations || [];
-        memberEvals.forEach(member => {
-          const teamAssignment = getTeamAssignment(entry, member.memberName);
-          const key = `${teamAssignment}|${member.memberName}`;
-          if (!teamMembers.has(key)) {
-            teamMembers.set(key, {
-              team: teamAssignment,
-              memberName: member.memberName,
-              date: entry.createdAt,
-              event: entry.event,
-              city: entry.city
-            });
-          }
-        });
-      });
-
-      const membersList = Array.from(teamMembers.values()).map(member => ({
-        ...member,
-        avgScore: parseFloat(calculateMemberAverageScore(member.memberName, member.team))
-      }));
-
-      membersList.sort((a, b) => {
-        const teamA = getTeamNumber(a.team);
-        const teamB = getTeamNumber(b.team);
-        if (teamA !== teamB) return teamA - teamB;
-        return b.avgScore - a.avgScore;
-      });
 
       membersList.forEach(member => {
         const date = new Date(member.date).toLocaleDateString();
