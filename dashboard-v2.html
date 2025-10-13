@@ -6,7 +6,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dashboard v2 – Team Evaluations</title>
+  <title>Scoreboard – Team Evaluations</title>
   <style>
     :root { --bg:#edf6ef; --card:#ffffff; --text:#0b1f14; --muted:#5a6b5f; --border:#cfe2d5; --primary:#14532d; --primary-ink:#ffffff; --accent:#1a7f46; --ring:#9ae6b4; }
     *{ box-sizing: border-box; }
@@ -54,8 +54,9 @@
       <div class="brand">🌿 Pulse</div>
       <div class="links">
         <a href="index.html" class="nav-link">Check‑in</a>
-        <a href="dashboard.html" class="nav-link">Dashboard</a>
-        <a href="dashboard-v2.html" class="nav-link active">Dashboard v2</a>
+        <a href="dashboard.html" class="nav-link">Feedback</a>
+        <a href="dashboard-v2.html" class="nav-link active">Scoreboard</a>
+        <a href="teachers.html" class="nav-link">Teachers</a>
       </div>
     </div>
   </div>
@@ -136,6 +137,19 @@
 
     let allEntries = [];
     let filteredEntries = [];
+    let directory = null;
+
+    // Load directory.json for team lookup
+    fetch('directory.json')
+      .then(r => r.json())
+      .then(data => { 
+        directory = data.cities || {}; 
+        loadEntries();
+      })
+      .catch(err => { 
+        console.error('Failed to load directory.json', err); 
+        loadEntries(); // Continue even if directory fails to load
+      });
 
     // Load all entries from Firebase
     function loadEntries() {
@@ -150,6 +164,40 @@
         populateFilters();
         applyFilters();
       });
+    }
+
+    // Find team number for a member from directory
+    function findTeamForMember(memberName, city) {
+      if (!directory || !city || !memberName) return 'Unknown';
+      
+      const cityData = directory[city];
+      if (!cityData || !cityData.teams) return 'Unknown';
+      
+      // Search through all teams to find the member
+      for (const [teamId, teamData] of Object.entries(cityData.teams)) {
+        const teammates = teamData.teammates || {};
+        if (teammates[memberName]) {
+          // Extract team number from team name or ID
+          const teamName = teamData.name || teamId;
+          const match = teamName.match(/\d+/);
+          return match ? `Team ${match[0]}` : teamName;
+        }
+      }
+      
+      return 'Unknown';
+    }
+
+    // Get team assignment for entry
+    function getTeamAssignment(entry, memberName) {
+      // If team is not "individual", use the team from entry
+      if (entry.team && entry.team !== 'individual') {
+        // Extract team number from team string
+        const match = entry.team.match(/\d+/);
+        return match ? `Team ${match[0]}` : entry.team;
+      }
+      
+      // For individual evaluations, look up the team from directory
+      return findTeamForMember(memberName, entry.city);
     }
 
     // Populate filter dropdowns
@@ -198,7 +246,7 @@
 
     // Extract team number for sorting
     function getTeamNumber(teamName) {
-      if (!teamName) return 999; // Put entries without team at the end
+      if (!teamName || teamName === 'Unknown') return 999;
       const match = teamName.match(/\d+/);
       return match ? parseInt(match[0]) : 999;
     }
@@ -208,7 +256,8 @@
       const memberScores = [];
       
       filteredEntries.forEach(entry => {
-        if (entry.team === team) {
+        const entryTeam = getTeamAssignment(entry, memberName);
+        if (entryTeam === team) {
           const memberEvals = entry.memberEvaluations || [];
           memberEvals.forEach(member => {
             if (member.memberName === memberName && member.score) {
@@ -245,10 +294,11 @@
       filteredEntries.forEach(entry => {
         const memberEvals = entry.memberEvaluations || [];
         memberEvals.forEach(member => {
-          const key = `${entry.team}|${member.memberName}`;
+          const teamAssignment = getTeamAssignment(entry, member.memberName);
+          const key = `${teamAssignment}|${member.memberName}`;
           if (!teamMembers.has(key)) {
             teamMembers.set(key, {
-              team: entry.team,
+              team: teamAssignment,
               memberName: member.memberName,
               date: entry.createdAt,
               event: entry.event,
@@ -292,7 +342,7 @@
             <td>${date}</td>
             <td>${formatEventName(member.event)}</td>
             <td>${member.city || 'N/A'}</td>
-            <td class="team-name">${member.team || 'N/A'}</td>
+            <td class="team-name">${member.team}</td>
             <td><strong>${member.memberName}</strong></td>
             <td class="score-cell">${member.avgScore}</td>
           </tr>
@@ -317,10 +367,11 @@
       filteredEntries.forEach(entry => {
         const memberEvals = entry.memberEvaluations || [];
         memberEvals.forEach(member => {
-          const key = `${entry.team}|${member.memberName}`;
+          const teamAssignment = getTeamAssignment(entry, member.memberName);
+          const key = `${teamAssignment}|${member.memberName}`;
           if (!teamMembers.has(key)) {
             teamMembers.set(key, {
-              team: entry.team,
+              team: teamAssignment,
               memberName: member.memberName,
               date: entry.createdAt,
               event: entry.event,
@@ -344,14 +395,14 @@
 
       membersList.forEach(member => {
         const date = new Date(member.date).toLocaleDateString();
-        csv += `"${date}","${formatEventName(member.event)}","${member.city || 'N/A'}","${member.team || 'N/A'}","${member.memberName}","${member.avgScore}"\n`;
+        csv += `"${date}","${formatEventName(member.event)}","${member.city || 'N/A'}","${member.team}","${member.memberName}","${member.avgScore}"\n`;
       });
 
       const blob = new Blob([csv], { type: 'text/csv' });
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `team-evaluations-${new Date().toISOString().split('T')[0]}.csv`;
+      a.download = `team-scoreboard-${new Date().toISOString().split('T')[0]}.csv`;
       a.click();
       window.URL.revokeObjectURL(url);
     }
@@ -367,9 +418,6 @@
     document.getElementById('applyFilters').addEventListener('click', applyFilters);
     document.getElementById('resetFilters').addEventListener('click', resetFilters);
     document.getElementById('exportBtn').addEventListener('click', exportToCSV);
-
-    // Load data on page load
-    loadEntries();
   </script>
 </body>
 </html>
