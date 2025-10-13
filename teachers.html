@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teachers – Team Evaluations</title>
+  <style>
+    :root { --bg:#edf6ef; --card:#ffffff; --text:#0b1f14; --muted:#5a6b5f; --border:#cfe2d5; --primary:#14532d; --primary-ink:#ffffff; --accent:#1a7f46; --ring:#9ae6b4; }
+    *{ box-sizing: border-box; }
+    body{ margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background:linear-gradient(160deg, #f0f7f2, #e7f2ea); color:var(--text); }
+    .container{ max-width:1400px; margin:0 auto; padding:24px; }
+    .nav{ position:sticky; top:0; z-index:10; backdrop-filter: blur(6px); background:rgba(255,255,255,0.6); border-bottom:1px solid var(--border); }
+    .nav-inner{ max-width:1400px; margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; }
+    .brand{ font-weight:700; color:var(--primary); letter-spacing:0.2px; }
+    .nav-link{ padding:8px 12px; border-radius:10px; text-decoration:none; color:var(--text); font-weight:600; }
+    .nav-link:hover{ background:#e6f3ea; }
+    .nav-link.active{ background:var(--primary); color:var(--primary-ink); }
+    .card{ background:var(--card); border:1px solid var(--border); border-radius:18px; padding:22px; box-shadow: 0 6px 20px rgba(20,83,45,0.06); margin-bottom:20px; }
+    h1{ font-size:24px; margin:0 0 6px; }
+    p.desc{ margin:0; color:var(--muted); font-size:14px; }
+    label{ font-size:13px; font-weight:700; display:block; margin-bottom:6px; color:#0f2917; }
+    input[type="password"], input[type="text"]{ padding:10px 12px; border-radius:10px; border:1px solid var(--border); outline:none; background:#fbfefc; font-family: inherit; width:100%; }
+    input[type="password"]:focus, input[type="text"]:focus{ box-shadow: 0 0 0 3px rgba(46,125,75,0.18); border-color: var(--accent);}  
+    .btn{ background:var(--primary); color:var(--primary-ink); padding:10px 16px; border:none; border-radius:12px; cursor:pointer; box-shadow:0 1px 0 rgba(0,0,0,0.06); font-weight:600; font-size:14px; font-family: inherit;} 
+    .btn:hover{ filter:brightness(1.05);} 
+    .btn:active{ transform: translateY(1px);} 
+    .btn-secondary{ background:var(--accent); }
+    .login-container{ max-width:400px; margin:100px auto; }
+    .table-container{ overflow-x:auto; background:white; border-radius:12px; border:1px solid var(--border); }
+    table{ width:100%; border-collapse: collapse; }
+    th, td{ padding:14px 16px; text-align:left; border-bottom:1px solid var(--border); }
+    th{ background:#f9fcfa; font-weight:700; font-size:13px; color:var(--primary); position:sticky; top:0; z-index:5; white-space:nowrap; }
+    td{ font-size:14px; }
+    tr:last-child td{ border-bottom:none; }
+    tbody tr:hover{ background:#f9fcfa; }
+    .evaluator-name{ font-weight:600; color:var(--primary); }
+    .count-cell{ text-align:center; font-weight:600; color:var(--accent); }
+    .empty-state{ text-align:center; padding:60px 20px; color:var(--muted); }
+    .empty-state h3{ margin:0 0 8px; color:var(--text); }
+    .action-bar{ display:flex; gap:12px; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; align-items:center; }
+    .error-msg{ color:#dc2626; font-size:13px; margin-top:8px; }
+    #dashboardContent{ display:none; }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">🌿 Pulse</div>
+      <div class="links">
+        <a href="index.html" class="nav-link">Check‑in</a>
+        <a href="dashboard.html" class="nav-link">Feedback</a>
+        <a href="dashboard-v2.html" class="nav-link">Scoreboard</a>
+        <a href="teachers.html" class="nav-link active">Teachers</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Screen -->
+  <div id="loginScreen">
+    <div class="login-container">
+      <div class="card">
+        <h1>Teachers Dashboard</h1>
+        <p class="desc">Enter password to access teacher evaluation analytics</p>
+        <div style="margin-top:20px;">
+          <label>Password</label>
+          <input type="password" id="passwordInput" placeholder="Enter password" />
+          <p class="error-msg" id="errorMsg" style="display:none;">Incorrect password. Please try again.</p>
+          <button class="btn" id="loginBtn" style="margin-top:12px; width:100%;">Access Dashboard</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard Content -->
+  <div id="dashboardContent">
+    <div class="container">
+      <div class="card">
+        <h1>Teachers Evaluation Dashboard</h1>
+        <p class="desc">View teacher/evaluator statistics and download detailed reports</p>
+      </div>
+
+      <!-- Actions -->
+      <div class="card">
+        <div class="action-bar">
+          <div>
+            <button class="btn btn-secondary" id="exportSummaryBtn">📊 Export Summary (Teachers)</button>
+          </div>
+          <div>
+            <button class="btn" id="exportDetailedBtn">📥 Download Full Report (All Data)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary Table -->
+      <div class="card">
+        <div class="table-container">
+          <table id="summaryTable">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Event</th>
+                <th>City</th>
+                <th>Evaluator Name</th>
+                <th>Evaluations Submitted</th>
+                <th>Plus Points Submitted</th>
+                <th>Minus Points Submitted</th>
+              </tr>
+            </thead>
+            <tbody id="summaryTableBody">
+              <tr>
+                <td colspan="7" class="empty-state">
+                  <h3>Loading data...</h3>
+                  <p>Please wait while we fetch evaluation data</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database-compat.js"></script>
+
+  <script>
+    const PASSWORD = 'MIHF';
+    const firebaseConfig = {
+      apiKey: "AIzaSyBog7q44JN9wVjfk2wy7FqS80NLJC5348g",
+      authDomain: "emotion-tracker-7f11c.firebaseapp.com",
+      databaseURL: "https://emotion-tracker-7f11c-default-rtdb.firebaseio.com",
+      projectId: "emotion-tracker-7f11c",
+      storageBucket: "emotion-tracker-7f11c.firebasestorage.app",
+      messagingSenderId: "232586277659",
+      appId: "1:232586277659:web:1fcff097243c8fa1ef99be"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    let allEntries = [];
+    let isAuthenticated = false;
+
+    // Check if already authenticated in session
+    if (sessionStorage.getItem('teachersAuth') === 'true') {
+      isAuthenticated = true;
+      showDashboard();
+    }
+
+    // Login handler
+    document.getElementById('loginBtn').addEventListener('click', () => {
+      const password = document.getElementById('passwordInput').value;
+      if (password === PASSWORD) {
+        isAuthenticated = true;
+        sessionStorage.setItem('teachersAuth', 'true');
+        document.getElementById('errorMsg').style.display = 'none';
+        showDashboard();
+      } else {
+        document.getElementById('errorMsg').style.display = 'block';
+      }
+    });
+
+    // Allow Enter key to submit password
+    document.getElementById('passwordInput').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        document.getElementById('loginBtn').click();
+      }
+    });
+
+    function showDashboard() {
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('dashboardContent').style.display = 'block';
+      loadEntries();
+    }
+
+    // Load all entries from Firebase
+    function loadEntries() {
+      db.ref('entries').once('value', snapshot => {
+        allEntries = [];
+        snapshot.forEach(child => {
+          const entry = child.val();
+          entry.id = child.key;
+          allEntries.push(entry);
+        });
+        
+        renderSummaryTable();
+      });
+    }
+
+    // Format event name
+    function formatEventName(eventId) {
+      const names = {
+        'sustainability_bootcamp': 'Sustainability Bootcamp',
+        'story_a_night': 'Story a Night',
+        'young_ambassadors_training': 'Young Ambassadors Training'
+      };
+      return names[eventId] || eventId;
+    }
+
+    // Group entries by evaluator (case-insensitive)
+    function groupByEvaluator() {
+      const grouped = new Map();
+      
+      allEntries.forEach(entry => {
+        const evaluatorKey = (entry.evaluatorName || '').toLowerCase().trim();
+        
+        if (!grouped.has(evaluatorKey)) {
+          grouped.set(evaluatorKey, {
+            evaluatorName: entry.evaluatorName, // Keep original case for display
+            entries: []
+          });
+        }
+        
+        grouped.get(evaluatorKey).entries.push(entry);
+      });
+      
+      return grouped;
+    }
+
+    // Render summary table
+    function renderSummaryTable() {
+      const tbody = document.getElementById('summaryTableBody');
+      
+      if (allEntries.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" class="empty-state">
+              <h3>No evaluations found</h3>
+              <p>No teacher evaluations have been submitted yet</p>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      // Group entries by evaluator
+      const groupedByEvaluator = groupByEvaluator();
+      
+      // Convert to array and sort by most recent date
+      const evaluatorSummaries = Array.from(groupedByEvaluator.values()).map(group => {
+        const sortedEntries = group.entries.sort((a, b) => b.createdAt - a.createdAt);
+        const mostRecentEntry = sortedEntries[0];
+        
+        // Aggregate statistics across all entries for this evaluator
+        let totalEvaluations = 0;
+        let totalPlus = 0;
+        let totalMinus = 0;
+        
+        group.entries.forEach(entry => {
+          const memberEvals = entry.memberEvaluations || [];
+          totalEvaluations += memberEvals.length;
+          
+          memberEvals.forEach(member => {
+            const pluses = member.pluses || [];
+            const minuses = member.minuses || [];
+            totalPlus += pluses.length;
+            totalMinus += minuses.length;
+          });
+        });
+        
+        return {
+          evaluatorName: group.evaluatorName,
+          mostRecentDate: mostRecentEntry.createdAt,
+          event: mostRecentEntry.event,
+          city: mostRecentEntry.city,
+          totalEvaluations,
+          totalPlus,
+          totalMinus
+        };
+      });
+      
+      // Sort by most recent date
+      evaluatorSummaries.sort((a, b) => b.mostRecentDate - a.mostRecentDate);
+
+      let html = '';
+      evaluatorSummaries.forEach(summary => {
+        const date = new Date(summary.mostRecentDate).toLocaleDateString();
+        
+        html += `
+          <tr>
+            <td>${date}</td>
+            <td>${formatEventName(summary.event)}</td>
+            <td>${summary.city}</td>
+            <td class="evaluator-name">${summary.evaluatorName}</td>
+            <td class="count-cell">${summary.totalEvaluations}</td>
+            <td class="count-cell">${summary.totalPlus}</td>
+            <td class="count-cell">${summary.totalMinus}</td>
+          </tr>
+        `;
+      });
+
+      tbody.innerHTML = html;
+    }
+
+    // Export summary CSV (for teachers view)
+    function exportSummaryCSV() {
+      if (allEntries.length === 0) {
+        alert('No data to export');
+        return;
+      }
+
+      let csv = 'Date,Event,City,Evaluator Name,Evaluations Submitted,Plus Points Submitted,Minus Points Submitted\n';
+
+      const groupedByEvaluator = groupByEvaluator();
+      
+      const evaluatorSummaries = Array.from(groupedByEvaluator.values()).map(group => {
+        const sortedEntries = group.entries.sort((a, b) => b.createdAt - a.createdAt);
+        const mostRecentEntry = sortedEntries[0];
+        
+        let totalEvaluations = 0;
+        let totalPlus = 0;
+        let totalMinus = 0;
+        
+        group.entries.forEach(entry => {
+          const memberEvals = entry.memberEvaluations || [];
+          totalEvaluations += memberEvals.length;
+          
+          memberEvals.forEach(member => {
+            const pluses = member.pluses || [];
+            const minuses = member.minuses || [];
+            totalPlus += pluses.length;
+            totalMinus += minuses.length;
+          });
+        });
+        
+        return {
+          evaluatorName: group.evaluatorName,
+          mostRecentDate: mostRecentEntry.createdAt,
+          event: mostRecentEntry.event,
+          city: mostRecentEntry.city,
+          totalEvaluations,
+          totalPlus,
+          totalMinus
+        };
+      });
+      
+      evaluatorSummaries.sort((a, b) => b.mostRecentDate - a.mostRecentDate);
+
+      evaluatorSummaries.forEach(summary => {
+        const date = new Date(summary.mostRecentDate).toLocaleDateString();
+        csv += `"${date}","${formatEventName(summary.event)}","${summary.city}","${summary.evaluatorName}","${summary.totalEvaluations}","${summary.totalPlus}","${summary.totalMinus}"\n`;
+      });
+
+      downloadCSV(csv, `teachers-summary-${new Date().toISOString().split('T')[0]}.csv`);
+    }
+
+    // Export detailed CSV (full data for internal team)
+    function exportDetailedCSV() {
+      if (allEntries.length === 0) {
+        alert('No data to export');
+        return;
+      }
+
+      let csv = 'Date,Event,City,Evaluator Name,Member Name,Plus,Minus,Score\n';
+
+      const sortedEntries = [...allEntries].sort((a, b) => b.createdAt - a.createdAt);
+
+      sortedEntries.forEach(entry => {
+        const date = new Date(entry.createdAt).toLocaleDateString();
+        const memberEvals = entry.memberEvaluations || [];
+        
+        memberEvals.forEach(member => {
+          const pluses = (member.pluses || []).join('; ');
+          const minuses = (member.minuses || []).join('; ');
+          const score = member.score || 0;
+          
+          csv += `"${date}","${formatEventName(entry.event)}","${entry.city}","${entry.evaluatorName}","${member.memberName}","${pluses}","${minuses}","${score}"\n`;
+        });
+      });
+
+      downloadCSV(csv, `full-evaluation-report-${new Date().toISOString().split('T')[0]}.csv`);
+    }
+
+    // Helper function to download CSV
+    function downloadCSV(csvContent, filename) {
+      const blob = new Blob([csvContent], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      a.click();
+      window.URL.revokeObjectURL(url);
+    }
+
+    // Event listeners
+    document.getElementById('exportSummaryBtn').addEventListener('click', exportSummaryCSV);
+    document.getElementById('exportDetailedBtn').addEventListener('click', exportDetailedCSV);
+  </script>
+</body>
+</html>
