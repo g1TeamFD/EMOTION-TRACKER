@@ -37,11 +37,12 @@
     td{ font-size:14px; }
     tr:last-child td{ border-bottom:none; }
     tbody tr:hover{ background:#f9fcfa; }
-    .team-name{ font-weight:600; color:var(--primary); }
+    .team-name{ font-weight:700; color:var(--primary); font-size:16px; }
     .score-cell{ text-align:center; font-weight:700; color:var(--accent); font-size:18px; }
     .empty-state{ text-align:center; padding:60px 20px; color:var(--muted); }
     .empty-state h3{ margin:0 0 8px; color:var(--text); }
     .action-bar{ display:flex; gap:12px; justify-content:flex-end; margin-bottom:16px; }
+    .team-separator{ background:#e8f5ec !important; }
     @media (max-width: 768px){ 
       .filters{ flex-direction:column; align-items:stretch; }
     }
@@ -62,7 +63,7 @@
   <div class="container">
     <div class="card">
       <h1>Team Evaluation Dashboard</h1>
-      <p class="desc">View average team scores by evaluation entry</p>
+      <p class="desc">View team member scores sorted by team and performance</p>
     </div>
 
     <!-- Filters -->
@@ -95,15 +96,16 @@
           <thead>
             <tr>
               <th>Date</th>
-              <th>Team</th>
+              <th>Event</th>
               <th>City</th>
-              <th>Evaluator Name</th>
+              <th>Team</th>
+              <th>Name</th>
               <th>Average Score</th>
             </tr>
           </thead>
           <tbody id="tableBody">
             <tr>
-              <td colspan="5" class="empty-state">
+              <td colspan="6" class="empty-state">
                 <h3>Loading data...</h3>
                 <p>Please wait while we fetch evaluation data</p>
               </td>
@@ -194,13 +196,31 @@
       renderTable();
     }
 
-    // Calculate average score for an entry
-    function calculateAverageScore(entry) {
-      const memberEvals = entry.memberEvaluations || [];
-      if (memberEvals.length === 0) return 0;
+    // Extract team number for sorting
+    function getTeamNumber(teamName) {
+      if (!teamName) return 999; // Put entries without team at the end
+      const match = teamName.match(/\d+/);
+      return match ? parseInt(match[0]) : 999;
+    }
+
+    // Calculate average score for a member across all their evaluations
+    function calculateMemberAverageScore(memberName, team) {
+      const memberScores = [];
       
-      const totalScore = memberEvals.reduce((sum, member) => sum + (member.score || 0), 0);
-      return (totalScore / memberEvals.length).toFixed(1);
+      filteredEntries.forEach(entry => {
+        if (entry.team === team) {
+          const memberEvals = entry.memberEvaluations || [];
+          memberEvals.forEach(member => {
+            if (member.memberName === memberName && member.score) {
+              memberScores.push(member.score);
+            }
+          });
+        }
+      });
+      
+      if (memberScores.length === 0) return 0;
+      const sum = memberScores.reduce((acc, score) => acc + score, 0);
+      return (sum / memberScores.length).toFixed(1);
     }
 
     // Render data table
@@ -210,7 +230,7 @@
       if (filteredEntries.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="5" class="empty-state">
+            <td colspan="6" class="empty-state">
               <h3>No evaluations found</h3>
               <p>Try adjusting your filters or add new evaluations</p>
             </td>
@@ -219,21 +239,62 @@
         return;
       }
 
-      // Sort entries by date (newest first)
-      const sortedEntries = [...filteredEntries].sort((a, b) => b.createdAt - a.createdAt);
+      // Create a map of unique members per team
+      const teamMembers = new Map();
+      
+      filteredEntries.forEach(entry => {
+        const memberEvals = entry.memberEvaluations || [];
+        memberEvals.forEach(member => {
+          const key = `${entry.team}|${member.memberName}`;
+          if (!teamMembers.has(key)) {
+            teamMembers.set(key, {
+              team: entry.team,
+              memberName: member.memberName,
+              date: entry.createdAt,
+              event: entry.event,
+              city: entry.city
+            });
+          }
+        });
+      });
 
+      // Convert to array and calculate average scores
+      const membersList = Array.from(teamMembers.values()).map(member => ({
+        ...member,
+        avgScore: parseFloat(calculateMemberAverageScore(member.memberName, member.team))
+      }));
+
+      // Sort by team number first, then by score (highest to lowest)
+      membersList.sort((a, b) => {
+        const teamA = getTeamNumber(a.team);
+        const teamB = getTeamNumber(b.team);
+        
+        if (teamA !== teamB) {
+          return teamA - teamB; // Sort by team number ascending
+        }
+        
+        return b.avgScore - a.avgScore; // Sort by score descending within same team
+      });
+
+      // Render table rows
       let html = '';
-      sortedEntries.forEach(entry => {
-        const date = new Date(entry.createdAt).toLocaleDateString();
-        const avgScore = calculateAverageScore(entry);
+      let lastTeam = null;
+      
+      membersList.forEach(member => {
+        const date = new Date(member.date).toLocaleDateString();
+        
+        // Add visual separator between teams
+        const rowClass = member.team !== lastTeam ? 'team-separator' : '';
+        lastTeam = member.team;
         
         html += `
-          <tr>
+          <tr class="${rowClass}">
             <td>${date}</td>
-            <td class="team-name">${entry.team || 'N/A'}</td>
-            <td>${entry.city || 'N/A'}</td>
-            <td>${entry.evaluatorName || 'N/A'}</td>
-            <td class="score-cell">${avgScore}</td>
+            <td>${formatEventName(member.event)}</td>
+            <td>${member.city || 'N/A'}</td>
+            <td class="team-name">${member.team || 'N/A'}</td>
+            <td><strong>${member.memberName}</strong></td>
+            <td class="score-cell">${member.avgScore}</td>
           </tr>
         `;
       });
@@ -248,15 +309,42 @@
         return;
       }
 
-      let csv = 'Date,Team,City,Evaluator Name,Average Score\n';
+      let csv = 'Date,Event,City,Team,Name,Average Score\n';
 
-      const sortedEntries = [...filteredEntries].sort((a, b) => b.createdAt - a.createdAt);
+      // Recreate the same sorting logic for export
+      const teamMembers = new Map();
+      
+      filteredEntries.forEach(entry => {
+        const memberEvals = entry.memberEvaluations || [];
+        memberEvals.forEach(member => {
+          const key = `${entry.team}|${member.memberName}`;
+          if (!teamMembers.has(key)) {
+            teamMembers.set(key, {
+              team: entry.team,
+              memberName: member.memberName,
+              date: entry.createdAt,
+              event: entry.event,
+              city: entry.city
+            });
+          }
+        });
+      });
 
-      sortedEntries.forEach(entry => {
-        const date = new Date(entry.createdAt).toLocaleDateString();
-        const avgScore = calculateAverageScore(entry);
-        
-        csv += `"${date}","${entry.team || 'N/A'}","${entry.city || 'N/A'}","${entry.evaluatorName || 'N/A'}","${avgScore}"\n`;
+      const membersList = Array.from(teamMembers.values()).map(member => ({
+        ...member,
+        avgScore: parseFloat(calculateMemberAverageScore(member.memberName, member.team))
+      }));
+
+      membersList.sort((a, b) => {
+        const teamA = getTeamNumber(a.team);
+        const teamB = getTeamNumber(b.team);
+        if (teamA !== teamB) return teamA - teamB;
+        return b.avgScore - a.avgScore;
+      });
+
+      membersList.forEach(member => {
+        const date = new Date(member.date).toLocaleDateString();
+        csv += `"${date}","${formatEventName(member.event)}","${member.city || 'N/A'}","${member.team || 'N/A'}","${member.memberName}","${member.avgScore}"\n`;
       });
 
       const blob = new Blob([csv], { type: 'text/csv' });
