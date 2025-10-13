@@ -22,14 +22,14 @@
     h1{ font-size:24px; margin:0 0 6px; }
     p.desc{ margin:0; color:var(--muted); font-size:14px; }
     label{ font-size:13px; font-weight:700; display:block; margin-bottom:6px; color:#0f2917; }
-    input[type="text"], input[type="date"], select{ padding:10px 12px; border-radius:10px; border:1px solid var(--border); outline:none; background:#fbfefc; font-family: inherit; }
-    input[type="text"]:focus, input[type="date"]:focus, select:focus{ box-shadow: 0 0 0 3px rgba(46,125,75,0.18); border-color: var(--accent);}  
+    input[type="text"]{ padding:10px 12px; border-radius:10px; border:1px solid var(--border); outline:none; background:#fbfefc; font-family: inherit; width:100%; }
+    input[type="text"]:focus{ box-shadow: 0 0 0 3px rgba(46,125,75,0.18); border-color: var(--accent);}  
     .btn{ background:var(--primary); color:var(--primary-ink); padding:10px 16px; border:none; border-radius:12px; cursor:pointer; box-shadow:0 1px 0 rgba(0,0,0,0.06); font-weight:600; font-size:14px; font-family: inherit;} 
     .btn:hover{ filter:brightness(1.05);} 
     .btn:active{ transform: translateY(1px);} 
     .btn-secondary{ background:var(--accent); }
-    .filters{ display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-bottom:20px; align-items:end; }
-    .filter-group{ display:flex; flex-direction:column; }
+    .search-bar{ display:flex; gap:12px; margin-bottom:20px; align-items:end; }
+    .search-group{ flex:1; }
     .table-container{ overflow-x:auto; background:white; border-radius:12px; border:1px solid var(--border); }
     table{ width:100%; border-collapse: collapse; }
     th, td{ padding:14px 16px; text-align:left; border-bottom:1px solid var(--border); }
@@ -41,14 +41,9 @@
     .score-cell{ text-align:center; font-weight:600; color:var(--accent); }
     .empty-state{ text-align:center; padding:60px 20px; color:var(--muted); }
     .empty-state h3{ margin:0 0 8px; color:var(--text); }
-    .stats-row{ display:flex; gap:16px; margin-bottom:20px; flex-wrap:wrap; }
-    .stat-card{ flex:1; min-width:200px; background:linear-gradient(135deg, #14532d, #1a7f46); color:white; padding:20px; border-radius:12px; box-shadow: 0 4px 12px rgba(20,83,45,0.15); }
-    .stat-label{ font-size:12px; opacity:0.9; margin-bottom:4px; }
-    .stat-value{ font-size:28px; font-weight:700; }
-    .action-bar{ display:flex; gap:12px; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; }
+    .action-bar{ display:flex; gap:12px; justify-content:flex-end; margin-bottom:16px; flex-wrap:wrap; }
     @media (max-width: 768px){ 
-      .filters{ grid-template-columns:1fr; }
-      .stats-row{ flex-direction:column; }
+      .search-bar{ flex-direction:column; }
     }
   </style>
 </head>
@@ -67,64 +62,19 @@
   <div class="container">
     <div class="card">
       <h1>Team Member Evaluation Dashboard</h1>
-      <p class="desc">View and analyze individual team member evaluations across events and dates</p>
+      <p class="desc">View and search team member evaluations</p>
     </div>
 
-    <!-- Statistics -->
-    <div class="stats-row" id="statsRow" style="display:none;">
-      <div class="stat-card">
-        <div class="stat-label">Total Evaluations</div>
-        <div class="stat-value" id="totalEvals">0</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Teams Evaluated</div>
-        <div class="stat-value" id="totalTeams">0</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Average Score</div>
-        <div class="stat-value" id="avgScore">0</div>
-      </div>
-    </div>
-
-    <!-- Filters -->
+    <!-- Search Box -->
     <div class="card">
-      <div class="filters">
-        <div class="filter-group">
-          <label>Event</label>
-          <select id="filterEvent">
-            <option value="">All Events</option>
-          </select>
+      <div class="search-bar">
+        <div class="search-group">
+          <label>Search by Name</label>
+          <input type="text" id="searchName" placeholder="Type member name to search..." />
         </div>
-        <div class="filter-group">
-          <label>City</label>
-          <select id="filterCity">
-            <option value="">All Cities</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <label>Team</label>
-          <select id="filterTeam">
-            <option value="">All Teams</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <label>Evaluator Name</label>
-          <input type="text" id="filterEvaluator" placeholder="Search by name..." />
-        </div>
-        <div class="filter-group">
-          <label>Date From</label>
-          <input type="date" id="filterDateFrom" />
-        </div>
-        <div class="filter-group">
-          <label>Date To</label>
-          <input type="date" id="filterDateTo" />
-        </div>
+        <button class="btn" id="clearSearch">Clear</button>
       </div>
       <div class="action-bar">
-        <div style="display:flex; gap:12px;">
-          <button class="btn" id="applyFilters">Apply Filters</button>
-          <button class="btn btn-secondary" id="resetFilters">Reset</button>
-        </div>
         <button class="btn btn-secondary" id="exportBtn">📊 Export to CSV</button>
       </div>
     </div>
@@ -138,17 +88,16 @@
               <th>Date</th>
               <th>Event</th>
               <th>City</th>
+              <th>Name</th>
               <th>Team</th>
-              <th>Evaluator</th>
-              <th>Member Name</th>
-              <th>Score /10</th>
-              <th>Pluses</th>
-              <th>Minuses</th>
+              <th>Score</th>
+              <th>Plus</th>
+              <th>Minus</th>
             </tr>
           </thead>
           <tbody id="tableBody">
             <tr>
-              <td colspan="9" class="empty-state">
+              <td colspan="8" class="empty-state">
                 <h3>Loading data...</h3>
                 <p>Please wait while we fetch evaluation data</p>
               </td>
@@ -190,35 +139,8 @@
           allEntries.push(entry);
         });
         
-        populateFilters();
-        applyFilters();
+        applySearch();
       });
-    }
-
-    // Populate filter dropdowns
-    function populateFilters() {
-      const events = new Set();
-      const cities = new Set();
-      const teams = new Set();
-
-      allEntries.forEach(entry => {
-        if (entry.event) events.add(entry.event);
-        if (entry.city) cities.add(entry.city);
-        if (entry.team) teams.add(entry.team);
-      });
-
-      const eventSelect = document.getElementById('filterEvent');
-      const citySelect = document.getElementById('filterCity');
-      const teamSelect = document.getElementById('filterTeam');
-
-      eventSelect.innerHTML = '<option value="">All Events</option>' +
-        Array.from(events).sort().map(e => `<option value="${e}">${formatEventName(e)}</option>`).join('');
-
-      citySelect.innerHTML = '<option value="">All Cities</option>' +
-        Array.from(cities).sort().map(c => `<option value="${c}">${c}</option>`).join('');
-
-      teamSelect.innerHTML = '<option value="">All Teams</option>' +
-        Array.from(teams).sort().map(t => `<option value="${t}">${t}</option>`).join('');
     }
 
     // Format event name
@@ -231,32 +153,29 @@
       return names[eventId] || eventId;
     }
 
-    // Apply filters and render table
-    function applyFilters() {
-      const filterEvent = document.getElementById('filterEvent').value;
-      const filterCity = document.getElementById('filterCity').value;
-      const filterTeam = document.getElementById('filterTeam').value;
-      const filterEvaluator = document.getElementById('filterEvaluator').value.toLowerCase();
-      const filterDateFrom = document.getElementById('filterDateFrom').value;
-      const filterDateTo = document.getElementById('filterDateTo').value;
+    // Apply search filter
+    function applySearch() {
+      const searchName = document.getElementById('searchName').value.toLowerCase();
 
-      filteredEntries = allEntries.filter(entry => {
-        if (filterEvent && entry.event !== filterEvent) return false;
-        if (filterCity && entry.city !== filterCity) return false;
-        if (filterTeam && entry.team !== filterTeam) return false;
-        if (filterEvaluator && !entry.evaluatorName?.toLowerCase().includes(filterEvaluator)) return false;
+      filteredEntries = [];
+      
+      allEntries.forEach(entry => {
+        const memberEvals = entry.memberEvaluations || [];
         
-        if (filterDateFrom || filterDateTo) {
-          const entryDate = new Date(entry.createdAt).toISOString().split('T')[0];
-          if (filterDateFrom && entryDate < filterDateFrom) return false;
-          if (filterDateTo && entryDate > filterDateTo) return false;
-        }
-        
-        return true;
+        memberEvals.forEach(member => {
+          if (!searchName || member.memberName?.toLowerCase().includes(searchName)) {
+            filteredEntries.push({
+              ...entry,
+              memberName: member.memberName,
+              score: member.score,
+              pluses: member.pluses || [],
+              minuses: member.minuses || []
+            });
+          }
+        });
       });
 
       renderTable();
-      updateStats();
     }
 
     // Render data table
@@ -266,9 +185,9 @@
       if (filteredEntries.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="9" class="empty-state">
+            <td colspan="8" class="empty-state">
               <h3>No evaluations found</h3>
-              <p>Try adjusting your filters or add new evaluations</p>
+              <p>Try adjusting your search or add new evaluations</p>
             </td>
           </tr>
         `;
@@ -278,60 +197,24 @@
       let html = '';
       filteredEntries.forEach(entry => {
         const date = new Date(entry.createdAt).toLocaleDateString();
-        const memberEvals = entry.memberEvaluations || [];
+        const pluses = entry.pluses.join(', ');
+        const minuses = entry.minuses.join(', ');
         
-        memberEvals.forEach(member => {
-          const pluses = (member.pluses || []).join(', ');
-          const minuses = (member.minuses || []).join(', ');
-          
-          html += `
-            <tr>
-              <td>${date}</td>
-              <td>${formatEventName(entry.event)}</td>
-              <td>${entry.city}</td>
-              <td class="team-name">${entry.team}</td>
-              <td>${entry.evaluatorName}</td>
-              <td><strong>${member.memberName}</strong></td>
-              <td class="score-cell">${member.score}</td>
-              <td>${pluses}</td>
-              <td>${minuses}</td>
-            </tr>
-          `;
-        });
+        html += `
+          <tr>
+            <td>${date}</td>
+            <td>${formatEventName(entry.event)}</td>
+            <td>${entry.city}</td>
+            <td><strong>${entry.memberName}</strong></td>
+            <td class="team-name">${entry.team}</td>
+            <td class="score-cell">${entry.score}</td>
+            <td>${pluses}</td>
+            <td>${minuses}</td>
+          </tr>
+        `;
       });
 
       tbody.innerHTML = html;
-    }
-
-    // Update statistics
-    function updateStats() {
-      const statsRow = document.getElementById('statsRow');
-      
-      if (filteredEntries.length === 0) {
-        statsRow.style.display = 'none';
-        return;
-      }
-
-      statsRow.style.display = 'flex';
-
-      let totalMembers = 0;
-      let totalScore = 0;
-      const teamsSet = new Set();
-
-      filteredEntries.forEach(entry => {
-        teamsSet.add(entry.team);
-        const memberEvals = entry.memberEvaluations || [];
-        memberEvals.forEach(member => {
-          totalMembers++;
-          totalScore += member.score || 0;
-        });
-      });
-
-      document.getElementById('totalEvals').textContent = totalMembers;
-      document.getElementById('totalTeams').textContent = teamsSet.size;
-      document.getElementById('avgScore').textContent = totalMembers > 0 
-        ? (totalScore / totalMembers).toFixed(1) 
-        : '0';
     }
 
     // Export to CSV
@@ -341,49 +224,35 @@
         return;
       }
 
-      let csv = 'Date,Event,City,Team,Evaluator,Member Name,Score,Pluses,Minuses\n';
+      let csv = 'Date,Event,City,Name,Team,Score,Plus,Minus\n';
 
       filteredEntries.forEach(entry => {
         const date = new Date(entry.createdAt).toLocaleDateString();
-        const memberEvals = entry.memberEvaluations || [];
+        const pluses = entry.pluses.join('; ');
+        const minuses = entry.minuses.join('; ');
         
-        memberEvals.forEach(member => {
-          const pluses = (member.pluses || []).join('; ');
-          const minuses = (member.minuses || []).join('; ');
-          
-          csv += `"${date}","${formatEventName(entry.event)}","${entry.city}","${entry.team}","${entry.evaluatorName}","${member.memberName}","${member.score}","${pluses}","${minuses}"\n`;
-        });
+        csv += `"${date}","${formatEventName(entry.event)}","${entry.city}","${entry.memberName}","${entry.team}","${entry.score}","${pluses}","${minuses}"\n`;
       });
 
       const blob = new Blob([csv], { type: 'text/csv' });
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `team-member-evaluations-${new Date().toISOString().split('T')[0]}.csv`;
+      a.download = `team-evaluations-${new Date().toISOString().split('T')[0]}.csv`;
       a.click();
       window.URL.revokeObjectURL(url);
     }
 
-    // Reset filters
-    function resetFilters() {
-      document.getElementById('filterEvent').value = '';
-      document.getElementById('filterCity').value = '';
-      document.getElementById('filterTeam').value = '';
-      document.getElementById('filterEvaluator').value = '';
-      document.getElementById('filterDateFrom').value = '';
-      document.getElementById('filterDateTo').value = '';
-      applyFilters();
+    // Clear search
+    function clearSearch() {
+      document.getElementById('searchName').value = '';
+      applySearch();
     }
 
     // Event listeners
-    document.getElementById('applyFilters').addEventListener('click', applyFilters);
-    document.getElementById('resetFilters').addEventListener('click', resetFilters);
+    document.getElementById('searchName').addEventListener('keyup', applySearch);
+    document.getElementById('clearSearch').addEventListener('click', clearSearch);
     document.getElementById('exportBtn').addEventListener('click', exportToCSV);
-
-    // Also apply filters on Enter key in evaluator search
-    document.getElementById('filterEvaluator').addEventListener('keyup', e => {
-      if (e.key === 'Enter') applyFilters();
-    });
 
     // Load data on page load
     loadEntries();
