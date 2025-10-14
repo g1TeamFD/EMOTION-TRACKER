@@ -56,6 +56,7 @@
         <a href="dashboard.html" class="nav-link active">Feedback</a>
         <a href="dashboard-v2.html" class="nav-link">Scoreboard</a>
         <a href="teachers.html" class="nav-link">Teachers</a>
+        <a href="internal.html" class="nav-link">Internal</a>
       </div>
     </div>
   </div>
@@ -63,7 +64,7 @@
   <div class="container">
     <div class="card">
       <h1>Team Member Evaluation Dashboard</h1>
-      <p class="desc">View and search team member evaluations</p>
+      <p class="desc">View and search team member evaluations (Students only)</p>
     </div>
 
     <!-- Search Box -->
@@ -129,6 +130,67 @@
 
     let allEntries = [];
     let filteredEntries = [];
+    let directory = null;
+
+    // Load directory.json for role lookup
+    fetch('directory.json')
+      .then(r => r.json())
+      .then(data => { 
+        directory = data.cities || {}; 
+        loadEntries();
+      })
+      .catch(err => { 
+        console.error('Failed to load directory.json', err); 
+        loadEntries();
+      });
+
+    // Get member role from directory
+    function getMemberRole(memberName, city) {
+      if (!directory || !city || !memberName) return null;
+      
+      const cityData = directory[city];
+      if (!cityData || !cityData.teams) return null;
+      
+      for (const [teamId, teamData] of Object.entries(cityData.teams)) {
+        const teammates = teamData.teammates || {};
+        if (teammates[memberName]) {
+          const role = teammates[memberName].role;
+          // Return lowercase for consistent comparison
+          return role ? role.toLowerCase() : null;
+        }
+      }
+      
+      return null;
+    }
+
+    // Find team number for a member from directory
+    function findTeamForMember(memberName, city) {
+      if (!directory || !city || !memberName) return 'Unknown';
+      
+      const cityData = directory[city];
+      if (!cityData || !cityData.teams) return 'Unknown';
+      
+      for (const [teamId, teamData] of Object.entries(cityData.teams)) {
+        const teammates = teamData.teammates || {};
+        if (teammates[memberName]) {
+          const teamName = teamData.name || teamId;
+          const match = teamName.match(/\d+/);
+          return match ? `Team ${match[0]}` : teamName;
+        }
+      }
+      
+      return 'Unknown';
+    }
+
+    // Get team assignment for entry
+    function getTeamAssignment(entry, memberName) {
+      if (entry.team && entry.team !== 'individual') {
+        const match = entry.team.match(/\d+/);
+        return match ? `Team ${match[0]}` : entry.team;
+      }
+      
+      return findTeamForMember(memberName, entry.city);
+    }
 
     // Load all entries from Firebase
     function loadEntries() {
@@ -164,10 +226,21 @@
         const memberEvals = entry.memberEvaluations || [];
         
         memberEvals.forEach(member => {
+          // Get role and exclude teachers and interns
+          const role = getMemberRole(member.memberName, entry.city);
+          
+          if (role === 'teacher' || role === 'intern') {
+            return; // Skip teachers and interns
+          }
+          
           if (!searchName || member.memberName?.toLowerCase().includes(searchName)) {
+            // Get team assignment from directory
+            const teamAssignment = getTeamAssignment(entry, member.memberName);
+            
             filteredEntries.push({
               ...entry,
               memberName: member.memberName,
+              teamAssignment: teamAssignment,
               score: member.score,
               pluses: member.pluses || [],
               minuses: member.minuses || []
@@ -207,7 +280,7 @@
             <td>${formatEventName(entry.event)}</td>
             <td>${entry.city}</td>
             <td><strong>${entry.memberName}</strong></td>
-            <td class="team-name">${entry.team}</td>
+            <td class="team-name">${entry.teamAssignment}</td>
             <td class="score-cell">${entry.score}</td>
             <td>${pluses}</td>
             <td>${minuses}</td>
@@ -232,7 +305,7 @@
         const pluses = entry.pluses.join('; ');
         const minuses = entry.minuses.join('; ');
         
-        csv += `"${date}","${formatEventName(entry.event)}","${entry.city}","${entry.memberName}","${entry.team}","${entry.score}","${pluses}","${minuses}"\n`;
+        csv += `"${date}","${formatEventName(entry.event)}","${entry.city}","${entry.memberName}","${entry.teamAssignment}","${entry.score}","${pluses}","${minuses}"\n`;
       });
 
       const blob = new Blob([csv], { type: 'text/csv' });
@@ -254,9 +327,6 @@
     document.getElementById('searchName').addEventListener('keyup', applySearch);
     document.getElementById('clearSearch').addEventListener('click', clearSearch);
     document.getElementById('exportBtn').addEventListener('click', exportToCSV);
-
-    // Load data on page load
-    loadEntries();
   </script>
 </body>
 </html>
