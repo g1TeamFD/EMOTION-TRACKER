@@ -368,6 +368,25 @@
       return (sum / memberScores.length).toFixed(1);
     }
 
+    // Calculate total score for a member across all their evaluations
+    function calculateMemberTotalScore(memberName, team) {
+      let totalScore = 0;
+      
+      filteredEntries.forEach(entry => {
+        const entryTeam = getTeamAssignment(entry, memberName);
+        if (entryTeam === team) {
+          const memberEvals = entry.memberEvaluations || [];
+          memberEvals.forEach(member => {
+            if (member.memberName === memberName && member.score) {
+              totalScore += member.score;
+            }
+          });
+        }
+      });
+      
+      return totalScore;
+    }
+
     // Get all member data (excluding teachers and interns)
     function getAllMembersData() {
       const teamMembers = new Map();
@@ -399,7 +418,8 @@
 
       const membersList = Array.from(teamMembers.values()).map(member => ({
         ...member,
-        avgScore: parseFloat(calculateMemberAverageScore(member.memberName, member.team))
+        avgScore: parseFloat(calculateMemberAverageScore(member.memberName, member.team)),
+        totalScore: calculateMemberTotalScore(member.memberName, member.team)
       }));
 
       membersList.sort((a, b) => {
@@ -727,8 +747,8 @@
 
     function renderTopPerformersChart(membersList) {
       const top10 = membersList
-        .filter(m => m.avgScore > 0)
-        .sort((a, b) => b.avgScore - a.avgScore)
+        .filter(m => m.totalScore > 0)
+        .sort((a, b) => b.totalScore - a.totalScore)
         .slice(0, 10);
 
       if (charts.topPerformers) charts.topPerformers.destroy();
@@ -739,8 +759,8 @@
         data: {
           labels: top10.map(m => `${m.team} - ${m.memberName}`),
           datasets: [{
-            label: 'Score',
-            data: top10.map(m => m.avgScore),
+            label: 'Total Score',
+            data: top10.map(m => m.totalScore),
             backgroundColor: 'rgba(26, 127, 70, 0.8)',
             borderColor: 'rgba(26, 127, 70, 1)',
             borderWidth: 2
@@ -752,8 +772,7 @@
           maintainAspectRatio: false,
           scales: {
             x: {
-              beginAtZero: true,
-              max: 10
+              beginAtZero: true
             },
             y: {
               ticks: {
