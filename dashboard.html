@@ -182,14 +182,23 @@
       return 'Unknown';
     }
 
-    // Get team assignment for entry
+    // Get team assignment for entry (always use directory.json data)
     function getTeamAssignment(entry, memberName) {
+      // Always check directory first, ignore submitted team data
+      const teamFromDirectory = findTeamForMember(memberName, entry.city);
+      
+      // If found in directory, use that
+      if (teamFromDirectory !== 'Unknown') {
+        return teamFromDirectory;
+      }
+      
+      // Fallback to submitted data only if not in directory
       if (entry.team && entry.team !== 'individual') {
         const match = entry.team.match(/\d+/);
         return match ? `Team ${match[0]}` : entry.team;
       }
       
-      return findTeamForMember(memberName, entry.city);
+      return 'Unknown';
     }
 
     // Load all entries from Firebase
@@ -268,8 +277,13 @@
         return;
       }
 
+      // Sort by date (newest first)
+      const sortedEntries = [...filteredEntries].sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      });
+
       let html = '';
-      filteredEntries.forEach(entry => {
+      sortedEntries.forEach(entry => {
         const date = new Date(entry.createdAt).toLocaleDateString();
         const pluses = entry.pluses.join(', ');
         const minuses = entry.minuses.join(', ');
@@ -298,9 +312,14 @@
         return;
       }
 
+      // Sort by date (newest first) for export
+      const sortedEntries = [...filteredEntries].sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      });
+
       let csv = 'Date,Event,City,Name,Team,Score,Plus,Minus\n';
 
-      filteredEntries.forEach(entry => {
+      sortedEntries.forEach(entry => {
         const date = new Date(entry.createdAt).toLocaleDateString();
         const pluses = entry.pluses.join('; ');
         const minuses = entry.minuses.join('; ');
