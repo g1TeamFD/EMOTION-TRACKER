@@ -284,14 +284,23 @@
       return null;
     }
 
-    // Get team assignment for entry
+    // Get team assignment for entry (always use directory.json data)
     function getTeamAssignment(entry, memberName) {
+      // Always check directory first, ignore submitted team data
+      const teamFromDirectory = findTeamForMember(memberName, entry.city);
+      
+      // If found in directory, use that
+      if (teamFromDirectory !== 'Unknown') {
+        return teamFromDirectory;
+      }
+      
+      // Fallback to submitted data only if not in directory
       if (entry.team && entry.team !== 'individual') {
         const match = entry.team.match(/\d+/);
         return match ? `Team ${match[0]}` : entry.team;
       }
       
-      return findTeamForMember(memberName, entry.city);
+      return 'Unknown';
     }
 
     // Populate filter dropdowns
@@ -422,6 +431,7 @@
         totalScore: calculateMemberTotalScore(member.memberName, member.team)
       }));
 
+      // Sort by team number first, then alphabetically by name
       membersList.sort((a, b) => {
         const teamA = getTeamNumber(a.team);
         const teamB = getTeamNumber(b.team);
@@ -430,7 +440,8 @@
           return teamA - teamB;
         }
         
-        return b.avgScore - a.avgScore;
+        // Sort alphabetically by name within the same team
+        return a.memberName.localeCompare(b.memberName);
       });
 
       return membersList;
