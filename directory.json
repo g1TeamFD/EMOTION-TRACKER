@@ -1,8 +1,689 @@
 {
   "cities": {
     "Jogjakarta": {
-      "teams": {}
-    },
+    "teams": {
+      "1": {
+        "name": "Team 1",
+        "teammates": {
+          "Mom Zoura": {
+            "role": "Supervisor",
+            "school": null,
+            "grade": null
+          },
+          "JIHAN | Maulin Jihan Tasanee": {
+            "role": "Ambassador",
+            "school": "SD N Sokowaten Baru",
+            "grade": null
+          },
+          "GHAISAN – Ghaisan Rabbani Walfredo": {
+            "role": "Participant",
+            "school": "SD Teladan",
+            "grade": null
+          },
+          "HEZTAMMA – Muhammad Heztamma Alfatih": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          },
+          "NADHIFA – Nadhifa Aqila Az Zahra": {
+            "role": "Participant",
+            "school": "SD Karangmloko 1",
+            "grade": null
+          },
+          "NAZHIFA – Nazhifa Aisya Hareta": {
+            "role": "Participant",
+            "school": "SMPN 4 Pakem",
+            "grade": null
+          }
+        }
+      },
+      "2": {
+        "name": "Team 2",
+        "teammates": {
+          "⁠Ms. Candra": {
+            "role": "Supervisor",
+            "school": null,
+            "grade": null
+          },
+          "ABBEY | Abiyyu Mahasatria": {
+            "role": "Ambassador",
+            "school": "SMP 4 Pakem",
+            "grade": null
+          },
+          "ZAVA | Larene Zava Hakim": {
+            "role": "Ambassador",
+            "school": "SD Teladan",
+            "grade": null
+          },
+          "DZAKY – Dzaky Ibrahim Nur Fadhillah": {
+            "role": "Participant",
+            "school": "SD Karangmloko 1",
+            "grade": null
+          },
+          "KEENAN – Keenan Adhyasta Pramudya": {
+            "role": "Participant",
+            "school": "SD Teladan",
+            "grade": null
+          },
+          "RINJANI – Rinjani Dahayu Maheswari": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          },
+          "TATIANA – Tatiana Elizabeth Aelredita Kiara": {
+            "role": "Participant",
+            "school": "SMPN 4 Pakem",
+            "grade": null
+          }
+        }
+      },
+      "3": {
+        "name": "Team 3",
+        "teammates": {
+          "Mr. Rayhan": {
+            "role": "Supervisor",
+            "school": null,
+            "grade": null
+          },
+          "AIRA | Nafila Humanaira Anshary": {
+            "role": "Ambassador",
+            "school": "MI Sunan Pandanaran",
+            "grade": null
+          },
+          "OLA | Ken Cariola Widiamoko": {
+            "role": "Ambassador",
+            "school": "SD Model Sleman",
+            "grade": null
+          },
+          "AFIQAH – Afiqah Althafunnisa Taftazani": {
+            "role": "Participant",
+            "school": "SD Teladan",
+            "grade": null
+          },
+          "FALASIFA – Falasifa Kayla Ameliani": {
+            "role": "Participant",
+            "school": "SMPN 4 Pakem",
+            "grade": null
+          },
+          "LEVANIA – Levania Azzahra K.": {
+            "role": "Participant",
+            "school": "SDN Koroulon 1",
+            "grade": null
+          },
+          "TAMA – Tama Kelana": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          }
+        }
+      },
+      "4": {
+        "name": "Team 4",
+        "teammates": {
+          "Mom Hali": {
+            "role": "Supervisor",
+            "school": null,
+            "grade": null
+          },
+          "DERAS | Wilma Derasanda Hanifa": {
+            "role": "Ambassador",
+            "school": "MI Sunan Pandanaran",
+            "grade": null
+          },
+          "FARZAN – Farzan Herdhi Abqori": {
+            "role": "Participant",
+            "school": "SD Teladan",
+            "grade": null
+          },
+          "GITA – Fatima Namiya Anggita Srikandi": {
+            "role": "Participant",
+            "school": "SMPN 4 Pakem",
+            "grade": null
+          },
+          "KAYLA – Kayla Zhafira": {
+            "role": "Participant",
+            "school": "SDN Sorogenen 2",
+            "grade": null
+          },
+          "RAFFASYA – Raffasya Zhafran Naufal Ghani": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          }
+        }
+      },
+      "5": {
+        "name": "Team 5",
+        "teammates": {
+          "Mom Ranti": {
+            "role": "Supervisor",
+            "school": null,
+            "grade": null
+          },
+          "AGAN | Hazel Arganta W": {
+            "role": "Ambassador",
+            "school": "SD Model Sleman",
+            "grade": null
+          },
+          "RULLY | Rully Bramantyo Herlambang": {
+            "role": "Ambassador",
+            "school": "SDN Koroulon 1",
+            "grade": null
+          },
+          "LUQMAN – Luqman Arzu Attaraputra": {
+            "role": "Participant",
+            "school": "SD Teladan",
+            "grade": null
+          },
+          "NABILA – Nabila Amalia Ayu Ramadhani": {
+            "role": "Participant",
+            "school": "SDN Sorogenen 2",
+            "grade": null
+          },
+          "QISYA – Qisya Nada Azzahra": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          },
+          "RENJANI – Renjani Fitra Hartono": {
+            "role": "Participant",
+            "school": "SMPN 4 Pakem",
+            "grade": null
+          }
+        }
+      },
+      "6": {
+        "name": "Team 6",
+        "teammates": {
+          "Mom Siti Nurjanah": {
+            "role": "Supervisor",
+            "school": null,
+            "grade": null
+          },
+          "KEYSHA | Keysha Almira Maheswari": {
+            "role": "Ambassador",
+            "school": null,
+            "grade": null
+          },
+          "AINAYYA – Ainayya Jardine Humaira": {
+            "role": "Participant",
+            "school": "SD Teladan",
+            "grade": null
+          },
+          "ARAUFAN – Araufan Toefleandra Permana": {
+            "role": "Participant",
+            "school": "SDN Sorogenen 2",
+            "grade": null
+          },
+          "BELLVANIA – Bellvania Karsten Alcandria": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          },
+          "NADHIRA – Nadhira Yasmin Raudha": {
+            "role": "Participant",
+            "school": "SMPN 4 Pakem",
+            "grade": null
+          }
+        }
+      },
+      "7": {
+        "name": "Team 7",
+        "teammates": {
+          "Mom Anggun": {
+            "role": "Supervisor",
+            "school": null,
+            "grade": null
+          },
+          "GIANI | Giani Labieba Thufailah": {
+            "role": "Ambassador",
+            "school": "SD Model Sleman",
+            "grade": null
+          },
+          "ARMELL – Hayfa Armell Izzatunissa": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          },
+          "FARAHDEA – Farahdea Shakila Rahadian": {
+            "role": "Participant",
+            "school": "SD Teladan",
+            "grade": null
+          },
+          "KIYASA – Kiyasa Qotrunada": {
+            "role": "Participant",
+            "school": "SMPN 4 Pakem",
+            "grade": null
+          },
+          "RAFFA – Raffa Nanda S.": {
+            "role": "Participant",
+            "school": "SDN Krawitan",
+            "grade": null
+          }
+        }
+      },
+      "8": {
+        "name": "Team 8",
+        "teammates": {
+          "Mom Vita": {
+            "role": "Supervisor",
+            "school": null,
+            "grade": null
+          },
+          "AYA | Cahaya Mata": {
+            "role": "Ambassador",
+            "school": "SD Model Sleman",
+            "grade": null
+          },
+          "AGAM – M. Agam": {
+            "role": "Participant",
+            "school": "SDN Krawitan",
+            "grade": null
+          },
+          "DIKSI – Savana Paradiksi Kayalafala": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          },
+          "DZIA – Dzia Abyan Zidane": {
+            "role": "Participant",
+            "school": "SD Teladan",
+            "grade": null
+          },
+          "KANZ – Kanz Aufar Agriza Ghany": {
+            "role": "Participant",
+            "school": "SMPN 4 Pakem",
+            "grade": null
+          }
+        }
+      },
+      "9": {
+        "name": "Team 9",
+        "teammates": {
+          "AINAYYA | Ainayya Khalea Pratista": {
+            "role": "Ambassador",
+            "school": "SDN Koroulon 1",
+            "grade": null
+          },
+          "GITA | Fatima Namiya Anggita Srikandi": {
+            "role": "Ambassador",
+            "school": "SMP 4 Pakem",
+            "grade": null
+          },
+          "IBRAHIM – Ibrahim Rasyid Abqari": {
+            "role": "Participant",
+            "school": "SD Teladan",
+            "grade": null
+          },
+          "ISHANA – Ishana": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          },
+          "KHAYATA – Khayata Haryalaquita Putranta": {
+            "role": "Participant",
+            "school": "SDN Adisucipto 2",
+            "grade": null
+          },
+          "OSIAS – Osias Adhit P.": {
+            "role": "Participant",
+            "school": "SDN Krawitan",
+            "grade": null
+          }
+        }
+      },
+      "10": {
+        "name": "Team 10",
+        "teammates": {
+          "Mom Noorma": {
+            "role": "Supervisor",
+            "school": null,
+            "grade": null
+          },
+          "ALE | Syailendra abimanyu": {
+            "role": "Ambassador",
+            "school": "SD Model Sleman",
+            "grade": null
+          },
+          "MILANA – Milana El Shaarawy": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          },
+          "NASHWA – Nashwa Mezzaluna": {
+            "role": "Participant",
+            "school": "SDN Krawitan",
+            "grade": null
+          },
+          "SAMARA – Samara Raya": {
+            "role": "Participant",
+            "school": "SD Teladan",
+            "grade": null
+          }
+        }
+      },
+      "11": {
+        "name": "Team 11",
+        "teammates": {
+          "Mom Ale": {
+            "role": "Supervisor",
+            "school": null,
+            "grade": null
+          },
+          "KAL | Muhammad Kalandra Hartavi": {
+            "role": "Ambassador",
+            "school": "SD Muhammadiyah 1 Ngaglik",
+            "grade": null
+          },
+          "RALINE | Raline Shaqila Vidianandhara": {
+            "role": "Ambassador",
+            "school": "SD Teladan",
+            "grade": null
+          },
+          "KHAIRUL – Muhammad Khairul Anam": {
+            "role": "Participant",
+            "school": "SDN Krawitan",
+            "grade": null
+          },
+          "NABILA – Nabila Aurelia Hawan": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          },
+          "SAMMI – Sammi Sakadharma Rif 'At": {
+            "role": "Participant",
+            "school": "SD Teladan",
+            "grade": null
+          }
+        }
+      },
+      "12": {
+        "name": "Team 12",
+        "teammates": {
+          "Mom Sinta": {
+            "role": "Supervisor",
+            "school": null,
+            "grade": null
+          },
+          "KAUTSAR | Muhammad Kautsar Nur Arkan": {
+            "role": "Ambassador",
+            "school": "SD Teladan",
+            "grade": null
+          },
+          "ZAHWA | Zahwa Priscilia Zainal": {
+            "role": "Ambassador",
+            "school": "SMP 4 Pakem",
+            "grade": null
+          },
+          "CALIEF – Calief Aydan Er Atharizz": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          },
+          "FATHAN FAKHRUL – Fathan Fakhrul Nashrullah": {
+            "role": "Participant",
+            "school": "SDN Krawitan",
+            "grade": null
+          },
+          "RIO – Rio Athari Rafacello Lukitaningrat": {
+            "role": "Participant",
+            "school": "SD Teladan",
+            "grade": null
+          }
+        }
+      },
+      "13": {
+        "name": "Team 13",
+        "teammates": {
+          "⁠Mom Widi": {
+            "role": "Supervisor",
+            "school": null,
+            "grade": null
+          },
+          "ZEA | Aisyah Cettanalini Alula Zea": {
+            "role": "Ambassador",
+            "school": "SMPN 4 Pakem",
+            "grade": null
+          },
+          "DAMARA – Damara Rizky Putri Andiya": {
+            "role": "Participant",
+            "school": "SD Teladan",
+            "grade": null
+          },
+          "FATHAN AQSHA – Fathan Aqsha W": {
+            "role": "Participant",
+            "school": "SDN Krawitan",
+            "grade": null
+          },
+          "RAFFA – Raffa Azkarians": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          }
+        }
+      },
+      "14": {
+        "name": "Team 14",
+        "teammates": {
+          "Mom Fitria": {
+            "role": "Supervisor",
+            "school": null,
+            "grade": null
+          },
+          "HALIMA | Halima Salsabila Putri Defana": {
+            "role": "Ambassador",
+            "school": "SDN Adisucipto 2",
+            "grade": null
+          },
+          "AGUSTINA – Agustina Cahyani Mariana": {
+            "role": "Participant",
+            "school": "SDN Krawitan",
+            "grade": null
+          },
+          "AZKA – Azka Aldriko T.A": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          },
+          "INARA – Inara Astagina": {
+            "role": "Participant",
+            "school": "SD Teladan",
+            "grade": null
+          }
+        }
+      },
+      "15": {
+        "name": "Team 15",
+        "teammates": {
+          "Mom Violita": {
+            "role": "Supervisor",
+            "school": null,
+            "grade": null
+          },
+          "JAYDEN | Jayden Jati Y": {
+            "role": "Ambassador",
+            "school": "SD Model Sleman",
+            "grade": null
+          },
+          "KUNNY | Kunny Syauqi": {
+            "role": "Ambassador",
+            "school": "MI Sunan Pandanaran",
+            "grade": null
+          },
+          "ARSHALITA – Arshalita Tanjung A": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          },
+          "ARZIKI | Arziki Rasendria Alenoka": {
+            "role": "Participant",
+            "school": "SD Teladan",
+            "grade": null
+          },
+          "RAFAEL – Rafael Haganta Boy Sembiring": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          }
+        }
+      },
+      "16": {
+        "name": "Team 16",
+        "teammates": {
+          "Zulfa Fauzia Usviany": {
+            "role": "Supervisor",
+            "school": null,
+            "grade": null
+          },
+          "Aimee | Symphony Aimee Setiady": {
+            "role": "Ambassador",
+            "school": "SD Model Sleman",
+            "grade": null
+          },
+          "ADHYASTHA – Adhyastha Arsha Adelio": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          },
+          "AUDREY – Audrey Hassya Er Azkadina": {
+            "role": "Participant",
+            "school": "SMP N 4 Depok",
+            "grade": null
+          },
+          "DELISHA – Delisha Hayu M": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          }
+        }
+      },
+      "17": {
+        "name": "Team 17",
+        "teammates": {
+          "Teacher Yusa": {
+            "role": "Supervisor",
+            "school": null,
+            "grade": null
+          },
+          "GHANIM | Arrasya Ghanim Ladunni": {
+            "role": "Ambassador",
+            "school": "SD Model Sleman",
+            "grade": null
+          },
+          "KALANDRA | Gibran Kalandra Manggala": {
+            "role": "Ambassador",
+            "school": "SMP 4 Pakem",
+            "grade": null
+          },
+          "HARUM – Harum Zivastya Fo": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          },
+          "JAGAD – Jagad Surya Hanif": {
+            "role": "Participant",
+            "school": "SD Muhammadiyah 1 Ngaglik",
+            "grade": null
+          },
+          "NAYANA – Nayana Orli Arundati Alsina": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          }
+        }
+      },
+      "18": {
+        "name": "Team 18",
+        "teammates": {
+          "Teacher Sanie": {
+            "role": "Supervisor",
+            "school": null,
+            "grade": null
+          },
+          "TAVISHA | Rr. Sekarlangit Jingga N.R.": {
+            "role": "Ambassador",
+            "school": "SD Model Sleman",
+            "grade": null
+          },
+          "ALANA – Alana": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          },
+          "ARUNA – Aruna Embun Sabihasafi": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          },
+          "HANIYA – Haniya Kurnianing Putri": {
+            "role": "Participant",
+            "school": "SD IT Salsabila Al Muthi'in",
+            "grade": null
+          }
+        }
+      },
+      "19": {
+        "name": "Team 19",
+        "teammates": {
+          "Mr. Adi - Mata Aksara": {
+            "role": "Supervisor",
+            "school": null,
+            "grade": null
+          },
+          "NABILA | Nabila Yasmin Rizkia": {
+            "role": "Ambassador",
+            "school": "SD Model Sleman",
+            "grade": null
+          },
+          "BAHIR – Muhammad Athalla Bahiruddin": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          },
+          "QANITA – Qanita Amira Asyhar": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          },
+          "SAQINA – Saquina Aya Sovia": {
+            "role": "Participant",
+            "school": "SD Muhammadiyah 1 Nganglik",
+            "grade": null
+          }
+        }
+      },
+      "20": {
+        "name": "Team 20",
+        "teammates": {
+          "Mrs. Heni - Mata Aksara": {
+            "role": "Supervisor",
+            "school": null,
+            "grade": null
+          },
+          "SAKHA | Levano Arsakha Valin": {
+            "role": "Ambassador",
+            "school": "SD Model Sleman",
+            "grade": null
+          },
+          "ABDILLA – Abdilla Farah Nurul Haq": {
+            "role": "Participant",
+            "school": "SMPN 4 Pakem",
+            "grade": null
+          },
+          "AFNAYRA – Afnayra Queen Faust Syahputri": {
+            "role": "Participant",
+            "school": "SD Model",
+            "grade": null
+          },
+          "ESHAL – Eshal Khanza Wirapraja": {
+            "role": "Participant",
+            "school": "SD Teladan",
+            "grade": null
+          }
+        }
+      }
+    }
+  },
     "Bali": {
       "teams": {
         "1": {
