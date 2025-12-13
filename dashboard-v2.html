@@ -6,7 +6,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Scoreboard – Team Evaluations</title>
+  <title>Scoreboard – Member Evaluations</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     :root { --bg:#edf6ef; --card:#ffffff; --text:#0b1f14; --muted:#5a6b5f; --border:#cfe2d5; --primary:#14532d; --primary-ink:#ffffff; --accent:#1a7f46; --ring:#9ae6b4; }
@@ -48,12 +48,12 @@
     td{ font-size:14px; }
     tr:last-child td{ border-bottom:none; }
     tbody tr:hover{ background:#f9fcfa; }
-    .team-name{ font-weight:700; color:var(--primary); font-size:16px; }
+    .member-name{ font-weight:700; color:var(--primary); font-size:16px; }
     .score-cell{ text-align:center; font-weight:700; color:var(--accent); font-size:18px; }
     .empty-state{ text-align:center; padding:60px 20px; color:var(--muted); }
     .empty-state h3{ margin:0 0 8px; color:var(--text); }
     .action-bar{ display:flex; gap:12px; justify-content:space-between; margin-bottom:16px; align-items:center; }
-    .team-separator{ background:#e8f5ec !important; }
+    .program-separator{ background:#e8f5ec !important; font-weight:700; }
     @media (max-width: 768px){ 
       .filters{ flex-direction:column; align-items:stretch; }
       .charts-grid{ grid-template-columns:1fr; }
@@ -70,44 +70,39 @@
         <a href="dashboard.html" class="nav-link">Feedback</a>
         <a href="dashboard-v2.html" class="nav-link active">Scoreboard</a>
         <a href="teachers.html" class="nav-link">Teachers</a>
-        <a href="internal.html" class="nav-link">Internal</a>
       </div>
     </div>
   </div>
 
   <div class="container">
     <div class="card">
-      <h1>Team Evaluation Dashboard</h1>
-      <p class="desc">View team member scores sorted by team and performance</p>
+      <h1>Member Evaluation Dashboard</h1>
+      <p class="desc">View member scores sorted by program, subprogram and performance</p>
     </div>
 
     <!-- Statistics -->
     <div class="stats-row" id="statsRow">
       <div class="stat-card">
-        <div class="stat-label">Students</div>
-        <div class="stat-value" id="totalStudents">0</div>
+        <div class="stat-label">Total Members Evaluated</div>
+        <div class="stat-value" id="totalMembers">0</div>
       </div>
       <div class="stat-card">
-        <div class="stat-label">Teachers</div>
-        <div class="stat-value" id="totalTeachers">0</div>
+        <div class="stat-label">Total Evaluations</div>
+        <div class="stat-value" id="totalEvaluations">0</div>
       </div>
       <div class="stat-card">
-        <div class="stat-label">Intern Teachers</div>
-        <div class="stat-value" id="totalInterns">0</div>
+        <div class="stat-label">Average Score</div>
+        <div class="stat-value" id="avgScore">0.0</div>
       </div>
     </div>
     
     <div class="stats-row">
       <div class="stat-card" style="flex:1;">
-        <div class="stat-label">Top 3 Ambassadors (Highest Scores)</div>
-        <div class="stat-value top-list" id="topAmbassadors">Loading...</div>
+        <div class="stat-label">Top 5 Members (Highest Average Scores)</div>
+        <div class="stat-value top-list" id="topMembers">Loading...</div>
       </div>
       <div class="stat-card" style="flex:1;">
-        <div class="stat-label">Top 3 Interns (Highest Scores)</div>
-        <div class="stat-value top-list" id="topInterns">Loading...</div>
-      </div>
-      <div class="stat-card" style="flex:1;">
-        <div class="stat-label">Top 3 Evaluators (Most Evaluations)</div>
+        <div class="stat-label">Top 5 Evaluators (Most Evaluations)</div>
         <div class="stat-value top-list" id="topEvaluators">Loading...</div>
       </div>
     </div>
@@ -116,15 +111,15 @@
     <div class="card">
       <div class="filters">
         <div class="filter-group">
-          <label>Event (Filter)</label>
-          <select id="filterEvent">
-            <option value="">All Events</option>
+          <label>Program</label>
+          <select id="filterProgram">
+            <option value="">All Programs</option>
           </select>
         </div>
         <div class="filter-group">
-          <label>City</label>
-          <select id="filterCity">
-            <option value="">All Cities</option>
+          <label>Subprogram</label>
+          <select id="filterSubprogram">
+            <option value="">All Subprograms</option>
           </select>
         </div>
         <button class="btn" id="applyFilters" style="align-self:flex-end;">Apply Filters</button>
@@ -135,15 +130,15 @@
     <!-- Charts -->
     <div class="charts-grid">
       <div class="chart-card">
-        <h2>Team Performance</h2>
+        <h2>Program Performance</h2>
         <div class="chart-container">
-          <canvas id="teamChart"></canvas>
+          <canvas id="programChart"></canvas>
         </div>
       </div>
       <div class="chart-card">
-        <h2>City Performance</h2>
+        <h2>Top Evaluators (Most Evaluations)</h2>
         <div class="chart-container">
-          <canvas id="cityChart"></canvas>
+          <canvas id="evaluatorChart"></canvas>
         </div>
       </div>
       <div class="chart-card">
@@ -171,10 +166,10 @@
           <thead>
             <tr>
               <th>Date</th>
-              <th>Event</th>
-              <th>City</th>
-              <th>Team</th>
+              <th>Program</th>
+              <th>Subprogram</th>
               <th>Name</th>
+              <th>Evaluations</th>
               <th>Average Score</th>
             </tr>
           </thead>
@@ -211,25 +206,12 @@
 
     let allEntries = [];
     let filteredEntries = [];
-    let directory = null;
     let charts = {
-      team: null,
-      city: null,
+      program: null,
+      evaluator: null,
       distribution: null,
       topPerformers: null
     };
-
-    // Load directory.json for team lookup
-    fetch('directory.json')
-      .then(r => r.json())
-      .then(data => { 
-        directory = data.cities || {}; 
-        loadEntries();
-      })
-      .catch(err => { 
-        console.error('Failed to load directory.json', err); 
-        loadEntries();
-      });
 
     // Load all entries from Firebase
     function loadEntries() {
@@ -241,128 +223,55 @@
           allEntries.push(entry);
         });
         
+        console.log('Loaded entries:', allEntries.length);
         populateFilters();
         applyFilters();
       });
     }
 
-    // Find team number for a member from directory
-    function findTeamForMember(memberName, city) {
-      if (!directory || !city || !memberName) return 'Unknown';
-      
-      const cityData = directory[city];
-      if (!cityData || !cityData.teams) return 'Unknown';
-      
-      for (const [teamId, teamData] of Object.entries(cityData.teams)) {
-        const teammates = teamData.teammates || {};
-        if (teammates[memberName]) {
-          const teamName = teamData.name || teamId;
-          const match = teamName.match(/\d+/);
-          return match ? `Team ${match[0]}` : teamName;
-        }
-      }
-      
-      return 'Unknown';
-    }
-
-    // Get member role from directory
-    function getMemberRole(memberName, city) {
-      if (!directory || !city || !memberName) return null;
-      
-      const cityData = directory[city];
-      if (!cityData || !cityData.teams) return null;
-      
-      for (const [teamId, teamData] of Object.entries(cityData.teams)) {
-        const teammates = teamData.teammates || {};
-        if (teammates[memberName]) {
-          const role = teammates[memberName].role;
-          // Return lowercase for consistent comparison
-          return role ? role.toLowerCase() : null;
-        }
-      }
-      
-      return null;
-    }
-
-    // Get team assignment for entry (always use directory.json data)
-    function getTeamAssignment(entry, memberName) {
-      // Always check directory first, ignore submitted team data
-      const teamFromDirectory = findTeamForMember(memberName, entry.city);
-      
-      // If found in directory, use that
-      if (teamFromDirectory !== 'Unknown') {
-        return teamFromDirectory;
-      }
-      
-      // Fallback to submitted data only if not in directory
-      if (entry.team && entry.team !== 'individual') {
-        const match = entry.team.match(/\d+/);
-        return match ? `Team ${match[0]}` : entry.team;
-      }
-      
-      return 'Unknown';
-    }
-
     // Populate filter dropdowns
     function populateFilters() {
-      const events = new Set();
-      const cities = new Set();
+      const programs = new Set();
+      const subprograms = new Set();
 
       allEntries.forEach(entry => {
-        if (entry.event) events.add(entry.event);
-        if (entry.city) cities.add(entry.city);
+        if (entry.program) programs.add(entry.program);
+        if (entry.subprogram && entry.subprogram !== 'N/A') subprograms.add(entry.subprogram);
       });
 
-      const eventSelect = document.getElementById('filterEvent');
-      const citySelect = document.getElementById('filterCity');
+      const programSelect = document.getElementById('filterProgram');
+      const subprogramSelect = document.getElementById('filterSubprogram');
 
-      eventSelect.innerHTML = '<option value="">All Events</option>' +
-        Array.from(events).sort().map(e => `<option value="${e}">${formatEventName(e)}</option>`).join('');
+      programSelect.innerHTML = '<option value="">All Programs</option>' +
+        Array.from(programs).sort().map(p => `<option value="${p}">${p}</option>`).join('');
 
-      citySelect.innerHTML = '<option value="">All Cities</option>' +
-        Array.from(cities).sort().map(c => `<option value="${c}">${c}</option>`).join('');
+      subprogramSelect.innerHTML = '<option value="">All Subprograms</option>' +
+        Array.from(subprograms).sort().map(s => `<option value="${s}">${s}</option>`).join('');
     }
 
-    // Format event name
-    function formatEventName(eventId) {
-      const names = {
-        'sustainability_bootcamp': 'Sustainability Bootcamp',
-        'story_a_night': 'Story a Night',
-        'young_ambassadors_training': 'Young Ambassadors Training'
-      };
-      return names[eventId] || eventId;
-    }
-
-    // Apply filters and render table
+    // Apply filters and render
     function applyFilters() {
-      const filterEvent = document.getElementById('filterEvent').value;
-      const filterCity = document.getElementById('filterCity').value;
+      const filterProgram = document.getElementById('filterProgram').value;
+      const filterSubprogram = document.getElementById('filterSubprogram').value;
 
       filteredEntries = allEntries.filter(entry => {
-        if (filterEvent && entry.event !== filterEvent) return false;
-        if (filterCity && entry.city !== filterCity) return false;
+        if (filterProgram && entry.program !== filterProgram) return false;
+        if (filterSubprogram && entry.subprogram !== filterSubprogram) return false;
         return true;
       });
 
+      console.log('Filtered entries:', filteredEntries.length);
       updateStatistics();
       renderCharts();
       renderTable();
     }
 
-    // Extract team number for sorting
-    function getTeamNumber(teamName) {
-      if (!teamName || teamName === 'Unknown') return 999;
-      const match = teamName.match(/\d+/);
-      return match ? parseInt(match[0]) : 999;
-    }
-
-    // Calculate average score for a member across all their evaluations
-    function calculateMemberAverageScore(memberName, team) {
+    // Calculate average score for a member
+    function calculateMemberAverageScore(memberName, program) {
       const memberScores = [];
       
       filteredEntries.forEach(entry => {
-        const entryTeam = getTeamAssignment(entry, memberName);
-        if (entryTeam === team) {
+        if (entry.program === program) {
           const memberEvals = entry.memberEvaluations || [];
           memberEvals.forEach(member => {
             if (member.memberName === memberName && member.score) {
@@ -377,13 +286,12 @@
       return (sum / memberScores.length).toFixed(1);
     }
 
-    // Calculate total score for a member across all their evaluations
-    function calculateMemberTotalScore(memberName, team) {
+    // Calculate total score for a member
+    function calculateMemberTotalScore(memberName, program) {
       let totalScore = 0;
       
       filteredEntries.forEach(entry => {
-        const entryTeam = getTeamAssignment(entry, memberName);
-        if (entryTeam === team) {
+        if (entry.program === program) {
           const memberEvals = entry.memberEvaluations || [];
           memberEvals.forEach(member => {
             if (member.memberName === memberName && member.score) {
@@ -396,51 +304,54 @@
       return totalScore;
     }
 
-    // Get all member data (excluding teachers and interns)
+    // Count evaluations for a member
+    function countMemberEvaluations(memberName, program) {
+      let count = 0;
+      
+      filteredEntries.forEach(entry => {
+        if (entry.program === program) {
+          const memberEvals = entry.memberEvaluations || [];
+          memberEvals.forEach(member => {
+            if (member.memberName === memberName) {
+              count++;
+            }
+          });
+        }
+      });
+      
+      return count;
+    }
+
+    // Get all member data
     function getAllMembersData() {
-      const teamMembers = new Map();
+      const membersMap = new Map();
       
       filteredEntries.forEach(entry => {
         const memberEvals = entry.memberEvaluations || [];
         memberEvals.forEach(member => {
-          const role = getMemberRole(member.memberName, entry.city);
-          
-          // Exclude teachers and interns
-          if (role === 'teacher' || role === 'intern') {
-            return;
-          }
-          
-          const teamAssignment = getTeamAssignment(entry, member.memberName);
-          const key = `${teamAssignment}|${member.memberName}`;
-          if (!teamMembers.has(key)) {
-            teamMembers.set(key, {
-              team: teamAssignment,
+          const key = `${entry.program}|${member.memberName}`;
+          if (!membersMap.has(key)) {
+            membersMap.set(key, {
+              program: entry.program,
+              subprogram: entry.subprogram || 'N/A',
               memberName: member.memberName,
-              date: entry.createdAt,
-              event: entry.event,
-              city: entry.city,
-              role: role
+              date: entry.createdAt
             });
           }
         });
       });
 
-      const membersList = Array.from(teamMembers.values()).map(member => ({
+      const membersList = Array.from(membersMap.values()).map(member => ({
         ...member,
-        avgScore: parseFloat(calculateMemberAverageScore(member.memberName, member.team)),
-        totalScore: calculateMemberTotalScore(member.memberName, member.team)
+        avgScore: parseFloat(calculateMemberAverageScore(member.memberName, member.program)),
+        totalScore: calculateMemberTotalScore(member.memberName, member.program),
+        evalCount: countMemberEvaluations(member.memberName, member.program)
       }));
 
-      // Sort by team number first, then alphabetically by name
+      // Sort by program, then by name
       membersList.sort((a, b) => {
-        const teamA = getTeamNumber(a.team);
-        const teamB = getTeamNumber(b.team);
-        
-        if (teamA !== teamB) {
-          return teamA - teamB;
-        }
-        
-        // Sort alphabetically by name within the same team
+        const programCompare = a.program.localeCompare(b.program);
+        if (programCompare !== 0) return programCompare;
         return a.memberName.localeCompare(b.memberName);
       });
 
@@ -451,125 +362,38 @@
     function updateStatistics() {
       const membersList = getAllMembersData();
       
-      // Count students, teachers, and interns
-      let totalStudents = 0;
-      let totalTeachers = 0;
-      let totalInterns = 0;
+      const totalMembers = membersList.length;
+      let totalEvaluations = 0;
+      let totalScoreSum = 0;
       
-      const allMemberNames = new Set();
-      const allMembersWithRoles = [];
-      
-      filteredEntries.forEach(entry => {
-        const memberEvals = entry.memberEvaluations || [];
-        memberEvals.forEach(member => {
-          const memberKey = `${member.memberName.toLowerCase()}|${entry.city}`;
-          if (!allMemberNames.has(memberKey)) {
-            allMemberNames.add(memberKey);
-            const role = getMemberRole(member.memberName, entry.city);
-            
-            allMembersWithRoles.push({
-              name: member.memberName,
-              city: entry.city,
-              role: role
-            });
-            
-            if (role === 'teacher') {
-              totalTeachers++;
-            } else if (role === 'intern') {
-              totalInterns++;
-            } else {
-              totalStudents++;
-            }
-          }
-        });
+      membersList.forEach(member => {
+        totalEvaluations += member.evalCount;
+        totalScoreSum += member.avgScore * member.evalCount;
       });
       
-      document.getElementById('totalStudents').textContent = totalStudents;
-      document.getElementById('totalTeachers').textContent = totalTeachers;
-      document.getElementById('totalInterns').textContent = totalInterns;
+      const avgScore = totalEvaluations > 0 ? (totalScoreSum / totalEvaluations).toFixed(1) : '0.0';
       
-      // Get all scores for ambassadors
-      const ambassadorScores = [];
-      filteredEntries.forEach(entry => {
-        const memberEvals = entry.memberEvaluations || [];
-        memberEvals.forEach(member => {
-          const role = getMemberRole(member.memberName, entry.city);
-          if (role === 'ambassador' && member.score) {
-            ambassadorScores.push({
-              name: member.memberName,
-              score: member.score
-            });
-          }
-        });
-      });
+      document.getElementById('totalMembers').textContent = totalMembers;
+      document.getElementById('totalEvaluations').textContent = totalEvaluations;
+      document.getElementById('avgScore').textContent = avgScore;
       
-      // Group by name and calculate average
-      const ambassadorAvgs = {};
-      ambassadorScores.forEach(item => {
-        const key = item.name.toLowerCase();
-        if (!ambassadorAvgs[key]) {
-          ambassadorAvgs[key] = { name: item.name, scores: [] };
-        }
-        ambassadorAvgs[key].scores.push(item.score);
-      });
+      // Top 5 Members by Average Score
+      const topMembers = [...membersList]
+        .filter(m => m.avgScore > 0)
+        .sort((a, b) => b.avgScore - a.avgScore)
+        .slice(0, 5);
       
-      const topAmbassadors = Object.values(ambassadorAvgs)
-        .map(amb => ({
-          name: amb.name,
-          score: (amb.scores.reduce((a, b) => a + b, 0) / amb.scores.length).toFixed(1)
-        }))
-        .sort((a, b) => b.score - a.score)
-        .slice(0, 3);
+      const membersHTML = topMembers.length > 0
+        ? topMembers.map((m, i) => `${i + 1}. ${m.memberName} (${m.avgScore})`).join('<br>')
+        : 'No evaluations found';
+      document.getElementById('topMembers').innerHTML = membersHTML;
       
-      const ambassadorHTML = topAmbassadors.length > 0 
-        ? topAmbassadors.map((a, i) => `${i + 1}. ${a.name} (${a.score})`).join('<br>')
-        : 'No ambassadors found';
-      document.getElementById('topAmbassadors').innerHTML = ambassadorHTML;
-      
-      // Get all scores for interns
-      const internScores = [];
-      filteredEntries.forEach(entry => {
-        const memberEvals = entry.memberEvaluations || [];
-        memberEvals.forEach(member => {
-          const role = getMemberRole(member.memberName, entry.city);
-          if (role === 'intern' && member.score) {
-            internScores.push({
-              name: member.memberName,
-              score: member.score
-            });
-          }
-        });
-      });
-      
-      // Group by name and calculate average
-      const internAvgs = {};
-      internScores.forEach(item => {
-        const key = item.name.toLowerCase();
-        if (!internAvgs[key]) {
-          internAvgs[key] = { name: item.name, scores: [] };
-        }
-        internAvgs[key].scores.push(item.score);
-      });
-      
-      const topInterns = Object.values(internAvgs)
-        .map(intern => ({
-          name: intern.name,
-          score: (intern.scores.reduce((a, b) => a + b, 0) / intern.scores.length).toFixed(1)
-        }))
-        .sort((a, b) => b.score - a.score)
-        .slice(0, 3);
-      
-      const internHTML = topInterns.length > 0
-        ? topInterns.map((i, idx) => `${idx + 1}. ${i.name} (${i.score})`).join('<br>')
-        : 'No interns found';
-      document.getElementById('topInterns').innerHTML = internHTML;
-      
-      // Top 3 Evaluators (by number of evaluations submitted, case-insensitive)
+      // Top 5 Evaluators
       const evaluatorCounts = {};
       const evaluatorOriginalNames = {};
       
       filteredEntries.forEach(entry => {
-        const evaluatorName = entry.name;
+        const evaluatorName = entry.evaluatorName;
         if (evaluatorName) {
           const lowerName = evaluatorName.toLowerCase();
           
@@ -586,7 +410,7 @@
       
       const topEvaluators = Object.entries(evaluatorCounts)
         .sort((a, b) => b[1] - a[1])
-        .slice(0, 3);
+        .slice(0, 5);
       
       const evaluatorHTML = topEvaluators.length > 0
         ? topEvaluators.map((e, i) => `${i + 1}. ${evaluatorOriginalNames[e[0]]} (${e[1]} evals)`).join('<br>')
@@ -598,40 +422,32 @@
     function renderCharts() {
       const membersList = getAllMembersData();
       
-      // Team Performance Chart
-      renderTeamChart(membersList);
-      
-      // City Performance Chart
-      renderCityChart(membersList);
-      
-      // Score Distribution Chart
+      renderProgramChart(membersList);
+      renderEvaluatorChart();
       renderDistributionChart(membersList);
-      
-      // Top Performers Chart
       renderTopPerformersChart(membersList);
     }
 
-    function renderTeamChart(membersList) {
-      const teamScores = {};
+    function renderProgramChart(membersList) {
+      const programScores = {};
       
-      // Sum all scores per team (not average)
       membersList.forEach(member => {
-        if (!teamScores[member.team]) {
-          teamScores[member.team] = 0;
+        if (!programScores[member.program]) {
+          programScores[member.program] = 0;
         }
-        teamScores[member.team] += member.avgScore;
+        programScores[member.program] += member.avgScore;
       });
 
-      const teams = Object.keys(teamScores).sort((a, b) => getTeamNumber(a) - getTeamNumber(b));
-      const totalScores = teams.map(team => teamScores[team].toFixed(1));
+      const programs = Object.keys(programScores).sort();
+      const totalScores = programs.map(program => programScores[program].toFixed(1));
 
-      if (charts.team) charts.team.destroy();
+      if (charts.program) charts.program.destroy();
       
-      const ctx = document.getElementById('teamChart').getContext('2d');
-      charts.team = new Chart(ctx, {
+      const ctx = document.getElementById('programChart').getContext('2d');
+      charts.program = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: teams,
+          labels: programs,
           datasets: [{
             label: 'Total Score',
             data: totalScores,
@@ -657,32 +473,43 @@
       });
     }
 
-    function renderCityChart(membersList) {
-      const cityScores = {};
+    function renderEvaluatorChart() {
+      const evaluatorCounts = {};
+      const evaluatorOriginalNames = {};
       
-      membersList.forEach(member => {
-        if (!cityScores[member.city]) {
-          cityScores[member.city] = [];
+      filteredEntries.forEach(entry => {
+        const evaluatorName = entry.evaluatorName;
+        if (evaluatorName) {
+          const lowerName = evaluatorName.toLowerCase();
+          
+          if (!evaluatorOriginalNames[lowerName]) {
+            evaluatorOriginalNames[lowerName] = evaluatorName;
+          }
+          
+          if (!evaluatorCounts[lowerName]) {
+            evaluatorCounts[lowerName] = 0;
+          }
+          evaluatorCounts[lowerName]++;
         }
-        cityScores[member.city].push(member.avgScore);
       });
 
-      const cities = Object.keys(cityScores).sort();
-      const avgScores = cities.map(city => {
-        const scores = cityScores[city];
-        return (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1);
-      });
+      const sortedEvaluators = Object.entries(evaluatorCounts)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 10);
 
-      if (charts.city) charts.city.destroy();
+      const labels = sortedEvaluators.map(e => evaluatorOriginalNames[e[0]]);
+      const data = sortedEvaluators.map(e => e[1]);
+
+      if (charts.evaluator) charts.evaluator.destroy();
       
-      const ctx = document.getElementById('cityChart').getContext('2d');
-      charts.city = new Chart(ctx, {
+      const ctx = document.getElementById('evaluatorChart').getContext('2d');
+      charts.evaluator = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: cities,
+          labels: labels,
           datasets: [{
-            label: 'Average Score',
-            data: avgScores,
+            label: 'Number of Evaluations',
+            data: data,
             backgroundColor: 'rgba(20, 83, 45, 0.8)',
             borderColor: 'rgba(20, 83, 45, 1)',
             borderWidth: 2
@@ -694,7 +521,9 @@
           scales: {
             y: {
               beginAtZero: true,
-              max: 10
+              ticks: {
+                stepSize: 1
+              }
             }
           },
           plugins: {
@@ -768,7 +597,7 @@
       charts.topPerformers = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: top10.map(m => `${m.team} - ${m.memberName}`),
+          labels: top10.map(m => `${m.program} - ${m.memberName}`),
           datasets: [{
             label: 'Total Score',
             data: top10.map(m => m.totalScore),
@@ -797,21 +626,6 @@
           plugins: {
             legend: {
               display: false
-            },
-            tooltip: {
-              callbacks: {
-                title: function(context) {
-                  return context[0].label;
-                }
-              }
-            }
-          },
-          layout: {
-            padding: {
-              left: 5,
-              right: 10,
-              top: 5,
-              bottom: 5
             }
           }
         }
@@ -836,20 +650,28 @@
       }
 
       let html = '';
-      let lastTeam = null;
+      let lastProgram = null;
       
       membersList.forEach(member => {
         const date = new Date(member.date).toLocaleDateString();
-        const rowClass = member.team !== lastTeam ? 'team-separator' : '';
-        lastTeam = member.team;
+        
+        // Add program separator row when program changes
+        if (member.program !== lastProgram) {
+          html += `
+            <tr class="program-separator">
+              <td colspan="6" style="font-size:16px; padding:16px;">📚 ${member.program}</td>
+            </tr>
+          `;
+          lastProgram = member.program;
+        }
         
         html += `
-          <tr class="${rowClass}">
+          <tr>
             <td>${date}</td>
-            <td>${formatEventName(member.event)}</td>
-            <td>${member.city || 'N/A'}</td>
-            <td class="team-name">${member.team}</td>
-            <td><strong>${member.memberName}</strong></td>
+            <td>${member.program}</td>
+            <td>${member.subprogram}</td>
+            <td class="member-name">${member.memberName}</td>
+            <td style="text-align:center; font-weight:600;">${member.evalCount}</td>
             <td class="score-cell">${member.avgScore}</td>
           </tr>
         `;
@@ -867,26 +689,26 @@
         return;
       }
 
-      let csv = 'Date,Event,City,Team,Name,Average Score\n';
+      let csv = 'Date,Program,Subprogram,Name,Evaluations,Average Score\n';
 
       membersList.forEach(member => {
         const date = new Date(member.date).toLocaleDateString();
-        csv += `"${date}","${formatEventName(member.event)}","${member.city || 'N/A'}","${member.team}","${member.memberName}","${member.avgScore}"\n`;
+        csv += `"${date}","${member.program}","${member.subprogram}","${member.memberName}","${member.evalCount}","${member.avgScore}"\n`;
       });
 
       const blob = new Blob([csv], { type: 'text/csv' });
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `team-scoreboard-${new Date().toISOString().split('T')[0]}.csv`;
+      a.download = `scoreboard-${new Date().toISOString().split('T')[0]}.csv`;
       a.click();
       window.URL.revokeObjectURL(url);
     }
 
     // Reset filters
     function resetFilters() {
-      document.getElementById('filterEvent').value = '';
-      document.getElementById('filterCity').value = '';
+      document.getElementById('filterProgram').value = '';
+      document.getElementById('filterSubprogram').value = '';
       applyFilters();
     }
 
@@ -894,6 +716,9 @@
     document.getElementById('applyFilters').addEventListener('click', applyFilters);
     document.getElementById('resetFilters').addEventListener('click', resetFilters);
     document.getElementById('exportBtn').addEventListener('click', exportToCSV);
+
+    // Load data on page load
+    loadEntries();
   </script>
 </body>
 </html>
