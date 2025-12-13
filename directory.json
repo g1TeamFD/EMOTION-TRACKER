@@ -1,2686 +1,1861 @@
 {
-  "cities": {
-    "Jogjakarta": {
-    "teams": {
-      "1": {
-        "name": "Team 1",
-        "teammates": {
-          "Mom Zoura": {
-            "role": "Supervisor",
-            "school": null,
-            "grade": null
-          },
-          "JIHAN | Maulin Jihan Tasanee": {
-            "role": "Ambassador",
-            "school": "SD N Sokowaten Baru",
-            "grade": null
-          },
-          "GHAISAN – Ghaisan Rabbani Walfredo": {
-            "role": "Participant",
-            "school": "SD Teladan",
-            "grade": null
-          },
-          "HEZTAMMA – Muhammad Heztamma Alfatih": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          },
-          "NADHIFA – Nadhifa Aqila Az Zahra": {
-            "role": "Participant",
-            "school": "SD Karangmloko 1",
-            "grade": null
-          },
-          "NAZHIFA – Nazhifa Aisya Hareta": {
-            "role": "Participant",
-            "school": "SMPN 4 Pakem",
-            "grade": null
-          }
-        }
-      },
-      "2": {
-        "name": "Team 2",
-        "teammates": {
-          "⁠Ms. Candra": {
-            "role": "Supervisor",
-            "school": null,
-            "grade": null
-          },
-          "ABBEY | Abiyyu Mahasatria": {
-            "role": "Ambassador",
-            "school": "SMP 4 Pakem",
-            "grade": null
-          },
-          "ZAVA | Larene Zava Hakim": {
-            "role": "Ambassador",
-            "school": "SD Teladan",
-            "grade": null
-          },
-          "DZAKY – Dzaky Ibrahim Nur Fadhillah": {
-            "role": "Participant",
-            "school": "SD Karangmloko 1",
-            "grade": null
-          },
-          "KEENAN – Keenan Adhyasta Pramudya": {
-            "role": "Participant",
-            "school": "SD Teladan",
-            "grade": null
-          },
-          "RINJANI – Rinjani Dahayu Maheswari": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          },
-          "TATIANA – Tatiana Elizabeth Aelredita Kiara": {
-            "role": "Participant",
-            "school": "SMPN 4 Pakem",
-            "grade": null
-          }
-        }
-      },
-      "3": {
-        "name": "Team 3",
-        "teammates": {
-          "Mr. Rayhan": {
-            "role": "Supervisor",
-            "school": null,
-            "grade": null
-          },
-          "AIRA | Nafila Humanaira Anshary": {
-            "role": "Ambassador",
-            "school": "MI Sunan Pandanaran",
-            "grade": null
-          },
-          "OLA | Ken Cariola Widiamoko": {
-            "role": "Ambassador",
-            "school": "SD Model Sleman",
-            "grade": null
-          },
-          "AFIQAH – Afiqah Althafunnisa Taftazani": {
-            "role": "Participant",
-            "school": "SD Teladan",
-            "grade": null
-          },
-          "FALASIFA – Falasifa Kayla Ameliani": {
-            "role": "Participant",
-            "school": "SMPN 4 Pakem",
-            "grade": null
-          },
-          "LEVANIA – Levania Azzahra K.": {
-            "role": "Participant",
-            "school": "SDN Koroulon 1",
-            "grade": null
-          },
-          "TAMA – Tama Kelana": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          }
-        }
-      },
-      "4": {
-        "name": "Team 4",
-        "teammates": {
-          "Mom Hali": {
-            "role": "Supervisor",
-            "school": null,
-            "grade": null
-          },
-          "DERAS | Wilma Derasanda Hanifa": {
-            "role": "Ambassador",
-            "school": "MI Sunan Pandanaran",
-            "grade": null
-          },
-          "FARZAN – Farzan Herdhi Abqori": {
-            "role": "Participant",
-            "school": "SD Teladan",
-            "grade": null
-          },
-          "GITA – Fatima Namiya Anggita Srikandi": {
-            "role": "Participant",
-            "school": "SMPN 4 Pakem",
-            "grade": null
-          },
-          "KAYLA – Kayla Zhafira": {
-            "role": "Participant",
-            "school": "SDN Sorogenen 2",
-            "grade": null
-          },
-          "RAFFASYA – Raffasya Zhafran Naufal Ghani": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          }
-        }
-      },
-      "5": {
-        "name": "Team 5",
-        "teammates": {
-          "Mom Ranti": {
-            "role": "Supervisor",
-            "school": null,
-            "grade": null
-          },
-          "AGAN | Hazel Arganta W": {
-            "role": "Ambassador",
-            "school": "SD Model Sleman",
-            "grade": null
-          },
-          "RULLY | Rully Bramantyo Herlambang": {
-            "role": "Ambassador",
-            "school": "SDN Koroulon 1",
-            "grade": null
-          },
-          "LUQMAN – Luqman Arzu Attaraputra": {
-            "role": "Participant",
-            "school": "SD Teladan",
-            "grade": null
-          },
-          "NABILA – Nabila Amalia Ayu Ramadhani": {
-            "role": "Participant",
-            "school": "SDN Sorogenen 2",
-            "grade": null
-          },
-          "QISYA – Qisya Nada Azzahra": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          },
-          "RENJANI – Renjani Fitra Hartono": {
-            "role": "Participant",
-            "school": "SMPN 4 Pakem",
-            "grade": null
-          }
-        }
-      },
-      "6": {
-        "name": "Team 6",
-        "teammates": {
-          "Mom Siti Nurjanah": {
-            "role": "Supervisor",
-            "school": null,
-            "grade": null
-          },
-          "KEYSHA | Keysha Almira Maheswari": {
-            "role": "Ambassador",
-            "school": null,
-            "grade": null
-          },
-          "AINAYYA – Ainayya Jardine Humaira": {
-            "role": "Participant",
-            "school": "SD Teladan",
-            "grade": null
-          },
-          "ARAUFAN – Araufan Toefleandra Permana": {
-            "role": "Participant",
-            "school": "SDN Sorogenen 2",
-            "grade": null
-          },
-          "BELLVANIA – Bellvania Karsten Alcandria": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          },
-          "NADHIRA – Nadhira Yasmin Raudha": {
-            "role": "Participant",
-            "school": "SMPN 4 Pakem",
-            "grade": null
-          }
-        }
-      },
-      "7": {
-        "name": "Team 7",
-        "teammates": {
-          "Mom Anggun": {
-            "role": "Supervisor",
-            "school": null,
-            "grade": null
-          },
-          "GIANI | Giani Labieba Thufailah": {
-            "role": "Ambassador",
-            "school": "SD Model Sleman",
-            "grade": null
-          },
-          "ARMELL – Hayfa Armell Izzatunissa": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          },
-          "FARAHDEA – Farahdea Shakila Rahadian": {
-            "role": "Participant",
-            "school": "SD Teladan",
-            "grade": null
-          },
-          "KIYASA – Kiyasa Qotrunada": {
-            "role": "Participant",
-            "school": "SMPN 4 Pakem",
-            "grade": null
-          },
-          "RAFFA – Raffa Nanda S.": {
-            "role": "Participant",
-            "school": "SDN Krawitan",
-            "grade": null
-          }
-        }
-      },
-      "8": {
-        "name": "Team 8",
-        "teammates": {
-          "Mom Vita": {
-            "role": "Supervisor",
-            "school": null,
-            "grade": null
-          },
-          "AYA | Cahaya Mata": {
-            "role": "Ambassador",
-            "school": "SD Model Sleman",
-            "grade": null
-          },
-          "AGAM – M. Agam": {
-            "role": "Participant",
-            "school": "SDN Krawitan",
-            "grade": null
-          },
-          "DIKSI – Savana Paradiksi Kayalafala": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          },
-          "DZIA – Dzia Abyan Zidane": {
-            "role": "Participant",
-            "school": "SD Teladan",
-            "grade": null
-          },
-          "KANZ – Kanz Aufar Agriza Ghany": {
-            "role": "Participant",
-            "school": "SMPN 4 Pakem",
-            "grade": null
-          }
-        }
-      },
-      "9": {
-        "name": "Team 9",
-        "teammates": {
-          "AINAYYA | Ainayya Khalea Pratista": {
-            "role": "Ambassador",
-            "school": "SDN Koroulon 1",
-            "grade": null
-          },
-          "GITA | Fatima Namiya Anggita Srikandi": {
-            "role": "Ambassador",
-            "school": "SMP 4 Pakem",
-            "grade": null
-          },
-          "IBRAHIM – Ibrahim Rasyid Abqari": {
-            "role": "Participant",
-            "school": "SD Teladan",
-            "grade": null
-          },
-          "ISHANA – Ishana": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          },
-          "KHAYATA – Khayata Haryalaquita Putranta": {
-            "role": "Participant",
-            "school": "SDN Adisucipto 2",
-            "grade": null
-          },
-          "OSIAS – Osias Adhit P.": {
-            "role": "Participant",
-            "school": "SDN Krawitan",
-            "grade": null
-          }
-        }
-      },
-      "10": {
-        "name": "Team 10",
-        "teammates": {
-          "Mom Noorma": {
-            "role": "Supervisor",
-            "school": null,
-            "grade": null
-          },
-          "ALE | Syailendra abimanyu": {
-            "role": "Ambassador",
-            "school": "SD Model Sleman",
-            "grade": null
-          },
-          "MILANA – Milana El Shaarawy": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          },
-          "NASHWA – Nashwa Mezzaluna": {
-            "role": "Participant",
-            "school": "SDN Krawitan",
-            "grade": null
-          },
-          "SAMARA – Samara Raya": {
-            "role": "Participant",
-            "school": "SD Teladan",
-            "grade": null
-          }
-        }
-      },
-      "11": {
-        "name": "Team 11",
-        "teammates": {
-          "Mom Ale": {
-            "role": "Supervisor",
-            "school": null,
-            "grade": null
-          },
-          "KAL | Muhammad Kalandra Hartavi": {
-            "role": "Ambassador",
-            "school": "SD Muhammadiyah 1 Ngaglik",
-            "grade": null
-          },
-          "RALINE | Raline Shaqila Vidianandhara": {
-            "role": "Ambassador",
-            "school": "SD Teladan",
-            "grade": null
-          },
-          "KHAIRUL – Muhammad Khairul Anam": {
-            "role": "Participant",
-            "school": "SDN Krawitan",
-            "grade": null
-          },
-          "NABILA – Nabila Aurelia Hawan": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          },
-          "SAMMI – Sammi Sakadharma Rif 'At": {
-            "role": "Participant",
-            "school": "SD Teladan",
-            "grade": null
-          }
-        }
-      },
-      "12": {
-        "name": "Team 12",
-        "teammates": {
-          "Mom Sinta": {
-            "role": "Supervisor",
-            "school": null,
-            "grade": null
-          },
-          "KAUTSAR | Muhammad Kautsar Nur Arkan": {
-            "role": "Ambassador",
-            "school": "SD Teladan",
-            "grade": null
-          },
-          "ZAHWA | Zahwa Priscilia Zainal": {
-            "role": "Ambassador",
-            "school": "SMP 4 Pakem",
-            "grade": null
-          },
-          "CALIEF – Calief Aydan Er Atharizz": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          },
-          "FATHAN FAKHRUL – Fathan Fakhrul Nashrullah": {
-            "role": "Participant",
-            "school": "SDN Krawitan",
-            "grade": null
-          },
-          "RIO – Rio Athari Rafacello Lukitaningrat": {
-            "role": "Participant",
-            "school": "SD Teladan",
-            "grade": null
-          }
-        }
-      },
-      "13": {
-        "name": "Team 13",
-        "teammates": {
-          "⁠Mom Widi": {
-            "role": "Supervisor",
-            "school": null,
-            "grade": null
-          },
-          "ZEA | Aisyah Cettanalini Alula Zea": {
-            "role": "Ambassador",
-            "school": "SMPN 4 Pakem",
-            "grade": null
-          },
-          "DAMARA – Damara Rizky Putri Andiya": {
-            "role": "Participant",
-            "school": "SD Teladan",
-            "grade": null
-          },
-          "FATHAN AQSHA – Fathan Aqsha W": {
-            "role": "Participant",
-            "school": "SDN Krawitan",
-            "grade": null
-          },
-          "RAFFA – Raffa Azkarians": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          }
-        }
-      },
-      "14": {
-        "name": "Team 14",
-        "teammates": {
-          "Mom Fitria": {
-            "role": "Supervisor",
-            "school": null,
-            "grade": null
-          },
-          "HALIMA | Halima Salsabila Putri Defana": {
-            "role": "Ambassador",
-            "school": "SDN Adisucipto 2",
-            "grade": null
-          },
-          "AGUSTINA – Agustina Cahyani Mariana": {
-            "role": "Participant",
-            "school": "SDN Krawitan",
-            "grade": null
-          },
-          "AZKA – Azka Aldriko T.A": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          },
-          "INARA – Inara Astagina": {
-            "role": "Participant",
-            "school": "SD Teladan",
-            "grade": null
-          }
-        }
-      },
-      "15": {
-        "name": "Team 15",
-        "teammates": {
-          "Mom Violita": {
-            "role": "Supervisor",
-            "school": null,
-            "grade": null
-          },
-          "JAYDEN | Jayden Jati Y": {
-            "role": "Ambassador",
-            "school": "SD Model Sleman",
-            "grade": null
-          },
-          "KUNNY | Kunny Syauqi": {
-            "role": "Ambassador",
-            "school": "MI Sunan Pandanaran",
-            "grade": null
-          },
-          "ARSHALITA – Arshalita Tanjung A": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          },
-          "ARZIKI | Arziki Rasendria Alenoka": {
-            "role": "Participant",
-            "school": "SD Teladan",
-            "grade": null
-          },
-          "RAFAEL – Rafael Haganta Boy Sembiring": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          }
-        }
-      },
-      "16": {
-        "name": "Team 16",
-        "teammates": {
-          "Zulfa Fauzia Usviany": {
-            "role": "Supervisor",
-            "school": null,
-            "grade": null
-          },
-          "Aimee | Symphony Aimee Setiady": {
-            "role": "Ambassador",
-            "school": "SD Model Sleman",
-            "grade": null
-          },
-          "ADHYASTHA – Adhyastha Arsha Adelio": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          },
-          "AUDREY – Audrey Hassya Er Azkadina": {
-            "role": "Participant",
-            "school": "SMP N 4 Depok",
-            "grade": null
-          },
-          "DELISHA – Delisha Hayu M": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          }
-        }
-      },
-      "17": {
-        "name": "Team 17",
-        "teammates": {
-          "Teacher Yusa": {
-            "role": "Supervisor",
-            "school": null,
-            "grade": null
-          },
-          "GHANIM | Arrasya Ghanim Ladunni": {
-            "role": "Ambassador",
-            "school": "SD Model Sleman",
-            "grade": null
-          },
-          "KALANDRA | Gibran Kalandra Manggala": {
-            "role": "Ambassador",
-            "school": "SMP 4 Pakem",
-            "grade": null
-          },
-          "HARUM – Harum Zivastya Fo": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          },
-          "JAGAD – Jagad Surya Hanif": {
-            "role": "Participant",
-            "school": "SD Muhammadiyah 1 Ngaglik",
-            "grade": null
-          },
-          "NAYANA – Nayana Orli Arundati Alsina": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          }
-        }
-      },
-      "18": {
-        "name": "Team 18",
-        "teammates": {
-          "Teacher Sanie": {
-            "role": "Supervisor",
-            "school": null,
-            "grade": null
-          },
-          "TAVISHA | Rr. Sekarlangit Jingga N.R.": {
-            "role": "Ambassador",
-            "school": "SD Model Sleman",
-            "grade": null
-          },
-          "ALANA – Alana": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          },
-          "ARUNA – Aruna Embun Sabihasafi": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          },
-          "HANIYA – Haniya Kurnianing Putri": {
-            "role": "Participant",
-            "school": "SD IT Salsabila Al Muthi'in",
-            "grade": null
-          }
-        }
-      },
-      "19": {
-        "name": "Team 19",
-        "teammates": {
-          "Mr. Adi - Mata Aksara": {
-            "role": "Supervisor",
-            "school": null,
-            "grade": null
-          },
-          "NABILA | Nabila Yasmin Rizkia": {
-            "role": "Ambassador",
-            "school": "SD Model Sleman",
-            "grade": null
-          },
-          "BAHIR – Muhammad Athalla Bahiruddin": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          },
-          "QANITA – Qanita Amira Asyhar": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          },
-          "SAQINA – Saquina Aya Sovia": {
-            "role": "Participant",
-            "school": "SD Muhammadiyah 1 Nganglik",
-            "grade": null
-          }
-        }
-      },
-      "20": {
-        "name": "Team 20",
-        "teammates": {
-          "Mrs. Heni - Mata Aksara": {
-            "role": "Supervisor",
-            "school": null,
-            "grade": null
-          },
-          "SAKHA | Levano Arsakha Valin": {
-            "role": "Ambassador",
-            "school": "SD Model Sleman",
-            "grade": null
-          },
-          "ABDILLA – Abdilla Farah Nurul Haq": {
-            "role": "Participant",
-            "school": "SMPN 4 Pakem",
-            "grade": null
-          },
-          "AFNAYRA – Afnayra Queen Faust Syahputri": {
-            "role": "Participant",
-            "school": "SD Model",
-            "grade": null
-          },
-          "ESHAL – Eshal Khanza Wirapraja": {
-            "role": "Participant",
-            "school": "SD Teladan",
-            "grade": null
-          }
-        }
-      }
-    }
-  },
-    "Bali": {
-      "teams": {
-        "1": {
-          "name": "Team 1",
-          "teammates": {
-            "Teacher Made Suciani, S.Pd": {
-              "role": "Teacher",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Ni Putu Puspa Diantini": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Putu Anggi Yumika Shanti": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Ella | Putu Ella Pramudya": {
-              "role": "Ambassador",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Agus Buda | Gede Agus Buda Sastrawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Agus Budayasa | Putu Agus Budayasa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Budayasa Putra | I Kadek Budayasa Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Dwi | Kadek Dwi Ardiani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Eka | Kadek Eka Rismayani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Eka Ginanta | Gusti Ngurah Eka Ginanta": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Kadek Sugiantara | I Gusti Ngurah Kadek Sugiantara": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Kevin | Kadek Kevin Syandana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Marta Wati | Ni Komang Marta Marta Wati": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Mas Ristayati | Kadek Mas Ristayati": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Putu Satya | I Gusti Putu Satya Kusuma": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Rediasih | Made Rediasih": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Reva Adi | Putu Reva Adi Pratama": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Rita Pitriani | Komang Rita Pitriani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Satria Dharma | Gede Satria Dharma Adi Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Sintana Utama | Kadek Sintana Utama": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Suhita | Luh Suhita Sanisca": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Sukreni | Ketut Sukreni": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Tegar Ariesta | Komang Tegar Ariesta Satya Darma": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Trizia Praniti | Komang Trizia Praniti": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Tu Widiastuti | Luh Tu Widiastuti": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Windaniasih | Made Windaniasih": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            }
-          }
+  "programs": {
+    "The Learning Space": {
+      "name": "The Learning Space",
+      "members": {
+        "ABBEY": {
+          "name": "ABBEY"
         },
-        "2": {
-          "name": "Team 2",
-          "teammates": {
-            "Teacher Nyoman Subana, S.Pd": {
-              "role": "Teacher",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Putri Ana Sabilillah": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Billy Brema Perangin-angin": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Intan | Putu Intan Maharani": {
-              "role": "Ambassador",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Adi Saputra | Komang Adi Saputra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Adnyani Putri | Ni Luh Adnyani Putri": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Agus Pratama | Gede Agus Pratama": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Andika Saputra | Gede Andika Saputra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Andre | Kadek Andre Gunawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Budarsana | Komang Budarsana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "D Budiarta | Yan D Budiarta": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Danu | Ketut Danu Juni Hananta": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Denis  | Gede Denis Soviana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Dwi Andika | Kadek Dwi Andika Pranata Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Indah Budi | Komang Indah Budi Asrini": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Indra | Ni Putu Indra Bella Prasetia Ningsih": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Juni Ariastini | Kadek Juni Ariastini": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Listiarini | Ketut Listarini": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Mira Cahayani | Putu Mira Cahayani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Putri Juliantari | Kadek Putri Juliantari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Rivana Tri | Kadek Rivana Tri Afika Pradnyani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Roy Zaky | Putu Roy Zaky Bima Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Surya | I Komang Surya Harta Wiguna": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Susila Dwi | Kadek Susila Dwi Guna": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Warsika | Gusti Putu Warsika": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Weni | Ketut Weni Meliyani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            }
-          }
+        "ABHI": {
+          "name": "ABHI"
         },
-        "3": {
-          "name": "Team 3",
-          "teammates": {
-            "Teacher Desak Putu Ages Wintari, S.pd": {
-              "role": "Teacher",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Gusti Lanang Dananjaya": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Int.|I Gede Abiyudha Widyadhana": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Anguma | Luh Anguma Santya Devi": {
-              "role": "Ambassador",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Adi | Made Adi Budiasa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Agus Redistiawan | Ketut Agus Redistiawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Agustina | Kadek Agustina Pastika Dewi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Andi | I Ketut Andi Mahendra Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Arya | I Gede Arya Suriadnyana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Ayu Kadek Anita | I Gusti Ayu Kadek Anita Yani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Darma | Kadek Darma Yoga Purnama": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ganda Aria | I Gusti Ngurah Ganda Aria Permana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Ika | Komang Ika Andini Windayani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Jhon Nantha | Jhon Nantha Kusuma": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Ngurah | Gusti Ngurah Dipayana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Nova | Kadek Nova Dwipayana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Noviani | Ni Luh Putu Noviani Sri Widyantini": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Perdi | Kadek Perdi Nata": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Risa | Luh Risa Marliani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Sumerta | Gede Sumerta Dana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Tap Paro | Yan Tap Paro": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Tiara Dinatha | Ni Putu Tiara Dinatha Putri": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Tri Santiani | Komang Tri Santiani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Widia |  Putu Widia Putri": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Yoga Wiradnyana | Kadek Yoga Wiradnyana Yasa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Yogi | I Komang Yogi Satriawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            }
-          }
+        "ACER": {
+          "name": "ACER"
         },
-        "4": {
-          "name": "Team 4",
-          "teammates": {
-            "Teacher Drs. Nyoman Sumantra": {
-              "role": "Teacher",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Komang Yulia Purnama Yanti": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Luh Putu Vika Yuniantini": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Masia | Ketut Masia Apriliya": {
-              "role": "Ambassador",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Agus Apriyasa | Ketut Agus Apriyasa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Agus Arta | I Gusti Komang Agus Arta Dinarta": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Agus Diastana | Putu Agus Diastana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Agus Permana | Ketut Agus Permana Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Agus Putrawan | I Gede Agus Putrawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Angga | Putu Angga Ariawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Arjun Yudi | I Komang Arjun Yudi Pandawa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Ayu Kadek | I Gusti Ayu Kadek Puspawati": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Cahtika | Kadek Cahtika Putri": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Candra | Gede Candra Putra Wahyudi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Eka | Kadek Eka Purnama Sari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Indriani | Kadek Indriani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Jordan Riski | Komang Jordan Riski Adriana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Meica Candra | I Gede Meica Candra Winata": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Oktaviani | Luh Putu Oktaviani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Pebri Mikayanti | Komang Pebri Mikayanti": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Permana | I Gede Permana Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Purnama | Putu Purnama Ayhodya Yasa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Puspa Juliantari | Ni Luh Putu Puspa Juliantari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Riston Arya | Putu Riston Arya Wedanta": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Trisa Utami | Komang Trisa Utami": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Winda | Komang Winda Noviadnyani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            }
-          }
+        "ADELIA": {
+          "name": "ADELIA"
         },
-        "5": {
-          "name": "Team 5",
-          "teammates": {
-            "Teacher Ketut Bandem Elyadi, S.Pd": {
-              "role": "Teacher",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Ni Kadek Dwik Surya Pradnyani": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Putu Meiyanti Setya Pratiwi": {
-              "role": "Ambassador",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ratna | Luh Mas Ratna Galih": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Angga | Gede Angga Wirayasa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Anggara | Gede Anggara Yasa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Anjelita Putri | Ni Putu Anjelita Putri": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Apriliya | Ni Luh Apriliya Suriyantini": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Artika | Putu Artika Satya Wiguna": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Arya Suta | I Putu Arya Suta Wiguna": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Aulia | Kadek Aulia Junitayani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Bayu Ariadi | Putu Gede Bayu Ariadi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Briananta | I Komang Briananta Wijaya": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Budi Artawan | Putu Budi Artawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Elly | Gede Elly Sanjaya": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Nova Budiarta | Ketut Nova Budiarta": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Novi Diana | Ketut Novi Diana Widia Sari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Rista Okta | Luh Putu Rista Okta Prianjani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Riyanta | Kadek Riyanta Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Sita Sekar | Kadek Sita Sekar Anjani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Sri Susanti | Luh Putu Sri Susanti": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Suarsani | Ni Komang Suarsani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Trisna Candra | Komang Trisna Candra Dewi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Wahyu Hendra | Komang Wahyu Hendra Gunawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            }
-          }
+        "ADNAN": {
+          "name": "ADNAN"
         },
-        "6": {
-          "name": "Team 6",
-          "teammates": {
-            "Teacher Nyoman Dedi Erawan,S.Pd": {
-              "role": "Teacher",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Ni Putu Sthira Candrika": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Ni Luh Feby Diantari": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Puspadi | Kadek Puspadi": {
-              "role": "Ambassador",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Adelia Flora | Putu Adelia Flora Amadis": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Aliya Putri | Luh Aliya Putri Novianti": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Andika | Gede Andika Pratama": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Bayu Indra | Kadek Bayu Indra Arta Wiwaha": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Deva | Kadek Deva Junarta Rama Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Dicky Arya | I Kadek Dicky Arya Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Erik | Putu Erik Purnama Yasa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Indra Wirawan | Gede Indra Wirawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Juliastika | Kadek Juliastika": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Nadya | Luh Nadya Novyanti": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Renhard | Renhard Prasetya": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Riyan | Gede Riyan Dika Pratama": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Seli | Komang Seli Anggarini": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Senitra | Gede Senitra Widiadnyana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Sinta | Luh Putu Sinta Anggreni": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Sudi Artyasa | I Gede Sudi Artayasa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Suganda | I Kadek Suganda Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ulan Meisa | Komang Ulan Meisa Wati": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Windu | Gede Windu Erawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Yoga Ariawan | I Gede Yoga Ariawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Yuda Raditiya | GD Yuda Raditiya": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Yuda Wira | Kadek Yuda Wira Utama": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            }
-          }
+        "AFIQAH ALTHAFUNNISA TAFTAZANI": {
+          "name": "AFIQAH ALTHAFUNNISA TAFTAZANI"
         },
-        "7": {
-          "name": "Team 7",
-          "teammates": {
-            "Teacher Salsa Ursula Ogos, S.Pd.Gr": {
-              "role": "Teacher",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Maylaffaiza Bilqis Imtihatz": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Devina Christianti Br Ginting": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Kayobi | Kadek Kayobi Wirdi Putra": {
-              "role": "Ambassador",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Bim Bim | Kadek Putra Mahardika": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Adi Saputra | Kadek Adi Saputra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Agus Wiratama | Putu Agus Wiratama": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Ani | Komang Ani Yasini": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Apri | Made Apri Semadiyasa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Ari Suartama | Gede Ari Suartama": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Arya | Gushi Putu Arya Darma Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ayu Restiani | Luh Ayu Restiani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Cantika | Kadek Cantika Dwi Anjani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Diantari | Kadek Diantari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Divayana | Kadek Divayana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Elfan Arya | Putu Gede Elfan Arya Dinata": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Febri Kurniawan | Ketut Febri Kurniawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Fendy Harjendra | Putu Fendy Harjendra Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Indra Adi | Komang Indra Adi Wiguna": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Linda | Putu Linda Anggarini": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Puspitarini | Putu Puspitarini": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Rediastuti  | Ni Kadek Rediastuti": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Restari | Putu Restari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Riski Asta | Komang Riski Asta Gunawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ristiana | Kadek Ristiana Dewi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Sacca | Luh Sacca Paramita": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Sri Sandiartini | Luh Putu Sri Sandiartini": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Windya | Kadek Windya Pertiwi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            }
-          }
+        "AFKAR": {
+          "name": "AFKAR"
         },
-        "8": {
-          "name": "Team 8",
-          "teammates": {
-            "Teacher Luh Wedawati Ariani, S.Pd": {
-              "role": "Teacher",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Kadek Leony Agustini": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Yuli Clara BR Karo": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Ary | Ni Putu Ary Suwandewi": {
-              "role": "Ambassador",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Agus Suarcana | Gede Agus Suarcana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Agus Widi | Putu Agus Widi Kusuma": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Andika Arya | I Putu Andika Arya Dinata": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Arta | Kadek Arta Gunawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Arya Dharma | Gusti Putu Arya Dharma Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Arya Kusuma | Gede Arya Kusuma Wijaya": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Arya Pebri | I Ketut Arya Pebri Saputra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Arya Sujana | Kadek Arya Sujana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Ayu Puspa | Luh Ayu Puspa Dewi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Ayu Septiari | Ni Luh Ayu Septiari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Ayu Windy | Gusti Ayu WIndy Paramita": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Buda | Kadek Buda Ningsih": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Deva | Komang Deva Sastrawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Dwi Putra | Kadek Dwi Putra Merta Dana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ferly Pratiwi | Putu Ferly Pratiwi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Keysha | Putu Keysha Indah Pratiwi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Nik Januarta | Ketut Nik Januarta": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Sastra Pujangga | Gede Sastra Pujangga": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Selvi Yantini | Ni Luh Selvi Yantini": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Wahyu Wiguna | Kadek Wahyu Wiguna": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Winda Kristiana | Ni Luh Putu Winda Kristiana Dewi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Yuliastini | Ketut Yuliastini": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            }
-          }
+        "AGAN": {
+          "name": "AGAN"
         },
-        "9": {
-          "name": "Team 9",
-          "teammates": {
-            "Teacher Made Hela Irawadi, S.Pd": {
-              "role": "Teacher",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Ngurah Ketut Raharya Sidiaji": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Komang Gede Samudra Artajaya. W": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Leonita | Ni Komang Leonita Putri Cahyani": {
-              "role": "Ambassador",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Agus Prasetya | Kadek Agus Prasetya": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Alit | I Kadek Alit Sudiartawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Andri | I Komang Andriyani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Aryawan | Putu Aryawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Ayu Dewi | Gusti Ayu Dewi Arcani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Ayu Nita | Komang Ayu Nita Wulandari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ayu Putu | Gusti Ayu Putu Wrestika Dinayanti": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Ayu Sariani | Niluh Ayu Sariani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "De Budayasa | Komang De Budayasa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Lanang Mahardinata | Gede Lanang Mahardinata": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Nanda Adi | Kadek Nanda Adi Wibawa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Nova Saputra | Gede Nova Saputra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Purnawati | Luh Purnawati": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Putri Namira | Komang Putri Namira Yanti": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Satya Wiguna | Kadek Satya Wiguna": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Suarsana | I Ketut Suarsana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Suartayasa | Kadek Suartayasa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Tristan Arta | Komang Tristan Arta Wiguna": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Vika | Kadek Vika Rahmawati": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Widiasih | Luh Putu Widiasih": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Wulan Novi | Ni Putu Wulan Novi Triasih": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Yuda Restiawan |  Gede Yuda Restiawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            }
-          }
+        "AGUNG BUDI PRASETYO": {
+          "name": "AGUNG BUDI PRASETYO"
         },
-        "10": {
-          "name": "Team 10",
-          "teammates": {
-            "Teacher Nyoman Samiana, S.Pd": {
-              "role": "Teacher",
-              "school": null,
-              "grade": null
-            },
-            "Int.|M. Zakky Habibi Suher": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Sagita Imtias Rahmani": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Wiati | Kadek Wiati": {
-              "role": "Ambassador",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Aditya |  I Ketut Aditya Wirawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Aghin | Luh Putu Aghin Prima Mayuni": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Agus Saputra | Kadek Agus Saputra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Andika Krisna | Komang Andika Krisna Koriawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ariawar Putu Aryawar": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIIA"
-            },
-            "Bagus | Kadek Bagus Bima Arta": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Budi Renitasari | Kadek Budi Renitasari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Budi Septiani | Luh Budi Septiani Dewi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Ebiana | Putu Ebiana Susanta": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Eva Selyani | Luh Putu Eva Selyani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Fynna Adinda | Ni Ketut Fynna Adinda Putri": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Laksmi Sridevi | Ni Luh Putu Laksmi Sridevi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Mas Novi | Komang Mas Novi Damayanti": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Mayka Kaka | Putu Mayka Kaka Aditya": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Nita Damayanti | Putu Nita Damayanti": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Nova | Kadek Nova Adi Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Pande Mitha | Luh Putu Pande Mitha Agustina": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Purna Hari | Kadek Purna Hari Sanjaya": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Sila | I Komang Sila Widi Sumerta": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Widi Sukasari | Ni Komang Widi Sukasari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Yuda Widi | Gede Yuda Widi Pradana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Yuli | Komang Yuli Restana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            }
-          }
+        "AGUS LISTANTO_SETWAN": {
+          "name": "AGUS LISTANTO_SETWAN"
         },
-        "11": {
-          "name": "Team 11",
-          "teammates": {
-            "Teacher Putu Ardika, S.Pd": {
-              "role": "Teacher",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Made Bayu Ariada": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Gayuh Estu Laksono": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Sekar | Kadek Ayu Sekar Wahyuningsih": {
-              "role": "Ambassador",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Aby Sunanta | Putu Aby Sunanta": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ade Meta | Komang Ade Meta Triawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Aditya | Gede Aditya Pratama": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Anandini Citra | Putu Anandini Citra Prameswari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Ayu Cahya | Kadek Ayu Cahya Kimorin": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ayu Melinda | Putu Ayu Melinda Putri": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Ayu Sukmadewi | Ketut Ayu Sukmadewi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Baladika | Kadek Baladika Sastrawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Budiasa | Kadek Budiasa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Damayanti | Putu Damayanti": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Eka Sukriyani | Luh Eka Sukriyani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Egi | Kadek Egi Mahendra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIIC"
-            },
-            "Fanny Adinda | Ni Komang Fanny Adinda Putri": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Puri Baktini | Nyoman Puri Baktini": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Rangga | I Kadek Rangga Dwipayanaa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Rena | Kadek Rena Widiani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Rendy | I Ketut Rendy Wedhayana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Revayani | Ketut Revayani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Riski Susila | Ketut Riski Susila Adnyana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Satria Wiguna | I Kadek Satria Wiguna": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Sedana | Gede Sedana Arta": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Sinar Pratiwi | I Putu Sinar Pratiwi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            }
-          }
+        "AHMAD ISHLAHUDDIN": {
+          "name": "AHMAD ISHLAHUDDIN"
         },
-        "12": {
-          "name": "Team 12",
-          "teammates": {
-            "Teacher Sang ayu Putu Ekawati, S.Pd.": {
-              "role": "Teacher",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Ida Ayu Kade Wulan Budi Astiti": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Int.|Putu Alita Kristina Putri. S.": {
-              "role": "Intern",
-              "school": null,
-              "grade": null
-            },
-            "Jesika | Nengah Jesika Lingga Dewi": {
-              "role": "Ambassador",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Agus Ari | Gede Agus Ari Sukrawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Agus Supriadi | I Gede Agus Supriadi": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Alit Agus | Kadek Alit Agus Wibawa": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Amelia | Kadek Amelia": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIE"
-            },
-            "Aryatiningsih | Putu Aryatiningsih": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Dyari | Kadek Dyari Sukma Yani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Fefi Fira | Komang Fefi Fira Payanti": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Gede Wiyadnyana | Komang Gede Wiyadnyana": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Jhony | I Kadek Jhony Setiawan": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIA"
-            },
-            "Juni | Luh Putu Juni SIntia Wati": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Mita Ayu | Kadek Mita Ayu Dya": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Pradita | I Gede Pradita Surya Putra": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIID"
-            },
-            "Pratama | Gede Agus Pratama": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Prya | Kadek Prya Wiguna": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Putriani | Komang Putriani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Randy Asta | Gede Randy Asta Wiguna": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Satria Wiguna | Gede Satria Wiguna": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Widya | Luh Widya Indah Lestari": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Widya | Ni Kadek Widya Resmiani": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            },
-            "Wiliartawan | I Kadek Wiliartawan Kurnia": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIC"
-            },
-            "Wisnu Dharmayoga | Kadek Wisnu Dharmayoga": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": "VIIIB"
-            },
-            "Yoga | Kadek Yoga Sugiantara": {
-              "role": "Participant",
-              "school": "SMP Negeri 7 Singaraja",
-              "grade": null
-            }
-          }
+        "AIKO": {
+          "name": "AIKO"
+        },
+        "AINA ( DEWI SUKARNO )": {
+          "name": "AINA ( DEWI SUKARNO )"
+        },
+        "AINAYYA KHALEA PRATISTA": {
+          "name": "AINAYYA KHALEA PRATISTA"
+        },
+        "AINAYYA KHATISTA": {
+          "name": "AINAYYA KHATISTA"
+        },
+        "AIRA ( AISYA RAMADHANY )": {
+          "name": "AIRA ( AISYA RAMADHANY )"
+        },
+        "AIRA_Nafila Humaira": {
+          "name": "AIRA_Nafila Humaira"
+        },
+        "AISYAH": {
+          "name": "AISYAH"
+        },
+        "AIZA FAZA": {
+          "name": "AIZA FAZA"
+        },
+        "AKBAR": {
+          "name": "AKBAR"
+        },
+        "Akhdan Zeki A.": {
+          "name": "Akhdan Zeki A."
+        },
+        "AKILA PUTRI": {
+          "name": "AKILA PUTRI"
+        },
+        "Akmal Negara": {
+          "name": "Akmal Negara"
+        },
+        "AL ( ALMER HENDRY ZORA SAVERO )": {
+          "name": "AL ( ALMER HENDRY ZORA SAVERO )"
+        },
+        "AL HAFIZ ALTHANIAZ": {
+          "name": "AL HAFIZ ALTHANIAZ"
+        },
+        "ALANA CARIZSA": {
+          "name": "ALANA CARIZSA"
+        },
+        "ALBIAN": {
+          "name": "ALBIAN"
+        },
+        "ALBIYAN": {
+          "name": "ALBIYAN"
+        },
+        "ALE": {
+          "name": "ALE"
+        },
+        "ALIF": {
+          "name": "ALIF"
+        },
+        "ALINA SEKAR ARUMINGRATRI": {
+          "name": "ALINA SEKAR ARUMINGRATRI"
+        },
+        "ALIYA PUTRI": {
+          "name": "ALIYA PUTRI"
+        },
+        "ALOK": {
+          "name": "ALOK"
+        },
+        "ALULA DHIRA": {
+          "name": "ALULA DHIRA"
+        },
+        "ALWA": {
+          "name": "ALWA"
+        },
+        "alya": {
+          "name": "alya"
+        },
+        "AMABELLE": {
+          "name": "AMABELLE"
+        },
+        "AMIEN MUJIB": {
+          "name": "AMIEN MUJIB"
+        },
+        "Andhika Surya": {
+          "name": "Andhika Surya"
+        },
+        "andin": {
+          "name": "andin"
+        },
+        "ANDRA": {
+          "name": "ANDRA"
+        },
+        "ANDRA ( RAFANDRA )": {
+          "name": "ANDRA ( RAFANDRA )"
+        },
+        "Anggi": {
+          "name": "Anggi"
+        },
+        "Anggun Purnama": {
+          "name": "Anggun Purnama"
+        },
+        "ANGUMA": {
+          "name": "ANGUMA"
+        },
+        "ANIKA": {
+          "name": "ANIKA"
+        },
+        "Annie": {
+          "name": "Annie"
+        },
+        "ANNISAA WULAN": {
+          "name": "ANNISAA WULAN"
+        },
+        "AQILA AZZAHRA": {
+          "name": "AQILA AZZAHRA"
+        },
+        "AQSHA": {
+          "name": "AQSHA"
+        },
+        "ARA": {
+          "name": "ARA"
+        },
+        "ARAUFAN": {
+          "name": "ARAUFAN"
+        },
+        "ARAUFAN SD SOROGENEN 2": {
+          "name": "ARAUFAN SD SOROGENEN 2"
+        },
+        "ARDHINA ANJARIATMA": {
+          "name": "ARDHINA ANJARIATMA"
+        },
+        "ARKAN": {
+          "name": "ARKAN"
+        },
+        "ARMELL": {
+          "name": "ARMELL"
+        },
+        "ARRASYA GHANIM": {
+          "name": "ARRASYA GHANIM"
+        },
+        "ARRASYA GHANIM LADUNNI": {
+          "name": "ARRASYA GHANIM LADUNNI"
+        },
+        "ARSHA": {
+          "name": "ARSHA"
+        },
+        "ARTI": {
+          "name": "ARTI"
+        },
+        "ARY": {
+          "name": "ARY"
+        },
+        "ARZIKI": {
+          "name": "ARZIKI"
+        },
+        "ARZU_COOLMAN' ( BUDIATRI RETNO NOORMANINGRUM )": {
+          "name": "ARZU_COOLMAN' ( BUDIATRI RETNO NOORMANINGRUM )"
+        },
+        "ASYADILA": {
+          "name": "ASYADILA"
+        },
+        "ATHA": {
+          "name": "ATHA"
+        },
+        "ATHALIA ( AUSTIN HAYNES )": {
+          "name": "ATHALIA ( AUSTIN HAYNES )"
+        },
+        "AUBREY ( RANI LARASATI_MATA AKSARA )": {
+          "name": "AUBREY ( RANI LARASATI_MATA AKSARA )"
+        },
+        "AYA": {
+          "name": "AYA"
+        },
+        "AYAHNYA ARAUFAN": {
+          "name": "AYAHNYA ARAUFAN"
+        },
+        "AYSHA": {
+          "name": "AYSHA"
+        },
+        "AYU": {
+          "name": "AYU"
+        },
+        "AYU SEKAR": {
+          "name": "AYU SEKAR"
+        },
+        "AYUB DWI YOGA RAMADHAN": {
+          "name": "AYUB DWI YOGA RAMADHAN"
+        },
+        "Ayuk": {
+          "name": "Ayuk"
+        },
+        "AZKANYA CHLOE": {
+          "name": "AZKANYA CHLOE"
+        },
+        "BACH KHANG": {
+          "name": "BACH KHANG"
+        },
+        "BAHIR": {
+          "name": "BAHIR"
+        },
+        "BAIM 5B ( GINA PUSPITA )": {
+          "name": "BAIM 5B ( GINA PUSPITA )"
+        },
+        "BANDEM ELYADI": {
+          "name": "BANDEM ELYADI"
+        },
+        "BANYU BENING SYAKIRIN": {
+          "name": "BANYU BENING SYAKIRIN"
+        },
+        "Bayu": {
+          "name": "Bayu"
+        },
+        "BCDF": {
+          "name": "BCDF"
+        },
+        "BELLA": {
+          "name": "BELLA"
+        },
+        "BELVA": {
+          "name": "BELVA"
+        },
+        "BENING": {
+          "name": "BENING"
+        },
+        "Bim Bim": {
+          "name": "Bim Bim"
+        },
+        "BLCOP": {
+          "name": "BLCOP"
+        },
+        "BUNDA AINUN": {
+          "name": "BUNDA AINUN"
+        },
+        "BUNDA ARAUFAN": {
+          "name": "BUNDA ARAUFAN"
+        },
+        "CAHAYA MATA": {
+          "name": "CAHAYA MATA"
+        },
+        "CALIEF": {
+          "name": "CALIEF"
+        },
+        "CALYA": {
+          "name": "CALYA"
+        },
+        "CANTIKA": {
+          "name": "CANTIKA"
+        },
+        "CARISSA HANIF AZ ZAHRA": {
+          "name": "CARISSA HANIF AZ ZAHRA"
+        },
+        "CERA": {
+          "name": "CERA"
+        },
+        "CHILLI": {
+          "name": "CHILLI"
+        },
+        "CHIO": {
+          "name": "CHIO"
+        },
+        "Citra Dewi S. Psi": {
+          "name": "Citra Dewi S. Psi"
+        },
+        "CITRA ZARASATI": {
+          "name": "CITRA ZARASATI"
+        },
+        "CLARISSA": {
+          "name": "CLARISSA"
+        },
+        "DAMARA RIZKY": {
+          "name": "DAMARA RIZKY"
+        },
+        "DAN": {
+          "name": "DAN"
+        },
+        "DAYU WULAN ( PESERTA_IDA AYU KADE WULAN BUDI ASTITI )": {
+          "name": "DAYU WULAN ( PESERTA_IDA AYU KADE WULAN BUDI ASTITI )"
+        },
+        "DEDE": {
+          "name": "DEDE"
+        },
+        "Dede Muhamad Ridho": {
+          "name": "Dede Muhamad Ridho"
+        },
+        "DEK TA": {
+          "name": "DEK TA"
+        },
+        "DELLA": {
+          "name": "DELLA"
+        },
+        "DEN BAGUS ( VITO ANAK MAMAH )": {
+          "name": "DEN BAGUS ( VITO ANAK MAMAH )"
+        },
+        "DENI": {
+          "name": "DENI"
+        },
+        "DESI": {
+          "name": "DESI"
+        },
+        "DESYIST": {
+          "name": "DESYIST"
+        },
+        "DEVINA CHRISTIANTI GINTING": {
+          "name": "DEVINA CHRISTIANTI GINTING"
+        },
+        "DEWI CHARICE": {
+          "name": "DEWI CHARICE"
+        },
+        "DEWI SUKARNO": {
+          "name": "DEWI SUKARNO"
+        },
+        "Dhama Cahyani": {
+          "name": "Dhama Cahyani"
+        },
+        "DHETY CH": {
+          "name": "DHETY CH"
+        },
+        "DIAJENG": {
+          "name": "DIAJENG"
+        },
+        "DIAN LESTARI": {
+          "name": "DIAN LESTARI"
+        },
+        "DILA ARDIANI": {
+          "name": "DILA ARDIANI"
+        },
+        "DINAN": {
+          "name": "DINAN"
+        },
+        "DINDA": {
+          "name": "DINDA"
+        },
+        "DIO ( DANENDRA DANADYAKSA N)": {
+          "name": "DIO ( DANENDRA DANADYAKSA N)"
+        },
+        "DZAKY INF": {
+          "name": "DZAKY INF"
+        },
+        "DZAKYIBRA6": {
+          "name": "DZAKYIBRA6"
+        },
+        "DZIA ABYAN ZIDANE": {
+          "name": "DZIA ABYAN ZIDANE"
+        },
+        "DZIKRA TALITHA": {
+          "name": "DZIKRA TALITHA"
+        },
+        "ECAA": {
+          "name": "ECAA"
+        },
+        "EKA": {
+          "name": "EKA"
+        },
+        "ELA": {
+          "name": "ELA"
+        },
+        "ELAZ YAC CIGMA": {
+          "name": "ELAZ YAC CIGMA"
+        },
+        "ELDO RAYYAN": {
+          "name": "ELDO RAYYAN"
+        },
+        "ELF001": {
+          "name": "ELF001"
+        },
+        "ELFITRA RIDHA": {
+          "name": "ELFITRA RIDHA"
+        },
+        "ELLA": {
+          "name": "ELLA"
+        },
+        "ELLAINE": {
+          "name": "ELLAINE"
+        },
+        "ELYSA NUR SAFRIDA": {
+          "name": "ELYSA NUR SAFRIDA"
+        },
+        "Emma": {
+          "name": "Emma"
+        },
+        "ERINA AULIA SALSABILA (SALSA)": {
+          "name": "ERINA AULIA SALSABILA (SALSA)"
+        },
+        "ERMA WIDYA K RM BRIGUNA KATAMSO": {
+          "name": "ERMA WIDYA K RM BRIGUNA KATAMSO"
+        },
+        "ERNEST": {
+          "name": "ERNEST"
+        },
+        "EROS": {
+          "name": "EROS"
+        },
+        "ESHA": {
+          "name": "ESHA"
+        },
+        "ESHAL KHANZA [KHANZA]": {
+          "name": "ESHAL KHANZA [KHANZA]"
+        },
+        "EZRA": {
+          "name": "EZRA"
+        },
+        "FADILAH ARDIA PRAMESTI": {
+          "name": "FADILAH ARDIA PRAMESTI"
+        },
+        "FAISAL (RAMA)": {
+          "name": "FAISAL (RAMA)"
+        },
+        "FARAH": {
+          "name": "FARAH"
+        },
+        "FARIZ": {
+          "name": "FARIZ"
+        },
+        "FARIZ /DELVI ( HENDRA DANI SAPUTRA )": {
+          "name": "FARIZ /DELVI ( HENDRA DANI SAPUTRA )"
+        },
+        "FARZAN HERDHI ( DHETY CH )": {
+          "name": "FARZAN HERDHI ( DHETY CH )"
+        },
+        "FATAH AQSHA": {
+          "name": "FATAH AQSHA"
+        },
+        "FAUZAN AGHA": {
+          "name": "FAUZAN AGHA"
+        },
+        "FEBY DIANTARI ( WIDIANA )": {
+          "name": "FEBY DIANTARI ( WIDIANA )"
+        },
+        "FELISHA": {
+          "name": "FELISHA"
+        },
+        "FENDY FIRMANSYAH": {
+          "name": "FENDY FIRMANSYAH"
+        },
+        "GANESH PEHAGANTA SINURAYA": {
+          "name": "GANESH PEHAGANTA SINURAYA"
+        },
+        "GAYUH ESTU LAKSONO": {
+          "name": "GAYUH ESTU LAKSONO"
+        },
+        "GEDE MURDANA": {
+          "name": "GEDE MURDANA"
+        },
+        "GENDING MAHISI": {
+          "name": "GENDING MAHISI"
+        },
+        "GESYA": {
+          "name": "GESYA"
+        },
+        "GHAISAN 4A": {
+          "name": "GHAISAN 4A"
+        },
+        "GIANI": {
+          "name": "GIANI"
+        },
+        "GIANI LABIEBA THUFAILAJ": {
+          "name": "GIANI LABIEBA THUFAILAJ"
+        },
+        "GIBRAN": {
+          "name": "GIBRAN"
+        },
+        "GITA": {
+          "name": "GITA"
+        },
+        "GUSTIANA HANDRAJATI": {
+          "name": "GUSTIANA HANDRAJATI"
+        },
+        "GWEN": {
+          "name": "GWEN"
+        },
+        "HAFIZ": {
+          "name": "HAFIZ"
+        },
+        "HALII ( IQLIMA SHAPHIRE )": {
+          "name": "HALII ( IQLIMA SHAPHIRE )"
+        },
+        "HALIMASALSABILAA": {
+          "name": "HALIMASALSABILAA"
+        },
+        "HALIMYK NUR": {
+          "name": "HALIMYK NUR"
+        },
+        "HAMIZAN": {
+          "name": "HAMIZAN"
+        },
+        "HANIYA": {
+          "name": "HANIYA"
+        },
+        "HANUM PUSPITA": {
+          "name": "HANUM PUSPITA"
+        },
+        "HAQI": {
+          "name": "HAQI"
+        },
+        "HARI": {
+          "name": "HARI"
+        },
+        "HARUM ZIVASTYA": {
+          "name": "HARUM ZIVASTYA"
+        },
+        "HARYZEN": {
+          "name": "HARYZEN"
+        },
+        "HASAN": {
+          "name": "HASAN"
+        },
+        "HASBY": {
+          "name": "HASBY"
+        },
+        "HASNA": {
+          "name": "HASNA"
+        },
+        "HENI WARDATURROHMAH": {
+          "name": "HENI WARDATURROHMAH"
+        },
+        "HEZTAMMA": {
+          "name": "HEZTAMMA"
+        },
+        "HIRO": {
+          "name": "HIRO"
+        },
+        "HUMAIRA GHAISANI PUTRI (AIRA)": {
+          "name": "HUMAIRA GHAISANI PUTRI (AIRA)"
+        },
+        "HUSSEIN HAWWARI": {
+          "name": "HUSSEIN HAWWARI"
+        },
+        "I G. A. A. EKA PUTRI OKTOPIANI": {
+          "name": "I G. A. A. EKA PUTRI OKTOPIANI"
+        },
+        "I GEDE RASTRA PENDY INDRAYANA": {
+          "name": "I GEDE RASTRA PENDY INDRAYANA"
+        },
+        "I GEDE WIRA ARIMBAWA": {
+          "name": "I GEDE WIRA ARIMBAWA"
+        },
+        "I GUSTI AYU KADEK ANITA YANI": {
+          "name": "I GUSTI AYU KADEK ANITA YANI"
+        },
+        "IBRA ( ALVIN WAHYU DEWANTO )": {
+          "name": "IBRA ( ALVIN WAHYU DEWANTO )"
+        },
+        "ICA": {
+          "name": "ICA"
+        },
+        "Ida Ayu Komang Astuti": {
+          "name": "Ida Ayu Komang Astuti"
+        },
+        "IGA EKA PUTRI": {
+          "name": "IGA EKA PUTRI"
+        },
+        "illona": {
+          "name": "illona"
+        },
+        "ILUH LIDHIA SARI": {
+          "name": "ILUH LIDHIA SARI"
+        },
+        "INARA ASTAGINA (GINA)": {
+          "name": "INARA ASTAGINA (GINA)"
+        },
+        "INDAH": {
+          "name": "INDAH"
+        },
+        "INDIRA": {
+          "name": "INDIRA"
+        },
+        "INTAN": {
+          "name": "INTAN"
+        },
+        "ISHANAA": {
+          "name": "ISHANAA"
+        },
+        "IZZAN ( IRENA ESFANDRIA )": {
+          "name": "IZZAN ( IRENA ESFANDRIA )"
+        },
+        "IZZAR": {
+          "name": "IZZAR"
+        },
+        "Jake": {
+          "name": "Jake"
+        },
+        "JASMINE ASRI": {
+          "name": "JASMINE ASRI"
+        },
+        "JAYDEN": {
+          "name": "JAYDEN"
+        },
+        "JES ROBBER": {
+          "name": "JES ROBBER"
+        },
+        "JESIKA": {
+          "name": "JESIKA"
+        },
+        "JFP": {
+          "name": "JFP"
+        },
+        "JHON NANTHA": {
+          "name": "JHON NANTHA"
+        },
+        "JIHAN": {
+          "name": "JIHAN"
+        },
+        "JIK": {
+          "name": "JIK"
+        },
+        "JIMBS": {
+          "name": "JIMBS"
+        },
+        "JUSUF OMAR BILL ATARIZZ HARYADI_12_6B_P": {
+          "name": "JUSUF OMAR BILL ATARIZZ HARYADI_12_6B_P"
+        },
+        "KADEK AGUS TINA PASTIKA DEWI": {
+          "name": "KADEK AGUS TINA PASTIKA DEWI"
+        },
+        "Kadek Galih Mahotama": {
+          "name": "Kadek Galih Mahotama"
+        },
+        "KADEK KAYOBI": {
+          "name": "KADEK KAYOBI"
+        },
+        "Kadek Rivana Tri Afika Pradnyani": {
+          "name": "Kadek Rivana Tri Afika Pradnyani"
+        },
+        "KADEK YASITA PUTRI": {
+          "name": "KADEK YASITA PUTRI"
+        },
+        "KAKA ( ARMAVIAN HERDA MURDHANI )": {
+          "name": "KAKA ( ARMAVIAN HERDA MURDHANI )"
+        },
+        "KAL": {
+          "name": "KAL"
+        },
+        "KALANDRA": {
+          "name": "KALANDRA"
+        },
+        "KANZ": {
+          "name": "KANZ"
+        },
+        "KAYLA ZHAFIRA": {
+          "name": "KAYLA ZHAFIRA"
+        },
+        "KEENAN ADHYASTA": {
+          "name": "KEENAN ADHYASTA"
+        },
+        "KEENAN AHZAFANI": {
+          "name": "KEENAN AHZAFANI"
+        },
+        "Keinara N": {
+          "name": "Keinara N"
+        },
+        "KEISHA": {
+          "name": "KEISHA"
+        },
+        "KETUT SUASTANA": {
+          "name": "KETUT SUASTANA"
+        },
+        "Keyla naura": {
+          "name": "Keyla naura"
+        },
+        "KEYSHA ALMIRA MAHESWARI": {
+          "name": "KEYSHA ALMIRA MAHESWARI"
+        },
+        "KHOIRUL WAFA": {
+          "name": "KHOIRUL WAFA"
+        },
+        "KIA": {
+          "name": "KIA"
+        },
+        "KIARA TATIANA": {
+          "name": "KIARA TATIANA"
+        },
+        "KIKAN": {
+          "name": "KIKAN"
+        },
+        "KINAN": {
+          "name": "KINAN"
+        },
+        "kino": {
+          "name": "kino"
+        },
+        "KINODRAT SINGUTOMO": {
+          "name": "KINODRAT SINGUTOMO"
+        },
+        "KIRANA": {
+          "name": "KIRANA"
+        },
+        "KIYASA QOTRUNADA": {
+          "name": "KIYASA QOTRUNADA"
+        },
+        "Komang Nita Restiawati": {
+          "name": "Komang Nita Restiawati"
+        },
+        "KOMANG PENDI AYU": {
+          "name": "KOMANG PENDI AYU"
+        },
+        "Komang Suwandewi": {
+          "name": "Komang Suwandewi"
+        },
+        "KOMANG YULIA PURNAMA YANTI": {
+          "name": "KOMANG YULIA PURNAMA YANTI"
+        },
+        "LARENE ZAVA HAKIM": {
+          "name": "LARENE ZAVA HAKIM"
+        },
+        "LATHISYA": {
+          "name": "LATHISYA"
+        },
+        "LAU ( ENDANG NURUL SYAFITRI_UNRIYO )": {
+          "name": "LAU ( ENDANG NURUL SYAFITRI_UNRIYO )"
+        },
+        "LEONITA": {
+          "name": "LEONITA"
+        },
+        "LEONY AGUSTINI": {
+          "name": "LEONY AGUSTINI"
+        },
+        "LESTARI PURWANDARI": {
+          "name": "LESTARI PURWANDARI"
+        },
+        "LEVANO ARSAKHA VALIN": {
+          "name": "LEVANO ARSAKHA VALIN"
+        },
+        "Lina": {
+          "name": "Lina"
+        },
+        "LINTANG": {
+          "name": "LINTANG"
+        },
+        "Lorenzo (Ela)": {
+          "name": "Lorenzo (Ela)"
+        },
+        "LTs_Mina_Tulungagung": {
+          "name": "LTs_Mina_Tulungagung"
+        },
+        "LTS_RAISA Shidqia-Tulungagung": {
+          "name": "LTS_RAISA Shidqia-Tulungagung"
+        },
+        "LUH PUTU AMELIA SARI": {
+          "name": "LUH PUTU AMELIA SARI"
+        },
+        "Luh Risa Marliani": {
+          "name": "Luh Risa Marliani"
+        },
+        "LUH WIDHI": {
+          "name": "LUH WIDHI"
+        },
+        "Luna": {
+          "name": "Luna"
+        },
+        "M. AL FAHREZA": {
+          "name": "M. AL FAHREZA"
+        },
+        "M. ZAKKY HABIBI SUHER": {
+          "name": "M. ZAKKY HABIBI SUHER"
+        },
+        "MAHARDIKA ARKA": {
+          "name": "MAHARDIKA ARKA"
+        },
+        "Maiza Hasya Azzura": {
+          "name": "Maiza Hasya Azzura"
+        },
+        "MALIKHA": {
+          "name": "MALIKHA"
+        },
+        "MANH": {
+          "name": "MANH"
+        },
+        "masia (masia apriliya)": {
+          "name": "masia (masia apriliya)"
+        },
+        "MELINDA": {
+          "name": "MELINDA"
+        },
+        "MELISA": {
+          "name": "MELISA"
+        },
+        "MIKA ALIYAH ADHITYA": {
+          "name": "MIKA ALIYAH ADHITYA"
+        },
+        "MINA": {
+          "name": "MINA"
+        },
+        "Minh Anh": {
+          "name": "Minh Anh"
+        },
+        "MINH NGOC": {
+          "name": "MINH NGOC"
+        },
+        "MIRAH AYUN": {
+          "name": "MIRAH AYUN"
+        },
+        "MUHAMMAD KAUTSAR NUR ARKAN 5D (KAUTSAR)": {
+          "name": "MUHAMMAD KAUTSAR NUR ARKAN 5D (KAUTSAR)"
+        },
+        "MUHAMMAD RAQILLA ALFIRRAS": {
+          "name": "MUHAMMAD RAQILLA ALFIRRAS"
+        },
+        "NABIL": {
+          "name": "NABIL"
+        },
+        "NABILA ( NABILA )": {
+          "name": "NABILA ( NABILA )"
+        },
+        "NABILA YASMIN RIZKIA": {
+          "name": "NABILA YASMIN RIZKIA"
+        },
+        "NADA": {
+          "name": "NADA"
+        },
+        "NADHIRA YASMIN": {
+          "name": "NADHIRA YASMIN"
+        },
+        "NAJWA": {
+          "name": "NAJWA"
+        },
+        "NARA": {
+          "name": "NARA"
+        },
+        "NARAAA": {
+          "name": "NARAAA"
+        },
+        "NARAYA": {
+          "name": "NARAYA"
+        },
+        "NATA": {
+          "name": "NATA"
+        },
+        "NATASYA": {
+          "name": "NATASYA"
+        },
+        "NAYA": {
+          "name": "NAYA"
+        },
+        "NAZHIFA": {
+          "name": "NAZHIFA"
+        },
+        "NENDRA": {
+          "name": "NENDRA"
+        },
+        "NGỌC ÁNH": {
+          "name": "NGỌC ÁNH"
+        },
+        "NGURAH KETUT RAHARYA SIDIAJI 2212021055": {
+          "name": "NGURAH KETUT RAHARYA SIDIAJI 2212021055"
+        },
+        "NHẬT ANH": {
+          "name": "NHẬT ANH"
+        },
+        "NHI - LACY": {
+          "name": "NHI - LACY"
+        },
+        "NI KADEK DWIK SURYA PRADNYANI": {
+          "name": "NI KADEK DWIK SURYA PRADNYANI"
+        },
+        "NI LUH ADNYANI PUTRI": {
+          "name": "NI LUH ADNYANI PUTRI"
+        },
+        "NI LUH FEBY DIANTARI": {
+          "name": "NI LUH FEBY DIANTARI"
+        },
+        "NI PUTU STHIRA CANDRIKA": {
+          "name": "NI PUTU STHIRA CANDRIKA"
+        },
+        "NITA CAHYONO": {
+          "name": "NITA CAHYONO"
+        },
+        "NOAH": {
+          "name": "NOAH"
+        },
+        "NOVI": {
+          "name": "NOVI"
+        },
+        "NOVY WIDYOWATI": {
+          "name": "NOVY WIDYOWATI"
+        },
+        "OLIVE": {
+          "name": "OLIVE"
+        },
+        "OLLA": {
+          "name": "OLLA"
+        },
+        "OMITHA": {
+          "name": "OMITHA"
+        },
+        "ONIT": {
+          "name": "ONIT"
+        },
+        "ORTU CARISA": {
+          "name": "ORTU CARISA"
+        },
+        "PANDE MADE DONI DWIPA ARISNAWAN 2215051048": {
+          "name": "PANDE MADE DONI DWIPA ARISNAWAN 2215051048"
+        },
+        "PIN.": {
+          "name": "PIN."
+        },
+        "PRAMASADEWA": {
+          "name": "PRAMASADEWA"
+        },
+        "PURNAMA": {
+          "name": "PURNAMA"
+        },
+        "PUSPA JULIANTARI": {
+          "name": "PUSPA JULIANTARI"
+        },
+        "PUSPAADI KADEK": {
+          "name": "PUSPAADI KADEK"
+        },
+        "Putra": {
+          "name": "Putra"
+        },
+        "Putri": {
+          "name": "Putri"
+        },
+        "PUTU ALITA KRISTINA PUTRI": {
+          "name": "PUTU ALITA KRISTINA PUTRI"
+        },
+        "Putu ayu sri suweni": {
+          "name": "Putu ayu sri suweni"
+        },
+        "Putu Desy Widiastuti": {
+          "name": "Putu Desy Widiastuti"
+        },
+        "Putu Eka Santika dewi": {
+          "name": "Putu Eka Santika dewi"
+        },
+        "Putu ela": {
+          "name": "Putu ela"
+        },
+        "PUTU ELA PRAMUDYA ( IPHONE )": {
+          "name": "PUTU ELA PRAMUDYA ( IPHONE )"
+        },
+        "Putu intan maharani": {
+          "name": "Putu intan maharani"
+        },
+        "PUTU MEIYANTI SETYA PRATIWI 2214041002": {
+          "name": "PUTU MEIYANTI SETYA PRATIWI 2214041002"
+        },
+        "PUTU NARAYA": {
+          "name": "PUTU NARAYA"
+        },
+        "Putu Purnama": {
+          "name": "Putu Purnama"
+        },
+        "Putu Rani": {
+          "name": "Putu Rani"
+        },
+        "PUTU RIYA": {
+          "name": "PUTU RIYA"
+        },
+        "QISYA NADA ( QISYA NADA AZZAHRA 4A )": {
+          "name": "QISYA NADA ( QISYA NADA AZZAHRA 4A )"
+        },
+        "QUANG MINH": {
+          "name": "QUANG MINH"
+        },
+        "QUITA SDN ADI 2": {
+          "name": "QUITA SDN ADI 2"
+        },
+        "QUYNH HUONG": {
+          "name": "QUYNH HUONG"
+        },
+        "RAFAN": {
+          "name": "RAFAN"
+        },
+        "RAFANDRA": {
+          "name": "RAFANDRA"
+        },
+        "RAFANDRA ALDRIN ADIWIJAYA": {
+          "name": "RAFANDRA ALDRIN ADIWIJAYA"
+        },
+        "RAFFASYA": {
+          "name": "RAFFASYA"
+        },
+        "RAFII": {
+          "name": "RAFII"
+        },
+        "RAFIQ": {
+          "name": "RAFIQ"
+        },
+        "RAISA (Dhira's sis)": {
+          "name": "RAISA (Dhira's sis)"
+        },
+        "Raisa Najma Cordelia": {
+          "name": "Raisa Najma Cordelia"
+        },
+        "RAISA SHARLIZ ZAFIRA": {
+          "name": "RAISA SHARLIZ ZAFIRA"
+        },
+        "RAISSANIRA": {
+          "name": "RAISSANIRA"
+        },
+        "RALINE": {
+          "name": "RALINE"
+        },
+        "RAMDAN": {
+          "name": "RAMDAN"
+        },
+        "RANY": {
+          "name": "RANY"
+        },
+        "RATNA GALIH": {
+          "name": "RATNA GALIH"
+        },
+        "RAYA": {
+          "name": "RAYA"
+        },
+        "RaySS": {
+          "name": "RaySS"
+        },
+        "RAYYA": {
+          "name": "RAYYA"
+        },
+        "REA": {
+          "name": "REA"
+        },
+        "Refat": {
+          "name": "Refat"
+        },
+        "RENJANIE ( ZZNIEE )": {
+          "name": "RENJANIE ( ZZNIEE )"
+        },
+        "RHEA": {
+          "name": "RHEA"
+        },
+        "RIAN NINGRUM": {
+          "name": "RIAN NINGRUM"
+        },
+        "Richard": {
+          "name": "Richard"
+        },
+        "RICKY ADI NUGRAHA": {
+          "name": "RICKY ADI NUGRAHA"
+        },
+        "RIKO MIFZAL": {
+          "name": "RIKO MIFZAL"
+        },
+        "RIO ATHARI R.L. (CELLO)": {
+          "name": "RIO ATHARI R.L. (CELLO)"
+        },
+        "Rita anggi": {
+          "name": "Rita anggi"
+        },
+        "RIVELTO": {
+          "name": "RIVELTO"
+        },
+        "RR. SEKARLANGIT JINGGA NURTAVISHA ROBBANO": {
+          "name": "RR. SEKARLANGIT JINGGA NURTAVISHA ROBBANO"
+        },
+        "RULLY BRAMANTYO": {
+          "name": "RULLY BRAMANTYO"
+        },
+        "SAHN": {
+          "name": "SAHN"
+        },
+        "SAKHA": {
+          "name": "SAKHA"
+        },
+        "SALSA ( ANDRIAN )": {
+          "name": "SALSA ( ANDRIAN )"
+        },
+        "SALSHA OGOS ( SALSHA OGOS )": {
+          "name": "SALSHA OGOS ( SALSHA OGOS )"
+        },
+        "SAMARA RAYA - RAYA": {
+          "name": "SAMARA RAYA - RAYA"
+        },
+        "SAMMI SAKADHARMA": {
+          "name": "SAMMI SAKADHARMA"
+        },
+        "SAMUDRA": {
+          "name": "SAMUDRA"
+        },
+        "SAQINA": {
+          "name": "SAQINA"
+        },
+        "SATRIA DAN BTARI ( CANDY )": {
+          "name": "SATRIA DAN BTARI ( CANDY )"
+        },
+        "SAVANA": {
+          "name": "SAVANA"
+        },
+        "SEKAR": {
+          "name": "SEKAR"
+        },
+        "sela": {
+          "name": "sela"
+        },
+        "Sela Silvia": {
+          "name": "Sela Silvia"
+        },
+        "SEPTIAN OSHIANI": {
+          "name": "SEPTIAN OSHIANI"
+        },
+        "SHABRIA ( MEYLAN SARI )": {
+          "name": "SHABRIA ( MEYLAN SARI )"
+        },
+        "SHAKEELA NAFEEZA SYAFARANA": {
+          "name": "SHAKEELA NAFEEZA SYAFARANA"
+        },
+        "SHAKILA 5A": {
+          "name": "SHAKILA 5A"
+        },
+        "SHANAHAN RAFA": {
+          "name": "SHANAHAN RAFA"
+        },
+        "SHAVIRA": {
+          "name": "SHAVIRA"
+        },
+        "SHAVIRA ( BAPPERIDADIY )": {
+          "name": "SHAVIRA ( BAPPERIDADIY )"
+        },
+        "SI LUH MADE INTAN PEBRIYANTI": {
+          "name": "SI LUH MADE INTAN PEBRIYANTI"
+        },
+        "SINARRR PRTW": {
+          "name": "SINARRR PRTW"
+        },
+        "Sintya": {
+          "name": "Sintya"
+        },
+        "SITI FATIMAH_PBHI YOGYAKARTA": {
+          "name": "SITI FATIMAH_PBHI YOGYAKARTA"
+        },
+        "SITI NURJANAH": {
+          "name": "SITI NURJANAH"
+        },
+        "SRI": {
+          "name": "SRI"
+        },
+        "Srida25": {
+          "name": "Srida25"
+        },
+        "Srihan25": {
+          "name": "Srihan25"
+        },
+        "Srihanda": {
+          "name": "Srihanda"
+        },
+        "SUMERTA": {
+          "name": "SUMERTA"
+        },
+        "SYABILA ( HARTATI )": {
+          "name": "SYABILA ( HARTATI )"
+        },
+        "SYABILA ( SYABILA SD MALANG REJO )": {
+          "name": "SYABILA ( SYABILA SD MALANG REJO )"
+        },
+        "SYEKAR HMZ": {
+          "name": "SYEKAR HMZ"
+        },
+        "SYIFA ( QONITA ARIZKY )": {
+          "name": "SYIFA ( QONITA ARIZKY )"
+        },
+        "SYLLA": {
+          "name": "SYLLA"
+        },
+        "SYMPHONY AIMEE": {
+          "name": "SYMPHONY AIMEE"
+        },
+        "Tama (Wagiyo Hadi Kristanto)": {
+          "name": "Tama (Wagiyo Hadi Kristanto)"
+        },
+        "TAMA K": {
+          "name": "TAMA K"
+        },
+        "TAMA KELANA Y": {
+          "name": "TAMA KELANA Y"
+        },
+        "TAVISHA": {
+          "name": "TAVISHA"
+        },
+        "TEGAR": {
+          "name": "TEGAR"
+        },
+        "Tina": {
+          "name": "Tina"
+        },
+        "TITAN": {
+          "name": "TITAN"
+        },
+        "TLS _ KUNNY": {
+          "name": "TLS _ KUNNY"
+        },
+        "TLS_ Aira": {
+          "name": "TLS_ Aira"
+        },
+        "TLS_Aliya Zahrina": {
+          "name": "TLS_Aliya Zahrina"
+        },
+        "TLS_Cleodhia": {
+          "name": "TLS_Cleodhia"
+        },
+        "TLS_Deira": {
+          "name": "TLS_Deira"
+        },
+        "TLS_Deras": {
+          "name": "TLS_Deras"
+        },
+        "TLS_Dhira": {
+          "name": "TLS_Dhira"
+        },
+        "TLS_JagaDeras": {
+          "name": "TLS_JagaDeras"
+        },
+        "TLS_Kunny syauqi": {
+          "name": "TLS_Kunny syauqi"
+        },
+        "TLS_Maiza (Nindia Hilda)": {
+          "name": "TLS_Maiza (Nindia Hilda)"
+        },
+        "TLS_Nindy": {
+          "name": "TLS_Nindy"
+        },
+        "TLS_Putri": {
+          "name": "TLS_Putri"
+        },
+        "TLS_Raisa dan Mina  _ Tulungagung": {
+          "name": "TLS_Raisa dan Mina  _ Tulungagung"
+        },
+        "TLS_Rania": {
+          "name": "TLS_Rania"
+        },
+        "TLS_Refat (Widya_ Refat)": {
+          "name": "TLS_Refat (Widya_ Refat)"
+        },
+        "TLS_sovia": {
+          "name": "TLS_sovia"
+        },
+        "TRI VO": {
+          "name": "TRI VO"
+        },
+        "VARISHA": {
+          "name": "VARISHA"
+        },
+        "VENTA MULIA PUTRI ANGGRAENI": {
+          "name": "VENTA MULIA PUTRI ANGGRAENI"
+        },
+        "VETA": {
+          "name": "VETA"
+        },
+        "Victor": {
+          "name": "Victor"
+        },
+        "VIDYA": {
+          "name": "VIDYA"
+        },
+        "viet hung": {
+          "name": "viet hung"
+        },
+        "VIRA": {
+          "name": "VIRA"
+        },
+        "VIRA JUITHA": {
+          "name": "VIRA JUITHA"
+        },
+        "Wayanbudiastawa": {
+          "name": "Wayanbudiastawa"
+        },
+        "WEDA WATI ARIANI": {
+          "name": "WEDA WATI ARIANI"
+        },
+        "WELAS": {
+          "name": "WELAS"
+        },
+        "Wiati": {
+          "name": "Wiati"
+        },
+        "WILMA DERASANDA HANIFA": {
+          "name": "WILMA DERASANDA HANIFA"
+        },
+        "Winnie": {
+          "name": "Winnie"
+        },
+        "WISZNN": {
+          "name": "WISZNN"
+        },
+        "WULAN ( ANNISAA WULAN )": {
+          "name": "WULAN ( ANNISAA WULAN )"
+        },
+        "XAYI ( M )": {
+          "name": "XAYI ( M )"
+        },
+        "YESITA": {
+          "name": "YESITA"
+        },
+        "YOGISATRIAWAN": {
+          "name": "YOGISATRIAWAN"
+        },
+        "YULI CLARA": {
+          "name": "YULI CLARA"
+        },
+        "YULI HASJULIANA": {
+          "name": "YULI HASJULIANA"
+        },
+        "YULIATIN MUSYAROFAH": {
+          "name": "YULIATIN MUSYAROFAH"
+        },
+        "ZAHWA ( KATAK BERADIK )": {
+          "name": "ZAHWA ( KATAK BERADIK )"
+        },
+        "ZAKIA": {
+          "name": "ZAKIA"
+        },
+        "ZASKIAA": {
+          "name": "ZASKIAA"
+        },
+        "zaskya salsabila": {
+          "name": "zaskya salsabila"
+        },
+        "ZAVA": {
+          "name": "ZAVA"
+        },
+        "ZEA ( AISYAH CETTANALINI ALULA ZEA )": {
+          "name": "ZEA ( AISYAH CETTANALINI ALULA ZEA )"
+        },
+        "Zidan": {
+          "name": "Zidan"
+        },
+        "ZULFA FAUZIA U": {
+          "name": "ZULFA FAUZIA U"
+        },
+        "ZZNIEE": {
+          "name": "ZZNIEE"
         }
       }
     },
-  "Jogjakarta Ambassadors": {
-      "teams": {
-        "1": {
-          "name": "Team 1",
-          "teammates": {
-            "JIHAN | Maulin Jihan Tasanee": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "AIRA | Aira Putri Gunawan": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "DERAS | Wilma Derasanda Hanifa": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "KAL": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "KINO": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "RULLY | Rully Bramantyo Herlambang": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "KHALEA | Ainayya Khalea Pratista": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "NENDRA": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "AL | Almer Hendry Zora Savero": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "KUNNY | Kunny Syauqi": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "ARAUFAN | Araufan Toefleandra Permana": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "AKHTAR | Akhtar Dirgantara Gumay": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "GWEN | Gwen Farannisa Chalondra Febi": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "RAKA | Taraka Silby Putra Pratama": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "ABIYYU | Abiyyu Mahasatria": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "ZAHWA | Zahwa Priscilia Zainal": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "AISYAH | Aisyah Cettanalini Alula Zea": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "FATIMA | Fatima Namiya Anggita Srikandi": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "KALANDRA | Gibran Kalandra Manggala": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "JAYDEN | Jayden Jati Y": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "NABILA | Nabila Yasmin Rizkia": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "BAHIR | Muhammad Athalla Bahiruddin": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "Aimee | Symphony Aimee Setiady": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "MALIKHA | Malikha Candra Kaylila": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "AGAN | Hazel Arganta W": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "ALE | Syailendra abimanyu": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "ALIYA | Aliya Putri": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "KEYSHA | Keysha Almira Maheswari": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "GANIM | Arrasya Ghanim Ladunni": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "RAYYA": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "SHAVIRA | Shavira kinasih d": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "ANDRA | Rafandra Aldrin Adiwijaya": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "WELAS | Welas Asih Era": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "TAVISHA": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "ALFIRRAS | Muhammad Raqilla Alfirras": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "BENING | Banyu Bening Syakirin": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "RIVELTO | Rivelto Farhan": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "AIKO | Aiko Danesha Prameswari": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "RIVANO | Rivano Mirza arwi": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "LTS_RAISA SHIDQIA-TULUNGAGUNG": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "Raisa Sharliz Zafira": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "KEN | Ken Cariola Widiamoko": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "AYA | Cahaya Mata": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "ERNEST | Dominikus Agustian Ernest Setyawan": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "ALVARO | Brian Alvaro Zafran": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "FAUZAN | Fauzan Agha": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "JASMINE | Jasmine Khaira Asri": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "TITAN | Titan Athalla": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "RAFIFATU | Rafifatu Rifda Br Ginting": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "AL | Al Herbert Sam": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "GIANI | Giani Labieba Thufailah": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "LANGIT BIRU | Muhammad Langit Biru Ramadhan": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "SOLANA | Solana Freesia Rudhiani": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "DIO | Danendra Danadyaksa Nalaherta": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "IZZAN | Muhammad Izzan Aristo": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "ELVIRA | Elvira Aura Azzahra": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "ARKHA | Muhammad arkharega": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "NARAYA | Ni Putu Finsa Naraya Alyaguna": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "AUFAR | Aufar Abdul Jabbar": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "AQILA | Aqila Azzahra": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "AIMEE | Symphony Aimee Setiady": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "SAKHA | Levano Arsakha Valin": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "Qianna | Qianna Aufaa Khairinniswa": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "DZAKY INF | Dzaki Adinata": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "GANESH | Ganesh Pehaganta Sinuraya": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "DIMITRI | Muammar Dimitri Baihaqi": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "OLIVE | Olive Adhifa Gunadi": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "SHAKEELA | Shakeela Nafeeza Syafarana": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "ZAVA | Larene Zava Hakim": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "RALINE | Raline Shaqila Vidianandhara": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "KAUTSAR | Muhammad Kautsar Nur Arkan": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "HAMIZAN | Hamizan Fawwaz Ar Ruzain": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            },
-            "GHAISANI | Humaira Ghaisani Putri Arifianto": {
-              "role": "Ambassador",
-              "school": "NA",
-              "grade": "NA"
-            }
-          }
+    "Program Office": {
+      "name": "Program Office",
+      "members": {
+        "MIHF": {
+          "name": "MIHF"
+        },
+        "CLOUDY": {
+          "name": "CLOUDY"
+        },
+        "LIN91": {
+          "name": "LIN91"
+        },
+        "DAV79": {
+          "name": "DAV79"
+        },
+        "SAHN": {
+          "name": "SAHN"
+        },
+        "T": {
+          "name": "T"
+        },
+        "SASA": {
+          "name": "SASA"
+        }
+      }
+    },
+    "Project Infinity": {
+      "name": "Project Infinity",
+      "members": {
+        "MIHF": {
+          "name": "MIHF"
+        },
+        "CLOUDY": {
+          "name": "CLOUDY"
+        },
+        "LIN91": {
+          "name": "LIN91"
+        },
+        "DAV79": {
+          "name": "DAV79"
+        },
+        "minhnguyet": {
+          "name": "minhnguyet"
+        },
+        "Minh Tamm": {
+          "name": "Minh Tamm"
+        },
+        "Xuan Bach": {
+          "name": "Xuan Bach"
+        },
+        "BLUE": {
+          "name": "BLUE"
+        },
+        "ELF001": {
+          "name": "ELF001"
+        },
+        "RTM": {
+          "name": "RTM"
+        },
+        "SVT06": {
+          "name": "SVT06"
+        },
+        "Nguyễn Quỳnh Anh": {
+          "name": "Nguyễn Quỳnh Anh"
+        },
+        "Mai Hoang An": {
+          "name": "Mai Hoang An"
+        },
+        "Nguyen Thi Phuong Anh": {
+          "name": "Nguyen Thi Phuong Anh"
+        },
+        "Nguyễn Quang Hanh": {
+          "name": "Nguyễn Quang Hanh"
+        },
+        "nhung bùi": {
+          "name": "nhung bùi"
+        },
+        "phuong ha": {
+          "name": "phuong ha"
+        },
+        "Nguyễn văn Đạt": {
+          "name": "Nguyễn văn Đạt"
+        },
+        "Minh Ngọc - Mino": {
+          "name": "Minh Ngọc - Mino"
+        },
+        "Huyền Vũ Khánh": {
+          "name": "Huyền Vũ Khánh"
+        },
+        "Anonymous": {
+          "name": "Anonymous"
+        },
+        "Xuân minh Nguyễn": {
+          "name": "Xuân minh Nguyễn"
+        },
+        "Cozy": {
+          "name": "Cozy"
+        },
+        "Hw.zung": {
+          "name": "Hw.zung"
+        },
+        "Vi Hoa Bui": {
+          "name": "Vi Hoa Bui"
+        },
+        "vianh": {
+          "name": "vianh"
+        },
+        "Bach CSE": {
+          "name": "Bach CSE"
+        },
+        "AN PHAM": {
+          "name": "AN PHAM"
+        },
+        "Tran Khanh Linh": {
+          "name": "Tran Khanh Linh"
+        },
+        "Phan Thi Ngoc Linh": {
+          "name": "Phan Thi Ngoc Linh"
+        },
+        "Hoang Ngoc Thien Huong": {
+          "name": "Hoang Ngoc Thien Huong"
+        },
+        "Nguyễn Đức Anh": {
+          "name": "Nguyễn Đức Anh"
+        },
+        "Boo": {
+          "name": "Boo"
+        },
+        "Cody": {
+          "name": "Cody"
+        },
+        "Sharkyzz": {
+          "name": "Sharkyzz"
+        },
+        "Vinodh Menon": {
+          "name": "Vinodh Menon"
+        },
+        "LukeJ": {
+          "name": "LukeJ"
+        },
+        "Eric": {
+          "name": "Eric"
+        },
+        "Rajesh Achanta": {
+          "name": "Rajesh Achanta"
+        },
+        "T": {
+          "name": "T"
+        },
+        "Doo Nady": {
+          "name": "Doo Nady"
+        },
+        "Gen M": {
+          "name": "Gen M"
+        },
+        "FI06": {
+          "name": "FI06"
+        },
+        "Mike": {
+          "name": "Mike"
+        },
+        "Ngọc Tống ( Veronica )": {
+          "name": "Ngọc Tống ( Veronica )"
+        },
+        "nhi nhi": {
+          "name": "nhi nhi"
+        },
+        "Py": {
+          "name": "Py"
+        },
+        "Hoàng Vũ Khánh Huyền": {
+          "name": "Hoàng Vũ Khánh Huyền"
+        },
+        "LTP": {
+          "name": "LTP"
+        },
+        "Vivienne": {
+          "name": "Vivienne"
+        },
+        "Viet Minh": {
+          "name": "Viet Minh"
+        },
+        "Jeremy": {
+          "name": "Jeremy"
+        },
+        "Alvin": {
+          "name": "Alvin"
+        },
+        "Ashish": {
+          "name": "Ashish"
+        },
+        "PAnh": {
+          "name": "PAnh"
+        },
+        "Ly": {
+          "name": "Ly"
+        },
+        "Silvia": {
+          "name": "Silvia"
+        },
+        "Oved": {
+          "name": "Oved"
+        },
+        "Nguyen Minh Khue": {
+          "name": "Nguyen Minh Khue"
+        },
+        "Nhật Thành": {
+          "name": "Nhật Thành"
+        },
+        "Nur Myiesha": {
+          "name": "Nur Myiesha"
+        },
+        "Sương Mai Trần": {
+          "name": "Sương Mai Trần"
+        },
+        "Nguyễn Trang Nhung": {
+          "name": "Nguyễn Trang Nhung"
+        },
+        "Cố Ngọc Mai": {
+          "name": "Cố Ngọc Mai"
+        },
+        "Ha Le": {
+          "name": "Ha Le"
+        },
+        "Dheej Nambiar": {
+          "name": "Dheej Nambiar"
+        },
+        "Zara": {
+          "name": "Zara"
+        },
+        "Nadia": {
+          "name": "Nadia"
+        },
+        "ASEN": {
+          "name": "ASEN"
+        },
+        "Ayaz": {
+          "name": "Ayaz"
+        },
+        "Khuong Phuong Anh": {
+          "name": "Khuong Phuong Anh"
+        },
+        "Afra Hotijah": {
+          "name": "Afra Hotijah"
+        },
+        "Albin": {
+          "name": "Albin"
+        },
+        "hajar fitri": {
+          "name": "hajar fitri"
+        },
+        "Hendra Saharuddin Ahmad": {
+          "name": "Hendra Saharuddin Ahmad"
+        },
+        "vito": {
+          "name": "vito"
+        },
+        "Muhammed Afeef S": {
+          "name": "Muhammed Afeef S"
+        },
+        "Lâm Vũ": {
+          "name": "Lâm Vũ"
+        },
+        "Nguye": {
+          "name": "Nguye"
+        },
+        "Mai Vy Tran": {
+          "name": "Mai Vy Tran"
+        },
+        "Alice Me": {
+          "name": "Alice Me"
+        },
+        "Anita": {
+          "name": "Anita"
+        },
+        "Kiên Vũ": {
+          "name": "Kiên Vũ"
+        },
+        "Tita Lucia Evany": {
+          "name": "Tita Lucia Evany"
+        },
+        "Dat": {
+          "name": "Dat"
+        },
+        "Hero": {
+          "name": "Hero"
+        },
+        "Bifa": {
+          "name": "Bifa"
+        },
+        "Vabi": {
+          "name": "Vabi"
+        },
+        "Zidny": {
+          "name": "Zidny"
+        },
+        "Pumeena Puvanewsari": {
+          "name": "Pumeena Puvanewsari"
+        },
+        "Nguyễn Phương Anh": {
+          "name": "Nguyễn Phương Anh"
+        },
+        "Zahra Chaira Hayu": {
+          "name": "Zahra Chaira Hayu"
+        },
+        "Tanaya Ransi": {
+          "name": "Tanaya Ransi"
+        },
+        "Esther Simamora": {
+          "name": "Esther Simamora"
+        },
+        "vaniasuryadewi": {
+          "name": "vaniasuryadewi"
+        },
+        "Tiến Đạt": {
+          "name": "Tiến Đạt"
+        },
+        "Mz Kafa": {
+          "name": "Mz Kafa"
+        },
+        "Arti": {
+          "name": "Arti"
+        },
+        "Jazz": {
+          "name": "Jazz"
+        },
+        "Ochi": {
+          "name": "Ochi"
+        },
+        "Mason": {
+          "name": "Mason"
+        },
+        "Siti Mahmuda": {
+          "name": "Siti Mahmuda"
+        },
+        "keobogvan": {
+          "name": "keobogvan"
+        },
+        "HAZEL": {
+          "name": "HAZEL"
+        },
+        "Ahmad Buchori": {
+          "name": "Ahmad Buchori"
+        },
+        "Rizky Kusuma Wardhana": {
+          "name": "Rizky Kusuma Wardhana"
+        },
+        "Việt 5222": {
+          "name": "Việt 5222"
+        },
+        "Sam": {
+          "name": "Sam"
+        },
+        "ISLAMIATUR ROHMAH": {
+          "name": "ISLAMIATUR ROHMAH"
+        },
+        "Dewa Ayu Rielivya Manogari": {
+          "name": "Dewa Ayu Rielivya Manogari"
+        },
+        "Muhammad Alfath Hendriyanto": {
+          "name": "Muhammad Alfath Hendriyanto"
+        },
+        "Herbagus Unggul Kawiriaan": {
+          "name": "Herbagus Unggul Kawiriaan"
+        },
+        "Alfia Septiani Solekhah": {
+          "name": "Alfia Septiani Solekhah"
+        },
+        "MICHAEL AARON BATARA SIMAMORA": {
+          "name": "MICHAEL AARON BATARA SIMAMORA"
+        },
+        "M. Zakki Al Achtaar": {
+          "name": "M. Zakki Al Achtaar"
+        },
+        "Hilda": {
+          "name": "Hilda"
+        },
+        "Khadijah Al Husna": {
+          "name": "Khadijah Al Husna"
+        },
+        "Sovi Yasmin": {
+          "name": "Sovi Yasmin"
+        },
+        "Iqbal Baiquni": {
+          "name": "Iqbal Baiquni"
+        },
+        "Eka Fitri Siti Andriyani": {
+          "name": "Eka Fitri Siti Andriyani"
+        },
+        "Efany": {
+          "name": "Efany"
+        },
+        "Bagas Damarjati": {
+          "name": "Bagas Damarjati"
+        },
+        "Naufal Annabil": {
+          "name": "Naufal Annabil"
+        },
+        "Ahmad Ishlahuddin": {
+          "name": "Ahmad Ishlahuddin"
+        },
+        "Fauzan": {
+          "name": "Fauzan"
+        },
+        "syarah faradilla": {
+          "name": "syarah faradilla"
+        },
+        "Lalak_": {
+          "name": "Lalak_"
+        },
+        "Nur Hayati Aulia": {
+          "name": "Nur Hayati Aulia"
+        },
+        "nursuciaulia": {
+          "name": "nursuciaulia"
+        },
+        "Rakryan Hanif": {
+          "name": "Rakryan Hanif"
+        },
+        "Aida": {
+          "name": "Aida"
+        },
+        "Aprinne": {
+          "name": "Aprinne"
+        },
+        "Dwitama (Dwitama Alphin Usdianto)": {
+          "name": "Dwitama (Dwitama Alphin Usdianto)"
+        },
+        "fadilah ardia pramesti": {
+          "name": "fadilah ardia pramesti"
+        },
+        "fatimah az-zahra": {
+          "name": "fatimah az-zahra"
+        },
+        "jamaah 43_ Kagan Wibowo": {
+          "name": "jamaah 43_ Kagan Wibowo"
+        },
+        "Levi athan": {
+          "name": "Levi athan"
+        },
+        "yasinta eka amalia": {
+          "name": "yasinta eka amalia"
+        },
+        "Umi Zakia Azzahro": {
+          "name": "Umi Zakia Azzahro"
+        },
+        "Amalia Nurul Khasanah": {
+          "name": "Amalia Nurul Khasanah"
+        },
+        "Avis": {
+          "name": "Avis"
+        },
+        "Fadlah Nur": {
+          "name": "Fadlah Nur"
+        },
+        "Julia Jeansmory Wijaya": {
+          "name": "Julia Jeansmory Wijaya"
+        },
+        "Alan Biju": {
+          "name": "Alan Biju"
+        },
+        "Alrid": {
+          "name": "Alrid"
+        },
+        "Apsara": {
+          "name": "Apsara"
+        },
+        "Alvis": {
+          "name": "Alvis"
+        },
+        "Ngọc Linh Dương": {
+          "name": "Ngọc Linh Dương"
+        },
+        "SHINTA ARIANINGRUM": {
+          "name": "SHINTA ARIANINGRUM"
+        },
+        "SASA": {
+          "name": "SASA"
+        },
+        "ZOURA": {
+          "name": "ZOURA"
+        },
+        "RARA SWITA": {
+          "name": "RARA SWITA"
+        },
+        "ANGGUN": {
+          "name": "ANGGUN"
+        },
+        "GEO": {
+          "name": "GEO"
+        },
+        "Shuvaira Najmi Hanida": {
+          "name": "Shuvaira Najmi Hanida"
         }
       }
     }
   }
-}  
+}
