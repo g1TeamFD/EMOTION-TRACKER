@@ -71,8 +71,8 @@
 
   <div class="container">
     <div class="card" style="margin-bottom:16px">
-      <h1>Team Member Evaluation</h1>
-      <p class="desc">Pick the event and evaluation type (team or individual), then evaluate each member with 3 pluses, 3 minuses, and a score out of 10.</p>
+      <h1>Member Evaluation</h1>
+      <p class="desc">Select the program and subprogram, then evaluate each member with 3 pluses, 3 minuses, and a score out of 10.</p>
       <div class="auto-save-indicator" id="autoSaveIndicator">
         <span>💾</span>
         <span>Auto-saved</span>
@@ -89,33 +89,15 @@
 
         <div class="two">
           <div>
-            <label>Event</label>
-            <select id="event">
-              <option value="">Select event</option>
+            <label>Program</label>
+            <select id="program">
+              <option value="">Select program</option>
             </select>
           </div>
           <div>
-            <label>City</label>
-            <select id="city">
-              <option value="">Select city</option>
-            </select>
+            <label>Subprogram (optional)</label>
+            <input type="text" id="subprogram" placeholder="Enter subprogram or leave blank" />
           </div>
-        </div>
-
-        <div>
-          <label>Evaluation Type</label>
-          <select id="evalType">
-            <option value="">Select type</option>
-            <option value="team">Team Evaluation</option>
-            <option value="individual">Individual Evaluation</option>
-          </select>
-        </div>
-
-        <div id="teamSelectContainer" style="display:none;">
-          <label>Team / Group</label>
-          <select id="team" disabled>
-            <option value="">Select team</option>
-          </select>
         </div>
 
         <div class="row">
@@ -133,33 +115,19 @@
 
       <div id="membersList"></div>
 
-      <!-- Add Member Section (for Individual mode) -->
-      <div class="add-member-section" id="individualAddSection" style="display:none;">
+      <!-- Add Member Section -->
+      <div class="add-member-section">
         <h3 style="margin:0 0 16px; font-size:16px;">Add Member to Evaluate</h3>
         <div class="add-member-controls">
           <div>
-            <label>Select from directory</label>
+            <label>Select member from <span id="subprogramNameLabel"></span></label>
             <select id="memberDropdown">
               <option value="">Choose a member</option>
             </select>
           </div>
-          <div>
-            <label>Or add new member</label>
-            <input type="text" id="newMemberNameIndividual" placeholder="Enter new member name" />
-          </div>
-          <button class="btn" id="addMemberBtnIndividual" style="align-self:flex-end;">+ Add Member</button>
+          <button class="btn" id="addMemberBtn" style="align-self:flex-end;">+ Add Member</button>
         </div>
-        <div class="inline-hint">You can evaluate the same person multiple times or add new members not in the directory.</div>
-      </div>
-
-      <!-- Add New Member Section (for Team mode) -->
-      <div class="add-member-section" id="teamAddSection" style="display:none;">
-        <div class="add-member-header">
-          <label>Add temporary member (not saved to directory.json)</label>
-          <button class="btn" id="addMemberBtn" style="padding:6px 12px; font-size:20px; line-height:1;">+</button>
-        </div>
-        <input type="text" id="newMemberName" placeholder="Enter new member name" style="max-width:300px;" />
-        <div class="inline-hint">This member will only be saved to the database for this evaluation.</div>
+        <div class="inline-hint">You can evaluate the same person multiple times. Only members from the selected program are available.</div>
       </div>
 
       <div class="row" style="margin-top:24px;">
@@ -187,41 +155,41 @@
       appId: "1:232586277659:web:1fcff097243c8fa1ef99be"
     };
 
-    const EVENTS = [
-      { id: 'sustainability_bootcamp', label: 'Sustainability Bootcamp' },
-      { id: 'story_a_night', label: 'Story a Night' },
-      { id: 'young_ambassadors_training', label: 'Young Ambassadors Training' }
-    ];
-
     const STORAGE_KEY = 'emotion_tracker_draft';
     let directory = null;
     let authUid = null;
-    let currentMembers = [];
+    let subprogramMembers = [];
     let evaluations = [];
     let evaluationCounter = 0;
     let autoSaveTimer = null;
-    let isIndividualMode = false;
-    let teamMembers = [];
+    let selectedSubprogram = null;
 
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.database();
 
+    // Set up auth state listener first
     auth.onAuthStateChanged(user => {
-      authUid = user ? user.uid : null;
+      if (user) {
+        authUid = user.uid;
+        console.log('Firebase Auth successful:', authUid);
+        document.getElementById('statusStep1').textContent = '';
+      } else {
+        authUid = null;
+        console.log('No user signed in, attempting anonymous sign in...');
+        // Try to sign in if not already signed in
+        auth.signInAnonymously().catch(err => {
+          console.error('Anonymous sign in failed:', err);
+          document.getElementById('statusStep1').textContent = 'Auth failed: ' + (err.message || 'Please refresh the page');
+        });
+      }
       updateNextBtnState();
-    });
-    
-    auth.signInAnonymously().catch(err => {
-      console.error(err);
-      const status = document.getElementById('statusStep1');
-      status.textContent = 'Auth failed: ' + (err && err.code ? err.code : 'see console');
     });
 
     fetch('directory.json')
       .then(r => r.json())
       .then(data => { 
-        directory = data.cities || {}; 
+        directory = data.programs || {}; 
         initForm(); 
         loadSavedData(); 
       })
@@ -230,100 +198,21 @@
         document.getElementById('statusStep1').textContent = "Failed to load directory.json"; 
       });
 
-    function isJogjakartaAmbassadors() {
-      const city = document.getElementById('city').value;
-      return city === 'Jogjakarta Ambassadors';
-    }
-
     function initForm(){
-      const eventSel = document.getElementById('event');
-      const citySel = document.getElementById('city');
-      const teamSel = document.getElementById('team');
-      const evalTypeSel = document.getElementById('evalType');
-      const teamSelectContainer = document.getElementById('teamSelectContainer');
+      const programSel = document.getElementById('program');
+      const subprogramInput = document.getElementById('subprogram');
 
-      eventSel.innerHTML = '<option value="">Select event</option>' + 
-        EVENTS.map(e => `<option value="${e.id}">${e.label}</option>`).join('');
+      programSel.innerHTML = '<option value="">Select program</option>' + 
+        Object.keys(directory).sort().map(p => `<option value="${p}">${p}</option>`).join('');
 
-      citySel.innerHTML = '<option value="">Select city</option>' + 
-        Object.keys(directory).map(c => `<option value="${c}">${c}</option>`).join('');
-
-      evalTypeSel.addEventListener('change', () => {
-        const evalType = evalTypeSel.value;
-        isIndividualMode = evalType === 'individual';
-        
-        // Force individual mode for Jogjakarta Ambassadors
-        if (isJogjakartaAmbassadors() && evalType !== 'individual') {
-          alert('Jogjakarta Ambassadors only supports Individual Evaluation');
-          evalTypeSel.value = 'individual';
-          isIndividualMode = true;
-        }
-        
-        if (evalType === 'team') {
-          teamSelectContainer.style.display = 'block';
-          if (citySel.value) {
-            teamSel.disabled = false;
-            populateTeams();
-          }
-        } else if (evalType === 'individual') {
-          teamSelectContainer.style.display = 'none';
-          teamSel.disabled = true;
-          teamSel.value = '';
-        } else {
-          teamSelectContainer.style.display = 'none';
-          teamSel.disabled = true;
-        }
-        
+      programSel.addEventListener('change', () => {
         updateNextBtnState();
         autoSave();
       });
 
-      citySel.addEventListener('change', () => {
-        const evalType = evalTypeSel.value;
-        
-        // Restrict Jogjakarta Ambassadors to individual evaluation only
-        if (isJogjakartaAmbassadors()) {
-          evalTypeSel.value = 'individual';
-          isIndividualMode = true;
-          teamSelectContainer.style.display = 'none';
-          teamSel.disabled = true;
-          teamSel.value = '';
-          
-          // Disable team option for Jogjakarta Ambassadors
-          const teamOption = evalTypeSel.querySelector('option[value="team"]');
-          if (teamOption) {
-            teamOption.disabled = true;
-          }
-        } else {
-          // Re-enable team option for other cities
-          const teamOption = evalTypeSel.querySelector('option[value="team"]');
-          if (teamOption) {
-            teamOption.disabled = false;
-          }
-          
-          if (evalType === 'team') {
-            if (citySel.value) {
-              teamSel.disabled = false;
-              populateTeams();
-            } else {
-              teamSel.disabled = true;
-              teamSel.innerHTML = '<option value="">Select team</option>';
-            }
-          }
-        }
-        
+      subprogramInput.addEventListener('input', () => {
         updateNextBtnState();
         autoSave();
-      });
-
-      teamSel.addEventListener('change', () => { 
-        updateNextBtnState(); 
-        autoSave(); 
-      });
-      
-      eventSel.addEventListener('change', () => { 
-        updateNextBtnState(); 
-        autoSave(); 
       });
       
       document.getElementById('evaluatorName').addEventListener('input', () => { 
@@ -333,103 +222,59 @@
 
       document.getElementById('nextBtn').addEventListener('click', goToStep2);
       document.getElementById('backBtn').addEventListener('click', goToStep1);
-      document.getElementById('addMemberBtn').addEventListener('click', addNewMemberTeam);
-      document.getElementById('addMemberBtnIndividual').addEventListener('click', addMemberIndividual);
+      document.getElementById('addMemberBtn').addEventListener('click', addMember);
       document.getElementById('submitBtn').addEventListener('click', submitAll);
-    }
-
-    function populateTeams() {
-      const citySel = document.getElementById('city');
-      const teamSel = document.getElementById('team');
-      const cityValue = citySel.value;
-      
-      if (!cityValue || !directory[cityValue]) {
-        teamSel.innerHTML = '<option value="">Select team</option>';
-        return;
-      }
-      
-      const teams = directory[cityValue].teams || {};
-      teamSel.innerHTML = '<option value="">Select team</option>' +
-        Object.entries(teams).map(([id, t]) => `<option value="${id}">${t.name || ('Team ' + id)}</option>`).join('');
     }
 
     function updateNextBtnState(){
       const name = document.getElementById('evaluatorName').value.trim();
-      const eventId = document.getElementById('event').value;
-      const city = document.getElementById('city').value;
-      const evalType = document.getElementById('evalType').value;
-      const team = document.getElementById('team').value;
+      const program = document.getElementById('program').value;
       
-      let ok = false;
-      
-      if (evalType === 'individual') {
-        ok = !!(name && eventId && city && authUid);
-      } else if (evalType === 'team') {
-        ok = !!(name && eventId && city && team && authUid);
-      }
+      const ok = !!(name && program && authUid);
       
       document.getElementById('nextBtn').disabled = !ok;
       
+      const statusEl = document.getElementById('statusStep1');
       if (!authUid) {
-        document.getElementById('statusStep1').textContent = 'Waiting for Firebase Auth...';
+        statusEl.textContent = 'Connecting to Firebase...';
+        statusEl.style.color = '#f59e0b';
       } else if (ok) {
-        document.getElementById('statusStep1').textContent = '';
+        statusEl.textContent = '';
+      } else if (name && program) {
+        statusEl.textContent = 'Ready to proceed';
+        statusEl.style.color = '#10b981';
       }
     }
 
     function goToStep2(){
-      const city = document.getElementById('city').value;
-      const evalType = document.getElementById('evalType').value;
+      const program = document.getElementById('program').value;
+      const subprogram = document.getElementById('subprogram').value.trim();
+      selectedSubprogram = subprogram || 'N/A';
       const savedData = getSavedData();
       
-      if (evalType === 'individual') {
-        isIndividualMode = true;
-        document.getElementById('individualAddSection').style.display = 'block';
-        document.getElementById('teamAddSection').style.display = 'none';
-        
-        const allMembers = new Set();
-        const teams = directory[city]?.teams || {};
-        Object.values(teams).forEach(team => {
-          const teammates = team.teammates || {};
-          Object.keys(teammates).forEach(name => allMembers.add(name));
-        });
-        
-        // Sort alphabetically (case-insensitive)
-        teamMembers = Array.from(allMembers).sort((a, b) => 
-          a.toLowerCase().localeCompare(b.toLowerCase())
-        );
-        
-        populateMemberDropdown();
-        
-        if (savedData && savedData.evaluations && Array.isArray(savedData.evaluations) && savedData.evaluations.length > 0) {
-          evaluations = savedData.evaluations;
-          evaluationCounter = savedData.evaluationCounter || evaluations.length;
-        } else {
-          evaluations = [];
-          evaluationCounter = 0;
-        }
-        
-        renderIndividualEvaluations();
+      // Get all members from the selected program
+      const programData = directory[program];
+      const allMembers = programData?.members ? Object.keys(programData.members) : [];
+      
+      // Sort alphabetically (case-insensitive)
+      subprogramMembers = allMembers.sort((a, b) => 
+        a.toLowerCase().localeCompare(b.toLowerCase())
+      );
+      
+      // Update the label to show the program name
+      document.getElementById('subprogramNameLabel').textContent = program + (subprogram ? ` - ${subprogram}` : '');
+      
+      populateMemberDropdown();
+      
+      if (savedData && savedData.program === program && savedData.evaluations && Array.isArray(savedData.evaluations) && savedData.evaluations.length > 0) {
+        evaluations = savedData.evaluations;
+        evaluationCounter = savedData.evaluationCounter || evaluations.length;
       } else {
-        isIndividualMode = false;
-        document.getElementById('individualAddSection').style.display = 'none';
-        document.getElementById('teamAddSection').style.display = 'block';
-        
-        const team = document.getElementById('team').value;
-        
-        if (savedData && savedData.currentMembers && savedData.currentMembers.length > 0) {
-          currentMembers = savedData.currentMembers;
-        } else {
-          const mates = directory[city]?.teams?.[team]?.teammates || {};
-          currentMembers = Object.keys(mates);
-        }
-
-        if (currentMembers.length === 0) {
-          alert('No members found in this team. You can add members manually in the next step.');
-        }
-        
-        renderTeamEvaluations();
+        evaluations = [];
+        evaluationCounter = 0;
       }
+      
+      renderEvaluations();
 
       document.getElementById('step1').style.display = 'none';
       document.getElementById('step2').style.display = 'block';
@@ -443,23 +288,23 @@
     function populateMemberDropdown(){
       const dropdown = document.getElementById('memberDropdown');
       
-      // Sort team members alphabetically (case-insensitive)
-      const sortedMembers = [...teamMembers].sort((a, b) => 
-        a.toLowerCase().localeCompare(b.toLowerCase())
-      );
+      if (subprogramMembers.length === 0) {
+        dropdown.innerHTML = '<option value="">No members in this program</option>';
+        dropdown.disabled = true;
+        return;
+      }
       
+      dropdown.disabled = false;
       dropdown.innerHTML = '<option value="">Choose a member</option>' +
-        sortedMembers.map(name => `<option value="${name}">${name}</option>`).join('');
+        subprogramMembers.map(name => `<option value="${name}">${name}</option>`).join('');
     }
 
-    function addMemberIndividual(){
+    function addMember(){
       const dropdown = document.getElementById('memberDropdown');
-      const newNameInput = document.getElementById('newMemberNameIndividual');
-      
-      let memberName = dropdown.value || newNameInput.value.trim();
+      const memberName = dropdown.value;
       
       if (!memberName) {
-        alert('Please select a member from the dropdown or enter a new member name');
+        alert('Please select a member from the dropdown');
         return;
       }
 
@@ -472,19 +317,18 @@
       });
 
       dropdown.value = '';
-      newNameInput.value = '';
 
-      renderIndividualEvaluations();
+      renderEvaluations();
       autoSave();
     }
 
     function removeEvaluation(evalId){
       evaluations = evaluations.filter(e => e.id !== evalId);
-      renderIndividualEvaluations();
+      renderEvaluations();
       autoSave();
     }
 
-    function renderIndividualEvaluations(){
+    function renderEvaluations(){
       const container = document.getElementById('membersList');
       container.innerHTML = '';
 
@@ -549,111 +393,17 @@
       updateSubmitBtnState();
     }
 
-    function renderTeamEvaluations(){
-      const container = document.getElementById('membersList');
-      container.innerHTML = '';
-      const savedData = getSavedData();
-
-      if (currentMembers.length === 0) {
-        container.innerHTML = '<div class="inline-hint" style="text-align:center; padding:20px;">No members yet. Add members using the button below.</div>';
-        updateSubmitBtnState();
-        return;
-      }
-
-      currentMembers.forEach((memberName) => {
-        const memberData = savedData?.evaluations?.[memberName] || {};
-        
-        const div = document.createElement('div');
-        div.className = 'member-eval';
-        div.innerHTML = `
-          <h3>${memberName}</h3>
-          <div class="eval-grid">
-            <div class="eval-group">
-              <label>3 Pluses (one per line)</label>
-              <textarea data-member="${memberName}" data-field="pluses" placeholder="Strength 1&#10;Strength 2&#10;Strength 3"></textarea>
-            </div>
-            <div class="eval-group">
-              <label>3 Minuses (one per line)</label>
-              <textarea data-member="${memberName}" data-field="minuses" placeholder="Growth edge 1&#10;Growth edge 2&#10;Growth edge 3"></textarea>
-            </div>
-            <div class="score-input">
-              <label>Score /10</label>
-              <input type="number" data-member="${memberName}" data-field="score" min="0" max="10" placeholder="0-10" />
-            </div>
-          </div>
-        `;
-        container.appendChild(div);
-        
-        const plusesInput = div.querySelector(`textarea[data-field="pluses"]`);
-        const minusesInput = div.querySelector(`textarea[data-field="minuses"]`);
-        const scoreInput = div.querySelector(`input[data-field="score"]`);
-        
-        if (memberData.pluses) plusesInput.value = memberData.pluses;
-        if (memberData.minuses) minusesInput.value = memberData.minuses;
-        if (memberData.score) scoreInput.value = memberData.score;
-      });
-
-      container.querySelectorAll('input, textarea').forEach(input => {
-        input.addEventListener('input', () => {
-          updateSubmitBtnState();
-          autoSave();
-        });
-      });
-
-      updateSubmitBtnState();
-    }
-
-    function addNewMemberTeam(){
-      const nameInput = document.getElementById('newMemberName');
-      const newName = nameInput.value.trim();
-      
-      if (!newName) {
-        alert('Please enter a member name');
-        return;
-      }
-
-      if (currentMembers.includes(newName)) {
-        alert('This member already exists in the list');
-        return;
-      }
-
-      currentMembers.push(newName);
-      nameInput.value = '';
-      renderTeamEvaluations();
-      autoSave();
-    }
-
     function updateSubmitBtnState(){
-      if (isIndividualMode) {
-        if (evaluations.length === 0) {
-          document.getElementById('submitBtn').disabled = true;
-          return;
-        }
-        
-        let atLeastOneFilled = evaluations.some(evaluation => {
-          return evaluation.pluses.trim() || evaluation.minuses.trim() || evaluation.score.toString().trim();
-        });
-        
-        document.getElementById('submitBtn').disabled = !atLeastOneFilled;
-      } else {
-        if (currentMembers.length === 0) {
-          document.getElementById('submitBtn').disabled = true;
-          return;
-        }
-
-        let atLeastOneFilled = false;
-        currentMembers.forEach(memberName => {
-          const plusesInput = document.querySelector(`textarea[data-member="${memberName}"][data-field="pluses"]`);
-          const minusesInput = document.querySelector(`textarea[data-member="${memberName}"][data-field="minuses"]`);
-          const scoreInput = document.querySelector(`input[data-member="${memberName}"][data-field="score"]`);
-          
-          if (plusesInput?.value.trim() || minusesInput?.value.trim() || scoreInput?.value.trim()) {
-            atLeastOneFilled = true;
-          }
-        });
-
-        document.getElementById('submitBtn').disabled = !atLeastOneFilled;
+      if (evaluations.length === 0) {
+        document.getElementById('submitBtn').disabled = true;
+        return;
       }
+      
+      let atLeastOneFilled = evaluations.some(evaluation => {
+        return evaluation.pluses.trim() || evaluation.minuses.trim() || evaluation.score.toString().trim();
+      });
+      
+      document.getElementById('submitBtn').disabled = !atLeastOneFilled;
     }
 
     function autoSave(){
@@ -661,34 +411,12 @@
       autoSaveTimer = setTimeout(() => {
         const data = {
           evaluatorName: document.getElementById('evaluatorName').value,
-          event: document.getElementById('event').value,
-          city: document.getElementById('city').value,
-          evalType: document.getElementById('evalType').value,
-          team: document.getElementById('team').value,
+          program: document.getElementById('program').value,
+          subprogram: document.getElementById('subprogram').value,
+          evaluations: evaluations,
+          evaluationCounter: evaluationCounter,
           timestamp: Date.now()
         };
-
-        if (isIndividualMode) {
-          data.evaluations = evaluations;
-          data.evaluationCounter = evaluationCounter;
-        } else {
-          data.currentMembers = currentMembers;
-          data.evaluations = {};
-          
-          currentMembers.forEach(memberName => {
-            const plusesInput = document.querySelector(`textarea[data-member="${memberName}"][data-field="pluses"]`);
-            const minusesInput = document.querySelector(`textarea[data-member="${memberName}"][data-field="minuses"]`);
-            const scoreInput = document.querySelector(`input[data-member="${memberName}"][data-field="score"]`);
-            
-            if (plusesInput || minusesInput || scoreInput) {
-              data.evaluations[memberName] = {
-                pluses: plusesInput?.value || '',
-                minuses: minusesInput?.value || '',
-                score: scoreInput?.value || ''
-              };
-            }
-          });
-        }
 
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
         showAutoSaveIndicator();
@@ -710,33 +438,21 @@
       if (!saved) return;
 
       if (saved.evaluatorName) document.getElementById('evaluatorName').value = saved.evaluatorName;
-      if (saved.event) document.getElementById('event').value = saved.event;
-      if (saved.city) document.getElementById('city').value = saved.city;
-      if (saved.evalType) {
-        document.getElementById('evalType').value = saved.evalType;
-        const changeEvent = new Event('change');
-        document.getElementById('evalType').dispatchEvent(changeEvent);
-        
+      if (saved.program) {
+        document.getElementById('program').value = saved.program;
+      }
+      if (saved.subprogram) {
+        document.getElementById('subprogram').value = saved.subprogram;
+      }
+      
+      updateNextBtnState();
+      
+      if (saved.evaluations && Array.isArray(saved.evaluations) && saved.evaluations.length > 0) {
         setTimeout(() => {
-          if (saved.evalType === 'team' && saved.team) {
-            document.getElementById('team').value = saved.team;
+          if (authUid) {
+            goToStep2();
           }
-          updateNextBtnState();
-          if (saved.evalType === 'individual' && saved.evaluations && Array.isArray(saved.evaluations) && saved.evaluations.length > 0) {
-            setTimeout(() => {
-              if (authUid) {
-                goToStep2();
-              }
-            }, 200);
-          } else if (saved.evalType === 'team' && saved.currentMembers && saved.currentMembers.length > 0 && 
-              Object.keys(saved.evaluations || {}).length > 0) {
-            setTimeout(() => {
-              if (authUid) {
-                goToStep2();
-              }
-            }, 200);
-          }
-        }, 100);
+        }, 200);
       }
     }
 
@@ -753,103 +469,79 @@
     }
 
     function submitAll(){
+      if (!authUid) {
+        alert('Not authenticated. Please refresh the page and try again.');
+        return;
+      }
+
       const status = document.getElementById('status');
       status.textContent = 'Submitting…';
 
       const evaluatorName = document.getElementById('evaluatorName').value.trim();
-      const event = document.getElementById('event').value;
-      const city = document.getElementById('city').value;
-      const evalType = document.getElementById('evalType').value;
-      const team = evalType === 'team' ? document.getElementById('team').value : null;
+      const program = document.getElementById('program').value;
+      const subprogram = document.getElementById('subprogram').value.trim() || 'N/A';
 
       const memberEvaluations = [];
 
-      if (isIndividualMode) {
-        evaluations.forEach(evaluation => {
-          const plusesText = evaluation.pluses.trim();
-          const minusesText = evaluation.minuses.trim();
-          const scoreText = evaluation.score.toString().trim();
-          
-          if (!plusesText && !minusesText && !scoreText) {
-            return;
-          }
-          
-          const pluses = plusesText.split('\n').map(s => s.trim()).filter(s => s);
-          const minuses = minusesText.split('\n').map(s => s.trim()).filter(s => s);
+      evaluations.forEach(evaluation => {
+        const plusesText = evaluation.pluses.trim();
+        const minusesText = evaluation.minuses.trim();
+        const scoreText = evaluation.score.toString().trim();
+        
+        if (!plusesText && !minusesText && !scoreText) {
+          return;
+        }
+        
+        const pluses = plusesText.split('\n').map(s => s.trim()).filter(s => s);
+        const minuses = minusesText.split('\n').map(s => s.trim()).filter(s => s);
 
-          const evalData = {
-            memberName: evaluation.memberName,
-            pluses,
-            minuses,
-            score: parseInt(scoreText) || 0
-          };
+        const evalData = {
+          memberName: evaluation.memberName,
+          pluses,
+          minuses,
+          score: parseInt(scoreText) || 0
+        };
 
-          memberEvaluations.push(evalData);
-        });
-      } else {
-        currentMembers.forEach(memberName => {
-          const plusesInput = document.querySelector(`textarea[data-member="${memberName}"][data-field="pluses"]`);
-          const minusesInput = document.querySelector(`textarea[data-member="${memberName}"][data-field="minuses"]`);
-          const scoreInput = document.querySelector(`input[data-member="${memberName}"][data-field="score"]`);
+        memberEvaluations.push(evalData);
+      });
 
-          const plusesText = plusesInput.value.trim();
-          const minusesText = minusesInput.value.trim();
-          const scoreText = scoreInput.value.trim();
-          
-          if (!plusesText && !minusesText && !scoreText) {
-            return;
-          }
-          
-          const pluses = plusesText.split('\n').map(s => s.trim()).filter(s => s);
-          const minuses = minusesText.split('\n').map(s => s.trim()).filter(s => s);
-
-          const evalData = {
-            memberName,
-            pluses,
-            minuses,
-            score: parseInt(scoreText) || 0
-          };
-
-          memberEvaluations.push(evalData);
-        });
+      if (memberEvaluations.length === 0) {
+        alert('Please fill in at least one evaluation before submitting.');
+        status.textContent = '';
+        return;
       }
 
       const entry = {
         evaluatorName,
         evaluatorId: authUid,
-        event,
-        city,
-        evalType,
-        team: team || 'individual',
+        program,
+        subprogram,
         memberEvaluations,
         createdAt: Date.now()
       };
 
+      console.log('Submitting entry:', entry);
+
       db.ref('entries').push(entry).then(() => {
+        console.log('Submission successful');
         status.textContent = 'Submitted! ✅ All member evaluations saved.';
         clearSavedData();
         setTimeout(() => {
           goToStep1();
           document.querySelectorAll('#membersList input, #membersList textarea').forEach(i => i.value = '');
-          document.getElementById('newMemberName').value = '';
-          document.getElementById('newMemberNameIndividual').value = '';
           document.getElementById('memberDropdown').value = '';
           document.getElementById('evaluatorName').value = '';
-          document.getElementById('event').value = '';
-          document.getElementById('city').value = '';
-          document.getElementById('evalType').value = '';
-          document.getElementById('team').value = '';
-          document.getElementById('team').disabled = true;
-          document.getElementById('teamSelectContainer').style.display = 'none';
-          currentMembers = [];
+          document.getElementById('program').value = '';
+          document.getElementById('subprogram').value = '';
           evaluations = [];
           evaluationCounter = 0;
+          selectedSubprogram = null;
           status.textContent = '';
           updateNextBtnState();
         }, 2000);
       }).catch(err => {
-        console.error(err);
-        status.textContent = 'Failed to submit. Check console.';
+        console.error('Submission failed:', err);
+        status.textContent = 'Failed to submit: ' + (err.message || 'Unknown error');
       });
     }
   </script>
