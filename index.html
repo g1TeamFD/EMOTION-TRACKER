@@ -87,11 +87,17 @@
           <input type="text" id="evaluatorName" placeholder="Your name" />
         </div>
 
-        <div class="two">
+        <div class="grid-3">
           <div>
             <label>Program</label>
             <select id="program">
               <option value="">Select program</option>
+            </select>
+          </div>
+          <div id="teamContainer" style="display:none;">
+            <label>Team</label>
+            <select id="team">
+              <option value="">Select team</option>
             </select>
           </div>
           <div>
@@ -163,6 +169,7 @@
     let evaluationCounter = 0;
     let autoSaveTimer = null;
     let selectedSubprogram = null;
+    let selectedTeam = null;
 
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
@@ -200,12 +207,46 @@
 
     function initForm(){
       const programSel = document.getElementById('program');
+      const teamSel = document.getElementById('team');
+      const teamContainer = document.getElementById('teamContainer');
       const subprogramInput = document.getElementById('subprogram');
 
       programSel.innerHTML = '<option value="">Select program</option>' + 
         Object.keys(directory).sort().map(p => `<option value="${p}">${p}</option>`).join('');
 
       programSel.addEventListener('change', () => {
+        const program = programSel.value;
+        
+        // Check if the selected program has teams
+        if (program && directory[program]) {
+          const programData = directory[program];
+          const hasTeams = programData.teams && Object.keys(programData.teams).length > 0;
+          
+          if (hasTeams) {
+            // Show team dropdown and populate it
+            teamContainer.style.display = 'block';
+            const teams = Object.keys(programData.teams).sort();
+            teamSel.innerHTML = '<option value="">Select team</option>' + 
+              teams.map(t => `<option value="${t}">${t}</option>`).join('');
+            teamSel.disabled = false;
+          } else {
+            // Hide team dropdown if no teams
+            teamContainer.style.display = 'none';
+            teamSel.value = '';
+            selectedTeam = null;
+          }
+        } else {
+          teamContainer.style.display = 'none';
+          teamSel.value = '';
+          selectedTeam = null;
+        }
+        
+        updateNextBtnState();
+        autoSave();
+      });
+
+      teamSel.addEventListener('change', () => {
+        selectedTeam = teamSel.value || null;
         updateNextBtnState();
         autoSave();
       });
@@ -229,8 +270,14 @@
     function updateNextBtnState(){
       const name = document.getElementById('evaluatorName').value.trim();
       const program = document.getElementById('program').value;
+      const teamContainer = document.getElementById('teamContainer');
+      const team = document.getElementById('team').value;
       
-      const ok = !!(name && program && authUid);
+      // Check if team is required (team container is visible)
+      const teamRequired = teamContainer.style.display !== 'none';
+      const teamOk = !teamRequired || team;
+      
+      const ok = !!(name && program && authUid && teamOk);
       
       document.getElementById('nextBtn').disabled = !ok;
       
@@ -240,6 +287,9 @@
         statusEl.style.color = '#f59e0b';
       } else if (ok) {
         statusEl.textContent = '';
+      } else if (name && program && teamRequired && !team) {
+        statusEl.textContent = 'Please select a team';
+        statusEl.style.color = '#f59e0b';
       } else if (name && program) {
         statusEl.textContent = 'Ready to proceed';
         statusEl.style.color = '#10b981';
@@ -249,24 +299,40 @@
     function goToStep2(){
       const program = document.getElementById('program').value;
       const subprogram = document.getElementById('subprogram').value.trim();
+      const team = document.getElementById('team').value;
+      
       selectedSubprogram = subprogram || 'N/A';
+      selectedTeam = team || null;
+      
       const savedData = getSavedData();
       
-      // Get all members from the selected program
+      // Get members based on whether teams exist
       const programData = directory[program];
-      const allMembers = programData?.members ? Object.keys(programData.members) : [];
+      let allMembers = [];
+      
+      if (selectedTeam && programData?.teams && programData.teams[selectedTeam]) {
+        // Get members from the specific team
+        allMembers = Object.keys(programData.teams[selectedTeam].members || {});
+      } else if (programData?.members) {
+        // Get members from the program directly (no teams)
+        allMembers = Object.keys(programData.members);
+      }
       
       // Sort alphabetically (case-insensitive)
       subprogramMembers = allMembers.sort((a, b) => 
         a.toLowerCase().localeCompare(b.toLowerCase())
       );
       
-      // Update the label to show the program name
-      document.getElementById('subprogramNameLabel').textContent = program + (subprogram ? ` - ${subprogram}` : '');
+      // Update the label to show the program and team name
+      let labelText = program;
+      if (selectedTeam) labelText += ` - ${selectedTeam}`;
+      if (subprogram) labelText += ` (${subprogram})`;
+      
+      document.getElementById('subprogramNameLabel').textContent = labelText;
       
       populateMemberDropdown();
       
-      if (savedData && savedData.program === program && savedData.evaluations && Array.isArray(savedData.evaluations) && savedData.evaluations.length > 0) {
+      if (savedData && savedData.program === program && savedData.team === team && savedData.evaluations && Array.isArray(savedData.evaluations) && savedData.evaluations.length > 0) {
         evaluations = savedData.evaluations;
         evaluationCounter = savedData.evaluationCounter || evaluations.length;
       } else {
@@ -412,6 +478,7 @@
         const data = {
           evaluatorName: document.getElementById('evaluatorName').value,
           program: document.getElementById('program').value,
+          team: document.getElementById('team').value,
           subprogram: document.getElementById('subprogram').value,
           evaluations: evaluations,
           evaluationCounter: evaluationCounter,
@@ -440,6 +507,13 @@
       if (saved.evaluatorName) document.getElementById('evaluatorName').value = saved.evaluatorName;
       if (saved.program) {
         document.getElementById('program').value = saved.program;
+        // Trigger change event to show team dropdown if needed
+        document.getElementById('program').dispatchEvent(new Event('change'));
+      }
+      if (saved.team) {
+        setTimeout(() => {
+          document.getElementById('team').value = saved.team;
+        }, 50);
       }
       if (saved.subprogram) {
         document.getElementById('subprogram').value = saved.subprogram;
@@ -479,6 +553,7 @@
 
       const evaluatorName = document.getElementById('evaluatorName').value.trim();
       const program = document.getElementById('program').value;
+      const team = document.getElementById('team').value || 'N/A';
       const subprogram = document.getElementById('subprogram').value.trim() || 'N/A';
 
       const memberEvaluations = [];
@@ -515,6 +590,7 @@
         evaluatorName,
         evaluatorId: authUid,
         program,
+        team,
         subprogram,
         memberEvaluations,
         createdAt: Date.now()
@@ -532,10 +608,13 @@
           document.getElementById('memberDropdown').value = '';
           document.getElementById('evaluatorName').value = '';
           document.getElementById('program').value = '';
+          document.getElementById('team').value = '';
           document.getElementById('subprogram').value = '';
+          document.getElementById('teamContainer').style.display = 'none';
           evaluations = [];
           evaluationCounter = 0;
           selectedSubprogram = null;
+          selectedTeam = null;
           status.textContent = '';
           updateNextBtnState();
         }, 2000);
