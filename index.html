@@ -53,6 +53,7 @@
     .auto-save-indicator{ display:inline-flex; align-items:center; gap:6px; font-size:12px; color:var(--accent); opacity:0; transition: opacity 0.3s; }
     .auto-save-indicator.visible{ opacity:1; }
     .remove-btn-container{ position:absolute; top:16px; right:16px; }
+    .custom-name-badge{ display:inline-block; background:#fef3c7; color:#92400e; padding:2px 8px; border-radius:6px; font-size:11px; font-weight:600; margin-left:8px; }
     @media (max-width: 800px){ .grid-3{ grid-template-columns:1fr; } .two{ grid-template-columns:1fr; } .eval-grid{ grid-template-columns:1fr; } .add-member-controls{ flex-direction:column; } }
   </style>
 </head>
@@ -126,14 +127,22 @@
         <h3 style="margin:0 0 16px; font-size:16px;">Add Member to Evaluate</h3>
         <div class="add-member-controls">
           <div>
-            <label>Select member from <span id="subprogramNameLabel"></span></label>
+            <label>Select or type member name</label>
             <select id="memberDropdown">
-              <option value="">Choose a member</option>
+              <option value="">Choose from list...</option>
+              <option value="__custom__">→ Type custom name...</option>
             </select>
+          </div>
+          <div id="customNameContainer" style="display:none;">
+            <label>Custom member name</label>
+            <input type="text" id="customMemberName" placeholder="Enter member name" />
           </div>
           <button class="btn" id="addMemberBtn" style="align-self:flex-end;">+ Add Member</button>
         </div>
-        <div class="inline-hint">You can evaluate the same person multiple times. Only members from the selected program are available.</div>
+        <div class="inline-hint">
+          <span id="memberSourceLabel"></span>
+          You can evaluate the same person multiple times. New names will be added to <span id="teamAssignmentLabel"></span>.
+        </div>
       </div>
 
       <div class="row" style="margin-top:24px;">
@@ -170,6 +179,7 @@
     let autoSaveTimer = null;
     let selectedSubprogram = null;
     let selectedTeam = null;
+    let selectedProgram = null;
 
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
@@ -184,7 +194,6 @@
       } else {
         authUid = null;
         console.log('No user signed in, attempting anonymous sign in...');
-        // Try to sign in if not already signed in
         auth.signInAnonymously().catch(err => {
           console.error('Anonymous sign in failed:', err);
           document.getElementById('statusStep1').textContent = 'Auth failed: ' + (err.message || 'Please refresh the page');
@@ -210,6 +219,9 @@
       const teamSel = document.getElementById('team');
       const teamContainer = document.getElementById('teamContainer');
       const subprogramInput = document.getElementById('subprogram');
+      const memberDropdown = document.getElementById('memberDropdown');
+      const customNameContainer = document.getElementById('customNameContainer');
+      const customMemberName = document.getElementById('customMemberName');
 
       programSel.innerHTML = '<option value="">Select program</option>' + 
         Object.keys(directory).sort().map(p => `<option value="${p}">${p}</option>`).join('');
@@ -217,20 +229,17 @@
       programSel.addEventListener('change', () => {
         const program = programSel.value;
         
-        // Check if the selected program has teams
         if (program && directory[program]) {
           const programData = directory[program];
           const hasTeams = programData.teams && Object.keys(programData.teams).length > 0;
           
           if (hasTeams) {
-            // Show team dropdown and populate it
             teamContainer.style.display = 'block';
             const teams = Object.keys(programData.teams).sort();
             teamSel.innerHTML = '<option value="">Select team</option>' + 
               teams.map(t => `<option value="${t}">${t}</option>`).join('');
             teamSel.disabled = false;
           } else {
-            // Hide team dropdown if no teams
             teamContainer.style.display = 'none';
             teamSel.value = '';
             selectedTeam = null;
@@ -261,6 +270,22 @@
         autoSave(); 
       });
 
+      memberDropdown.addEventListener('change', () => {
+        if (memberDropdown.value === '__custom__') {
+          customNameContainer.style.display = 'block';
+          customMemberName.focus();
+        } else {
+          customNameContainer.style.display = 'none';
+          customMemberName.value = '';
+        }
+      });
+
+      customMemberName.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          addMember();
+        }
+      });
+
       document.getElementById('nextBtn').addEventListener('click', goToStep2);
       document.getElementById('backBtn').addEventListener('click', goToStep1);
       document.getElementById('addMemberBtn').addEventListener('click', addMember);
@@ -273,7 +298,6 @@
       const teamContainer = document.getElementById('teamContainer');
       const team = document.getElementById('team').value;
       
-      // Check if team is required (team container is visible)
       const teamRequired = teamContainer.style.display !== 'none';
       const teamOk = !teamRequired || team;
       
@@ -301,34 +325,35 @@
       const subprogram = document.getElementById('subprogram').value.trim();
       const team = document.getElementById('team').value;
       
+      selectedProgram = program;
       selectedSubprogram = subprogram || 'N/A';
       selectedTeam = team || null;
       
       const savedData = getSavedData();
       
-      // Get members based on whether teams exist
       const programData = directory[program];
       let allMembers = [];
       
       if (selectedTeam && programData?.teams && programData.teams[selectedTeam]) {
-        // Get members from the specific team
         allMembers = Object.keys(programData.teams[selectedTeam].members || {});
       } else if (programData?.members) {
-        // Get members from the program directly (no teams)
         allMembers = Object.keys(programData.members);
       }
       
-      // Sort alphabetically (case-insensitive)
       subprogramMembers = allMembers.sort((a, b) => 
         a.toLowerCase().localeCompare(b.toLowerCase())
       );
       
-      // Update the label to show the program and team name
       let labelText = program;
       if (selectedTeam) labelText += ` - ${selectedTeam}`;
       if (subprogram) labelText += ` (${subprogram})`;
       
-      document.getElementById('subprogramNameLabel').textContent = labelText;
+      document.getElementById('memberSourceLabel').textContent = `Members from ${labelText}. `;
+      
+      let assignmentText = selectedTeam 
+        ? `the "${selectedTeam}" team` 
+        : `the "${program}" program`;
+      document.getElementById('teamAssignmentLabel').textContent = assignmentText;
       
       populateMemberDropdown();
       
@@ -355,37 +380,95 @@
       const dropdown = document.getElementById('memberDropdown');
       
       if (subprogramMembers.length === 0) {
-        dropdown.innerHTML = '<option value="">No members in this program</option>';
-        dropdown.disabled = true;
-        return;
+        dropdown.innerHTML = '<option value="">No members in directory</option><option value="__custom__">→ Type custom name...</option>';
+      } else {
+        dropdown.innerHTML = '<option value="">Choose from list...</option>' +
+          subprogramMembers.map(name => `<option value="${name}">${name}</option>`).join('') +
+          '<option value="__custom__">→ Type custom name...</option>';
       }
       
       dropdown.disabled = false;
-      dropdown.innerHTML = '<option value="">Choose a member</option>' +
-        subprogramMembers.map(name => `<option value="${name}">${name}</option>`).join('');
     }
 
-    function addMember(){
+    async function addMember(){
       const dropdown = document.getElementById('memberDropdown');
-      const memberName = dropdown.value;
+      const customNameInput = document.getElementById('customMemberName');
+      let memberName = '';
+      let isCustom = false;
       
-      if (!memberName) {
-        alert('Please select a member from the dropdown');
-        return;
+      if (dropdown.value === '__custom__') {
+        memberName = customNameInput.value.trim();
+        isCustom = true;
+        
+        if (!memberName) {
+          alert('Please enter a member name');
+          customNameInput.focus();
+          return;
+        }
+        
+        await addCustomMemberToDirectory(memberName);
+      } else {
+        memberName = dropdown.value;
+        
+        if (!memberName) {
+          alert('Please select a member from the dropdown or choose "Type custom name"');
+          return;
+        }
       }
 
       evaluations.push({
         id: ++evaluationCounter,
         memberName: memberName,
+        isCustom: isCustom,
         pluses: '',
         minuses: '',
         score: ''
       });
 
       dropdown.value = '';
+      customNameInput.value = '';
+      document.getElementById('customNameContainer').style.display = 'none';
 
       renderEvaluations();
       autoSave();
+    }
+
+    async function addCustomMemberToDirectory(memberName) {
+      if (!authUid) {
+        console.error('Not authenticated');
+        return;
+      }
+
+      try {
+        const programData = directory[selectedProgram];
+        
+        if (selectedTeam && programData?.teams && programData.teams[selectedTeam]) {
+          const teamMembersRef = db.ref(`programs/${selectedProgram}/teams/${selectedTeam}/members/${memberName}`);
+          await teamMembersRef.set(true);
+          console.log(`Added ${memberName} to team ${selectedTeam} in program ${selectedProgram}`);
+          
+          if (!directory[selectedProgram].teams[selectedTeam].members) {
+            directory[selectedProgram].teams[selectedTeam].members = {};
+          }
+          directory[selectedProgram].teams[selectedTeam].members[memberName] = true;
+        } else {
+          const programMembersRef = db.ref(`programs/${selectedProgram}/members/${memberName}`);
+          await programMembersRef.set(true);
+          console.log(`Added ${memberName} to program ${selectedProgram}`);
+          
+          if (!directory[selectedProgram].members) {
+            directory[selectedProgram].members = {};
+          }
+          directory[selectedProgram].members[memberName] = true;
+        }
+        
+        subprogramMembers.push(memberName);
+        subprogramMembers.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+        populateMemberDropdown();
+        
+      } catch (error) {
+        console.error('Error adding member to directory:', error);
+      }
     }
 
     function removeEvaluation(evalId){
@@ -407,11 +490,12 @@
       evaluations.forEach((evaluation) => {
         const div = document.createElement('div');
         div.className = 'member-eval';
+        const customBadge = evaluation.isCustom ? '<span class="custom-name-badge">NEW MEMBER</span>' : '';
         div.innerHTML = `
           <div class="remove-btn-container">
             <button class="btn btn-remove" data-eval-id="${evaluation.id}">Remove</button>
           </div>
-          <h3>${evaluation.memberName}</h3>
+          <h3>${evaluation.memberName}${customBadge}</h3>
           <div class="eval-grid">
             <div class="eval-group">
               <label>3 Pluses (one per line)</label>
@@ -507,7 +591,6 @@
       if (saved.evaluatorName) document.getElementById('evaluatorName').value = saved.evaluatorName;
       if (saved.program) {
         document.getElementById('program').value = saved.program;
-        // Trigger change event to show team dropdown if needed
         document.getElementById('program').dispatchEvent(new Event('change'));
       }
       if (saved.team) {
@@ -572,6 +655,7 @@
 
         const evalData = {
           memberName: evaluation.memberName,
+          isCustom: evaluation.isCustom || false,
           pluses,
           minuses,
           score: parseInt(scoreText) || 0
@@ -615,6 +699,7 @@
           evaluationCounter = 0;
           selectedSubprogram = null;
           selectedTeam = null;
+          selectedProgram = null;
           status.textContent = '';
           updateNextBtnState();
         }, 2000);
