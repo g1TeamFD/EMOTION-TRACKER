@@ -1,5 +1,250 @@
 {
   "programs": {
+    "Leadership Bootcamp - Bali 2026": {
+      "name": "Leadership Bootcamp - Bali 2026",
+      "members": {
+        "ALE - Syailendra Abimanyu": {
+          "name": "ALE - Syailendra Abimanyu"
+        },
+        "AMELIA - I Gusti Ayu Putri Amelia": {
+          "name": "AMELIA - I Gusti Ayu Putri Amelia"
+        },
+        "AMIRA - Amira Alesha Zahra": {
+          "name": "AMIRA - Amira Alesha Zahra"
+        },
+        "ANGEL - Made Angelita Surya Berata": {
+          "name": "ANGEL - Made Angelita Surya Berata"
+        },
+        "ANGELICA - Ruth Angelica Cengor": {
+          "name": "ANGELICA - Ruth Angelica Cengor"
+        },
+        "ANGUMA - Luh Anguma Santya Devi": {
+          "name": "ANGUMA - Luh Anguma Santya Devi"
+        },
+        "APTARI - Gusti Ayu Kadek Aptari Meirayanthi": {
+          "name": "APTARI - Gusti Ayu Kadek Aptari Meirayanthi"
+        },
+        "ARIKA - Kadek Arika Budi Maharani": {
+          "name": "ARIKA - Kadek Arika Budi Maharani"
+        },
+        "AUDRY - Audry Agustina Putri": {
+          "name": "AUDRY - Audry Agustina Putri"
+        },
+        "AYU - Kadek Ayu Prasetiani": {
+          "name": "AYU - Kadek Ayu Prasetiani"
+        },
+        "BIM BIM - Kadek Putra Mahardika": {
+          "name": "BIM BIM - Kadek Putra Mahardika"
+        },
+        "CAHAYA - Ketut Cahaya Sari Deviani": {
+          "name": "CAHAYA - Ketut Cahaya Sari Deviani"
+        },
+        "CITRA - Citra Nur Aisyahrani": {
+          "name": "CITRA - Citra Nur Aisyahrani"
+        },
+        "DALEM - Komang Gede Satria Dalem Sutanaya": {
+          "name": "DALEM - Komang Gede Satria Dalem Sutanaya"
+        },
+        "DARA - Ayu Savita Giridara Bukian": {
+          "name": "DARA - Ayu Savita Giridara Bukian"
+        },
+        "DARMIA - Komang Darmiasih": {
+          "name": "DARMIA - Komang Darmiasih"
+        },
+        "DESY - Komang Ayu Desy Widianti": {
+          "name": "DESY - Komang Ayu Desy Widianti"
+        },
+        "DEWIKA - Ni Kadek Rejeki Sari Dewi": {
+          "name": "DEWIKA - Ni Kadek Rejeki Sari Dewi"
+        },
+        "DIAH - Kadek Diah Pradnya Wati": {
+          "name": "DIAH - Kadek Diah Pradnya Wati"
+        },
+        "DIKA - Putu Dika Cahyadi": {
+          "name": "DIKA - Putu Dika Cahyadi"
+        },
+        "DINDA - Putu Dinda Pratiwi Utami Putri": {
+          "name": "DINDA - Putu Dinda Pratiwi Utami Putri"
+        },
+        "DWIYANI - Made Dwiyani": {
+          "name": "DWIYANI - Made Dwiyani"
+        },
+        "EKA - Luh Eka Adi Udiani": {
+          "name": "EKA - Luh Eka Adi Udiani"
+        },
+        "EL - Imahila Jihan Elmira": {
+          "name": "EL - Imahila Jihan Elmira"
+        },
+        "ELLA - Putu Ela Pramudya": {
+          "name": "ELLA - Putu Ela Pramudya"
+        },
+        "ESA - Ni Kadek Esa Melani Putri": {
+          "name": "ESA - Ni Kadek Esa Melani Putri"
+        },
+        "EVA - Ni Luh Putu Eva Darmayanti": {
+          "name": "EVA - Ni Luh Putu Eva Darmayanti"
+        },
+        "FRISKA - Putu Friska Adelia Putri Atmaja": {
+          "name": "FRISKA - Putu Friska Adelia Putri Atmaja"
+        },
+        "GENDHIS - Putu Ayu Gendhis Sri Utami": {
+          "name": "GENDHIS - Putu Ayu Gendhis Sri Utami"
+        },
+        "GIANI - Giani Labieba Thufailah": {
+          "name": "GIANI - Giani Labieba Thufailah"
+        },
+        "GIPA - Kadek Dody Gipa Pratama": {
+          "name": "GIPA - Kadek Dody Gipa Pratama"
+        },
+        "HANA - Gia Han": {
+          "name": "HANA - Gia Han"
+        },
+        "INTAN - Putu Intan Maharani": {
+          "name": "INTAN - Putu Intan Maharani"
+        },
+        "JELITA - Putu Jelita Widiartini": {
+          "name": "JELITA - Putu Jelita Widiartini"
+        },
+        "JESIKA - Nengah Jesika Lingga Dewi": {
+          "name": "JESIKA - Nengah Jesika Lingga Dewi"
+        },
+        "JFP - jfp": {
+          "name": "JFP - jfp"
+        },
+        "KARIN - Ni Kadek Sekarini": {
+          "name": "KARIN - Ni Kadek Sekarini"
+        },
+        "KAYOBI - Kadek Kayobi Wirdi Putra": {
+          "name": "KAYOBI - Kadek Kayobi Wirdi Putra"
+        },
+        "KESHA - Gede Kesha Wardana": {
+          "name": "KESHA - Gede Kesha Wardana"
+        },
+        "KIA - Ni Luh Saskia": {
+          "name": "KIA - Ni Luh Saskia"
+        },
+        "KYLA - Ratna Kyla Angelica Panisales Wibisono": {
+          "name": "KYLA - Ratna Kyla Angelica Panisales Wibisono"
+        },
+        "LEO - Manahau Leo Aditya Fortin": {
+          "name": "LEO - Manahau Leo Aditya Fortin"
+        },
+        "LEONITA - Ni Komang Leonita Putri Cahyani": {
+          "name": "LEONITA - Ni Komang Leonita Putri Cahyani"
+        },
+        "LIA - Putu Lia Sujani": {
+          "name": "LIA - Putu Lia Sujani"
+        },
+        "LINDA - Komang Linda Muliani": {
+          "name": "LINDA - Komang Linda Muliani"
+        },
+        "LISTYA - Desak Putu Listya Dewi": {
+          "name": "LISTYA - Desak Putu Listya Dewi"
+        },
+        "MARCHELLO - Putu Dennis Marchello Ariesta": {
+          "name": "MARCHELLO - Putu Dennis Marchello Ariesta"
+        },
+        "MELINDA - Putu Ayu Melinda Putri": {
+          "name": "MELINDA - Putu Ayu Melinda Putri"
+        },
+        "MEY - Luh Putu Meilani Putri": {
+          "name": "MEY - Luh Putu Meilani Putri"
+        },
+        "MIA - Kadek Mia Suitri Dewi": {
+          "name": "MIA - Kadek Mia Suitri Dewi"
+        },
+        "MITA - Putu Mita Yasmini Dewi": {
+          "name": "MITA - Putu Mita Yasmini Dewi"
+        },
+        "NADIA - Nadia Aqilla Jasmine": {
+          "name": "NADIA - Nadia Aqilla Jasmine"
+        },
+        "NADINE - Nadine Chairunnisa Kinasih": {
+          "name": "NADINE - Nadine Chairunnisa Kinasih"
+        },
+        "NANDA - Putu Nanda Hartama": {
+          "name": "NANDA - Putu Nanda Hartama"
+        },
+        "NATALIA - Putu Natalia Santika Putri": {
+          "name": "NATALIA - Putu Natalia Santika Putri"
+        },
+        "PUSPA - Ni Luh Putu Puspa Juliantari": {
+          "name": "PUSPA - Ni Luh Putu Puspa Juliantari"
+        },
+        "RANI - Ni Komang Wahyu Maharani": {
+          "name": "RANI - Ni Komang Wahyu Maharani"
+        },
+        "RATAMA - Ratama": {
+          "name": "RATAMA - Ratama"
+        },
+        "RATNA - Luh Mas Ratna Galih": {
+          "name": "RATNA - Luh Mas Ratna Galih"
+        },
+        "REVA - Putu Revalina Febriani": {
+          "name": "REVA - Putu Revalina Febriani"
+        },
+        "RIA - Luh Ria Putri Diantari": {
+          "name": "RIA - Luh Ria Putri Diantari"
+        },
+        "ROBY - I Ketut Roby Pratama": {
+          "name": "ROBY - I Ketut Roby Pratama"
+        },
+        "RYAN - I Kadek Ryan Dwipayana": {
+          "name": "RYAN - I Kadek Ryan Dwipayana"
+        },
+        "SALMAN - Cavero Kasturi Salman Abdillah": {
+          "name": "SALMAN - Cavero Kasturi Salman Abdillah"
+        },
+        "SEKAR - Kadek Ayu Sekar Wahyuningsih": {
+          "name": "SEKAR - Kadek Ayu Sekar Wahyuningsih"
+        },
+        "SINAR - I Putu Sinar Pratiwi": {
+          "name": "SINAR - I Putu Sinar Pratiwi"
+        },
+        "SISIL - Prisha Pricilia Putri": {
+          "name": "SISIL - Prisha Pricilia Putri"
+        },
+        "SRI DEWI - Luh Sri Dewi Kantiasih": {
+          "name": "SRI DEWI - Luh Sri Dewi Kantiasih"
+        },
+        "SURI - Ni Made Suri Antini": {
+          "name": "SURI - Ni Made Suri Antini"
+        },
+        "SURYA - Komang Surya Adi Putra": {
+          "name": "SURYA - Komang Surya Adi Putra"
+        },
+        "TRISNA - Komang Ayu Trisna Dewi": {
+          "name": "TRISNA - Komang Ayu Trisna Dewi"
+        },
+        "WIATI - Kadek Wiati": {
+          "name": "WIATI - Kadek Wiati"
+        },
+        "WIDYA - Putu Widya Putri": {
+          "name": "WIDYA - Putu Widya Putri"
+        },
+        "WIHEL - Putu Wihelmina Suwarno Putri": {
+          "name": "WIHEL - Putu Wihelmina Suwarno Putri"
+        },
+        "YASIN - M Yasin": {
+          "name": "YASIN - M Yasin"
+        },
+        "YOGA - I Ketut Sedana Yoga": {
+          "name": "YOGA - I Ketut Sedana Yoga"
+        },
+        "YUDHA - Nyoman Yudhana Putra": {
+          "name": "YUDHA - Nyoman Yudhana Putra"
+        },
+        "YUDI - Gede Yudi Putra Sastrawan": {
+          "name": "YUDI - Gede Yudi Putra Sastrawan"
+        },
+        "ZALFA - Zalfa Gassania Arifa": {
+          "name": "ZALFA - Zalfa Gassania Arifa"
+        },
+        "ZAVA - Larene Zava Hakim": {
+          "name": "ZAVA - Larene Zava Hakim"
+        }
+      }
+    },
     "Hybrid Entrepreneur Bootcamp": {
       "name": "Hybrid Entrepreneur Bootcamp",
       "teams": {
@@ -284,239 +529,6 @@
               "name": "Luh Melisa putri"
             }
           }
-        }
-      }
-    },
-    "Leadership Bootcamp - Bali 2026": {
-      "name": "Leadership Bootcamp - Bali 2026",
-      "members": {
-        "ALE - Syailendra Abimanyu": {
-          "name": "ALE - Syailendra Abimanyu"
-        },
-        "AMELIA - I Gusti Ayu Putri Amelia": {
-          "name": "AMELIA - I Gusti Ayu Putri Amelia"
-        },
-        "AMIRA - Amira Alesha Zahra": {
-          "name": "AMIRA - Amira Alesha Zahra"
-        },
-        "ANGEL - Made Angelita Surya Berata": {
-          "name": "ANGEL - Made Angelita Surya Berata"
-        },
-        "ANGELICA - Ruth Angelica Cengor": {
-          "name": "ANGELICA - Ruth Angelica Cengor"
-        },
-        "ANGUMA - Luh Anguma Santya Devi": {
-          "name": "ANGUMA - Luh Anguma Santya Devi"
-        },
-        "APTARI - Gusti Ayu Kadek Aptari Meirayanthi": {
-          "name": "APTARI - Gusti Ayu Kadek Aptari Meirayanthi"
-        },
-        "ARIKA - Kadek Arika Budi Maharani": {
-          "name": "ARIKA - Kadek Arika Budi Maharani"
-        },
-        "AUDRY - Audry Agustina Putri": {
-          "name": "AUDRY - Audry Agustina Putri"
-        },
-        "AYU - Kadek Ayu Prasetiani": {
-          "name": "AYU - Kadek Ayu Prasetiani"
-        },
-        "BIM BIM - Kadek Putra Mahardika": {
-          "name": "BIM BIM - Kadek Putra Mahardika"
-        },
-        "CAHAYA - Ketut Cahaya Sari Deviani": {
-          "name": "CAHAYA - Ketut Cahaya Sari Deviani"
-        },
-        "CITRA - Citra Nur Aisyahrani": {
-          "name": "CITRA - Citra Nur Aisyahrani"
-        },
-        "DALEM - Komang Gede Satria Dalem Sutanaya": {
-          "name": "DALEM - Komang Gede Satria Dalem Sutanaya"
-        },
-        "DARA - Ayu Savita Giridara Bukian": {
-          "name": "DARA - Ayu Savita Giridara Bukian"
-        },
-        "DARMIA - Komang Darmiasih": {
-          "name": "DARMIA - Komang Darmiasih"
-        },
-        "DESY - Komang Ayu Desy Widianti": {
-          "name": "DESY - Komang Ayu Desy Widianti"
-        },
-        "DEWIKA - Ni Kadek Rejeki Sari Dewi": {
-          "name": "DEWIKA - Ni Kadek Rejeki Sari Dewi"
-        },
-        "DIAH - Kadek Diah Pradnya Wati": {
-          "name": "DIAH - Kadek Diah Pradnya Wati"
-        },
-        "DINDA - Putu Dinda Pratiwi Utami Putri": {
-          "name": "DINDA - Putu Dinda Pratiwi Utami Putri"
-        },
-        "DWIYANI - Made Dwiyani": {
-          "name": "DWIYANI - Made Dwiyani"
-        },
-        "EKA - Luh Eka Adi Udiani": {
-          "name": "EKA - Luh Eka Adi Udiani"
-        },
-        "EL - Imahila Jihan Elmira": {
-          "name": "EL - Imahila Jihan Elmira"
-        },
-        "ELLA - Putu Ela Pramudya": {
-          "name": "ELLA - Putu Ela Pramudya"
-        },
-        "ESA - Ni Kadek Esa Melani Putri": {
-          "name": "ESA - Ni Kadek Esa Melani Putri"
-        },
-        "EVA - Ni Luh Putu Eva Darmayanti": {
-          "name": "EVA - Ni Luh Putu Eva Darmayanti"
-        },
-        "FRISKA - Putu Friska Adelia Putri Atmaja": {
-          "name": "FRISKA - Putu Friska Adelia Putri Atmaja"
-        },
-        "GENDHIS - Putu Ayu Gendhis Sri Utami": {
-          "name": "GENDHIS - Putu Ayu Gendhis Sri Utami"
-        },
-        "GIANI - Giani Labieba Thufailah": {
-          "name": "GIANI - Giani Labieba Thufailah"
-        },
-        "GIPA - Kadek Dody Gipa Pratama": {
-          "name": "GIPA - Kadek Dody Gipa Pratama"
-        },
-        "HANA - Gia Han": {
-          "name": "HANA - Gia Han"
-        },
-        "INTAN - Putu Intan Maharani": {
-          "name": "INTAN - Putu Intan Maharani"
-        },
-        "JELITA - Putu Jelita Widiartini": {
-          "name": "JELITA - Putu Jelita Widiartini"
-        },
-        "JESIKA - Nengah Jesika Lingga Dewi": {
-          "name": "JESIKA - Nengah Jesika Lingga Dewi"
-        },
-        "JFP - jfp": {
-          "name": "JFP - jfp"
-        },
-        "KAYOBI - Kadek Kayobi Wirdi Putra": {
-          "name": "KAYOBI - Kadek Kayobi Wirdi Putra"
-        },
-        "KESHA - Gede Kesha Wardana": {
-          "name": "KESHA - Gede Kesha Wardana"
-        },
-        "KIA - Ni Luh Saskia": {
-          "name": "KIA - Ni Luh Saskia"
-        },
-        "KYLA - Ratna Kyla Angelica Panisales Wibisono": {
-          "name": "KYLA - Ratna Kyla Angelica Panisales Wibisono"
-        },
-        "LEO - Manahau Leo Aditya Fortin": {
-          "name": "LEO - Manahau Leo Aditya Fortin"
-        },
-        "LEONITA - Ni Komang Leonita Putri Cahyani": {
-          "name": "LEONITA - Ni Komang Leonita Putri Cahyani"
-        },
-        "LIA - Putu Lia Sujani": {
-          "name": "LIA - Putu Lia Sujani"
-        },
-        "LINDA - Komang Linda Muliani": {
-          "name": "LINDA - Komang Linda Muliani"
-        },
-        "LISTYA - Desak Putu Listya Dewi": {
-          "name": "LISTYA - Desak Putu Listya Dewi"
-        },
-        "MARCHELLO - Putu Dennis Marchello Ariesta": {
-          "name": "MARCHELLO - Putu Dennis Marchello Ariesta"
-        },
-        "MELINDA - Putu Ayu Melinda Putri": {
-          "name": "MELINDA - Putu Ayu Melinda Putri"
-        },
-        "MEY - Luh Putu Meilani Putri": {
-          "name": "MEY - Luh Putu Meilani Putri"
-        },
-        "MIA - Kadek Mia Suitri Dewi": {
-          "name": "MIA - Kadek Mia Suitri Dewi"
-        },
-        "MITA - Putu Mita Yasmini Dewi": {
-          "name": "MITA - Putu Mita Yasmini Dewi"
-        },
-        "NADIA - Nadia Aqilla Jasmine": {
-          "name": "NADIA - Nadia Aqilla Jasmine"
-        },
-        "NADINE - Nadine Chairunnisa Kinasih": {
-          "name": "NADINE - Nadine Chairunnisa Kinasih"
-        },
-        "NANDA - Putu Nanda Hartama": {
-          "name": "NANDA - Putu Nanda Hartama"
-        },
-        "PUSPA - Ni Luh Putu Puspa Juliantari": {
-          "name": "PUSPA - Ni Luh Putu Puspa Juliantari"
-        },
-        "RANI - Ni Komang Wahyu Maharani": {
-          "name": "RANI - Ni Komang Wahyu Maharani"
-        },
-        "RATAMA - Ratama": {
-          "name": "RATAMA - Ratama"
-        },
-        "RATNA - Luh Mas Ratna Galih": {
-          "name": "RATNA - Luh Mas Ratna Galih"
-        },
-        "REVA - Putu Revalina Febriani": {
-          "name": "REVA - Putu Revalina Febriani"
-        },
-        "RIA - Luh Ria Putri Diantari": {
-          "name": "RIA - Luh Ria Putri Diantari"
-        },
-        "ROBY - I Ketut Roby Pratama": {
-          "name": "ROBY - I Ketut Roby Pratama"
-        },
-        "RYAN - I Kadek Ryan Dwipayana": {
-          "name": "RYAN - I Kadek Ryan Dwipayana"
-        },
-        "SALMAN - Cavero Kasturi Salman Abdillah": {
-          "name": "SALMAN - Cavero Kasturi Salman Abdillah"
-        },
-        "SEKAR - Kadek Ayu Sekar Wahyuningsih": {
-          "name": "SEKAR - Kadek Ayu Sekar Wahyuningsih"
-        },
-        "SINAR - I Putu Sinar Pratiwi": {
-          "name": "SINAR - I Putu Sinar Pratiwi"
-        },
-        "SISIL - Prisha Pricilia Putri": {
-          "name": "SISIL - Prisha Pricilia Putri"
-        },
-        "SURI - Ni Made Suri Antini": {
-          "name": "SURI - Ni Made Suri Antini"
-        },
-        "SURYA - Komang Surya Adi Putra": {
-          "name": "SURYA - Komang Surya Adi Putra"
-        },
-        "TRISNA - Komang Ayu Trisna Dewi": {
-          "name": "TRISNA - Komang Ayu Trisna Dewi"
-        },
-        "WIATI - Kadek Wiati": {
-          "name": "WIATI - Kadek Wiati"
-        },
-        "WIDYA - Putu Widya Putri": {
-          "name": "WIDYA - Putu Widya Putri"
-        },
-        "WIHEL - Putu Wihelmina Suwarno Putri": {
-          "name": "WIHEL - Putu Wihelmina Suwarno Putri"
-        },
-        "YASIN - M Yasin": {
-          "name": "YASIN - M Yasin"
-        },
-        "YOGA - I Ketut Sedana Yoga": {
-          "name": "YOGA - I Ketut Sedana Yoga"
-        },
-        "YUDHA - Nyoman Yudhana Putra": {
-          "name": "YUDHA - Nyoman Yudhana Putra"
-        },
-        "YUDI - Gede Yudi Putra Sastrawan": {
-          "name": "YUDI - Gede Yudi Putra Sastrawan"
-        },
-        "ZALFA - Zalfa Gassania Arifa": {
-          "name": "ZALFA - Zalfa Gassania Arifa"
-        },
-        "ZAVA - Larene Zava Hakim": {
-          "name": "ZAVA - Larene Zava Hakim"
         }
       }
     },
