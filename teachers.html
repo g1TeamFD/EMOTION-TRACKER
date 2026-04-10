@@ -1,134 +1,347 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Teachers – Team Evaluations</title>
+  <title>FD 360 – Teacher Analytics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root { --bg:#edf6ef; --card:#ffffff; --text:#0b1f14; --muted:#5a6b5f; --border:#cfe2d5; --primary:#14532d; --primary-ink:#ffffff; --accent:#1a7f46; --ring:#9ae6b4; }
-    *{ box-sizing: border-box; }
-    body{ margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background:linear-gradient(160deg, #f0f7f2, #e7f2ea); color:var(--text); }
-    .container{ max-width:1400px; margin:0 auto; padding:24px; }
-    .nav{ position:sticky; top:0; z-index:10; backdrop-filter: blur(6px); background:rgba(255,255,255,0.6); border-bottom:1px solid var(--border); }
-    .nav-inner{ max-width:1400px; margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; }
-    .brand{ font-weight:700; color:var(--primary); letter-spacing:0.2px; }
-    .nav-link{ padding:8px 12px; border-radius:10px; text-decoration:none; color:var(--text); font-weight:600; }
-    .nav-link:hover{ background:#e6f3ea; }
-    .nav-link.active{ background:var(--primary); color:var(--primary-ink); }
-    .card{ background:var(--card); border:1px solid var(--border); border-radius:18px; padding:22px; box-shadow: 0 6px 20px rgba(20,83,45,0.06); margin-bottom:20px; }
-    h1{ font-size:24px; margin:0 0 6px; }
-    p.desc{ margin:0; color:var(--muted); font-size:14px; }
-    label{ font-size:13px; font-weight:700; display:block; margin-bottom:6px; color:#0f2917; }
-    input[type="password"], input[type="text"]{ padding:10px 12px; border-radius:10px; border:1px solid var(--border); outline:none; background:#fbfefc; font-family: inherit; width:100%; }
-    input[type="password"]:focus, input[type="text"]:focus{ box-shadow: 0 0 0 3px rgba(46,125,75,0.18); border-color: var(--accent);}  
-    .btn{ background:var(--primary); color:var(--primary-ink); padding:10px 16px; border:none; border-radius:12px; cursor:pointer; box-shadow:0 1px 0 rgba(0,0,0,0.06); font-weight:600; font-size:14px; font-family: inherit;} 
-    .btn:hover{ filter:brightness(1.05);} 
-    .btn:active{ transform: translateY(1px);} 
-    .btn-secondary{ background:var(--accent); }
-    .login-container{ max-width:400px; margin:100px auto; }
-    .table-container{ overflow-x:auto; background:white; border-radius:12px; border:1px solid var(--border); }
-    table{ width:100%; border-collapse: collapse; }
-    th, td{ padding:14px 16px; text-align:left; border-bottom:1px solid var(--border); }
-    th{ background:#f9fcfa; font-weight:700; font-size:13px; color:var(--primary); position:sticky; top:0; z-index:5; white-space:nowrap; }
-    td{ font-size:14px; }
-    tr:last-child td{ border-bottom:none; }
-    tbody tr:hover{ background:#f9fcfa; }
-    .evaluator-name{ font-weight:600; color:var(--primary); }
-    .count-cell{ text-align:center; font-weight:600; color:var(--accent); }
-    .empty-state{ text-align:center; padding:60px 20px; color:var(--muted); }
-    .empty-state h3{ margin:0 0 8px; color:var(--text); }
-    .action-bar{ display:flex; gap:12px; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; align-items:center; }
-    .error-msg{ color:#dc2626; font-size:13px; margin-top:8px; }
-    #dashboardContent{ display:none; }
+    /* ── TOKENS ── */
+    :root {
+      --sand:         #faf8f4;
+      --sand2:        #f2ede4;
+      --sand3:        #e6dfd4;
+      --white:        #ffffff;
+      --ink:          #28211c;
+      --ink2:         #6b5f56;
+      --ink3:         #a8998e;
+      --teal:         #2a7a6c;
+      --teal-light:   #e6f4f1;
+      --teal-mid:     #3d9e8d;
+      --rose:         #b84e48;
+      --rose-light:   #fdf0ef;
+      --amber:        #b07030;
+      --amber-light:  #fdf4e7;
+      --border:       rgba(40,33,28,0.1);
+      --border-md:    rgba(40,33,28,0.18);
+      --border-str:   rgba(40,33,28,0.26);
+      --card-bg:      #ffffff;
+      --page-bg:      #faf8f4;
+      --input-bg:     #f5f1eb;
+      --shadow:       0 1px 4px rgba(40,33,28,0.06), 0 4px 16px rgba(40,33,28,0.04);
+      --glow-teal:    rgba(42, 122, 108, 0.4);
+      --glow-rose:    rgba(184, 78, 72, 0.4);
+    }
+
+    [data-theme="dark"] {
+      --sand:         #1a1612;
+      --sand2:        #231e19;
+      --sand3:        #2e2720;
+      --white:        #2e2720;
+      --ink:          #f0ebe4;
+      --ink2:         #b0a090;
+      --ink3:         #6e6058;
+      --teal:         #4db8a6;
+      --teal-light:   #0f2e2a;
+      --teal-mid:     #3d9e8d;
+      --rose:         #e07068;
+      --rose-light:   #2e1614;
+      --amber:        #d4944a;
+      --amber-light:  #2a1e0c;
+      --border:       rgba(240,235,228,0.08);
+      --border-md:    rgba(240,235,228,0.14);
+      --border-str:   rgba(240,235,228,0.22);
+      --card-bg:      #231e19;
+      --page-bg:      #1a1612;
+      --input-bg:     #2e2720;
+      --shadow:       0 1px 4px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.2);
+      --glow-teal:    rgba(77, 184, 166, 0.4);
+      --glow-rose:    rgba(224, 112, 104, 0.4);
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', system-ui, -apple-system, sans-serif; background: var(--page-bg); color: var(--ink); min-height: 100vh; line-height: 1.5; transition: background 0.25s, color 0.25s; overflow-x: hidden; }
+
+    /* ── BACKGROUND 3D ENGINE ── */
+    #core-wrapper { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: clamp(300px, 60vw, 600px); height: clamp(300px, 60vw, 600px); z-index: -1; pointer-events: none; opacity: 0.6; transition: all 1s ease-in-out; }
+    #core-wrapper.docked { top: -50px; left: calc(100% - 150px); width: 300px; height: 300px; opacity: 0.3; }
+    #core-wrapper canvas { width: 100% !important; height: 100% !important; }
+
+    /* ── NAV ── */
+    nav { position: sticky; top: 0; z-index: 100; background: var(--card-bg); border-bottom: 1px solid var(--border); padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 60px; transition: background 0.25s, border-color 0.25s; }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .globe-svg { width: 30px; height: 30px; flex-shrink: 0; }
+    .brand-text { display: flex; flex-direction: column; line-height: 1; }
+    .brand-name { font-family: 'DM Serif Display', Georgia, serif; font-size: 16px; color: var(--ink); letter-spacing: -0.2px; }
+    .brand-sub { font-size: 9px; color: var(--ink3); letter-spacing: 1.8px; text-transform: uppercase; font-weight: 400; margin-top: 3px; }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .nav-links { display: flex; gap: 2px; align-items: center; }
+    .nav-link { font-size: 13px; font-weight: 400; padding: 6px 14px; border-radius: 100px; text-decoration: none; color: var(--ink2); transition: background 0.15s, color 0.15s; cursor: pointer; border: 1px solid transparent; }
+    .nav-link:hover { background: var(--sand2); color: var(--ink); }
+    .nav-link.active { background: var(--ink); color: var(--page-bg); }
+    .theme-toggle { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border-md); background: var(--input-bg); cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--ink2); transition: all 0.15s; flex-shrink: 0; }
+    .theme-toggle:hover { background: var(--sand3); color: var(--ink); }
+    .theme-toggle svg { width: 15px; height: 15px; }
+    .icon-sun { display: none; } .icon-moon { display: block; }
+    [data-theme="dark"] .icon-sun { display: block; } [data-theme="dark"] .icon-moon { display: none; }
+    .mobile-menu-btn { display: none; background: transparent; border: none; padding: 4px; color: var(--ink); cursor: pointer; transition: opacity 0.2s; }
+    .mobile-menu-btn svg { width: 24px; height: 24px; }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 48px 24px 80px; }
+    
+    /* ── AUTH SCREEN ── */
+    #loginScreen { display: flex; justify-content: center; align-items: center; min-height: calc(100vh - 160px); }
+    .login-box { max-width: 400px; width: 100%; text-align: center; }
+    .login-box .page-title { margin-bottom: 8px; }
+    .auth-input { text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 18px; letter-spacing: 4px; margin-top: 24px; }
+    .auth-input::placeholder { letter-spacing: 1px; font-family: 'DM Sans', sans-serif; font-size: 14px; }
+    .error-msg { color: var(--rose); font-size: 12px; margin-top: 12px; font-family: 'JetBrains Mono', monospace; display: none; text-shadow: 0 0 8px var(--glow-rose); }
+
+    /* ── PAGE HEADER ── */
+    .page-header { margin-bottom: 32px; }
+    .page-eyebrow { display: flex; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); font-weight: 500; margin-bottom: 14px; }
+    .eyebrow-line { width: 22px; height: 1px; background: var(--teal); }
+    .page-title { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(34px, 4vw, 48px); line-height: 1.05; letter-spacing: -1px; color: var(--ink); margin-bottom: 14px;}
+    .page-desc { font-size: 15px; color: var(--ink2); line-height: 1.75; max-width: 600px; font-weight: 300; margin-bottom: 0;}
+
+    /* ── CARDS & UTILS ── */
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 28px 32px; margin-bottom: 14px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+    .card-title { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: var(--ink3); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; z-index: 2; position: relative;}
+    .card-title-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 8px var(--teal); }
+    
+    input[type="password"], input[type="text"] { width: 100%; padding: 12px 16px; background: var(--input-bg); border: 1px solid var(--border); border-radius: 12px; outline: none; color: var(--ink); transition: border-color 0.18s, box-shadow 0.18s; }
+    input:focus { border-color: var(--teal-mid); background: var(--card-bg); box-shadow: 0 0 0 3px rgba(61,158,141,0.12); }
+
+    /* ── SCI-FI HUD EFFECTS ── */
+    .sci-fi-card { transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+    .sci-fi-card:hover { transform: translateY(-4px); box-shadow: 0 15px 35px var(--glow-teal), inset 0 0 0 1px var(--teal); border-color: transparent; }
+    .scanline { position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(to bottom, transparent, var(--teal), transparent); opacity: 0; pointer-events: none; z-index: 5; box-shadow: 0 0 10px var(--teal); }
+    .sci-fi-card:hover .scanline { animation: scan 2s cubic-bezier(0.4, 0, 0.2, 1) infinite; opacity: 1; }
+    @keyframes scan { 0% { top: 0%; } 100% { top: 100%; } }
+
+    /* ── BUTTONS ── */
+    .btn { font-family: 'DM Sans', system-ui, sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.1px; padding: 11px 22px; border-radius: 100px; border: none; cursor: pointer; transition: all 0.15s; display: inline-flex; align-items: center; justify-content: center; gap: 7px; white-space: nowrap; }
+    .btn:active { transform: scale(0.97); }
+    .btn-outline { background: transparent; color: var(--ink2); border: 1px solid var(--border-md); }
+    .btn-outline:hover { background: var(--sand2); color: var(--ink); }
+    .btn-teal { background: var(--teal-light); color: var(--teal); border: 1px solid rgba(61,158,141,0.25); }
+    .btn-teal:hover { filter: brightness(0.96); box-shadow: 0 0 15px var(--glow-teal); }
+    
+    .action-bar { display: flex; gap: 12px; justify-content: flex-end; align-items: center; flex-wrap: wrap; margin-bottom: 10px;}
+
+    /* ── TABLE ── */
+    .table-container { overflow-x: auto; margin-top: 8px; }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--ink3); padding: 14px 16px; border-bottom: 1px solid var(--border-md); font-weight: 500; white-space: nowrap;}
+    td { padding: 18px 16px; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--ink); vertical-align: middle; line-height: 1.6;}
+    tr:last-child td { border-bottom: none; }
+    tbody tr { transition: background 0.15s; }
+    tbody tr:hover { background: var(--sand); }
+    
+    .evaluator-name { font-family: 'DM Serif Display', Georgia, serif; font-size: 17px; color: var(--teal); }
+    .count-cell { font-family: 'JetBrains Mono', monospace; font-size: 16px; color: var(--amber); text-align: center; }
+    
+    .empty-state { text-align: center; padding: 48px 24px; border: 1.5px dashed var(--border-md); border-radius: 14px; color: var(--ink3); font-size: 14px; font-weight: 300; line-height: 1.7;}
+    .empty-icon { width: 38px; height: 38px; margin: 0 auto 12px; border-radius: 50%; background: var(--sand3); display: flex; align-items: center; justify-content: center; color: var(--ink2);}
+    .hidden { display: none !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .mobile-menu-btn { display: block; }
+      .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--card-bg); flex-direction: column; align-items: flex-start; padding: 16px; border-bottom: 1px solid var(--border); box-shadow: 0 10px 20px rgba(0,0,0,0.06); z-index: 90; }
+      .nav-links.show { display: flex; }
+      .nav-link { width: 100%; padding: 12px 14px; text-align: left; border-radius: 8px; }
+      .container { padding: 32px 16px 60px; }
+      .card { padding: 20px; }
+      .action-bar { justify-content: flex-start; }
+    }
   </style>
 </head>
 <body>
-  <div class="nav">
-    <div class="nav-inner">
-      <div class="brand">🌿 Pulse</div>
-      <div class="links">
-        <a href="index.html" class="nav-link">Check‑in</a>
-        <a href="dashboard.html" class="nav-link">Feedback</a>
-        <a href="dashboard-v2.html" class="nav-link">Scoreboard</a>
-        <a href="teachers.html" class="nav-link active">Teachers</a>
-      </div>
-    </div>
-  </div>
 
-  <!-- Login Screen -->
+  <div id="core-wrapper"></div>
+
+  <nav>
+    <a class="brand" href="#">
+      <svg class="globe-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="12.5" stroke="var(--teal)" stroke-width="1.3"/>
+        <ellipse cx="16" cy="16" rx="5.5" ry="12.5" stroke="var(--teal)" stroke-width="1.3"/>
+        <path d="M3.5 16 Q9 13.5 16 14.5 Q23 15.5 28.5 16" stroke="var(--teal)" stroke-width="1.1" fill="none"/>
+        <path d="M5.5 10 Q10.5 8.5 16 9 Q21.5 9.5 26.5 10" stroke="var(--teal)" stroke-width="0.9" fill="none" stroke-dasharray="0"/>
+        <path d="M5.5 22 Q10.5 23.5 16 23 Q21.5 22.5 26.5 22" stroke="var(--teal)" stroke-width="0.9" fill="none"/>
+        <circle cx="16" cy="16" r="1.8" fill="var(--teal)"/>
+      </svg>
+      <div class="brand-text">
+        <span class="brand-name">FD 360</span>
+        <span class="brand-sub">peer review</span>
+      </div>
+    </a>
+
+    <div class="nav-right">
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">check-in</a>
+        <a href="dashboard.html" class="nav-link">feedback</a>
+        <a href="dashboard-v2.html" class="nav-link">scoreboard</a>
+        <a href="teachers.html" class="nav-link active">teachers</a>
+      </div>
+      
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M12.5 10A6 6 0 015 2.5a6.5 6.5 0 100 10 6 6 0 007.5-2.5z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="7.5" cy="7.5" r="3"/><path d="M7.5 1v1.5M7.5 12.5V14M14 7.5h-1.5M2.5 7.5H1M12 3l-1 1M4 11l-1 1M12 12l-1-1M4 4l-1-1"/></svg>
+      </button>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12h18M3 6h18M3 18h18" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
   <div id="loginScreen">
-    <div class="login-container">
-      <div class="card">
-        <h1>Teachers Dashboard</h1>
-        <p class="desc">Enter password to access teacher evaluation analytics</p>
-        <div style="margin-top:20px;">
-          <label>Password</label>
-          <input type="password" id="passwordInput" placeholder="Enter password" />
-          <p class="error-msg" id="errorMsg" style="display:none;">Incorrect password. Please try again.</p>
-          <button class="btn" id="loginBtn" style="margin-top:12px; width:100%;">Access Dashboard</button>
+    <div class="login-box">
+      <div class="card sci-fi-card">
+        <div class="scanline"></div>
+        <div class="page-eyebrow" style="justify-content: center;">
+          <span class="eyebrow-line"></span> Restricted Access
         </div>
+        <h1 class="page-title">Teacher Node</h1>
+        <p class="page-desc" style="margin: 0 auto;">Authenticate to view internal evaluation telemetry.</p>
+        
+        <input type="password" id="passwordInput" class="auth-input" placeholder="ENTER CLEARANCE CODE" autocomplete="off" />
+        <p class="error-msg" id="errorMsg">ACCESS DENIED. INVALID CLEARANCE.</p>
+        
+        <button class="btn btn-teal" id="loginBtn" style="margin-top:20px; width:100%; letter-spacing: 2px;">
+          AUTHENTICATE
+        </button>
       </div>
     </div>
   </div>
 
-  <!-- Dashboard Content -->
-  <div id="dashboardContent">
-    <div class="container">
-      <div class="card">
-        <h1>Teachers Evaluation Dashboard</h1>
-        <p class="desc">View teacher/evaluator statistics and download detailed reports</p>
+  <div id="dashboardContent" class="hidden">
+    <main class="container">
+      
+      <div class="page-header">
+        <div class="page-eyebrow"><span class="eyebrow-line"></span> Administration</div>
+        <h1 class="page-title">Teacher Analytics</h1>
+        <p class="page-desc">Monitor submission volume per evaluator and export raw dataset reports.</p>
       </div>
 
-      <!-- Actions -->
       <div class="card">
         <div class="action-bar">
-          <div>
-            <button class="btn btn-secondary" id="exportSummaryBtn">📊 Export Summary (Teachers)</button>
-          </div>
-          <div>
-            <button class="btn" id="exportDetailedBtn">📥 Download Full Report (All Data)</button>
-          </div>
+          <button class="btn btn-outline" id="exportSummaryBtn">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v4M7 4v7M11 1v10"/></svg>
+            Export Aggregated Summary
+          </button>
+          <button class="btn btn-teal" id="exportDetailedBtn">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1v8M4 6l3 3 3-3M2 12h10"/></svg>
+            Download Raw DB Dump
+          </button>
         </div>
       </div>
 
-      <!-- Summary Table -->
-      <div class="card">
+      <div class="card" style="padding: 16px 24px;">
+        <div class="card-title" style="margin-top: 10px;"><div class="card-title-dot"></div> Evaluator Submission Logs</div>
         <div class="table-container">
           <table id="summaryTable">
             <thead>
               <tr>
-                <th>Date</th>
-                <th>Event</th>
-                <th>City</th>
-                <th>Evaluator Name</th>
-                <th>Evaluations Submitted</th>
-                <th>Plus Points Submitted</th>
-                <th>Minus Points Submitted</th>
+                <th>Last Activity</th>
+                <th>Program Base</th>
+                <th>Evaluator Identity</th>
+                <th style="text-align: center;">Forms Submitted</th>
+                <th style="text-align: center;">Strengths Logged</th>
+                <th style="text-align: center;">Growth Edges Logged</th>
               </tr>
             </thead>
             <tbody id="summaryTableBody">
               <tr>
-                <td colspan="7" class="empty-state">
-                  <h3>Loading data...</h3>
-                  <p>Please wait while we fetch evaluation data</p>
+                <td colspan="6" style="border: none;">
+                  <div class="empty-state">
+                    <div class="empty-icon">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    Decrypting database stream...
+                  </div>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
-    </div>
+
+    </main>
   </div>
 
-  <!-- Firebase SDKs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database-compat.js"></script>
 
   <script>
+    /* ── THEME & NAV LOGIC ── */
+    const html = document.documentElement;
+    const savedTheme = localStorage.getItem('fd360_theme');
+    if (savedTheme) html.setAttribute('data-theme', savedTheme);
+    else if (window.matchMedia('(prefers-color-scheme: dark)').matches) html.setAttribute('data-theme', 'dark');
+
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('fd360_theme', next);
+    });
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    mobileMenuBtn.addEventListener('click', () => navLinks.classList.toggle('show'));
+    document.addEventListener('click', (e) => {
+      if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) navLinks.classList.remove('show');
+    });
+
+    /* ── AUTHENTICATION ── */
     const PASSWORD = 'MIHF';
+    let isAuthenticated = sessionStorage.getItem('teachersAuth') === 'true';
+
+    if (isAuthenticated) {
+      document.getElementById('loginScreen').classList.add('hidden');
+      document.getElementById('dashboardContent').classList.remove('hidden');
+      document.getElementById('core-wrapper').classList.add('docked');
+    }
+
+    document.getElementById('loginBtn').addEventListener('click', () => {
+      const password = document.getElementById('passwordInput').value;
+      if (password === PASSWORD) {
+        isAuthenticated = true;
+        sessionStorage.setItem('teachersAuth', 'true');
+        document.getElementById('errorMsg').style.display = 'none';
+        
+        // Transition Animation
+        document.getElementById('loginScreen').style.opacity = '0';
+        setTimeout(() => {
+          document.getElementById('loginScreen').classList.add('hidden');
+          document.getElementById('dashboardContent').classList.remove('hidden');
+          document.getElementById('core-wrapper').classList.add('docked');
+          loadEntries();
+        }, 300);
+      } else {
+        document.getElementById('errorMsg').style.display = 'block';
+        const input = document.getElementById('passwordInput');
+        input.value = '';
+        input.style.borderColor = 'var(--rose)';
+        setTimeout(() => input.style.borderColor = '', 1000);
+      }
+    });
+
+    document.getElementById('passwordInput').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') document.getElementById('loginBtn').click();
+    });
+
+    /* ── FIREBASE DB LOGIC ── */
     const firebaseConfig = {
       apiKey: "AIzaSyBog7q44JN9wVjfk2wy7FqS80NLJC5348g",
       authDomain: "emotion-tracker-7f11c.firebaseapp.com",
@@ -141,44 +354,11 @@
 
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
-
     let allEntries = [];
-    let isAuthenticated = false;
 
-    // Check if already authenticated in session
-    if (sessionStorage.getItem('teachersAuth') === 'true') {
-      isAuthenticated = true;
-      showDashboard();
-    }
-
-    // Login handler
-    document.getElementById('loginBtn').addEventListener('click', () => {
-      const password = document.getElementById('passwordInput').value;
-      if (password === PASSWORD) {
-        isAuthenticated = true;
-        sessionStorage.setItem('teachersAuth', 'true');
-        document.getElementById('errorMsg').style.display = 'none';
-        showDashboard();
-      } else {
-        document.getElementById('errorMsg').style.display = 'block';
-      }
-    });
-
-    // Allow Enter key to submit password
-    document.getElementById('passwordInput').addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        document.getElementById('loginBtn').click();
-      }
-    });
-
-    function showDashboard() {
-      document.getElementById('loginScreen').style.display = 'none';
-      document.getElementById('dashboardContent').style.display = 'block';
-      loadEntries();
-    }
-
-    // Load all entries from Firebase
     function loadEntries() {
+      if(!isAuthenticated) return;
+      
       db.ref('entries').once('value', snapshot => {
         allEntries = [];
         snapshot.forEach(child => {
@@ -186,109 +366,91 @@
           entry.id = child.key;
           allEntries.push(entry);
         });
-        
         renderSummaryTable();
+      }).catch(err => {
+        console.error("Firebase Read Error:", err);
       });
     }
 
-    // Format event name
-    function formatEventName(eventId) {
-      const names = {
-        'sustainability_bootcamp': 'Sustainability Bootcamp',
-        'story_a_night': 'Story a Night',
-        'young_ambassadors_training': 'Young Ambassadors Training'
-      };
-      return names[eventId] || eventId;
-    }
+    if(isAuthenticated) loadEntries();
 
-    // Group entries by evaluator (case-insensitive)
+    /* ── DATA PROCESSING ── */
     function groupByEvaluator() {
       const grouped = new Map();
       
       allEntries.forEach(entry => {
-        const evaluatorKey = (entry.evaluatorName || '').toLowerCase().trim();
+        const evaluatorKey = (entry.evaluatorName || 'Unknown Evaluator').toLowerCase().trim();
         
         if (!grouped.has(evaluatorKey)) {
           grouped.set(evaluatorKey, {
-            evaluatorName: entry.evaluatorName, // Keep original case for display
+            evaluatorName: entry.evaluatorName || 'Unknown Evaluator', 
             entries: []
           });
         }
-        
         grouped.get(evaluatorKey).entries.push(entry);
       });
-      
       return grouped;
     }
 
-    // Render summary table
     function renderSummaryTable() {
       const tbody = document.getElementById('summaryTableBody');
       
       if (allEntries.length === 0) {
-        tbody.innerHTML = `
-          <tr>
-            <td colspan="7" class="empty-state">
-              <h3>No evaluations found</h3>
-              <p>No teacher evaluations have been submitted yet</p>
-            </td>
-          </tr>
-        `;
+        tbody.innerHTML = `<tr><td colspan="6" style="border: none;"><div class="empty-state"><div class="empty-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>No evaluators found in database.</div></td></tr>`;
         return;
       }
 
-      // Group entries by evaluator
       const groupedByEvaluator = groupByEvaluator();
       
-      // Convert to array and sort by most recent date
       const evaluatorSummaries = Array.from(groupedByEvaluator.values()).map(group => {
         const sortedEntries = group.entries.sort((a, b) => b.createdAt - a.createdAt);
         const mostRecentEntry = sortedEntries[0];
         
-        // Aggregate statistics across all entries for this evaluator
         let totalEvaluations = 0;
         let totalPlus = 0;
         let totalMinus = 0;
         
         group.entries.forEach(entry => {
-          const memberEvals = entry.memberEvaluations || [];
+          let memberEvals = entry.memberEvaluations;
+          if(!memberEvals) memberEvals = entry.evaluations; // Backwards compatibility
+          if(!memberEvals) memberEvals = [];
+
           totalEvaluations += memberEvals.length;
           
           memberEvals.forEach(member => {
-            const pluses = member.pluses || [];
-            const minuses = member.minuses || [];
-            totalPlus += pluses.length;
-            totalMinus += minuses.length;
+            totalPlus += (member.pluses || []).length;
+            totalMinus += (member.minuses || []).length;
           });
         });
         
+        // Build program string based on latest entry data
+        let programDetails = mostRecentEntry.program || 'Unknown';
+        if (mostRecentEntry.team && mostRecentEntry.team !== 'N/A') programDetails += ` (${mostRecentEntry.team})`;
+        
         return {
           evaluatorName: group.evaluatorName,
-          mostRecentDate: mostRecentEntry.createdAt,
-          event: mostRecentEntry.event,
-          city: mostRecentEntry.city,
+          mostRecentDate: mostRecentEntry.createdAt || Date.now(),
+          program: programDetails,
           totalEvaluations,
           totalPlus,
           totalMinus
         };
       });
       
-      // Sort by most recent date
       evaluatorSummaries.sort((a, b) => b.mostRecentDate - a.mostRecentDate);
 
       let html = '';
       evaluatorSummaries.forEach(summary => {
-        const date = new Date(summary.mostRecentDate).toLocaleDateString();
+        const date = new Date(summary.mostRecentDate).toLocaleDateString(undefined, {month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute:'2-digit'});
         
         html += `
           <tr>
-            <td>${date}</td>
-            <td>${formatEventName(summary.event)}</td>
-            <td>${summary.city}</td>
+            <td style="color: var(--ink3); font-size: 12px; font-family: 'JetBrains Mono', monospace;">${date}</td>
+            <td>${summary.program}</td>
             <td class="evaluator-name">${summary.evaluatorName}</td>
             <td class="count-cell">${summary.totalEvaluations}</td>
-            <td class="count-cell">${summary.totalPlus}</td>
-            <td class="count-cell">${summary.totalMinus}</td>
+            <td class="count-cell" style="color: var(--teal);">${summary.totalPlus}</td>
+            <td class="count-cell" style="color: var(--rose);">${summary.totalMinus}</td>
           </tr>
         `;
       });
@@ -296,86 +458,7 @@
       tbody.innerHTML = html;
     }
 
-    // Export summary CSV (for teachers view)
-    function exportSummaryCSV() {
-      if (allEntries.length === 0) {
-        alert('No data to export');
-        return;
-      }
-
-      let csv = 'Date,Event,City,Evaluator Name,Evaluations Submitted,Plus Points Submitted,Minus Points Submitted\n';
-
-      const groupedByEvaluator = groupByEvaluator();
-      
-      const evaluatorSummaries = Array.from(groupedByEvaluator.values()).map(group => {
-        const sortedEntries = group.entries.sort((a, b) => b.createdAt - a.createdAt);
-        const mostRecentEntry = sortedEntries[0];
-        
-        let totalEvaluations = 0;
-        let totalPlus = 0;
-        let totalMinus = 0;
-        
-        group.entries.forEach(entry => {
-          const memberEvals = entry.memberEvaluations || [];
-          totalEvaluations += memberEvals.length;
-          
-          memberEvals.forEach(member => {
-            const pluses = member.pluses || [];
-            const minuses = member.minuses || [];
-            totalPlus += pluses.length;
-            totalMinus += minuses.length;
-          });
-        });
-        
-        return {
-          evaluatorName: group.evaluatorName,
-          mostRecentDate: mostRecentEntry.createdAt,
-          event: mostRecentEntry.event,
-          city: mostRecentEntry.city,
-          totalEvaluations,
-          totalPlus,
-          totalMinus
-        };
-      });
-      
-      evaluatorSummaries.sort((a, b) => b.mostRecentDate - a.mostRecentDate);
-
-      evaluatorSummaries.forEach(summary => {
-        const date = new Date(summary.mostRecentDate).toLocaleDateString();
-        csv += `"${date}","${formatEventName(summary.event)}","${summary.city}","${summary.evaluatorName}","${summary.totalEvaluations}","${summary.totalPlus}","${summary.totalMinus}"\n`;
-      });
-
-      downloadCSV(csv, `teachers-summary-${new Date().toISOString().split('T')[0]}.csv`);
-    }
-
-    // Export detailed CSV (full data for internal team)
-    function exportDetailedCSV() {
-      if (allEntries.length === 0) {
-        alert('No data to export');
-        return;
-      }
-
-      let csv = 'Date,Event,City,Evaluator Name,Member Name,Plus,Minus,Score\n';
-
-      const sortedEntries = [...allEntries].sort((a, b) => b.createdAt - a.createdAt);
-
-      sortedEntries.forEach(entry => {
-        const date = new Date(entry.createdAt).toLocaleDateString();
-        const memberEvals = entry.memberEvaluations || [];
-        
-        memberEvals.forEach(member => {
-          const pluses = (member.pluses || []).join('; ');
-          const minuses = (member.minuses || []).join('; ');
-          const score = member.score || 0;
-          
-          csv += `"${date}","${formatEventName(entry.event)}","${entry.city}","${entry.evaluatorName}","${member.memberName}","${pluses}","${minuses}","${score}"\n`;
-        });
-      });
-
-      downloadCSV(csv, `full-evaluation-report-${new Date().toISOString().split('T')[0]}.csv`);
-    }
-
-    // Helper function to download CSV
+    /* ── CSV EXPORTS ── */
     function downloadCSV(csvContent, filename) {
       const blob = new Blob([csvContent], { type: 'text/csv' });
       const url = window.URL.createObjectURL(blob);
@@ -386,9 +469,139 @@
       window.URL.revokeObjectURL(url);
     }
 
-    // Event listeners
+    function exportSummaryCSV() {
+      if (allEntries.length === 0) { alert('No data to export'); return; }
+
+      let csv = 'Last Activity Date,Program / Team,Evaluator Name,Evaluations Submitted,Plus Points Logged,Minus Points Logged\n';
+      const groupedByEvaluator = groupByEvaluator();
+      
+      const evaluatorSummaries = Array.from(groupedByEvaluator.values()).map(group => {
+        const sortedEntries = group.entries.sort((a, b) => b.createdAt - a.createdAt);
+        const mostRecentEntry = sortedEntries[0];
+        
+        let totalEvaluations = 0; let totalPlus = 0; let totalMinus = 0;
+        group.entries.forEach(entry => {
+          let memberEvals = entry.memberEvaluations || entry.evaluations || [];
+          totalEvaluations += memberEvals.length;
+          memberEvals.forEach(member => {
+            totalPlus += (member.pluses || []).length;
+            totalMinus += (member.minuses || []).length;
+          });
+        });
+        
+        let programDetails = mostRecentEntry.program || 'Unknown';
+        if (mostRecentEntry.team && mostRecentEntry.team !== 'N/A') programDetails += ` (${mostRecentEntry.team})`;
+
+        return {
+          evaluatorName: group.evaluatorName,
+          mostRecentDate: mostRecentEntry.createdAt || Date.now(),
+          program: programDetails,
+          totalEvaluations, totalPlus, totalMinus
+        };
+      });
+      
+      evaluatorSummaries.sort((a, b) => b.mostRecentDate - a.mostRecentDate);
+
+      evaluatorSummaries.forEach(summary => {
+        const date = new Date(summary.mostRecentDate).toLocaleString();
+        csv += `"${date}","${summary.program}","${summary.evaluatorName}","${summary.totalEvaluations}","${summary.totalPlus}","${summary.totalMinus}"\n`;
+      });
+
+      downloadCSV(csv, `FD360-TeacherSummary-${new Date().toISOString().split('T')[0]}.csv`);
+    }
+
+    function exportDetailedCSV() {
+      if (allEntries.length === 0) { alert('No data to export'); return; }
+
+      let csv = 'Date Submitted,Evaluator Name,Program,Team,Subprogram,Target Member Name,Score,Strengths,Growth Edges\n';
+      const sortedEntries = [...allEntries].sort((a, b) => b.createdAt - a.createdAt);
+
+      sortedEntries.forEach(entry => {
+        const date = new Date(entry.createdAt).toLocaleString();
+        const memberEvals = entry.memberEvaluations || entry.evaluations || [];
+        
+        memberEvals.forEach(member => {
+          const pluses = (member.pluses || []).join('; ').replace(/"/g, '""');
+          const minuses = (member.minuses || []).join('; ').replace(/"/g, '""');
+          const score = member.score || 0;
+          
+          csv += `"${date}","${entry.evaluatorName || 'Unknown'}","${entry.program || ''}","${entry.team || ''}","${entry.subprogram || ''}","${member.memberName}","${score}","${pluses}","${minuses}"\n`;
+        });
+      });
+
+      downloadCSV(csv, `FD360-RawDB-Dump-${new Date().toISOString().split('T')[0]}.csv`);
+    }
+
     document.getElementById('exportSummaryBtn').addEventListener('click', exportSummaryCSV);
     document.getElementById('exportDetailedBtn').addEventListener('click', exportDetailedCSV);
+
+    /* ── 3D DATA CORE ENGINE ── */
+    function init3DCore() {
+      const wrapper = document.getElementById('core-wrapper');
+      
+      if(typeof THREE === 'undefined') return;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+      
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(600, 600); 
+      renderer.setPixelRatio(window.devicePixelRatio);
+      wrapper.appendChild(renderer.domElement);
+
+      const getTeal = () => document.documentElement.getAttribute('data-theme') === 'dark' ? 0x4db8a6 : 0x2a7a6c;
+
+      // The Wireframe Shell
+      const shellGeo = new THREE.IcosahedronGeometry(4.5, 1);
+      const shellMat = new THREE.LineBasicMaterial({ color: getTeal(), transparent: true, opacity: 0.3 });
+      const shell = new THREE.LineSegments(new THREE.WireframeGeometry(shellGeo), shellMat);
+      scene.add(shell);
+
+      // The Particle Core
+      const pointsCount = 800;
+      const positions = new Float32Array(pointsCount * 3);
+      for (let i = 0; i < pointsCount; i++) {
+        const u = Math.random() * Math.PI * 2;
+        const v = Math.acos((Math.random() * 2) - 1);
+        const r = Math.pow(Math.random(), 1/3) * 3.5; 
+        positions[i*3] = r * Math.sin(v) * Math.cos(u);
+        positions[i*3+1] = r * Math.sin(v) * Math.sin(u);
+        positions[i*3+2] = r * Math.cos(v);
+      }
+      const coreGeo = new THREE.BufferGeometry();
+      coreGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      const coreMat = new THREE.PointsMaterial({ color: getTeal(), size: 0.08, transparent: true, opacity: 0.8, blending: THREE.AdditiveBlending });
+      const core = new THREE.Points(coreGeo, coreMat);
+      scene.add(core);
+
+      camera.position.z = 10;
+
+      function animate() {
+        requestAnimationFrame(animate);
+        shell.rotation.y += 0.002;
+        shell.rotation.x += 0.001;
+        core.rotation.y -= 0.005;
+        core.rotation.z += 0.002;
+
+        const time = Date.now() * 0.002;
+        shell.scale.setScalar(1 + Math.sin(time) * 0.02);
+        core.scale.setScalar(1 + Math.sin(time*1.5) * 0.05);
+        
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      const themeObs = new MutationObserver(() => {
+        const c = getTeal();
+        shellMat.color.setHex(c);
+        coreMat.color.setHex(c);
+      });
+      themeObs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      try { init3DCore(); } catch(e) {}
+    });
   </script>
 </body>
 </html>
