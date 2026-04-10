@@ -1,711 +1,671 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Emotion Tracker – Check-in (Individual Members)</title>
+  <title>FD 360 – Member Evaluation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
   <style>
-    :root { --bg:#edf6ef; --card:#ffffff; --text:#0b1f14; --muted:#5a6b5f; --border:#cfe2d5; --primary:#14532d; --primary-ink:#ffffff; --accent:#1a7f46; --ring:#9ae6b4; }
-    *{ box-sizing: border-box; }
-    body{ margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background:linear-gradient(160deg, #f0f7f2, #e7f2ea); color:var(--text); }
-    .container{ max-width:960px; margin:0 auto; padding:24px; }
-    .nav{ position:sticky; top:0; z-index:10; backdrop-filter: blur(6px); background:rgba(255,255,255,0.6); border-bottom:1px solid var(--border); }
-    .nav-inner{ max-width:1100px; margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; }
-    .brand{ font-weight:700; color:var(--primary); letter-spacing:0.2px; }
-    .nav-link{ padding:8px 12px; border-radius:10px; text-decoration:none; color:var(--text); font-weight:600; }
-    .nav-link:hover{ background:#e6f3ea; }
-    .nav-link.active{ background:var(--primary); color:var(--primary-ink); }
-    .card{ background:var(--card); border:1px solid var(--border); border-radius:18px; padding:22px; box-shadow: 0 6px 20px rgba(20,83,45,0.06); }
-    h1{ font-size:24px; margin:0 0 6px; }
-    p.desc{ margin:0; color:var(--muted); }
-    .grid{ display:grid; gap:16px; }
-    .grid-3{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    label{ font-size:13px; font-weight:700; display:block; margin-bottom:6px; color:#0f2917; }
-    input[type="text"], input[type="number"], select, textarea{ width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); outline:none; background:#fbfefc; font-family: inherit; }
-    input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:focus{ box-shadow: 0 0 0 3px rgba(46,125,75,0.18); border-color: var(--accent);}  
-    input[disabled], select[disabled]{ background:#f3f3f7; color:#aaa; cursor:not-allowed; }
-    textarea{ min-height:80px; resize:vertical; }
-    .row{ display:flex; gap:12px; align-items:center; flex-wrap: wrap; }
-    .btn{ background:var(--primary); color:var(--primary-ink); padding:10px 14px; border:none; border-radius:12px; cursor:pointer; box-shadow:0 1px 0 rgba(0,0,0,0.06); font-weight:600; font-size:14px; font-family:inherit;} 
-    .btn:hover{ filter:brightness(1.05);} 
-    .btn:active{ transform: translateY(1px);} 
-    .btn[disabled]{ background:#bbb; cursor:not-allowed; }
-    .btn-secondary{ background:var(--muted); }
-    .btn-remove{ background:#dc2626; padding:6px 12px; font-size:12px; }
-    .footer{ color:var(--muted); font-size:12px; }
-    .inline-hint{ color:var(--muted); font-size:12px; margin-top:4px; }
-    .two{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
-    .member-eval{ background:#f9fcfa; border:1px solid var(--border); border-radius:12px; padding:16px; margin-bottom:16px; position:relative; }
-    .member-eval h3{ margin:0 0 12px; font-size:16px; color:var(--primary); }
-    .eval-grid{ display:grid; grid-template-columns: 1fr 1fr 120px; gap:12px; align-items:start; }
-    .eval-group{ display:flex; flex-direction:column; gap:6px; }
-    .score-input{ display:flex; flex-direction:column; }
-    .score-input label{ margin-bottom:6px; }
-    .score-input input{ width:100%; text-align:center; font-size:16px; font-weight:700; }
-    .add-member-section{ margin-top:24px; padding-top:24px; border-top:2px solid var(--border); }
-    .add-member-header{ display:flex; align-items:center; gap:12px; margin-bottom:12px; }
-    .add-member-header label{ margin:0; }
-    .add-member-controls{ display:flex; gap:12px; margin-bottom:16px; align-items:flex-end; }
-    .add-member-controls > div{ flex:1; }
-    .auto-save-indicator{ display:inline-flex; align-items:center; gap:6px; font-size:12px; color:var(--accent); opacity:0; transition: opacity 0.3s; }
-    .auto-save-indicator.visible{ opacity:1; }
-    .remove-btn-container{ position:absolute; top:16px; right:16px; }
-    .custom-name-badge{ display:inline-block; background:#fef3c7; color:#92400e; padding:2px 8px; border-radius:6px; font-size:11px; font-weight:600; margin-left:8px; }
-    @media (max-width: 800px){ .grid-3{ grid-template-columns:1fr; } .two{ grid-template-columns:1fr; } .eval-grid{ grid-template-columns:1fr; } .add-member-controls{ flex-direction:column; } }
+    /* ── TOKENS ── */
+    :root {
+      --sand:         #faf8f4;
+      --sand2:        #f2ede4;
+      --sand3:        #e6dfd4;
+      --white:        #ffffff;
+      --ink:          #28211c;
+      --ink2:         #6b5f56;
+      --ink3:         #a8998e;
+      --teal:         #2a7a6c;
+      --teal-light:   #e6f4f1;
+      --teal-mid:     #3d9e8d;
+      --rose:         #b84e48;
+      --rose-light:   #fdf0ef;
+      --amber:        #b07030;
+      --amber-light:  #fdf4e7;
+      --border:       rgba(40,33,28,0.1);
+      --border-md:    rgba(40,33,28,0.18);
+      --border-str:   rgba(40,33,28,0.26);
+      --card-bg:      #ffffff;
+      --page-bg:      #faf8f4;
+      --input-bg:     #f5f1eb;
+      --shadow:       0 1px 4px rgba(40,33,28,0.06), 0 4px 16px rgba(40,33,28,0.04);
+    }
+
+    [data-theme="dark"] {
+      --sand:         #1a1612;
+      --sand2:        #231e19;
+      --sand3:        #2e2720;
+      --white:        #2e2720;
+      --ink:          #f0ebe4;
+      --ink2:         #b0a090;
+      --ink3:         #6e6058;
+      --teal:         #4db8a6;
+      --teal-light:   #0f2e2a;
+      --teal-mid:     #3d9e8d;
+      --rose:         #e07068;
+      --rose-light:   #2e1614;
+      --amber:        #d4944a;
+      --amber-light:  #2a1e0c;
+      --border:       rgba(240,235,228,0.08);
+      --border-md:    rgba(240,235,228,0.14);
+      --border-str:   rgba(240,235,228,0.22);
+      --card-bg:      #231e19;
+      --page-bg:      #1a1612;
+      --input-bg:     #2e2720;
+      --shadow:       0 1px 4px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.2);
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+      background: var(--page-bg); color: var(--ink);
+      min-height: 100vh; line-height: 1.5;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    /* ── INTRO / SPLASH SCREEN ── */
+    body.intro-mode { overflow: hidden; }
+
+    #intro-overlay {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: var(--page-bg); z-index: 9000;
+      display: flex; align-items: flex-end; justify-content: center; padding-bottom: 15vh;
+      transition: opacity 1s ease-in-out, background 0.25s; cursor: pointer;
+    }
+
+    #intro-text {
+      font-family: 'DM Serif Display', Georgia, serif; font-size: 22px; color: var(--teal);
+      letter-spacing: 2px; text-transform: uppercase;
+      animation: pulse 2s infinite ease-in-out; opacity: 0.7; transition: opacity 0.5s;
+    }
+
+    #brain-wrapper {
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: clamp(250px, 45vw, 400px); height: clamp(250px, 45vw, 400px);
+      z-index: 9999; cursor: pointer;
+      transition: all 1s cubic-bezier(0.25, 1, 0.3, 1);
+    }
+
+    #brain-wrapper canvas { width: 100% !important; height: 100% !important; }
+
+    #main-content { opacity: 0; pointer-events: none; transition: opacity 1s ease-in-out; }
+
+    @keyframes pulse {
+      0% { opacity: 0.3; transform: scale(0.98); }
+      50% { opacity: 0.8; transform: scale(1); }
+      100% { opacity: 0.3; transform: scale(0.98); }
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--card-bg); border-bottom: 1px solid var(--border);
+      padding: 0 32px; display: flex; align-items: center; justify-content: space-between;
+      height: 60px; transition: background 0.25s, border-color 0.25s;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .globe-svg { width: 30px; height: 30px; flex-shrink: 0; }
+    .brand-text { display: flex; flex-direction: column; line-height: 1; }
+    .brand-name { font-family: 'DM Serif Display', Georgia, serif; font-size: 16px; color: var(--ink); letter-spacing: -0.2px; }
+    .brand-sub { font-size: 9px; color: var(--ink3); letter-spacing: 1.8px; text-transform: uppercase; font-weight: 400; margin-top: 3px; }
+    
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .nav-links { display: flex; gap: 2px; align-items: center; }
+    .nav-link { font-size: 13px; font-weight: 400; padding: 6px 14px; border-radius: 100px; text-decoration: none; color: var(--ink2); transition: background 0.15s, color 0.15s; cursor: pointer; border: 1px solid transparent; }
+    .nav-link:hover { background: var(--sand2); color: var(--ink); }
+    .nav-link.active { background: var(--ink); color: var(--page-bg); }
+
+    .theme-toggle {
+      width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border-md); background: var(--input-bg);
+      cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--ink2); transition: all 0.15s; flex-shrink: 0;
+    }
+    .theme-toggle:hover { background: var(--sand3); color: var(--ink); }
+    .theme-toggle svg { width: 15px; height: 15px; }
+    .icon-sun { display: none; }
+    .icon-moon { display: block; }
+    [data-theme="dark"] .icon-sun { display: block; }
+    [data-theme="dark"] .icon-moon { display: none; }
+
+    .mobile-menu-btn {
+      display: none; background: transparent; border: none; padding: 4px;
+      color: var(--ink); cursor: pointer; transition: opacity 0.2s;
+    }
+    .mobile-menu-btn svg { width: 24px; height: 24px; }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    /* ── PAGE HEADER & BRAIN TARGET ── */
+    .page-header { margin-bottom: 44px; position: relative; }
+    #brain-canvas-container {
+      position: absolute; top: -30px; right: 0; width: 300px; height: 300px;
+      pointer-events: none; z-index: -1; opacity: 0.8;
+    }
+
+    .page-eyebrow { display: flex; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); font-weight: 500; margin-bottom: 14px; }
+    .eyebrow-line { width: 22px; height: 1px; background: var(--teal); }
+    .page-title { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(34px, 5.5vw, 56px); line-height: 1.05; letter-spacing: -1.5px; color: var(--ink); }
+    .page-title em { font-style: italic; color: var(--teal); }
+    .page-desc { margin-top: 14px; font-size: 15px; color: var(--ink2); line-height: 1.75; max-width: 500px; font-weight: 300; }
+    .autosave { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; color: var(--teal); opacity: 0; transition: opacity 0.4s; margin-top: 14px; }
+    .autosave.show { opacity: 1; }
+    .autosave-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
+
+    /* ── CARDS & FORMS ── */
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 28px 32px; margin-bottom: 14px; box-shadow: var(--shadow); transition: background 0.25s, border-color 0.25s, box-shadow 0.25s; }
+    .card:focus-within { border-color: var(--border-md); }
+    .step-label { display: flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink3); font-weight: 500; margin-bottom: 22px; }
+    .step-num { width: 20px; height: 20px; border-radius: 50%; background: var(--sand2); color: var(--ink2); font-size: 10px; display: flex; align-items: center; justify-content: center; font-weight: 500; flex-shrink: 0; border: 1px solid var(--border); }
+    .field { margin-bottom: 18px; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label { display: block; font-size: 12px; font-weight: 500; color: var(--ink2); margin-bottom: 7px; letter-spacing: 0.1px; }
+    .field-opt { color: var(--ink3); font-weight: 400; }
+    input[type="text"], input[type="number"], select, textarea { width: 100%; padding: 11px 14px; background: var(--input-bg); border: 1px solid var(--border); border-radius: 12px; outline: none; font-family: 'DM Sans', system-ui, sans-serif; font-size: 14px; color: var(--ink); transition: border-color 0.18s, background 0.18s, box-shadow 0.18s; appearance: none; -webkit-appearance: none; }
+    input[type="text"]:hover, input[type="number"]:hover, select:hover, textarea:hover { border-color: var(--border-md); }
+    input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:focus { border-color: var(--teal-mid); background: var(--card-bg); box-shadow: 0 0 0 3px rgba(61,158,141,0.12); }
+    input::placeholder, textarea::placeholder { color: var(--ink3); font-weight: 300; }
+    select option { background: var(--card-bg); color: var(--ink); }
+    textarea { min-height: 90px; resize: vertical; line-height: 1.6; }
+    .score-inp { text-align: center; font-family: 'DM Serif Display', Georgia, serif; font-size: 26px; color: var(--teal); padding: 14px 8px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .grid-eval { display: grid; grid-template-columns: 1fr 1fr 96px; gap: 16px; }
+
+    /* ── BUTTONS ── */
+    .btn { font-family: 'DM Sans', system-ui, sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.1px; padding: 11px 22px; border-radius: 100px; border: none; cursor: pointer; transition: all 0.15s; display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
+    .btn:active:not([disabled]) { transform: scale(0.97); }
+    .btn-primary { background: var(--ink); color: var(--page-bg); }
+    .btn-primary:hover:not([disabled]) { opacity: 0.85; }
+    .btn-primary[disabled] { opacity: 0.28; cursor: not-allowed; }
+    .btn-outline { background: transparent; color: var(--ink2); border: 1px solid var(--border-md); }
+    .btn-outline:hover { background: var(--sand2); color: var(--ink); }
+    .btn-teal { background: var(--teal-light); color: var(--teal); border: 1px solid rgba(61,158,141,0.25); }
+    .btn-teal:hover { filter: brightness(0.96); }
+    .btn-danger { background: var(--rose-light); color: var(--rose); border: 1px solid rgba(184,78,72,0.2); font-size: 12px; padding: 6px 14px; }
+    .btn-danger:hover { filter: brightness(0.94); }
+
+    .actions { display: flex; align-items: center; gap: 16px; margin-top: 10px; flex-wrap: wrap; }
+    .status-msg { font-size: 13px; color: var(--ink3); font-weight: 300; }
+    .status-msg.ok  { color: var(--teal); }
+    .status-msg.err { color: var(--rose); }
+
+    .step-breadcrumb { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; flex-wrap: wrap; }
+    .context-pill { font-size: 12px; color: var(--teal); background: var(--teal-light); border: 1px solid rgba(61,158,141,0.2); border-radius: 100px; padding: 5px 14px; }
+
+    /* ── MEMBER CARDS ── */
+    .member-card { background: var(--sand2); border: 1px solid var(--border); border-radius: 16px; padding: 22px 24px; margin-bottom: 12px; transition: border-color 0.2s, background 0.25s; animation: appear 0.28s cubic-bezier(0.34, 1.3, 0.64, 1); }
+    .member-card:hover { border-color: var(--border-md); }
+    @keyframes appear { from { opacity: 0; transform: translateY(8px) scale(0.98); } to  { opacity: 1; transform: translateY(0) scale(1); } }
+    .member-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 18px; gap: 12px; }
+    .member-idx { font-size: 11px; color: var(--ink3); letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 4px; }
+    .member-name { font-family: 'DM Serif Display', Georgia, serif; font-size: 20px; color: var(--ink); letter-spacing: -0.3px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .new-pill { font-family: 'DM Sans', sans-serif; font-size: 10px; text-transform: uppercase; background: var(--amber-light); color: var(--amber); border: 1px solid rgba(176,112,48,0.22); border-radius: 100px; padding: 3px 10px; font-weight: 500; }
+    .eval-hint { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--ink3); margin-bottom: 7px; }
+    .hint-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+    .hd-plus  { background: var(--teal); } .hd-minus { background: var(--rose); } .hd-score { background: var(--amber); }
+
+    .divider { border: none; border-top: 1px solid var(--border); margin: 26px 0; }
+    .add-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: var(--ink2); margin-bottom: 16px; }
+    .add-plus { width: 22px; height: 22px; border-radius: 50%; background: var(--teal-light); color: var(--teal); border: 1px solid rgba(61,158,141,0.25); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .add-row { display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; }
+    .add-row .field { flex: 1; min-width: 160px; margin-bottom: 0; }
+    .hint-text { font-size: 12px; color: var(--ink3); margin-top: 10px; font-weight: 300; }
+    .empty-state { text-align: center; padding: 36px 24px; border: 1.5px dashed var(--border-md); border-radius: 14px; color: var(--ink3); font-size: 14px; font-weight: 300; line-height: 1.7; }
+    
+    .page-footer { text-align: center; margin-top: 48px; font-size: 12px; color: var(--ink3); font-weight: 300; }
+    .hidden { display: none !important; }
+
+    /* ── RESPONSIVE / MOBILE MENU ── */
+    @media (max-width: 700px) {
+      nav { padding: 0 16px; }
+      .mobile-menu-btn { display: block; }
+      
+      .nav-links {
+        display: none; position: absolute; top: 60px; left: 0; right: 0;
+        background: var(--card-bg); flex-direction: column; align-items: flex-start;
+        padding: 16px; border-bottom: 1px solid var(--border);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.06); z-index: 90;
+      }
+      .nav-links.show { display: flex; }
+      .nav-link { width: 100%; padding: 12px 14px; text-align: left; border-radius: 8px; }
+
+      .container { padding: 32px 16px 60px; }
+      .card { padding: 20px; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-eval { grid-template-columns: 1fr; }
+      .add-row { flex-direction: column; }
+      .member-header { flex-direction: column; }
+      #brain-canvas-container { width: 180px; height: 180px; top: 0; }
+    }
   </style>
 </head>
-<body>
-  <div class="nav">
-    <div class="nav-inner">
-      <div class="brand">🌿 Pulse</div>
-      <div class="links">
-        <a href="index.html" class="nav-link active">Check‑in</a>
-        <a href="dashboard.html" class="nav-link">Feedback</a>
-        <a href="dashboard-v2.html" class="nav-link">Scoreboard</a>
-        <a href="teachers.html" class="nav-link">Teachers</a>
+<body class="intro-mode">
+
+  <div id="intro-overlay">
+    <div id="intro-text">Initialize FD 360</div>
+  </div>
+  
+  <div id="brain-wrapper"></div>
+
+  <div id="main-content">
+    <nav>
+      <a class="brand" href="#">
+        <svg class="globe-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="12.5" stroke="var(--teal)" stroke-width="1.3"/>
+          <ellipse cx="16" cy="16" rx="5.5" ry="12.5" stroke="var(--teal)" stroke-width="1.3"/>
+          <path d="M3.5 16 Q9 13.5 16 14.5 Q23 15.5 28.5 16" stroke="var(--teal)" stroke-width="1.1" fill="none"/>
+          <path d="M5.5 10 Q10.5 8.5 16 9 Q21.5 9.5 26.5 10" stroke="var(--teal)" stroke-width="0.9" fill="none" stroke-dasharray="0"/>
+          <path d="M5.5 22 Q10.5 23.5 16 23 Q21.5 22.5 26.5 22" stroke="var(--teal)" stroke-width="0.9" fill="none"/>
+          <circle cx="16" cy="16" r="1.8" fill="var(--teal)"/>
+        </svg>
+        <div class="brand-text">
+          <span class="brand-name">FD 360</span>
+          <span class="brand-sub">peer review</span>
+        </div>
+      </a>
+
+      <div class="nav-right">
+        <div class="nav-links" id="navLinks">
+          <a href="#" class="nav-link active">check-in</a>
+          <a href="#" class="nav-link">feedback</a>
+          <a href="#" class="nav-link">dashboard</a>
+          <a href="#" class="nav-link">teachers</a>
+        </div>
+        
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M12.5 10A6 6 0 015 2.5a6.5 6.5 0 100 10 6 6 0 007.5-2.5z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="7.5" cy="7.5" r="3"/><path d="M7.5 1v1.5M7.5 12.5V14M14 7.5h-1.5M2.5 7.5H1M12 3l-1 1M4 11l-1 1M12 12l-1-1M4 4l-1-1"/></svg>
+        </button>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12h18M3 6h18M3 18h18" />
+          </svg>
+        </button>
       </div>
-    </div>
+    </nav>
+
+    <main class="container">
+      <div class="page-header">
+        <div id="brain-canvas-container"></div>
+        <div class="page-eyebrow"><span class="eyebrow-line"></span> Member evaluation</div>
+        <h1 class="page-title">See the <em>whole</em><br>picture</h1>
+        <p class="page-desc">A gentle, full-circle review. Select your program, choose members, and share what you genuinely observe.</p>
+        <div class="autosave" id="autosave"><div class="autosave-dot"></div> Draft saved</div>
+      </div>
+
+      <div id="step1">
+        <div class="card">
+          <div class="step-label"><span class="step-num">1</span>Who you are</div>
+          <div class="field">
+            <label class="field-label" for="evaluatorName">Your name</label>
+            <input type="text" id="evaluatorName" placeholder="Enter your full name" autocomplete="name" />
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="step-label"><span class="step-num">2</span>Your program</div>
+          <div class="grid-3">
+            <div class="field">
+              <label class="field-label" for="program">Program</label>
+              <select id="program"><option value="">Select a program</option></select>
+            </div>
+            <div class="field hidden" id="teamContainer">
+              <label class="field-label" for="team">Team</label>
+              <select id="team"><option value="">Select a team</option></select>
+            </div>
+            <div class="field">
+              <label class="field-label" for="subprogram">Subprogram <span class="field-opt">(optional)</span></label>
+              <input type="text" id="subprogram" placeholder="Leave blank if none" />
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" id="nextBtn" disabled>
+            Continue
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4.5l3 2.5-3 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <span class="status-msg" id="statusStep1"></span>
+        </div>
+      </div>
+
+      <div id="step2" class="hidden">
+        <div class="step-breadcrumb">
+          <button class="btn btn-outline" id="backBtn" style="font-size:12px;padding:8px 16px;">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M10 6.5H3M6 3.5L3 6.5 6 9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Back
+          </button>
+          <span class="context-pill" id="contextBadge">Program</span>
+        </div>
+
+        <div class="card">
+          <div id="membersList"></div>
+          <hr class="divider" />
+          <div class="add-title"><span class="add-plus">+</span>Add a member to evaluate</div>
+          <div class="add-row">
+            <div class="field">
+              <label class="field-label" for="memberDropdown">Directory</label>
+              <select id="memberDropdown">
+                <option value="">Select a member...</option>
+                <option value="__custom__">Write a custom name...</option>
+              </select>
+            </div>
+            <div class="field hidden" id="customNameContainer">
+              <label class="field-label" for="customMemberName">Custom name</label>
+              <input type="text" id="customMemberName" placeholder="Enter their name" />
+            </div>
+            <button class="btn btn-teal" id="addMemberBtn" style="align-self:flex-end;">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 2v9M2 6.5h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Add
+            </button>
+          </div>
+          <p class="hint-text" id="memberSourceLabel">Members loaded from your program directory.</p>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" id="submitBtn" disabled>Submit evaluations</button>
+          <span class="status-msg" id="status"></span>
+        </div>
+      </div>
+
+      <p class="page-footer">Data saved to Firebase · Auto-draft prevents loss</p>
+    </main>
   </div>
 
-  <div class="container">
-    <div class="card" style="margin-bottom:16px">
-      <h1>Member Evaluation</h1>
-      <p class="desc">Select the program and subprogram, then evaluate each member with 3 pluses, 3 minuses, and a score out of 10.</p>
-      <div class="auto-save-indicator" id="autoSaveIndicator">
-        <span>💾</span>
-        <span>Auto-saved</span>
-      </div>
-    </div>
-
-    <!-- Step 1: Basic Info -->
-    <div class="card" id="step1">
-      <div class="grid">
-        <div>
-          <label>Evaluator name</label>
-          <input type="text" id="evaluatorName" placeholder="Your name" />
-        </div>
-
-        <div class="grid-3">
-          <div>
-            <label>Program</label>
-            <select id="program">
-              <option value="">Select program</option>
-            </select>
-          </div>
-          <div id="teamContainer" style="display:none;">
-            <label>Team</label>
-            <select id="team">
-              <option value="">Select team</option>
-            </select>
-          </div>
-          <div>
-            <label>Subprogram (optional)</label>
-            <input type="text" id="subprogram" placeholder="Enter subprogram or leave blank" />
-          </div>
-        </div>
-
-        <div class="row">
-          <button class="btn" id="nextBtn" disabled>Next: Evaluate Members</button>
-          <span class="footer" id="statusStep1"></span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Step 2: Member Evaluations -->
-    <div class="card" id="step2" style="display:none;">
-      <div style="margin-bottom:20px;">
-        <button class="btn btn-secondary" id="backBtn">← Back to Details</button>
-      </div>
-
-      <div id="membersList"></div>
-
-      <!-- Add Member Section -->
-      <div class="add-member-section">
-        <h3 style="margin:0 0 16px; font-size:16px;">Add Member to Evaluate</h3>
-        <div class="add-member-controls">
-          <div>
-            <label>Select or type member name</label>
-            <select id="memberDropdown">
-              <option value="">Choose from list...</option>
-              <option value="__custom__">→ Type custom name...</option>
-            </select>
-          </div>
-          <div id="customNameContainer" style="display:none;">
-            <label>Custom member name</label>
-            <input type="text" id="customMemberName" placeholder="Enter member name" />
-          </div>
-          <button class="btn" id="addMemberBtn" style="align-self:flex-end;">+ Add Member</button>
-        </div>
-        <div class="inline-hint">
-          <span id="memberSourceLabel"></span>
-          You can evaluate the same person multiple times. New names will be added to <span id="teamAssignmentLabel"></span>.
-        </div>
-      </div>
-
-      <div class="row" style="margin-top:24px;">
-        <button class="btn" id="submitBtn" disabled>Submit All Evaluations</button>
-        <span class="footer" id="status"></span>
-      </div>
-    </div>
-
-    <div class="footer" style="margin-top:12px">Data saved to Firebase Realtime Database. Form auto-saves to prevent data loss.</div>
-  </div>
-
-  <!-- Firebase SDKs (Compat) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database-compat.js"></script>
 
   <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyBog7q44JN9wVjfk2wy7FqS80NLJC5348g",
-      authDomain: "emotion-tracker-7f11c.firebaseapp.com",
-      databaseURL: "https://emotion-tracker-7f11c-default-rtdb.firebaseio.com",
-      projectId: "emotion-tracker-7f11c",
-      storageBucket: "emotion-tracker-7f11c.firebasestorage.app",
-      messagingSenderId: "232586277659",
-      appId: "1:232586277659:web:1fcff097243c8fa1ef99be"
-    };
-
-    const STORAGE_KEY = 'emotion_tracker_draft';
-    let directory = null;
-    let authUid = null;
-    let subprogramMembers = [];
-    let evaluations = [];
-    let evaluationCounter = 0;
-    let autoSaveTimer = null;
-    let selectedSubprogram = null;
-    let selectedTeam = null;
-    let selectedProgram = null;
-
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.database();
-
-    // Set up auth state listener first
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        authUid = user.uid;
-        console.log('Firebase Auth successful:', authUid);
-        document.getElementById('statusStep1').textContent = '';
-      } else {
-        authUid = null;
-        console.log('No user signed in, attempting anonymous sign in...');
-        auth.signInAnonymously().catch(err => {
-          console.error('Anonymous sign in failed:', err);
-          document.getElementById('statusStep1').textContent = 'Auth failed: ' + (err.message || 'Please refresh the page');
-        });
-      }
-      updateNextBtnState();
+    /* ── MOBILE MENU LOGIC ── */
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
     });
 
-    fetch('directory.json')
-      .then(r => r.json())
-      .then(data => { 
-        directory = data.programs || {}; 
-        initForm(); 
-        loadSavedData(); 
-      })
-      .catch(err => { 
-        console.error(err); 
-        document.getElementById('statusStep1').textContent = "Failed to load directory.json"; 
-      });
+    document.addEventListener('click', (e) => {
+      if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        navLinks.classList.remove('show');
+      }
+    });
 
-    function initForm(){
-      const programSel = document.getElementById('program');
-      const teamSel = document.getElementById('team');
-      const teamContainer = document.getElementById('teamContainer');
-      const subprogramInput = document.getElementById('subprogram');
-      const memberDropdown = document.getElementById('memberDropdown');
-      const customNameContainer = document.getElementById('customNameContainer');
-      const customMemberName = document.getElementById('customMemberName');
+    /* ── BRAIN 3D ENGINE ── */
+    let renderer, hasEntered = false;
 
-      programSel.innerHTML = '<option value="">Select program</option>' + 
-        Object.keys(directory).sort().map(p => `<option value="${p}">${p}</option>`).join('');
+    function initBrain() {
+      const wrapper = document.getElementById('brain-wrapper');
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+      
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(400, 400); 
+      renderer.setPixelRatio(window.devicePixelRatio);
+      wrapper.appendChild(renderer.domElement);
 
-      programSel.addEventListener('change', () => {
-        const program = programSel.value;
+      const pointsCount = 3500;
+      const positions = new Float32Array(pointsCount * 3);
+      
+      for (let i = 0; i < pointsCount; i++) {
+        const i3 = i * 3;
+        const u = Math.random() * Math.PI * 2;
+        const v = Math.acos((Math.random() * 2) - 1);
         
-        if (program && directory[program]) {
-          const programData = directory[program];
-          const hasTeams = programData.teams && Object.keys(programData.teams).length > 0;
-          
-          if (hasTeams) {
-            teamContainer.style.display = 'block';
-            const teams = Object.keys(programData.teams).sort();
-            teamSel.innerHTML = '<option value="">Select team</option>' + 
-              teams.map(t => `<option value="${t}">${t}</option>`).join('');
-            teamSel.disabled = false;
-          } else {
-            teamContainer.style.display = 'none';
-            teamSel.value = '';
-            selectedTeam = null;
-          }
-        } else {
-          teamContainer.style.display = 'none';
-          teamSel.value = '';
-          selectedTeam = null;
+        const w = 3.8; 
+        const h = 3.0; 
+        const l = 4.8; 
+        
+        let x = w * Math.sin(v) * Math.cos(u);
+        let y = h * Math.sin(v) * Math.sin(u);
+        let z = l * Math.cos(v);
+        
+        if (z > 0) {
+          x *= (1.0 - z * 0.08);
+          y *= (1.0 - z * 0.04);
         }
         
-        updateNextBtnState();
-        autoSave();
-      });
-
-      teamSel.addEventListener('change', () => {
-        selectedTeam = teamSel.value || null;
-        updateNextBtnState();
-        autoSave();
-      });
-
-      subprogramInput.addEventListener('input', () => {
-        updateNextBtnState();
-        autoSave();
-      });
-      
-      document.getElementById('evaluatorName').addEventListener('input', () => { 
-        updateNextBtnState(); 
-        autoSave(); 
-      });
-
-      memberDropdown.addEventListener('change', () => {
-        if (memberDropdown.value === '__custom__') {
-          customNameContainer.style.display = 'block';
-          customMemberName.focus();
-        } else {
-          customNameContainer.style.display = 'none';
-          customMemberName.value = '';
-        }
-      });
-
-      customMemberName.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          addMember();
-        }
-      });
-
-      document.getElementById('nextBtn').addEventListener('click', goToStep2);
-      document.getElementById('backBtn').addEventListener('click', goToStep1);
-      document.getElementById('addMemberBtn').addEventListener('click', addMember);
-      document.getElementById('submitBtn').addEventListener('click', submitAll);
-    }
-
-    function updateNextBtnState(){
-      const name = document.getElementById('evaluatorName').value.trim();
-      const program = document.getElementById('program').value;
-      const teamContainer = document.getElementById('teamContainer');
-      const team = document.getElementById('team').value;
-      
-      const teamRequired = teamContainer.style.display !== 'none';
-      const teamOk = !teamRequired || team;
-      
-      const ok = !!(name && program && authUid && teamOk);
-      
-      document.getElementById('nextBtn').disabled = !ok;
-      
-      const statusEl = document.getElementById('statusStep1');
-      if (!authUid) {
-        statusEl.textContent = 'Connecting to Firebase...';
-        statusEl.style.color = '#f59e0b';
-      } else if (ok) {
-        statusEl.textContent = '';
-      } else if (name && program && teamRequired && !team) {
-        statusEl.textContent = 'Please select a team';
-        statusEl.style.color = '#f59e0b';
-      } else if (name && program) {
-        statusEl.textContent = 'Ready to proceed';
-        statusEl.style.color = '#10b981';
-      }
-    }
-
-    function goToStep2(){
-      const program = document.getElementById('program').value;
-      const subprogram = document.getElementById('subprogram').value.trim();
-      const team = document.getElementById('team').value;
-      
-      selectedProgram = program;
-      selectedSubprogram = subprogram || 'N/A';
-      selectedTeam = team || null;
-      
-      const savedData = getSavedData();
-      
-      const programData = directory[program];
-      let allMembers = [];
-      
-      if (selectedTeam && programData?.teams && programData.teams[selectedTeam]) {
-        allMembers = Object.keys(programData.teams[selectedTeam].members || {});
-      } else if (programData?.members) {
-        allMembers = Object.keys(programData.members);
-      }
-      
-      subprogramMembers = allMembers.sort((a, b) => 
-        a.toLowerCase().localeCompare(b.toLowerCase())
-      );
-      
-      let labelText = program;
-      if (selectedTeam) labelText += ` - ${selectedTeam}`;
-      if (subprogram) labelText += ` (${subprogram})`;
-      
-      document.getElementById('memberSourceLabel').textContent = `Members from ${labelText}. `;
-      
-      let assignmentText = selectedTeam 
-        ? `the "${selectedTeam}" team` 
-        : `the "${program}" program`;
-      document.getElementById('teamAssignmentLabel').textContent = assignmentText;
-      
-      populateMemberDropdown();
-      
-      if (savedData && savedData.program === program && savedData.team === team && savedData.evaluations && Array.isArray(savedData.evaluations) && savedData.evaluations.length > 0) {
-        evaluations = savedData.evaluations;
-        evaluationCounter = savedData.evaluationCounter || evaluations.length;
-      } else {
-        evaluations = [];
-        evaluationCounter = 0;
-      }
-      
-      renderEvaluations();
-
-      document.getElementById('step1').style.display = 'none';
-      document.getElementById('step2').style.display = 'block';
-    }
-
-    function goToStep1(){
-      document.getElementById('step2').style.display = 'none';
-      document.getElementById('step1').style.display = 'block';
-    }
-
-    function populateMemberDropdown(){
-      const dropdown = document.getElementById('memberDropdown');
-      
-      if (subprogramMembers.length === 0) {
-        dropdown.innerHTML = '<option value="">No members in directory</option><option value="__custom__">→ Type custom name...</option>';
-      } else {
-        dropdown.innerHTML = '<option value="">Choose from list...</option>' +
-          subprogramMembers.map(name => `<option value="${name}">${name}</option>`).join('') +
-          '<option value="__custom__">→ Type custom name...</option>';
-      }
-      
-      dropdown.disabled = false;
-    }
-
-    async function addMember(){
-      const dropdown = document.getElementById('memberDropdown');
-      const customNameInput = document.getElementById('customMemberName');
-      let memberName = '';
-      let isCustom = false;
-      
-      if (dropdown.value === '__custom__') {
-        memberName = customNameInput.value.trim();
-        isCustom = true;
+        const fissureDepth = Math.max(0, 1.0 - Math.abs(x) * 0.8); 
+        x += (x > 0 ? 1 : -1) * fissureDepth * 0.6;
         
-        if (!memberName) {
-          alert('Please enter a member name');
-          customNameInput.focus();
-          return;
-        }
+        const noise = Math.sin(x*2) * Math.cos(y*2) * Math.sin(z*2) * 0.4;
+        x += noise; y += noise; z += noise;
         
-        await addCustomMemberToDirectory(memberName);
-      } else {
-        memberName = dropdown.value;
+        const depth = Math.pow(Math.random(), 0.3); 
         
-        if (!memberName) {
-          alert('Please select a member from the dropdown or choose "Type custom name"');
-          return;
-        }
+        positions[i3]     = x * depth;
+        positions[i3 + 1] = y * depth;
+        positions[i3 + 2] = z * depth;
       }
 
-      evaluations.push({
-        id: ++evaluationCounter,
-        memberName: memberName,
-        isCustom: isCustom,
-        pluses: '',
-        minuses: '',
-        score: ''
+      const geometry = new THREE.BufferGeometry();
+      geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+      const getTeal = () => document.documentElement.getAttribute('data-theme') === 'dark' ? 0x4db8a6 : 0x2a7a6c;
+
+      const material = new THREE.PointsMaterial({
+        color: getTeal(), size: 0.1, transparent: true, opacity: 0.6, blending: THREE.AdditiveBlending
       });
 
-      dropdown.value = '';
-      customNameInput.value = '';
-      document.getElementById('customNameContainer').style.display = 'none';
+      const brain = new THREE.Points(geometry, material);
+      brain.rotation.x = 0.2;
+      scene.add(brain);
+      camera.position.z = 11;
 
-      renderEvaluations();
-      autoSave();
-    }
-
-    async function addCustomMemberToDirectory(memberName) {
-      if (!authUid) {
-        console.error('Not authenticated');
-        return;
+      function animate() {
+        requestAnimationFrame(animate);
+        brain.rotation.y += 0.003;
+        const time = Date.now() * 0.001;
+        material.opacity = 0.4 + Math.sin(time * 2) * 0.2;
+        brain.scale.setScalar(1 + Math.sin(time) * 0.03);
+        renderer.render(scene, camera);
       }
+      animate();
 
-      try {
-        const programData = directory[selectedProgram];
-        
-        if (selectedTeam && programData?.teams && programData.teams[selectedTeam]) {
-          const teamMembersRef = db.ref(`programs/${selectedProgram}/teams/${selectedTeam}/members/${memberName}`);
-          await teamMembersRef.set(true);
-          console.log(`Added ${memberName} to team ${selectedTeam} in program ${selectedProgram}`);
-          
-          if (!directory[selectedProgram].teams[selectedTeam].members) {
-            directory[selectedProgram].teams[selectedTeam].members = {};
-          }
-          directory[selectedProgram].teams[selectedTeam].members[memberName] = true;
-        } else {
-          const programMembersRef = db.ref(`programs/${selectedProgram}/members/${memberName}`);
-          await programMembersRef.set(true);
-          console.log(`Added ${memberName} to program ${selectedProgram}`);
-          
-          if (!directory[selectedProgram].members) {
-            directory[selectedProgram].members = {};
-          }
-          directory[selectedProgram].members[memberName] = true;
-        }
-        
-        subprogramMembers.push(memberName);
-        subprogramMembers.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
-        populateMemberDropdown();
-        
-      } catch (error) {
-        console.error('Error adding member to directory:', error);
-      }
-    }
-
-    function removeEvaluation(evalId){
-      evaluations = evaluations.filter(e => e.id !== evalId);
-      renderEvaluations();
-      autoSave();
-    }
-
-    function renderEvaluations(){
-      const container = document.getElementById('membersList');
-      container.innerHTML = '';
-
-      if (evaluations.length === 0) {
-        container.innerHTML = '<div class="inline-hint" style="text-align:center; padding:20px;">No evaluations yet. Add a member below to start.</div>';
-        updateSubmitBtnState();
-        return;
-      }
-
-      evaluations.forEach((evaluation) => {
-        const div = document.createElement('div');
-        div.className = 'member-eval';
-        const customBadge = evaluation.isCustom ? '<span class="custom-name-badge">NEW MEMBER</span>' : '';
-        div.innerHTML = `
-          <div class="remove-btn-container">
-            <button class="btn btn-remove" data-eval-id="${evaluation.id}">Remove</button>
-          </div>
-          <h3>${evaluation.memberName}${customBadge}</h3>
-          <div class="eval-grid">
-            <div class="eval-group">
-              <label>3 Pluses (one per line)</label>
-              <textarea data-eval-id="${evaluation.id}" data-field="pluses" placeholder="Strength 1&#10;Strength 2&#10;Strength 3"></textarea>
-            </div>
-            <div class="eval-group">
-              <label>3 Minuses (one per line)</label>
-              <textarea data-eval-id="${evaluation.id}" data-field="minuses" placeholder="Growth edge 1&#10;Growth edge 2&#10;Growth edge 3"></textarea>
-            </div>
-            <div class="score-input">
-              <label>Score /10</label>
-              <input type="number" data-eval-id="${evaluation.id}" data-field="score" min="0" max="10" placeholder="0-10" />
-            </div>
-          </div>
-        `;
-        container.appendChild(div);
-        
-        const plusesInput = div.querySelector(`textarea[data-field="pluses"]`);
-        const minusesInput = div.querySelector(`textarea[data-field="minuses"]`);
-        const scoreInput = div.querySelector(`input[data-field="score"]`);
-        
-        if (evaluation.pluses) plusesInput.value = evaluation.pluses;
-        if (evaluation.minuses) minusesInput.value = evaluation.minuses;
-        if (evaluation.score) scoreInput.value = evaluation.score;
-
-        div.querySelector('.btn-remove').addEventListener('click', (e) => {
-          const evalId = parseInt(e.target.dataset.evalId);
-          removeEvaluation(evalId);
-        });
-      });
-
-      container.querySelectorAll('input, textarea').forEach(input => {
-        input.addEventListener('input', (e) => {
-          const evalId = parseInt(e.target.dataset.evalId);
-          const field = e.target.dataset.field;
-          const evaluation = evaluations.find(ev => ev.id === evalId);
-          if (evaluation) {
-            evaluation[field] = e.target.value;
-          }
-          updateSubmitBtnState();
-          autoSave();
-        });
-      });
-
-      updateSubmitBtnState();
-    }
-
-    function updateSubmitBtnState(){
-      if (evaluations.length === 0) {
-        document.getElementById('submitBtn').disabled = true;
-        return;
-      }
+      const themeObs = new MutationObserver(() => material.color.setHex(getTeal()));
+      themeObs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
       
-      let atLeastOneFilled = evaluations.some(evaluation => {
-        return evaluation.pluses.trim() || evaluation.minuses.trim() || evaluation.score.toString().trim();
-      });
-      
-      document.getElementById('submitBtn').disabled = !atLeastOneFilled;
-    }
-
-    function autoSave(){
-      clearTimeout(autoSaveTimer);
-      autoSaveTimer = setTimeout(() => {
-        const data = {
-          evaluatorName: document.getElementById('evaluatorName').value,
-          program: document.getElementById('program').value,
-          team: document.getElementById('team').value,
-          subprogram: document.getElementById('subprogram').value,
-          evaluations: evaluations,
-          evaluationCounter: evaluationCounter,
-          timestamp: Date.now()
-        };
-
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-        showAutoSaveIndicator();
-      }, 500);
-    }
-
-    function getSavedData(){
-      try {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        return saved ? JSON.parse(saved) : null;
-      } catch (e) {
-        console.error('Error loading saved data:', e);
-        return null;
-      }
-    }
-
-    function loadSavedData(){
-      const saved = getSavedData();
-      if (!saved) return;
-
-      if (saved.evaluatorName) document.getElementById('evaluatorName').value = saved.evaluatorName;
-      if (saved.program) {
-        document.getElementById('program').value = saved.program;
-        document.getElementById('program').dispatchEvent(new Event('change'));
-      }
-      if (saved.team) {
-        setTimeout(() => {
-          document.getElementById('team').value = saved.team;
-        }, 50);
-      }
-      if (saved.subprogram) {
-        document.getElementById('subprogram').value = saved.subprogram;
-      }
-      
-      updateNextBtnState();
-      
-      if (saved.evaluations && Array.isArray(saved.evaluations) && saved.evaluations.length > 0) {
-        setTimeout(() => {
-          if (authUid) {
-            goToStep2();
-          }
-        }, 200);
-      }
-    }
-
-    function showAutoSaveIndicator(){
-      const indicator = document.getElementById('autoSaveIndicator');
-      indicator.classList.add('visible');
       setTimeout(() => {
-        indicator.classList.remove('visible');
-      }, 2000);
+        wrapper.addEventListener('mouseenter', triggerSiteEntry);
+        wrapper.addEventListener('click', triggerSiteEntry);
+        document.getElementById('intro-overlay').addEventListener('click', triggerSiteEntry);
+      }, 600);
     }
 
-    function clearSavedData(){
-      localStorage.removeItem(STORAGE_KEY);
+    function triggerSiteEntry() {
+      if (hasEntered) return;
+      hasEntered = true;
+
+      const overlay = document.getElementById('intro-overlay');
+      const text = document.getElementById('intro-text');
+      const wrapper = document.getElementById('brain-wrapper');
+      const mainContent = document.getElementById('main-content');
+      const targetContainer = document.getElementById('brain-canvas-container');
+
+      overlay.style.opacity = '0';
+      text.style.opacity = '0';
+      
+      mainContent.style.opacity = '1';
+      mainContent.style.pointerEvents = 'auto';
+      document.body.classList.remove('intro-mode');
+
+      const targetRect = targetContainer.getBoundingClientRect();
+
+      wrapper.style.top = targetRect.top + 'px';
+      wrapper.style.left = targetRect.left + 'px';
+      wrapper.style.width = targetRect.width + 'px';
+      wrapper.style.height = targetRect.height + 'px';
+      wrapper.style.transform = 'translate(0, 0)';
+
+      setTimeout(() => {
+        renderer.setSize(targetRect.width, targetRect.height);
+        targetContainer.appendChild(renderer.domElement);
+        wrapper.remove();
+        overlay.remove();
+      }, 1000); 
     }
 
-    function submitAll(){
-      if (!authUid) {
-        alert('Not authenticated. Please refresh the page and try again.');
-        return;
-      }
+    initBrain();
 
-      const status = document.getElementById('status');
-      status.textContent = 'Submitting…';
+    /* ── THEME & FIREBASE STATE ── */
+    const html = document.documentElement;
+    const savedTheme = localStorage.getItem('fd360_theme');
+    if (savedTheme) html.setAttribute('data-theme', savedTheme);
+    else if (window.matchMedia('(prefers-color-scheme: dark)').matches) html.setAttribute('data-theme', 'dark');
 
-      const evaluatorName = document.getElementById('evaluatorName').value.trim();
-      const program = document.getElementById('program').value;
-      const team = document.getElementById('team').value || 'N/A';
-      const subprogram = document.getElementById('subprogram').value.trim() || 'N/A';
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('fd360_theme', next);
+    });
 
-      const memberEvaluations = [];
+    const firebaseConfig = {
+      apiKey: "AIzaSyBog7q44JN9wVjfk2wy7FqS80NLJC5348g", authDomain: "emotion-tracker-7f11c.firebaseapp.com",
+      databaseURL: "https://emotion-tracker-7f11c-default-rtdb.firebaseio.com", projectId: "emotion-tracker-7f11c",
+      storageBucket: "emotion-tracker-7f11c.firebasestorage.app", messagingSenderId: "232586277659", appId: "1:232586277659:web:1fcff097243c8fa1ef99be"
+    };
 
-      evaluations.forEach(evaluation => {
-        const plusesText = evaluation.pluses.trim();
-        const minusesText = evaluation.minuses.trim();
-        const scoreText = evaluation.score.toString().trim();
-        
-        if (!plusesText && !minusesText && !scoreText) {
-          return;
-        }
-        
-        const pluses = plusesText.split('\n').map(s => s.trim()).filter(s => s);
-        const minuses = minusesText.split('\n').map(s => s.trim()).filter(s => s);
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth(); const db = firebase.database();
+    const STORAGE_KEY = 'fd360_draft';
+    let directory = null, authUid = null, subprogramMembers = [], evaluations = [], evaluationCounter = 0, autoSaveTimer = null, selectedProgram = null, selectedTeam = null, selectedSubprogram = null;
 
-        const evalData = {
-          memberName: evaluation.memberName,
-          isCustom: evaluation.isCustom || false,
-          pluses,
-          minuses,
-          score: parseInt(scoreText) || 0
-        };
+    auth.onAuthStateChanged(user => { authUid = user ? user.uid : null; if (!user) auth.signInAnonymously().catch(() => {}); updateNextBtn(); });
 
-        memberEvaluations.push(evalData);
+    fetch('directory.json').then(r => r.json()).then(data => { directory = data.programs || {}; initForm(); loadDraft(); }).catch(() => { directory = {}; initForm(); });
+
+    function initForm() {
+      const progSel = document.getElementById('program'), teamSel = document.getElementById('team'), teamCon = document.getElementById('teamContainer'), dd = document.getElementById('memberDropdown'), cnc = document.getElementById('customNameContainer'), cni = document.getElementById('customMemberName');
+      progSel.innerHTML = '<option value="">Select a program</option>' + Object.keys(directory).sort().map(p => `<option value="${p}">${p}</option>`).join('');
+      progSel.addEventListener('change', () => {
+        const pd = directory[progSel.value];
+        if (pd && pd.teams && Object.keys(pd.teams).length > 0) {
+          teamCon.classList.remove('hidden'); teamSel.innerHTML = '<option value="">Select a team</option>' + Object.keys(pd.teams).sort().map(t => `<option value="${t}">${t}</option>`).join('');
+        } else { teamCon.classList.add('hidden'); teamSel.value = ''; selectedTeam = null; }
+        updateNextBtn(); autoSave();
       });
+      teamSel.addEventListener('change', () => { selectedTeam = teamSel.value || null; updateNextBtn(); autoSave(); });
+      document.getElementById('subprogram').addEventListener('input', () => { updateNextBtn(); autoSave(); });
+      document.getElementById('evaluatorName').addEventListener('input', () => { updateNextBtn(); autoSave(); });
+      dd.addEventListener('change', () => { if (dd.value === '__custom__') { cnc.classList.remove('hidden'); cni.focus(); } else { cnc.classList.add('hidden'); cni.value = ''; } });
+      cni.addEventListener('keypress', e => { if (e.key === 'Enter') addMember(); });
+      document.getElementById('nextBtn').addEventListener('click', goStep2); document.getElementById('backBtn').addEventListener('click', goStep1); document.getElementById('addMemberBtn').addEventListener('click', addMember); document.getElementById('submitBtn').addEventListener('click', submitAll);
+    }
 
-      if (memberEvaluations.length === 0) {
-        alert('Please fill in at least one evaluation before submitting.');
-        status.textContent = '';
-        return;
-      }
+    function updateNextBtn() {
+      const ok = !!(document.getElementById('evaluatorName').value.trim() && document.getElementById('program').value && authUid && (!(!document.getElementById('teamContainer').classList.contains('hidden')) || document.getElementById('team').value));
+      document.getElementById('nextBtn').disabled = !ok;
+    }
 
-      const entry = {
-        evaluatorName,
-        evaluatorId: authUid,
-        program,
-        team,
-        subprogram,
-        memberEvaluations,
-        createdAt: Date.now()
-      };
+    function goStep2() {
+      const prog = document.getElementById('program').value, sub = document.getElementById('subprogram').value.trim(), team = document.getElementById('team').value;
+      selectedProgram = prog; selectedSubprogram = sub || 'N/A'; selectedTeam = team || null;
+      const pd = directory[prog]; let members = [];
+      if (selectedTeam && pd?.teams?.[selectedTeam]) members = Object.keys(pd.teams[selectedTeam].members || {}); else if (pd?.members) members = Object.keys(pd.members);
+      subprogramMembers = members.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+      let label = prog; if (selectedTeam) label += ' · ' + selectedTeam; if (sub) label += ' (' + sub + ')'; document.getElementById('contextBadge').textContent = label;
+      populateDD();
+      const saved = getDraft();
+      if (saved?.program === prog && saved?.team === team && saved?.evaluations?.length > 0) { evaluations = saved.evaluations; evaluationCounter = saved.evaluationCounter || evaluations.length; } else { evaluations = []; evaluationCounter = 0; }
+      renderEvals(); document.getElementById('step1').classList.add('hidden'); document.getElementById('step2').classList.remove('hidden');
+    }
 
-      console.log('Submitting entry:', entry);
+    function goStep1() { document.getElementById('step2').classList.add('hidden'); document.getElementById('step1').classList.remove('hidden'); }
+    function populateDD() { document.getElementById('memberDropdown').innerHTML = '<option value="">Select a member...</option>' + subprogramMembers.map(n => `<option value="${n}">${n}</option>`).join('') + '<option value="__custom__">Write a custom name...</option>'; }
+    
+    async function addMember() {
+      const dd = document.getElementById('memberDropdown'), cni = document.getElementById('customMemberName'); let name = '';
+      if (dd.value === '__custom__') { name = cni.value.trim(); if (!name) { cni.focus(); return; } await addToDirectory(name); } else { name = dd.value; if (!name) return; }
+      evaluations.push({ id: ++evaluationCounter, memberName: name, isCustom: (dd.value === '__custom__'), pluses: '', minuses: '', score: '' });
+      dd.value = ''; cni.value = ''; document.getElementById('customNameContainer').classList.add('hidden'); renderEvals(); autoSave();
+    }
 
-      db.ref('entries').push(entry).then(() => {
-        console.log('Submission successful');
-        status.textContent = 'Submitted! ✅ All member evaluations saved.';
-        clearSavedData();
-        setTimeout(() => {
-          goToStep1();
-          document.querySelectorAll('#membersList input, #membersList textarea').forEach(i => i.value = '');
-          document.getElementById('memberDropdown').value = '';
-          document.getElementById('evaluatorName').value = '';
-          document.getElementById('program').value = '';
-          document.getElementById('team').value = '';
-          document.getElementById('subprogram').value = '';
-          document.getElementById('teamContainer').style.display = 'none';
-          evaluations = [];
-          evaluationCounter = 0;
-          selectedSubprogram = null;
-          selectedTeam = null;
-          selectedProgram = null;
-          status.textContent = '';
-          updateNextBtnState();
-        }, 2000);
-      }).catch(err => {
-        console.error('Submission failed:', err);
-        status.textContent = 'Failed to submit: ' + (err.message || 'Unknown error');
+    async function addToDirectory(name) {
+      if (!authUid) return;
+      try {
+        if (selectedTeam && directory[selectedProgram]?.teams?.[selectedTeam]) await db.ref(`programs/${selectedProgram}/teams/${selectedTeam}/members/${name}`).set(true);
+        else await db.ref(`programs/${selectedProgram}/members/${name}`).set(true);
+        subprogramMembers.push(name); subprogramMembers.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase())); populateDD();
+      } catch (e) { console.error(e); }
+    }
+
+    function removeEval(id) { evaluations = evaluations.filter(e => e.id !== id); renderEvals(); autoSave(); }
+
+    function renderEvals() {
+      const con = document.getElementById('membersList'); con.innerHTML = '';
+      if (!evaluations.length) { con.innerHTML = `<div class="empty-state">No members added yet.</div>`; updateSubmitBtn(); return; }
+      
+      evaluations.forEach((ev, idx) => {
+        const div = document.createElement('div'); div.className = 'member-card';
+        div.innerHTML = `
+          <div class="member-header">
+            <div>
+              <div class="member-idx">Member ${idx + 1}</div>
+              <div class="member-name">${ev.memberName}</div>
+            </div>
+            <button class="btn btn-danger" data-id="${ev.id}">Remove</button>
+          </div>
+          <div class="grid-eval">
+            <div>
+              <div class="eval-hint"><span class="hint-dot hd-plus"></span>Three strengths</div>
+              <textarea data-id="${ev.id}" data-f="pluses" placeholder="1. e.g. Communicates clearly&#10;2. e.g. Highly reliable&#10;3. e.g. Great problem solver"></textarea>
+            </div>
+            <div>
+              <div class="eval-hint"><span class="hint-dot hd-minus"></span>Three growth edges</div>
+              <textarea data-id="${ev.id}" data-f="minuses" placeholder="1. e.g. Could speak up more&#10;2. e.g. Time management&#10;3. e.g. Attention to detail"></textarea>
+            </div>
+            <div>
+              <div class="eval-hint"><span class="hint-dot hd-score"></span>Score /10</div>
+              <input type="number" class="score-inp" data-id="${ev.id}" data-f="score" min="0" max="10" placeholder="10" />
+            </div>
+          </div>`;
+        
+        con.appendChild(div);
+        
+        div.querySelector('.btn-danger').addEventListener('click', e => removeEval(parseInt(e.currentTarget.dataset.id)));
+        
+        div.querySelectorAll('input, textarea').forEach(inp => { 
+          inp.value = ev[inp.dataset.f]; 
+          
+          inp.addEventListener('input', e => { 
+            // Clamp score inputs strictly between 0 and 10
+            if (e.target.dataset.f === 'score' && e.target.value !== '') {
+              let val = parseInt(e.target.value);
+              if (val > 10) e.target.value = 10;
+              if (val < 0) e.target.value = 0;
+            }
+            
+            const entry = evaluations.find(x => x.id === parseInt(e.target.dataset.id)); 
+            if (entry) entry[e.target.dataset.f] = e.target.value; 
+            
+            updateSubmitBtn(); 
+            autoSave(); 
+          }); 
+        });
+      });
+      updateSubmitBtn();
+    }
+
+    function updateSubmitBtn() { document.getElementById('submitBtn').disabled = !evaluations.some(e => e.pluses || e.minuses || e.score); }
+    function autoSave() { clearTimeout(autoSaveTimer); autoSaveTimer = setTimeout(() => { localStorage.setItem(STORAGE_KEY, JSON.stringify({ evaluatorName: document.getElementById('evaluatorName').value, program: document.getElementById('program').value, team: document.getElementById('team').value, subprogram: document.getElementById('subprogram').value, evaluations, evaluationCounter })); const el = document.getElementById('autosave'); el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 2000); }, 1000); }
+    function getDraft() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch { return null; } }
+    
+    function loadDraft() {
+      const saved = getDraft(); if (!saved) return;
+      if (saved.evaluatorName) document.getElementById('evaluatorName').value = saved.evaluatorName;
+      if (saved.program) { document.getElementById('program').value = saved.program; document.getElementById('program').dispatchEvent(new Event('change')); }
+      updateNextBtn();
+    }
+
+    function submitAll() {
+      const status = document.getElementById('status'); status.textContent = 'Submitting...';
+      db.ref('entries').push({ evaluatorName: document.getElementById('evaluatorName').value, evaluatorId: authUid, program: document.getElementById('program').value, evaluations: evaluations.filter(e => e.pluses || e.minuses || e.score), createdAt: Date.now() }).then(() => {
+        status.textContent = 'Submitted ✓'; localStorage.removeItem(STORAGE_KEY); setTimeout(() => location.reload(), 2000);
       });
     }
   </script>
