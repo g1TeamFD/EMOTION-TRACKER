@@ -32,6 +32,7 @@
       --input-bg:     #f5f1eb;
       --shadow:       0 1px 4px rgba(40,33,28,0.06), 0 4px 16px rgba(40,33,28,0.04);
       --glow-teal:    rgba(42, 122, 108, 0.4);
+      --glow-amber:   rgba(176, 112, 48, 0.4);
     }
 
     [data-theme="dark"] {
@@ -57,6 +58,7 @@
       --input-bg:     #2e2720;
       --shadow:       0 1px 4px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.2);
       --glow-teal:    rgba(77, 184, 166, 0.4);
+      --glow-amber:   rgba(212, 148, 74, 0.4);
     }
 
     /* ── RESET ── */
@@ -281,7 +283,7 @@
           <div class="scanline"></div>
           <div class="hud-badge">METRIC</div>
           <div class="stat-val" id="avgScore">0.0</div>
-          <div class="stat-lbl">Current Avg Score</div>
+          <div class="stat-lbl">Current Avg Score (Max 10)</div>
           <div class="stat-sub" id="globalAvgSub">Global: 0.0</div>
         </div>
       </div>
@@ -289,29 +291,29 @@
       <div class="charts-grid">
         <div class="card sci-fi-card">
           <div class="scanline"></div>
-          <div class="hud-badge">SCANNING...</div>
-          <div class="card-title"><div class="card-title-dot"></div> Global vs Filtered Density</div>
-          <div class="chart-wrapper"><canvas id="densityChart"></canvas></div>
+          <div class="hud-badge">VOLUME</div>
+          <div class="card-title"><div class="card-title-dot"></div> Top 10: Feedback Received (Most Active)</div>
+          <div class="chart-wrapper"><canvas id="feedbackChart"></canvas></div>
         </div>
         <div class="card sci-fi-card">
-          <div class="scanline"></div>
-          <div class="hud-badge">MATRIX</div>
-          <div class="card-title"><div class="card-title-dot"></div> Operator Performance Matrix</div>
-          <div class="chart-wrapper"><canvas id="matrixChart"></canvas></div>
+          <div class="scanline" style="background: linear-gradient(to bottom, transparent, var(--amber), transparent); box-shadow: 0 0 10px var(--amber);"></div>
+          <div class="hud-badge" style="color: var(--amber); border-color: var(--amber); background: var(--amber-light);">AVERAGE</div>
+          <div class="card-title"><div class="card-title-dot" style="background: var(--amber); box-shadow: 0 0 8px var(--amber);"></div> Average Scores (Of Top 10 Most Active)</div>
+          <div class="chart-wrapper"><canvas id="avgChart"></canvas></div>
         </div>
       </div>
 
       <div class="charts-grid">
         <div class="card sci-fi-card">
           <div class="scanline"></div>
-          <div class="hud-badge">RADAR</div>
-          <div class="card-title"><div class="card-title-dot"></div> Program Diagnostics</div>
-          <div class="chart-wrapper tall"><canvas id="programChart"></canvas></div>
+          <div class="hud-badge">DENSITY</div>
+          <div class="card-title"><div class="card-title-dot"></div> Score Distribution Density</div>
+          <div class="chart-wrapper tall"><canvas id="densityChart"></canvas></div>
         </div>
         <div class="card sci-fi-card">
           <div class="scanline"></div>
           <div class="hud-badge">RANKING</div>
-          <div class="card-title"><div class="card-title-dot"></div> Top 10 Operators (Energy Level)</div>
+          <div class="card-title"><div class="card-title-dot"></div> Top 10 Operators (Highest Output)</div>
           <div class="chart-wrapper tall"><canvas id="topPerformersChart"></canvas></div>
         </div>
       </div>
@@ -424,7 +426,7 @@
     let allEntries = [];
     let filteredEntries = [];
     let globalStats = { members: 0, evals: 0, avg: 0 };
-    let charts = { density: null, matrix: null, program: null, topPerformers: null };
+    let charts = { feedback: null, avg: null, density: null, topPerformers: null };
 
     function loadEntries() {
       db.ref('entries').once('value', snapshot => {
@@ -439,8 +441,11 @@
         const globalMembers = processData(allEntries);
         globalStats.members = globalMembers.length;
         globalStats.evals = globalMembers.reduce((sum, m) => sum + m.evalCount, 0);
+        
         const totalSum = globalMembers.reduce((sum, m) => sum + (m.avgScore * m.evalCount), 0);
-        globalStats.avg = globalStats.evals > 0 ? (totalSum / globalStats.evals).toFixed(1) : 0;
+        // Ensure Global Average does not exceed 10
+        const rawAvg = globalStats.evals > 0 ? (totalSum / globalStats.evals) : 0;
+        globalStats.avg = Math.min(10, rawAvg).toFixed(1);
 
         document.getElementById('globalMembersSub').textContent = `Global: ${globalStats.members}`;
         document.getElementById('globalEvalsSub').textContent = `Global: ${globalStats.evals}`;
@@ -479,10 +484,7 @@
     function processData(entriesList) {
       const membersMap = new Map();
       entriesList.forEach(entry => {
-        // Robust check for data arrays (supports old 'evaluations' or new 'memberEvaluations')
-        let evals = entry.memberEvaluations;
-        if (!evals) evals = entry.evaluations;
-        if (!evals) evals = [];
+        let evals = entry.memberEvaluations || entry.evaluations || [];
 
         evals.forEach(member => {
           if(member.score === undefined || member.score === null || member.score === '') return; 
@@ -498,18 +500,23 @@
             });
           }
           const m = membersMap.get(key);
-          m.scores.push(Number(member.score));
+          // Make sure no individual score going into array exceeds 10
+          m.scores.push(Math.min(10, Number(member.score)));
           if (entry.createdAt > m.lastDate) m.lastDate = entry.createdAt;
         });
       });
 
       return Array.from(membersMap.values()).map(m => {
         const sum = m.scores.reduce((a, b) => a + b, 0);
+        // Verify average never exceeds 10
+        const rawAvg = sum / m.scores.length;
+        const cappedAvg = Math.min(10, rawAvg);
+
         return {
           ...m, 
           evalCount: m.scores.length, 
           totalScore: sum, 
-          avgScore: parseFloat((sum / m.scores.length).toFixed(1))
+          avgScore: parseFloat(cappedAvg.toFixed(1))
         };
       }).sort((a, b) => a.program.localeCompare(b.program) || a.memberName.localeCompare(b.memberName));
     }
@@ -521,11 +528,14 @@
       let totalSum = 0;
       
       members.forEach(m => { totalEvals += m.evalCount; totalSum += (m.avgScore * m.evalCount); });
-      const avg = totalEvals > 0 ? (totalSum / totalEvals).toFixed(1) : '0.0';
+      
+      // Prevent average score from displaying above 10 in UI metrics
+      const rawAvg = totalEvals > 0 ? (totalSum / totalEvals) : 0;
+      const cappedAvg = Math.min(10, rawAvg).toFixed(1);
       
       document.getElementById('totalMembers').textContent = totalMembers;
       document.getElementById('totalEvaluations').textContent = totalEvals;
-      document.getElementById('avgScore').textContent = avg;
+      document.getElementById('avgScore').textContent = cappedAvg;
     }
 
     /* ── FUTURISTIC CHARTS (CHART.JS) ── */
@@ -536,8 +546,75 @@
       
       Chart.defaults.color = colors.text;
       Chart.defaults.font.family = "'DM Sans', sans-serif";
-      
-      // 1. Score Density (Global vs Filtered)
+
+      // 1. Top 10 Total Feedback Received (Per Operator Bar Chart)
+      // Slicing to top 10 most active members
+      const top10Volume = [...filteredMembers].sort((a, b) => b.evalCount - a.evalCount).slice(0, 10);
+      const evalLabels = top10Volume.map(m => m.memberName);
+      const evalData = top10Volume.map(m => m.evalCount);
+
+      if (charts.feedback) charts.feedback.destroy();
+      charts.feedback = new Chart(document.getElementById('feedbackChart'), {
+        type: 'bar',
+        data: {
+          labels: evalLabels.length ? evalLabels : ['None'],
+          datasets: [{
+            label: 'Logs Received',
+            data: evalData.length ? evalData : [0],
+            backgroundColor: colors.tealBg,
+            borderColor: colors.teal,
+            borderWidth: 1, borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          scales: {
+            x: { grid: { display: false }, ticks: { font: {size: 10}, maxRotation: 45, minRotation: 0 } },
+            y: { grid: { color: colors.grid }, beginAtZero: true }
+          },
+          plugins: { legend: { display: false }, tooltip: sciFiTooltip }
+        }
+      });
+
+      // 2. Average Scores (Of the Top 10 Most Active Operators)
+      // Using the exact same array as Chart 1 so you can compare volume vs performance side by side
+      const avgLabels = top10Volume.map(m => m.memberName);
+      const avgData = top10Volume.map(m => m.avgScore);
+
+      if (charts.avg) charts.avg.destroy();
+      charts.avg = new Chart(document.getElementById('avgChart'), {
+        type: 'line',
+        data: {
+          labels: avgLabels.length ? avgLabels : ['None'],
+          datasets: [{
+            label: 'Average Output',
+            data: avgData.length ? avgData : [0],
+            backgroundColor: colors.amberBg,
+            borderColor: colors.amber,
+            pointBackgroundColor: colors.card,
+            pointBorderColor: colors.amber,
+            pointHoverBackgroundColor: colors.amber,
+            borderWidth: 2, tension: 0.4, fill: true
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          scales: { 
+            x: { grid: { display: false }, ticks: { font: {size: 10}, maxRotation: 45, minRotation: 0 } }, 
+            y: { grid: { color: colors.grid }, min: 0, max: 10 } 
+          },
+          plugins: { 
+            legend: { display: false }, 
+            tooltip: {
+              ...sciFiTooltip,
+              titleColor: () => colors.amber,
+              borderColor: () => colors.amber
+            } 
+          }
+        }
+      });
+
+      // 3. Score Distribution / Density (Area Line Chart)
       const generateBuckets = (members) => {
         const buckets = { '0-2':0, '3-4':0, '5-6':0, '7-8':0, '9-10':0 };
         members.forEach(m => {
@@ -559,14 +636,14 @@
             {
               label: 'Filtered Scope',
               data: generateBuckets(filteredMembers),
-              borderColor: colors.amber,
-              backgroundColor: colors.amberBg,
+              borderColor: colors.teal,
+              backgroundColor: colors.tealBg,
               borderWidth: 2, tension: 0.4, fill: true, pointRadius: 4, pointBackgroundColor: colors.card
             },
             {
               label: 'Global Baseline',
               data: generateBuckets(globalMembers),
-              borderColor: colors.teal,
+              borderColor: colors.ink3,
               backgroundColor: 'transparent',
               borderWidth: 1, borderDash: [5, 5], tension: 0.4, fill: false, pointRadius: 0
             }
@@ -579,83 +656,17 @@
         }
       });
 
-      // 2. Performance Matrix (Scatter)
-      const scatterData = filteredMembers.map(m => ({ x: m.evalCount, y: m.avgScore, name: m.memberName }));
-      
-      if (charts.matrix) charts.matrix.destroy();
-      charts.matrix = new Chart(document.getElementById('matrixChart'), {
-        type: 'scatter',
-        data: {
-          datasets: [{
-            label: 'Operators',
-            data: scatterData,
-            backgroundColor: colors.tealBg,
-            borderColor: colors.teal,
-            borderWidth: 1,
-            pointRadius: 6,
-            pointHoverRadius: 8
-          }]
-        },
-        options: {
-          responsive: true, maintainAspectRatio: false,
-          scales: {
-            x: { title: { display: true, text: 'Logs Received', color: colors.ink3 }, grid: { color: colors.grid }, beginAtZero: true },
-            y: { title: { display: true, text: 'Average Score', color: colors.ink3 }, grid: { color: colors.grid }, min: 0, max: 10 }
-          },
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              ...sciFiTooltip,
-              callbacks: { label: (ctx) => `> ${ctx.raw.name} | LGS: ${ctx.raw.x} | OUT: ${ctx.raw.y}` }
-            }
-          }
-        }
-      });
-
-      // 3. Program Diagnostics (Radar)
-      const progData = {};
-      globalMembers.forEach(m => {
-        if(!progData[m.program]) progData[m.program] = { sum: 0, count: 0 };
-        progData[m.program].sum += m.avgScore;
-        progData[m.program].count++;
-      });
-      const progLabels = Object.keys(progData).sort();
-      const progAvgs = progLabels.map(p => (progData[p].sum / progData[p].count).toFixed(1));
-
-      if (charts.program) charts.program.destroy();
-      charts.program = new Chart(document.getElementById('programChart'), {
-        type: 'radar',
-        data: {
-          labels: progLabels.length ? progLabels : ['None'],
-          datasets: [{
-            label: 'Sector Output',
-            data: progAvgs.length ? progAvgs : [0],
-            backgroundColor: colors.tealBg,
-            borderColor: colors.teal,
-            pointBackgroundColor: colors.card,
-            pointBorderColor: colors.teal,
-            pointHoverBackgroundColor: colors.teal,
-            borderWidth: 2, tension: 0.3
-          }]
-        },
-        options: {
-          responsive: true, maintainAspectRatio: false,
-          scales: { r: { angleLines: { color: colors.grid }, grid: { color: colors.grid, circular: true }, pointLabels: { color: colors.text, font: {size: 11} }, ticks: { display: false, min: 0, max: 10 } } },
-          plugins: { legend: { display: false }, tooltip: sciFiTooltip }
-        }
-      });
-
-      // 4. Top 10 Operators (Horizontal Bar)
-      const top10 = [...filteredMembers].filter(m => m.avgScore > 0).sort((a, b) => b.avgScore - a.avgScore).slice(0, 10);
+      // 4. Top 10 Operators (Horizontal Bar) - Highest Output Scorers
+      const top10Output = [...filteredMembers].filter(m => m.avgScore > 0).sort((a, b) => b.avgScore - a.avgScore).slice(0, 10);
 
       if (charts.topPerformers) charts.topPerformers.destroy();
       charts.topPerformers = new Chart(document.getElementById('topPerformersChart'), {
         type: 'bar',
         data: {
-          labels: top10.length ? top10.map(m => m.memberName) : ['None'],
+          labels: top10Output.length ? top10Output.map(m => m.memberName) : ['None'],
           datasets: [{
             label: 'Avg Output',
-            data: top10.length ? top10.map(m => m.avgScore) : [0],
+            data: top10Output.length ? top10Output.map(m => m.avgScore) : [0],
             backgroundColor: colors.tealBg,
             borderColor: colors.teal,
             borderWidth: 1, borderRadius: 2, barPercentage: 0.5
