@@ -272,9 +272,9 @@
       <div class="nav-right">
         <div class="nav-links" id="navLinks">
           <a href="#" class="nav-link active">check-in</a>
-          <a href="#" class="nav-link">feedback</a>
-          <a href="#" class="nav-link">dashboard</a>
-          <a href="#" class="nav-link">teachers</a>
+          <a href="dashboard.html" class="nav-link">feedback</a>
+          <a href="dashboard-v2.html" class="nav-link">dashboard</a>
+          <a href="teachers.html" class="nav-link">teachers</a>
         </div>
         
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -633,7 +633,6 @@
           inp.value = ev[inp.dataset.f]; 
           
           inp.addEventListener('input', e => { 
-            // Clamp score inputs strictly between 0 and 10
             if (e.target.dataset.f === 'score' && e.target.value !== '') {
               let val = parseInt(e.target.value);
               if (val > 10) e.target.value = 10;
