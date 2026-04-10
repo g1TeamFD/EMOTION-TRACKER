@@ -190,7 +190,7 @@
     .btn-danger:hover { filter: brightness(0.94); }
 
     .actions { display: flex; align-items: center; gap: 16px; margin-top: 10px; flex-wrap: wrap; }
-    .status-msg { font-size: 13px; color: var(--ink3); font-weight: 300; }
+    .status-msg { font-size: 13px; color: var(--ink3); font-weight: 500; }
     .status-msg.ok  { color: var(--teal); }
     .status-msg.err { color: var(--rose); }
 
@@ -273,7 +273,7 @@
         <div class="nav-links" id="navLinks">
           <a href="#" class="nav-link active">check-in</a>
           <a href="dashboard.html" class="nav-link">feedback</a>
-          <a href="dashboard-v2.html" class="nav-link">dashboard</a>
+          <a href="dashboard-v2.html" class="nav-link">scoreboard</a>
           <a href="teachers.html" class="nav-link">teachers</a>
         </div>
         
@@ -662,10 +662,65 @@
     }
 
     function submitAll() {
-      const status = document.getElementById('status'); status.textContent = 'Submitting...';
-      db.ref('entries').push({ evaluatorName: document.getElementById('evaluatorName').value, evaluatorId: authUid, program: document.getElementById('program').value, evaluations: evaluations.filter(e => e.pluses || e.minuses || e.score), createdAt: Date.now() }).then(() => {
-        status.textContent = 'Submitted ✓'; localStorage.removeItem(STORAGE_KEY); setTimeout(() => location.reload(), 2000);
+      if (!authUid) {
+        alert('Not authenticated. Please refresh the page and try again.');
+        return;
+      }
+
+      const status = document.getElementById('status');
+      status.textContent = 'Submitting...';
+      status.className = 'status-msg';
+
+      const evaluatorName = document.getElementById('evaluatorName').value.trim();
+      const program = document.getElementById('program').value;
+      const team = document.getElementById('team').value || 'N/A';
+      const subprogram = document.getElementById('subprogram').value.trim() || 'N/A';
+
+      const memberEvaluations = [];
+
+      evaluations.forEach(ev => {
+        const pText = (ev.pluses || '').trim();
+        const mText = (ev.minuses || '').trim();
+        const sText = (ev.score || '').toString().trim();
+
+        if (!pText && !mText && !sText) return;
+
+        memberEvaluations.push({
+          memberName: ev.memberName,
+          isCustom: ev.isCustom || false,
+          pluses: pText.split('\n').map(x => x.trim()).filter(Boolean),
+          minuses: mText.split('\n').map(x => x.trim()).filter(Boolean),
+          score: parseInt(sText) || 0
+        });
       });
+
+      if (memberEvaluations.length === 0) {
+        status.textContent = 'Fill in at least one evaluation first.';
+        status.className = 'status-msg err';
+        return;
+      }
+
+      const entry = {
+        evaluatorName,
+        evaluatorId: authUid,
+        program,
+        team,
+        subprogram,
+        memberEvaluations,
+        createdAt: Date.now()
+      };
+
+      db.ref('entries').push(entry)
+        .then(() => {
+          status.textContent = 'Submitted ✓';
+          status.className = 'status-msg ok';
+          localStorage.removeItem(STORAGE_KEY);
+          setTimeout(() => location.reload(), 2000);
+        })
+        .catch(err => {
+          status.textContent = 'Submit failed: ' + (err.message || 'Unknown error');
+          status.className = 'status-msg err';
+        });
     }
   </script>
 </body>
