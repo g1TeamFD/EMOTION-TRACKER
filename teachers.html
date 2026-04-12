@@ -460,12 +460,21 @@
 
     /* ── CSV EXPORTS ── */
     function downloadCSV(csvContent, filename) {
-      const blob = new Blob([csvContent], { type: 'text/csv' });
+      // 1. Add UTF-8 BOM ("\ufeff") so Excel formats special characters correctly
+      const blob = new Blob(["\ufeff", csvContent], { type: 'text/csv;charset=utf-8;' });
       const url = window.URL.createObjectURL(blob);
+      
       const a = document.createElement('a');
+      a.style.display = 'none'; // Hide the element so it doesn't flash on screen
       a.href = url;
       a.download = filename;
+      
+      // 2. CRITICAL FIX: Append the anchor to the document body before clicking
+      document.body.appendChild(a);
       a.click();
+      
+      // 3. Clean up: Remove the anchor from the DOM and revoke the URL to free memory
+      document.body.removeChild(a);
       window.URL.revokeObjectURL(url);
     }
 
@@ -511,21 +520,43 @@
     }
 
     function exportDetailedCSV() {
-      if (allEntries.length === 0) { alert('No data to export'); return; }
+      if (!allEntries || allEntries.length === 0) { alert('No data to export'); return; }
 
       let csv = 'Date Submitted,Evaluator Name,Program,Team,Subprogram,Target Member Name,Score,Strengths,Growth Edges\n';
-      const sortedEntries = [...allEntries].sort((a, b) => b.createdAt - a.createdAt);
+      
+      // Filter out completely invalid entries and sort safely
+      const sortedEntries = [...allEntries]
+        .filter(entry => entry && entry.createdAt)
+        .sort((a, b) => b.createdAt - a.createdAt);
 
       sortedEntries.forEach(entry => {
         const date = new Date(entry.createdAt).toLocaleString();
-        const memberEvals = entry.memberEvaluations || entry.evaluations || [];
+        let memberEvals = entry.memberEvaluations || entry.evaluations || [];
+        
+        // Safety check: if Firebase saved memberEvals as an object instead of an array, convert it
+        if (!Array.isArray(memberEvals)) {
+          memberEvals = Object.values(memberEvals);
+        }
         
         memberEvals.forEach(member => {
-          const pluses = (member.pluses || []).join('; ').replace(/"/g, '""');
-          const minuses = (member.minuses || []).join('; ').replace(/"/g, '""');
+          if (!member) return; // Skip if the object is null/undefined
+
+          // Safely handle pluses/minuses whether they are arrays, strings, or missing
+          let plusesRaw = member.pluses || '';
+          let minusesRaw = member.minuses || '';
+          
+          let pluses = Array.isArray(plusesRaw) ? plusesRaw.join('; ') : String(plusesRaw);
+          let minuses = Array.isArray(minusesRaw) ? minusesRaw.join('; ') : String(minusesRaw);
+
+          // Clean up formatting for CSV (escape quotes, remove line breaks that split rows)
+          pluses = pluses.replace(/"/g, '""').replace(/\n/g, ' ').trim();
+          minuses = minuses.replace(/"/g, '""').replace(/\n/g, ' ').trim();
+          
+          // Fallback for names in case data keys changed
+          const memberName = member.memberName || member.name || 'Unknown';
           const score = member.score || 0;
           
-          csv += `"${date}","${entry.evaluatorName || 'Unknown'}","${entry.program || ''}","${entry.team || ''}","${entry.subprogram || ''}","${member.memberName}","${score}","${pluses}","${minuses}"\n`;
+          csv += `"${date}","${entry.evaluatorName || 'Unknown'}","${entry.program || ''}","${entry.team || ''}","${entry.subprogram || ''}","${memberName}","${score}","${pluses}","${minuses}"\n`;
         });
       });
 
