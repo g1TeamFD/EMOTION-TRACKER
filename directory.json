@@ -1,5 +1,70 @@
 {
   "programs": {
+    "GCC Hanoi": {
+      "name": "GCC Hanoi",
+      "members": {
+        "BAO AN - Pham Bao An": {
+          "name": "BAO AN - Pham Bao An"
+        },
+        "BEN - Bui Duc Long": {
+          "name": "BEN - Bui Duc Long"
+        },
+        "BILL - Pham Nhat Quan": {
+          "name": "BILL - Pham Nhat Quan"
+        },
+        "CHILLI - Nguyen Khanh Chi": {
+          "name": "CHILLI - Nguyen Khanh Chi"
+        },
+        "ELSA - Nguyen Anh Sa": {
+          "name": "ELSA - Nguyen Anh Sa"
+        },
+        "ELVIS - Pham Ha Nhat Linh": {
+          "name": "ELVIS - Pham Ha Nhat Linh"
+        },
+        "HANA - Ha Gia Han": {
+          "name": "HANA - Ha Gia Han"
+        },
+        "JACOB - Dinh The Cuong": {
+          "name": "JACOB - Dinh The Cuong"
+        },
+        "JAMES": {
+          "name": "JAMES"
+        },
+        "JIMMY - Ngo Huu Khang": {
+          "name": "JIMMY - Ngo Huu Khang"
+        },
+        "KATE - Nguyen Bao Khanh": {
+          "name": "KATE - Nguyen Bao Khanh"
+        },
+        "LUNA - Nguyen Y Ngoc": {
+          "name": "LUNA - Nguyen Y Ngoc"
+        },
+        "MICHELLE - Nguyen Ngoc Diep Minh": {
+          "name": "MICHELLE - Nguyen Ngoc Diep Minh"
+        },
+        "MIKE - Nguyen Huu Manh": {
+          "name": "MIKE - Nguyen Huu Manh"
+        },
+        "NGOC DIEP - Pham Ngoc Diep": {
+          "name": "NGOC DIEP - Pham Ngoc Diep"
+        },
+        "NHAT MINH - Ha Nhat Minh": {
+          "name": "NHAT MINH - Ha Nhat Minh"
+        },
+        "QUYNH - Pham Anh Quynh": {
+          "name": "QUYNH - Pham Anh Quynh"
+        },
+        "SCODY - Ho Dac Kien Anh": {
+          "name": "SCODY - Ho Dac Kien Anh"
+        },
+        "SUGAR - Dinh Pham Nha Uyen": {
+          "name": "SUGAR - Dinh Pham Nha Uyen"
+        },
+        "TONY - Nguyen Minh Tri": {
+          "name": "TONY - Nguyen Minh Tri"
+        }
+      }
+    },
     "Daily Discovery Bootcamp - Moc Chau 2026": {
       "name": "Daily Discovery Bootcamp - Moc Chau 2026",
       "teams": {
@@ -83,7 +148,7 @@
             }
           }
         },
-        "Bali": {
+        "\"Bali": {
           "name": "\"Bali",
           "members": {
             "BIMBIM - Kadek Putra Mahardika": {
@@ -129,8 +194,8 @@
             }
           }
         },
-        "Yogyakarta": {
-          "name": "Yogyakarta",
+        "\"Yogyakarta": {
+          "name": "\"Yogyakarta",
           "members": {
             "KYLA - Ratna Kyla Angelica Panisales Wibisono": {
               "name": "KYLA - Ratna Kyla Angelica Panisales Wibisono"
