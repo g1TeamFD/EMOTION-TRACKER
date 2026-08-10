@@ -15,8 +15,8 @@
         "CHILLI - Nguyen Khanh Chi": {
           "name": "CHILLI - Nguyen Khanh Chi"
         },
-        "ELSA - Nguyen Anh Sa": {
-          "name": "ELSA - Nguyen Anh Sa"
+        "RUMI - Nguyen Anh Sa": {
+          "name": "RUMI - Nguyen Anh Sa"
         },
         "ELVIS - Pham Ha Nhat Linh": {
           "name": "ELVIS - Pham Ha Nhat Linh"
@@ -27,8 +27,8 @@
         "JACOB - Dinh The Cuong": {
           "name": "JACOB - Dinh The Cuong"
         },
-        "JAMES": {
-          "name": "JAMES"
+        "JAMES - Ta Viet Quang": {
+          "name": "JAMES - Ta Viet Quang"
         },
         "JIMMY - Ngo Huu Khang": {
           "name": "JIMMY - Ngo Huu Khang"
@@ -51,17 +51,20 @@
         "NHAT MINH - Ha Nhat Minh": {
           "name": "NHAT MINH - Ha Nhat Minh"
         },
-        "QUYNH - Pham Anh Quynh": {
-          "name": "QUYNH - Pham Anh Quynh"
-        },
-        "SCODY - Ho Dac Kien Anh": {
-          "name": "SCODY - Ho Dac Kien Anh"
+        "SCOTTY - Ho Dac Kien Anh": {
+          "name": "SCOTTY - Ho Dac Kien Anh"
         },
         "SUGAR - Dinh Pham Nha Uyen": {
           "name": "SUGAR - Dinh Pham Nha Uyen"
         },
         "TONY - Nguyen Minh Tri": {
           "name": "TONY - Nguyen Minh Tri"
+        },
+        "ANDY - Nguyen The Son": {
+          "name": "ANDY - Nguyen The Son"
+        },
+        "PETER": {
+          "name": "PETER"
         }
       }
     },
