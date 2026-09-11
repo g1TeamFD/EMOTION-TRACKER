@@ -1,5 +1,28 @@
 {
   "programs": {
+    "\"Sustainability Bootcamp - Malaysia Oct": {
+      "name": "\"Sustainability Bootcamp - Malaysia Oct",
+      "members": {
+        "SEKAR - Kadek Ayu Sekar Wahyuningsih": {
+          "name": "SEKAR - Kadek Ayu Sekar Wahyuningsih"
+        },
+        "JIMMY - Ngo Huu Khang": {
+          "name": "JIMMY - Ngo Huu Khang"
+        },
+        "JACOB - Dinh The Cuong": {
+          "name": "JACOB - Dinh The Cuong"
+        },
+        "TENRI - Khalifah Anggara Tenri Samsara": {
+          "name": "TENRI - Khalifah Anggara Tenri Samsara"
+        },
+        "ARROW - Arrow Mahatama": {
+          "name": "ARROW - Arrow Mahatama"
+        },
+        "HALI - Halima Salsabila Putri Defana": {
+          "name": "HALI - Halima Salsabila Putri Defana"
+        }
+      }
+    },
     "GCC Hanoi": {
       "name": "GCC Hanoi",
       "members": {
