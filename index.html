@@ -114,7 +114,7 @@
     .brand-text { display: flex; flex-direction: column; line-height: 1; }
     .brand-name { font-family: 'DM Serif Display', Georgia, serif; font-size: 16px; color: var(--ink); letter-spacing: -0.2px; }
     .brand-sub { font-size: 9px; color: var(--ink3); letter-spacing: 1.8px; text-transform: uppercase; font-weight: 400; margin-top: 3px; }
-    
+
     .nav-right { display: flex; align-items: center; gap: 12px; }
     .nav-links { display: flex; gap: 2px; align-items: center; }
     .nav-link { font-size: 13px; font-weight: 400; padding: 6px 14px; border-radius: 100px; text-decoration: none; color: var(--ink2); transition: background 0.15s, color 0.15s; cursor: pointer; border: 1px solid transparent; }
@@ -216,7 +216,7 @@
     .add-row .field { flex: 1; min-width: 160px; margin-bottom: 0; }
     .hint-text { font-size: 12px; color: var(--ink3); margin-top: 10px; font-weight: 300; }
     .empty-state { text-align: center; padding: 36px 24px; border: 1.5px dashed var(--border-md); border-radius: 14px; color: var(--ink3); font-size: 14px; font-weight: 300; line-height: 1.7; }
-    
+
     .page-footer { text-align: center; margin-top: 48px; font-size: 12px; color: var(--ink3); font-weight: 300; }
     .hidden { display: none !important; }
 
@@ -224,7 +224,7 @@
     @media (max-width: 700px) {
       nav { padding: 0 16px; }
       .mobile-menu-btn { display: block; }
-      
+
       .nav-links {
         display: none; position: absolute; top: 60px; left: 0; right: 0;
         background: var(--card-bg); flex-direction: column; align-items: flex-start;
@@ -249,7 +249,7 @@
   <div id="intro-overlay">
     <div id="intro-text">Initialize FD 360</div>
   </div>
-  
+
   <div id="brain-wrapper"></div>
 
   <div id="main-content">
@@ -276,7 +276,7 @@
           <a href="dashboard-v2.html" class="nav-link">scoreboard</a>
           <a href="teachers.html" class="nav-link">teachers</a>
         </div>
-        
+
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
           <svg class="icon-moon" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M12.5 10A6 6 0 015 2.5a6.5 6.5 0 100 10 6 6 0 007.5-2.5z"/></svg>
           <svg class="icon-sun" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="7.5" cy="7.5" r="3"/><path d="M7.5 1v1.5M7.5 12.5V14M14 7.5h-1.5M2.5 7.5H1M12 3l-1 1M4 11l-1 1M12 12l-1-1M4 4l-1-1"/></svg>
@@ -385,7 +385,7 @@
     /* ── MOBILE MENU LOGIC ── */
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const navLinks = document.getElementById('navLinks');
-    
+
     mobileMenuBtn.addEventListener('click', () => {
       navLinks.classList.toggle('show');
     });
@@ -403,41 +403,41 @@
       const wrapper = document.getElementById('brain-wrapper');
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-      
+
       renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-      renderer.setSize(400, 400); 
+      renderer.setSize(400, 400);
       renderer.setPixelRatio(window.devicePixelRatio);
       wrapper.appendChild(renderer.domElement);
 
       const pointsCount = 3500;
       const positions = new Float32Array(pointsCount * 3);
-      
+
       for (let i = 0; i < pointsCount; i++) {
         const i3 = i * 3;
         const u = Math.random() * Math.PI * 2;
         const v = Math.acos((Math.random() * 2) - 1);
-        
-        const w = 3.8; 
-        const h = 3.0; 
-        const l = 4.8; 
-        
+
+        const w = 3.8;
+        const h = 3.0;
+        const l = 4.8;
+
         let x = w * Math.sin(v) * Math.cos(u);
         let y = h * Math.sin(v) * Math.sin(u);
         let z = l * Math.cos(v);
-        
+
         if (z > 0) {
           x *= (1.0 - z * 0.08);
           y *= (1.0 - z * 0.04);
         }
-        
-        const fissureDepth = Math.max(0, 1.0 - Math.abs(x) * 0.8); 
+
+        const fissureDepth = Math.max(0, 1.0 - Math.abs(x) * 0.8);
         x += (x > 0 ? 1 : -1) * fissureDepth * 0.6;
-        
+
         const noise = Math.sin(x*2) * Math.cos(y*2) * Math.sin(z*2) * 0.4;
         x += noise; y += noise; z += noise;
-        
-        const depth = Math.pow(Math.random(), 0.3); 
-        
+
+        const depth = Math.pow(Math.random(), 0.3);
+
         positions[i3]     = x * depth;
         positions[i3 + 1] = y * depth;
         positions[i3 + 2] = z * depth;
@@ -469,7 +469,7 @@
 
       const themeObs = new MutationObserver(() => material.color.setHex(getTeal()));
       themeObs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-      
+
       setTimeout(() => {
         wrapper.addEventListener('mouseenter', triggerSiteEntry);
         wrapper.addEventListener('click', triggerSiteEntry);
@@ -489,7 +489,7 @@
 
       overlay.style.opacity = '0';
       text.style.opacity = '0';
-      
+
       mainContent.style.opacity = '1';
       mainContent.style.pointerEvents = 'auto';
       document.body.classList.remove('intro-mode');
@@ -507,7 +507,7 @@
         targetContainer.appendChild(renderer.domElement);
         wrapper.remove();
         overlay.remove();
-      }, 1000); 
+      }, 1000);
     }
 
     initBrain();
@@ -535,17 +535,36 @@
     const STORAGE_KEY = 'fd360_draft';
     let directory = null, authUid = null, subprogramMembers = [], evaluations = [], evaluationCounter = 0, autoSaveTimer = null, selectedProgram = null, selectedTeam = null, selectedSubprogram = null;
 
-    auth.onAuthStateChanged(user => { authUid = user ? user.uid : null; if (!user) auth.signInAnonymously().catch(() => {}); updateNextBtn(); });
+    /* Auth is only needed to submit or add a custom member, not to continue. */
+    auth.onAuthStateChanged(user => {
+      authUid = user ? user.uid : null;
+      if (!user) {
+        auth.signInAnonymously().catch(err => {
+          console.error('Anonymous sign-in failed:', err.code, err.message);
+          const s = document.getElementById('statusStep1');
+          s.textContent = 'Sign-in failed (' + err.code + '). You can continue, but submitting will not work until this is fixed.';
+          s.className = 'status-msg err';
+        });
+      }
+    });
 
     fetch('directory.json').then(r => r.json()).then(data => { directory = data.programs || {}; initForm(); loadDraft(); }).catch(() => { directory = {}; initForm(); });
 
+    /* Build <option>s as DOM objects so quotes in names can never break the markup. */
+    function fillSelect(sel, placeholder, values) {
+      sel.innerHTML = '';
+      sel.add(new Option(placeholder, ''));
+      values.forEach(v => sel.add(new Option(v, v)));
+    }
+
     function initForm() {
       const progSel = document.getElementById('program'), teamSel = document.getElementById('team'), teamCon = document.getElementById('teamContainer'), dd = document.getElementById('memberDropdown'), cnc = document.getElementById('customNameContainer'), cni = document.getElementById('customMemberName');
-      progSel.innerHTML = '<option value="">Select a program</option>' + Object.keys(directory).sort().map(p => `<option value="${p}">${p}</option>`).join('');
+      fillSelect(progSel, 'Select a program', Object.keys(directory).sort());
       progSel.addEventListener('change', () => {
         const pd = directory[progSel.value];
         if (pd && pd.teams && Object.keys(pd.teams).length > 0) {
-          teamCon.classList.remove('hidden'); teamSel.innerHTML = '<option value="">Select a team</option>' + Object.keys(pd.teams).sort().map(t => `<option value="${t}">${t}</option>`).join('');
+          teamCon.classList.remove('hidden');
+          fillSelect(teamSel, 'Select a team', Object.keys(pd.teams).sort());
         } else { teamCon.classList.add('hidden'); teamSel.value = ''; selectedTeam = null; }
         updateNextBtn(); autoSave();
       });
@@ -554,11 +573,19 @@
       document.getElementById('evaluatorName').addEventListener('input', () => { updateNextBtn(); autoSave(); });
       dd.addEventListener('change', () => { if (dd.value === '__custom__') { cnc.classList.remove('hidden'); cni.focus(); } else { cnc.classList.add('hidden'); cni.value = ''; } });
       cni.addEventListener('keypress', e => { if (e.key === 'Enter') addMember(); });
-      document.getElementById('nextBtn').addEventListener('click', goStep2); document.getElementById('backBtn').addEventListener('click', goStep1); document.getElementById('addMemberBtn').addEventListener('click', addMember); document.getElementById('submitBtn').addEventListener('click', submitAll);
+      document.getElementById('nextBtn').addEventListener('click', goStep2);
+      document.getElementById('backBtn').addEventListener('click', goStep1);
+      document.getElementById('addMemberBtn').addEventListener('click', addMember);
+      document.getElementById('submitBtn').addEventListener('click', submitAll);
     }
 
     function updateNextBtn() {
-      const ok = !!(document.getElementById('evaluatorName').value.trim() && document.getElementById('program').value && authUid && (!(!document.getElementById('teamContainer').classList.contains('hidden')) || document.getElementById('team').value));
+      const teamRequired = !document.getElementById('teamContainer').classList.contains('hidden');
+      const ok = !!(
+        document.getElementById('evaluatorName').value.trim() &&
+        document.getElementById('program').value &&
+        (!teamRequired || document.getElementById('team').value)
+      );
       document.getElementById('nextBtn').disabled = !ok;
     }
 
@@ -568,16 +595,24 @@
       const pd = directory[prog]; let members = [];
       if (selectedTeam && pd?.teams?.[selectedTeam]) members = Object.keys(pd.teams[selectedTeam].members || {}); else if (pd?.members) members = Object.keys(pd.members);
       subprogramMembers = members.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
-      let label = prog; if (selectedTeam) label += ' · ' + selectedTeam; if (sub) label += ' (' + sub + ')'; document.getElementById('contextBadge').textContent = label;
+      let label = prog; if (selectedTeam) label += ' · ' + selectedTeam; if (sub) label += ' (' + sub + ')';
+      document.getElementById('contextBadge').textContent = label;
       populateDD();
       const saved = getDraft();
       if (saved?.program === prog && saved?.team === team && saved?.evaluations?.length > 0) { evaluations = saved.evaluations; evaluationCounter = saved.evaluationCounter || evaluations.length; } else { evaluations = []; evaluationCounter = 0; }
-      renderEvals(); document.getElementById('step1').classList.add('hidden'); document.getElementById('step2').classList.remove('hidden');
+      renderEvals();
+      document.getElementById('step1').classList.add('hidden');
+      document.getElementById('step2').classList.remove('hidden');
     }
 
     function goStep1() { document.getElementById('step2').classList.add('hidden'); document.getElementById('step1').classList.remove('hidden'); }
-    function populateDD() { document.getElementById('memberDropdown').innerHTML = '<option value="">Select a member...</option>' + subprogramMembers.map(n => `<option value="${n}">${n}</option>`).join('') + '<option value="__custom__">Write a custom name...</option>'; }
-    
+
+    function populateDD() {
+      const dd = document.getElementById('memberDropdown');
+      fillSelect(dd, 'Select a member...', subprogramMembers);
+      dd.add(new Option('Write a custom name...', '__custom__'));
+    }
+
     async function addMember() {
       const dd = document.getElementById('memberDropdown'), cni = document.getElementById('customMemberName'); let name = '';
       if (dd.value === '__custom__') { name = cni.value.trim(); if (!name) { cni.focus(); return; } await addToDirectory(name); } else { name = dd.value; if (!name) return; }
@@ -599,14 +634,14 @@
     function renderEvals() {
       const con = document.getElementById('membersList'); con.innerHTML = '';
       if (!evaluations.length) { con.innerHTML = `<div class="empty-state">No members added yet.</div>`; updateSubmitBtn(); return; }
-      
+
       evaluations.forEach((ev, idx) => {
         const div = document.createElement('div'); div.className = 'member-card';
         div.innerHTML = `
           <div class="member-header">
             <div>
               <div class="member-idx">Member ${idx + 1}</div>
-              <div class="member-name">${ev.memberName}</div>
+              <div class="member-name"></div>
             </div>
             <button class="btn btn-danger" data-id="${ev.id}">Remove</button>
           </div>
@@ -624,27 +659,28 @@
               <input type="number" class="score-inp" data-id="${ev.id}" data-f="score" min="0" max="10" placeholder="10" />
             </div>
           </div>`;
-        
+
         con.appendChild(div);
-        
+        div.querySelector('.member-name').textContent = ev.memberName;
+
         div.querySelector('.btn-danger').addEventListener('click', e => removeEval(parseInt(e.currentTarget.dataset.id)));
-        
-        div.querySelectorAll('input, textarea').forEach(inp => { 
-          inp.value = ev[inp.dataset.f]; 
-          
-          inp.addEventListener('input', e => { 
+
+        div.querySelectorAll('input, textarea').forEach(inp => {
+          inp.value = ev[inp.dataset.f];
+
+          inp.addEventListener('input', e => {
             if (e.target.dataset.f === 'score' && e.target.value !== '') {
               let val = parseInt(e.target.value);
               if (val > 10) e.target.value = 10;
               if (val < 0) e.target.value = 0;
             }
-            
-            const entry = evaluations.find(x => x.id === parseInt(e.target.dataset.id)); 
-            if (entry) entry[e.target.dataset.f] = e.target.value; 
-            
-            updateSubmitBtn(); 
-            autoSave(); 
-          }); 
+
+            const entry = evaluations.find(x => x.id === parseInt(e.target.dataset.id));
+            if (entry) entry[e.target.dataset.f] = e.target.value;
+
+            updateSubmitBtn();
+            autoSave();
+          });
         });
       });
       updateSubmitBtn();
@@ -653,7 +689,7 @@
     function updateSubmitBtn() { document.getElementById('submitBtn').disabled = !evaluations.some(e => e.pluses || e.minuses || e.score); }
     function autoSave() { clearTimeout(autoSaveTimer); autoSaveTimer = setTimeout(() => { localStorage.setItem(STORAGE_KEY, JSON.stringify({ evaluatorName: document.getElementById('evaluatorName').value, program: document.getElementById('program').value, team: document.getElementById('team').value, subprogram: document.getElementById('subprogram').value, evaluations, evaluationCounter })); const el = document.getElementById('autosave'); el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 2000); }, 1000); }
     function getDraft() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch { return null; } }
-    
+
     function loadDraft() {
       const saved = getDraft(); if (!saved) return;
       if (saved.evaluatorName) document.getElementById('evaluatorName').value = saved.evaluatorName;
@@ -710,16 +746,30 @@
         createdAt: Date.now()
       };
 
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      clearTimeout(autoSaveTimer);
+
+      const timeout = setTimeout(() => {
+        status.textContent = 'No response from server after 15s. Check your connection or Firebase rules.';
+        status.className = 'status-msg err';
+        submitBtn.disabled = false;
+      }, 15000);
+
       db.ref('entries').push(entry)
         .then(() => {
+          clearTimeout(timeout);
           status.textContent = 'Submitted ✓';
           status.className = 'status-msg ok';
           localStorage.removeItem(STORAGE_KEY);
           setTimeout(() => location.reload(), 2000);
         })
         .catch(err => {
-          status.textContent = 'Submit failed: ' + (err.message || 'Unknown error');
+          clearTimeout(timeout);
+          console.error('Submit error:', err.code, err);
+          status.textContent = 'Submit failed: ' + (err.code || err.message || 'Unknown error');
           status.className = 'status-msg err';
+          submitBtn.disabled = false;
         });
     }
   </script>
